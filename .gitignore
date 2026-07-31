@@ -43,3 +43,11 @@ desktop.ini
 # Temporary files
 ~$*
 *.tmp
+
+# Python bytecode caches (auto-regenerated on import).
+# NOTE: a small number of .pyc files under src/ab-cloud-3d/build/ are
+# committed intentionally to preserve the exact runtime state of the
+# verification runs. Do not delete them.
+__pycache__/
+*.py[cod]
+!src/ab-cloud-3d/build/*.pyc
