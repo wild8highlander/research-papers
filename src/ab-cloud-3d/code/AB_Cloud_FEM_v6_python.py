@@ -1,4 +1,25 @@
 #!/usr/bin/env python3
+"""
+AB_Cloud_FEM_v6_python — FEM on Klein quartic (2,3,7) with MeatAxe
+====================================================================
+
+Python prototype for debugging the Finite Element Method algorithm on the
+Klein quartic surface using the (2,3,7) triangle group and PSL(2,7)
+representation theory.
+
+Key fix (v6 → v6_python):
+  In v6, MeatAxe searched for SIMPLE eigenvalues of H = α·ρ_R(s) + β·ρ_R(u)
+  on Im(P_ρ) ≅ V_ρ ⊗ V_ρ*. Due to the tensor structure I ⊗ (α·ρ̄(s)+β·ρ̄(u)),
+  ALL eigenvalues have multiplicity d_ρ. The gap < 1e-6 filter removed them ALL.
+
+  Fix: cluster eigenvalues, find a cluster of size d_ρ, take ONE eigenvector
+  from the cluster, apply left regular action to construct a d_ρ-dimensional
+  invariant subspace V_ρ ⊗ w_λ.
+
+Usage: python3 AB_Cloud_FEM_v6_python.py
+
+Dependencies: numpy, scipy
+"""
 # ============================================================================
 # AB_Cloud_FEM_v6_python.py — FEM на Klein quartic (2,3,7) с MeatAxe
 # Python-прототип для отладки алгоритма
