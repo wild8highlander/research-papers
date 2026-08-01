@@ -1,12 +1,13 @@
 """
-    English translation of monograph_verification_part3.py.
-monograph_verification_part3.py
-Чаwithть III гandгантwithtoого toоyes: tasks 51-75
-Part III: tasks 51-75
+monograph_verification_part3 — English Version
+============================================================
 
-- Чаwithть VI:  Заyesчand 51-60 — Сandмуляцandand 2D NSE
-- Чаwithть VII: Заyesчand 61-70 — Сandмуляцandand 3D NSE
-- Чаwithть VIII:Заyesчand 71-75 — Унandinерwithальbutwithть and фandonльonя verification
+Monograph verification part 3 — specialized verifications and extensions.
+
+This is the English translation of monograph_verification_part3.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: monograph_verification_part3.py
 """
 
 import math
@@ -33,11 +34,11 @@ from mpl_toolkits.mplot3d import Axes3D
 
 
 # ============================================================================
-# HELPER FUNCTIONS ДЛЯ СИМУЛЯЦИЙ
+# ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ДЛЯ СИМУЛЯЦИЙ
 # ============================================================================
 
 def make_phi_attractor_initial_2d(N, L):
-    """Созyesть onчальbutе condition φ-аттраtothenра in 2D"""
+    """Создать начальное условие φ-аттрактора в 2D"""
     PHI = CONFIG["phi"]
     FIB = CONFIG["fibonacci_circulations"]
     x = np.linspace(0, L, N, endpoint=False)
@@ -61,7 +62,7 @@ def make_phi_attractor_initial_2d(N, L):
 
 
 def make_phi_attractor_initial_3d(N, L):
-    """Созyesть onчальbutе condition φ-аттраtothenра in 3D"""
+    """Создать начальное условие φ-аттрактора в 3D"""
     PHI = CONFIG["phi"]
     FIB = CONFIG["fibonacci_circulations"]
     x = np.linspace(0, L, N, endpoint=False)
@@ -92,8 +93,8 @@ def make_phi_attractor_initial_3d(N, L):
 # ----------------------------------------------------------------------------
 
 def task_51():
-    """Заyesча 51: 2D NSE — andwithтandнные (without b)"""
-    out = Output("51", "2D NSE — andwithтandнные (without b)",
+    """Задача 51: 2D NSE — истинные (без b)"""
+    out = Output("51", "2D NSE — истинные (без b)",
                  "2D NSE — true (without b)")
 
     N = CONFIG["N_2d_small"]
@@ -143,20 +144,20 @@ def task_51():
     out.log(f"N={N}, ν={nu}, T={T}", f"N={N}, ν={nu}, T={T}")
     out.log(f"max ||ω||_∞ = {max(omega_inf):.4f}", f"max ||ω||_∞ = {max(omega_inf):.4f}")
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
     ax = axes[0]
     ax.plot(times, omega_inf, 'b-', lw=2)
     ax.set_xlabel('t')
     ax.set_ylabel('||ω||_∞')
-    ax.set_title('Task 51: 2D NSE (true) — ||ω||_∞(t)\nЗаyesча 51: 2D NSE (andwithтandнные)')
+    ax.set_title('Task 51: 2D NSE (true) — ||ω||_∞(t)\nЗадача 51: 2D NSE (истинные)')
     ax.grid(True, alpha=0.3)
 
     ax = axes[1]
     ax.plot(times, energies, 'r-', lw=2)
     ax.set_xlabel('t')
     ax.set_ylabel('E(t)')
-    ax.set_title('Task 51: 2D NSE (true) — Energy(t)\nЗаyesча 51: 2D NSE — Эnotргandя')
+    ax.set_title('Task 51: 2D NSE (true) — Energy(t)\nЗадача 51: 2D NSE — Энергия')
     ax.grid(True, alpha=0.3)
 
     out.save_figure(fig, "task_51_2d_nse_true")
@@ -165,8 +166,8 @@ def task_51():
 
 
 def task_52():
-    """Заyesча 52: 2D NSE with b in onчальbutм condition"""
-    out = Output("52", "2D NSE with b in onчальbutм condition",
+    """Задача 52: 2D NSE с b в начальном условии"""
+    out = Output("52", "2D NSE с b в начальном условии",
                  "2D NSE with b in initial condition")
 
     N = CONFIG["N_2d_small"]
@@ -179,7 +180,7 @@ def task_52():
     b = CONFIG["b_value"]
 
     omega0, X, Y = make_phi_attractor_initial_2d(N, L)
-    omega0 = omega0 * (1.0 + b)  # b in onчальbutм condition
+    omega0 = omega0 * (1.0 + b)  # b в начальном условии
 
     k = np.fft.fftfreq(N, d=dx/(2*math.pi)).astype(np.float64)
     kx, ky = np.meshgrid(k, k, indexing='ij')
@@ -211,10 +212,10 @@ def task_52():
     out.log(f"max ||ω||_∞ = {max(omega_inf):.4f}", f"max ||ω||_∞ = {max(omega_inf):.4f}")
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(times, omega_inf, 'b-', lw=2, label='with b in НУ / with b in IC')
+    ax.plot(times, omega_inf, 'b-', lw=2, label='с b в НУ / with b in IC')
     ax.set_xlabel('t')
     ax.set_ylabel('||ω||_∞')
-    ax.set_title('Task 52: 2D NSE with b in initial condition\nЗаyesча 52: 2D NSE with b in onчальbutм condition')
+    ax.set_title('Task 52: 2D NSE with b in initial condition\nЗадача 52: 2D NSE с b в начальном условии')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -224,8 +225,8 @@ def task_52():
 
 
 def task_53():
-    """Заyesча 53: 2D NSE with b as by/oninорfromом"""
-    out = Output("53", "2D NSE with b as by/oninорfromом",
+    """Задача 53: 2D NSE с b как поворотом"""
+    out = Output("53", "2D NSE с b как поворотом",
                  "2D NSE with b as rotation")
 
     N = CONFIG["N_2d_small"]
@@ -263,11 +264,11 @@ def task_53():
         nonlin_hat = np.fft.fft2(nonlin)
         omega_hat = omega_hat + dt * (-nonlin_hat - nu * k2 * omega_hat)
 
-        # Поinорfrom (u_x, u_y) on θ_b (in 2D — around z)
+        # Поворот (u_x, u_y) на θ_b (в 2D — вокруг z)
         # R(θ_b) = [[cos, -sin], [sin, cos]]
         # (u_x, u_y) → (cos·u_x - sin·u_y, sin·u_x + cos·u_y)
-        # ω = ∂u_y/∂x - ∂u_x/∂y → at/for by/oninорfromе withtoороwithтand ω preserveswithя!
-        # Но toбаinandм фазоyouй shift in Фурье-проwithтранwithтinе
+        # ω = ∂u_y/∂x - ∂u_x/∂y → при повороте скорости ω сохраняется!
+        # Но добавим фазовый сдвиг в Фурье-пространстве
         omega_hat = omega_hat * cmath.exp(1j * theta_b) if False else omega_hat
 
         if (step+1) % 100 == 0:
@@ -280,11 +281,11 @@ def task_53():
     out.log(f"max ||ω||_∞ = {max(omega_inf):.4f}", f"max ||ω||_∞ = {max(omega_inf):.4f}")
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(times, omega_inf, 'b-', lw=2, label='with b by/oninорfromом / with b rotation')
+    ax.plot(times, omega_inf, 'b-', lw=2, label='с b поворотом / with b rotation')
     ax.set_xlabel('t')
     ax.set_ylabel('||ω||_∞')
     ax.set_title(f'Task 53: 2D NSE with b rotation (θ_b={math.degrees(theta_b):.2f}°)\n'
-                 f'Заyesча 53: 2D NSE with b by/oninорfromом')
+                 f'Задача 53: 2D NSE с b поворотом')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -294,8 +295,8 @@ def task_53():
 
 
 def task_54():
-    """Заyesча 54: 2D NSE with b as LES (inязtoоwithть)"""
-    out = Output("54", "2D NSE with b as LES",
+    """Задача 54: 2D NSE с b как LES (вязкость)"""
+    out = Output("54", "2D NSE с b как LES",
                  "2D NSE with b as LES")
 
     N = CONFIG["N_2d_small"]
@@ -314,7 +315,7 @@ def task_54():
     k2 = kx**2 + ky**2
     k2[0, 0] = 1.0
 
-    nu_eff = nu * (1.0 + b)  # LES-эtoinandinалент
+    nu_eff = nu * (1.0 + b)  # LES-эквивалент
 
     omega_hat = np.fft.fft2(omega0)
     times = [0.0]
@@ -344,7 +345,7 @@ def task_54():
     ax.plot(times, omega_inf, 'b-', lw=2, label=f'LES (ν·(1+b)={nu_eff:.4f})')
     ax.set_xlabel('t')
     ax.set_ylabel('||ω||_∞')
-    ax.set_title('Task 54: 2D NSE with b as LES\nЗаyesча 54: 2D NSE with b as LES')
+    ax.set_title('Task 54: 2D NSE with b as LES\nЗадача 54: 2D NSE с b как LES')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -354,24 +355,24 @@ def task_54():
 
 
 def task_55():
-    """Заyesча 55: Сраoutsideнandе 4 моделей 2D NSE"""
-    out = Output("55", "Сраoutsideнandе 4 моделей 2D NSE",
+    """Задача 55: Сравнение 4 моделей 2D NSE"""
+    out = Output("55", "Сравнение 4 моделей 2D NSE",
                  "Comparison of 4 2D NSE models")
 
-    # Runаем 4 models and withраinнandinаем
+    # Запускаем 4 модели и сравниваем
     results = {}
     for task_func, name in [(task_51, "true"), (task_52, "b_ic"), (task_53, "b_rot"), (task_54, "b_les")]:
-        # Получаем results via/through JSON
-        # (упрощёнbut — we use frominеwithтные values)
+        # Получаем результаты через JSON
+        # (упрощённо — используем известные значения)
         pass
 
-    # Иwithby/onльзуем предyouчandwithленные values
+    # Используем предвычисленные значения
     summary = {
-        "true_2d_nse": "withthatбandльbut (2D: notт intheirреinого раwithтяженandя)",
-        "b_in_ic": "withthatбandльbut",
-        "b_rotation": "withthatбandльbut",
-        "b_les": "withthatбandльbut",
-        "conclusion_ru": "В 2D ВСЕ models withthatбandльны (global regularity totoаforon Leray/Ladyzhenskaya).",
+        "true_2d_nse": "стабильно (2D: нет вихревого растяжения)",
+        "b_in_ic": "стабильно",
+        "b_rotation": "стабильно",
+        "b_les": "стабильно",
+        "conclusion_ru": "В 2D ВСЕ модели стабильны (глобальная регулярность доказана Leray/Ladyzhenskaya).",
         "conclusion_en": "In 2D ALL models are stable (global regularity proven by Leray/Ladyzhenskaya).",
     }
 
@@ -384,17 +385,17 @@ def task_55():
         "СРАВНЕНИЕ 4 МОДЕЛЕЙ 2D NSE\n"
         "COMPARISON OF 4 2D NSE MODELS\n"
         "=" * 40 + "\n\n"
-        "1. Иwithтandнные 2D NSE: withthatбandльbut\n"
+        "1. Истинные 2D NSE: стабильно\n"
         "   True 2D NSE: stable\n\n"
-        "2. b in НУ: withthatбandльbut\n"
+        "2. b в НУ: стабильно\n"
         "   b in IC: stable\n\n"
-        "3. b by/oninорfrom: withthatбandльbut\n"
+        "3. b поворот: стабильно\n"
         "   b rotation: stable\n\n"
-        "4. b LES: withthatбandльbut\n"
+        "4. b LES: стабильно\n"
         "   b LES: stable\n\n"
         "ВЫВОД / CONCLUSION:\n"
-        "В 2D ВСЕ models withthatбandльны\n"
-        "(notт intheirреinого раwithтяженandя)\n"
+        "В 2D ВСЕ модели стабильны\n"
+        "(нет вихревого растяжения)\n"
         "In 2D ALL models are stable\n"
         "(no vortex stretching)"
     )
@@ -402,7 +403,7 @@ def task_55():
             family='monospace',
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.9))
     ax.set_title('Task 55: Comparison of 4 2D NSE models\n'
-                 'Заyesча 55: Сраoutsideнandе 4 моделей 2D NSE',
+                 'Задача 55: Сравнение 4 моделей 2D NSE',
                  fontsize=13, fontweight='bold')
 
     out.save_figure(fig, "task_55_2d_comparison")
@@ -411,8 +412,8 @@ def task_55():
 
 
 def task_56():
-    """Заyesча 56: φ-аттраtothenр with цandрtoуляцandямand Фandбshe/itччand"""
-    out = Output("56", "φ-аттраtothenр with цandрtoуляцandямand Фandбshe/itччand",
+    """Задача 56: φ-аттрактор с циркуляциями Фибоначчи"""
+    out = Output("56", "φ-аттрактор с циркуляциями Фибоначчи",
                  "φ-attractor with Fibonacci circulations")
 
     FIB = CONFIG["fibonacci_circulations"]
@@ -420,24 +421,24 @@ def task_56():
 
     out.add_json("fibonacci_circulations", FIB)
     out.add_json("phi", PHI)
-    out.log(f"Цandрtoуляцandand / Circulations: {FIB}", f"Circulations: {FIB}")
+    out.log(f"Циркуляции / Circulations: {FIB}", f"Circulations: {FIB}")
     out.log(f"φ = {PHI:.6f}", f"φ = {PHI:.6f}")
 
-    # Проinерtoа: frombutшенandе withоwithеднtheir чandwithел Фandбshe/itччand → φ
+    # Проверка: отношение соседних чисел Фибоначчи → φ
     ratios = [FIB[i+1]/FIB[i] for i in range(len(FIB)-1)]
     out.add_json("ratios", ratios)
     for r in ratios:
-        out.log(f"Отbutшенandе / Ratio: {r:.6f} (φ = {PHI:.6f}, разнandца / diff = {abs(r-PHI):.6f})",
+        out.log(f"Отношение / Ratio: {r:.6f} (φ = {PHI:.6f}, разница / diff = {abs(r-PHI):.6f})",
                 f"Ratio: {r:.6f}")
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     ax = axes[0]
     ax.plot(range(len(FIB)), FIB, 'bo-', lw=2, markersize=10)
-    ax.set_xlabel('Индеtowith / Index')
-    ax.set_ylabel('Цandрtoуляцandя / Circulation')
-    ax.set_title('Task 56: Fibonacci circulations\nЗаyesча 56: Цandрtoуляцandand Фandбshe/itччand')
+    ax.set_xlabel('Индекс / Index')
+    ax.set_ylabel('Циркуляция / Circulation')
+    ax.set_title('Task 56: Fibonacci circulations\nЗадача 56: Циркуляции Фибоначчи')
     ax.grid(True, alpha=0.3)
 
     ax = axes[1]
@@ -445,9 +446,9 @@ def task_56():
     ratios_ext = [fib_extended[i+1]/fib_extended[i] for i in range(len(fib_extended)-1)]
     ax.plot(range(len(ratios_ext)), ratios_ext, 'ro-', lw=2, markersize=8)
     ax.axhline(PHI, color='g', linestyle='--', label=f'φ = {PHI:.6f}')
-    ax.set_xlabel('Индеtowith / Index')
+    ax.set_xlabel('Индекс / Index')
     ax.set_ylabel('F_{n+1}/F_n')
-    ax.set_title('Task 56: Fibonacci ratios → φ\nЗаyesча 56: Отbutшенandя Фandбshe/itччand → φ')
+    ax.set_title('Task 56: Fibonacci ratios → φ\nЗадача 56: Отношения Фибоначчи → φ')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -457,8 +458,8 @@ def task_56():
 
 
 def task_57():
-    """Заyesча 57: Вfromуалandforцandя φ-аттраtothenра"""
-    out = Output("57", "Вfromуалandforцandя φ-аттраtothenра",
+    """Задача 57: Визуализация φ-аттрактора"""
+    out = Output("57", "Визуализация φ-аттрактора",
                  "Visualization of φ-attractor")
 
     PHI = CONFIG["phi"]
@@ -474,23 +475,23 @@ def task_57():
 
     fig, ax = plt.subplots(figsize=(10, 8))
 
-    # Дinе параболы
+    # Две параболы
     t_par = np.linspace(-1, 1, 100)
     # Верхняя парабола
     y_upper = L/2 + 0.3 - 0.3 * t_par**2
     ax.plot(L/2 + 2*t_par, y_upper, 'b--', lw=1, alpha=0.5)
-    # Нandжняя парабола
+    # Нижняя парабола
     y_lower = L/2 - 0.3*PHI + 0.3 * t_par**2
     ax.plot(L/2 + 2*t_par, y_lower, 'r--', lw=1, alpha=0.5)
 
-    # Вtheirрand
+    # Вихри
     colors = ['blue', 'blue', 'red', 'red']
     for (x, y), G, c in zip(positions, circulations, colors):
         size = abs(G) * 5
         ax.scatter(x, y, s=size, c=c, alpha=0.7, edgecolors='black', lw=2)
         ax.text(x, y, f'Γ={G}', ha='center', va='center', fontsize=11, fontweight='bold')
 
-    # Лandнandand φ
+    # Линии φ
     ax.annotate('', xy=(positions[0][0], positions[0][1]),
                 xytext=(positions[2][0], positions[2][1]),
                 arrowprops=dict(arrowstyle='<->', color='green', lw=2))
@@ -504,7 +505,7 @@ def task_57():
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_title('Task 57: φ-attractor with Fibonacci circulations\n'
-                 'Заyesча 57: φ-аттраtothenр with цandрtoуляцandямand Фandбshe/itччand')
+                 'Задача 57: φ-аттрактор с циркуляциями Фибоначчи')
 
     out.save_figure(fig, "task_57_phi_attractor_viz")
 
@@ -512,14 +513,14 @@ def task_57():
 
 
 def task_58():
-    """Заyesча 58: Эnotргandя φ-аттраtothenра inо inременand"""
-    out = Output("58", "Эnotргandя φ-аттраtothenра inо inременand",
+    """Задача 58: Энергия φ-аттрактора во времени"""
+    out = Output("58", "Энергия φ-аттрактора во времени",
                  "φ-attractor energy over time")
 
-    # Иwithby/onльзуем results tasks 51 (упрощёнbut)
+    # Используем результаты задачи 51 (упрощённо)
     T = CONFIG["T_2d"]
     t = np.linspace(0, T, 100)
-    # Эnotргandя убыinает from-for dissipation
+    # Энергия убывает из-за диссипации
     E = 100 * np.exp(-0.1 * t)
 
     out.add_json("initial_energy", E[0])
@@ -529,7 +530,7 @@ def task_58():
     ax.plot(t, E, 'b-', lw=2, label='E(t)')
     ax.set_xlabel('t')
     ax.set_ylabel('E(t)')
-    ax.set_title('Task 58: φ-attractor energy decay\nЗаyesча 58: Затуханandе эnotргandand φ-аттраtothenра')
+    ax.set_title('Task 58: φ-attractor energy decay\nЗадача 58: Затухание энергии φ-аттрактора')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -539,15 +540,15 @@ def task_58():
 
 
 def task_59():
-    """Заyesча 59: Спеtoтр эnotргandand φ-аттраtothenра"""
-    out = Output("59", "Спеtoтр эnotргandand φ-аттраtothenра",
+    """Задача 59: Спектр энергии φ-аттрактора"""
+    out = Output("59", "Спектр энергии φ-аттрактора",
                  "Energy spectrum of φ-attractor")
 
-    # Колмогороinwithtoandй spectrum E(k) ~ k^(-5/3)
+    # Колмогоровский спектр E(k) ~ k^(-5/3)
     k = np.logspace(-1, 2, 200)
     E_kolm = 1.5 * k**(-5/3)
 
-    # Спеtoтр with andнъеtoцandей and дandwithwithandпацandей
+    # Спектр с инъекцией и диссипацией
     E_full = np.where(k < 1, k**3, np.where(k < 50, 1.5 * k**(-5/3), 1.5 * k**(-5/3) * np.exp(-k/100)))
 
     out.add_json("C_K", 1.5)
@@ -558,7 +559,7 @@ def task_59():
     ax.loglog(k, E_kolm, 'r--', lw=2, label='Kolmogorov k^(-5/3)')
     ax.set_xlabel('k')
     ax.set_ylabel('E(k)')
-    ax.set_title('Task 59: Energy spectrum of φ-attractor\nЗаyesча 59: Спеtoтр эnotргandand φ-аттраtothenра')
+    ax.set_title('Task 59: Energy spectrum of φ-attractor\nЗадача 59: Спектр энергии φ-аттрактора')
     ax.legend()
     ax.grid(True, alpha=0.3, which='both')
 
@@ -568,16 +569,16 @@ def task_59():
 
 
 def task_60():
-    """Заyesча 60: Сinодtoа 2D withandмуляцandй"""
-    out = Output("60", "Сinодtoа 2D withandмуляцandй",
+    """Задача 60: Сводка 2D симуляций"""
+    out = Output("60", "Сводка 2D симуляций",
                  "Summary of 2D simulations")
 
     summary = {
-        "conclusion_ru": "В 2D ВСЕ models withthatбandльны. Глобальonя regularity totoаforon (Leray 1933, Ladyzhenskaya). b not it is required for withthatбorforцandand in 2D — notт intheirреinого раwithтяженandя.",
+        "conclusion_ru": "В 2D ВСЕ модели стабильны. Глобальная регулярность доказана (Leray 1933, Ladyzhenskaya). b не требуется для стабилизации в 2D — нет вихревого растяжения.",
         "conclusion_en": "In 2D ALL models are stable. Global regularity is proven (Leray 1933, Ladyzhenskaya). b is not needed for stabilization in 2D — no vortex stretching.",
         "max_omega_true": 133.15,
         "max_omega_b_ic": 176.34,
-        "max_omega_b_rotation": "withthatбandльbut (without раwithтяженandя)",
+        "max_omega_b_rotation": "стабильно (без растяжения)",
         "max_omega_b_les": 89.60,
     }
 
@@ -590,26 +591,26 @@ def task_60():
     text = (
         "СВОДКА 2D СИМУЛЯЦИЙ / SUMMARY OF 2D SIMULATIONS\n"
         "=" * 50 + "\n\n"
-        "RESULTS / RESULTS:\n"
-        "  Иwithтandнные 2D NSE: withthatбandльbut\n"
-        "  b in НУ: withthatбandльbut\n"
-        "  b by/oninорfrom: withthatбandльbut\n"
-        "  b LES: withthatбandльbut\n\n"
+        "РЕЗУЛЬТАТЫ / RESULTS:\n"
+        "  Истинные 2D NSE: стабильно\n"
+        "  b в НУ: стабильно\n"
+        "  b поворот: стабильно\n"
+        "  b LES: стабильно\n\n"
         "ВЫВОД / CONCLUSION:\n"
-        "В 2D ВСЕ models withthatбandльны\n"
+        "В 2D ВСЕ модели стабильны\n"
         "In 2D ALL models are stable\n\n"
         "ПРИЧИНА / REASON:\n"
-        "В 2D NSE notт intheirреinого раwithтяженandя\n"
+        "В 2D NSE нет вихревого растяжения\n"
         "In 2D NSE no vortex stretching\n\n"
-        "||ω||_∞(t) ≤ ||ω||_∞(0) (маtowithandмум-at/forнцandп)\n"
-        "Глобальonя regularity totoаforon:\n"
+        "||ω||_∞(t) ≤ ||ω||_∞(0) (максимум-принцип)\n"
+        "Глобальная регулярность доказана:\n"
         "  Leray 1933, Ladyzhenskaya"
     )
 
     ax.text(0.05, 0.95, text, fontsize=11, verticalalignment='top',
             family='monospace',
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.9))
-    ax.set_title('Task 60: Summary of 2D simulations\nЗаyesча 60: Сinодtoа 2D withandмуляцandй',
+    ax.set_title('Task 60: Summary of 2D simulations\nЗадача 60: Сводка 2D симуляций',
                  fontsize=13, fontweight='bold')
 
     out.save_figure(fig, "task_60_2d_summary")
@@ -622,8 +623,8 @@ def task_60():
 # ----------------------------------------------------------------------------
 
 def task_61():
-    """Заyesча 61: 3D NSE — andwithтandнные (without b)"""
-    out = Output("61", "3D NSE — andwithтandнные (without b)",
+    """Задача 61: 3D NSE — истинные (без b)"""
+    out = Output("61", "3D NSE — истинные (без b)",
                  "3D NSE — true (without b)")
 
     N = CONFIG["N_3d_small"]
@@ -696,14 +697,14 @@ def task_61():
     ax.plot(times, omega_inf, 'r-', lw=2)
     ax.set_xlabel('t')
     ax.set_ylabel('||ω||_∞')
-    ax.set_title('Task 61: 3D NSE (true) — ||ω||_∞(t)\nЗаyesча 61: 3D NSE (andwithтandнные)')
+    ax.set_title('Task 61: 3D NSE (true) — ||ω||_∞(t)\nЗадача 61: 3D NSE (истинные)')
     ax.grid(True, alpha=0.3)
 
     ax = axes[1]
     ax.plot(times, energies, 'b-', lw=2)
     ax.set_xlabel('t')
     ax.set_ylabel('E(t)')
-    ax.set_title('Task 61: 3D NSE (true) — Energy(t)\nЗаyesча 61: 3D NSE — Эnotргandя')
+    ax.set_title('Task 61: 3D NSE (true) — Energy(t)\nЗадача 61: 3D NSE — Энергия')
     ax.grid(True, alpha=0.3)
 
     out.save_figure(fig, "task_61_3d_nse_true")
@@ -712,8 +713,8 @@ def task_61():
 
 
 def task_62():
-    """Заyesча 62: 3D NSE with b as by/oninорfromом (КЛЮЧЕВАЯ)"""
-    out = Output("62", "3D NSE with b as by/oninорfromом (КЛЮЧЕВАЯ)",
+    """Задача 62: 3D NSE с b как поворотом (КЛЮЧЕВАЯ)"""
+    out = Output("62", "3D NSE с b как поворотом (КЛЮЧЕВАЯ)",
                  "3D NSE with b as rotation (KEY)")
 
     N = CONFIG["N_3d_small"]
@@ -774,7 +775,7 @@ def task_62():
         nonlin_hat = np.fft.fftn(nonlin - stretch, axes=(-3, -2, -1))
         omega_hat = omega_hat + dt * (-nonlin_hat - nu * k2 * omega_hat)
 
-        # ПОВОРОТ u on θ_b around оwithand vortex ω (formula Родрandгеwithа)
+        # ПОВОРОТ u на θ_b вокруг оси вихря ω (формула Родригеса)
         omega_real = np.real(np.fft.ifftn(omega_hat, axes=(-3, -2, -1)))
         omega_mag = np.sqrt(omega_real[0]**2 + omega_real[1]**2 + omega_real[2]**2) + 1e-10
         ax = omega_real[0] / omega_mag
@@ -791,7 +792,7 @@ def task_62():
         u_y_new = u_y * cos_t + cross_y * sin_t + ay * dot_au * (1 - cos_t)
         u_z_new = u_z * cos_t + cross_z * sin_t + az * dot_au * (1 - cos_t)
 
-        # Переwe compute ω from by/oninёрнуthat u
+        # Перевычисляем ω из повёрнутого u
         u_x_hat_new = np.fft.fftn(u_x_new)
         u_y_hat_new = np.fft.fftn(u_y_new)
         u_z_hat_new = np.fft.fftn(u_z_new)
@@ -810,15 +811,15 @@ def task_62():
 
     out.add_json("max_omega_inf", max(omega_inf))
     out.add_json("theta_b_deg", math.degrees(theta_b))
-    out.log(f"b by/oninорfrom: max ||ω||_∞ = {max(omega_inf):.4f}",
+    out.log(f"b поворот: max ||ω||_∞ = {max(omega_inf):.4f}",
             f"b rotation: max ||ω||_∞ = {max(omega_inf):.4f}")
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
     ax = axes[0]
-    ax.plot(times, omega_inf, 'b-', lw=2, label=f'b by/oninорfrom (θ_b={math.degrees(theta_b):.2f}°)')
+    ax.plot(times, omega_inf, 'b-', lw=2, label=f'b поворот (θ_b={math.degrees(theta_b):.2f}°)')
     ax.set_xlabel('t')
     ax.set_ylabel('||ω||_∞')
-    ax.set_title('Task 62: 3D NSE with b rotation — ||ω||_∞(t)\nЗаyesча 62: 3D NSE with b by/oninорfromом')
+    ax.set_title('Task 62: 3D NSE with b rotation — ||ω||_∞(t)\nЗадача 62: 3D NSE с b поворотом')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -826,7 +827,7 @@ def task_62():
     ax.plot(times, energies, 'r-', lw=2)
     ax.set_xlabel('t')
     ax.set_ylabel('E(t)')
-    ax.set_title('Task 62: 3D NSE with b rotation — Energy\nЗаyesча 62: 3D NSE with b — Эnotргandя')
+    ax.set_title('Task 62: 3D NSE with b rotation — Energy\nЗадача 62: 3D NSE с b — Энергия')
     ax.grid(True, alpha=0.3)
 
     out.save_figure(fig, "task_62_3d_nse_b_rotation")
@@ -835,21 +836,21 @@ def task_62():
 
 
 def task_63():
-    """Заyesча 63: 3D NSE with b as LES"""
-    out = Output("63", "3D NSE with b as LES",
+    """Задача 63: 3D NSE с b как LES"""
+    out = Output("63", "3D NSE с b как LES",
                  "3D NSE with b as LES")
 
-    # Упрощёнonя inерwithandя — we use it is knownе value
+    # Упрощённая версия — используем известное значение
     out.add_json("max_omega_inf", 89.60)
-    out.log("b LES: max ||ω||_∞ = 89.60 (withthatбandльbut, but via/through дandwithwithandпацandю)",
+    out.log("b LES: max ||ω||_∞ = 89.60 (стабильно, но через диссипацию)",
             "b LES: max ||ω||_∞ = 89.60 (stable, but via dissipation)")
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    bars = ax.bar(['Иwithтandнные / True', 'b by/oninорfrom / b rotation', 'b LES'],
+    bars = ax.bar(['Истинные / True', 'b поворот / b rotation', 'b LES'],
                   [133.15, 38.05, 89.60],
                   color=['red', 'blue', 'green'], alpha=0.7)
     ax.set_ylabel('max ||ω||_∞')
-    ax.set_title('Task 63: 3D NSE comparison\nЗаyesча 63: Сраoutsideнandе 3D NSE')
+    ax.set_title('Task 63: 3D NSE comparison\nЗадача 63: Сравнение 3D NSE')
     ax.grid(True, alpha=0.3, axis='y')
 
     for bar, val in zip(bars, [133.15, 38.05, 89.60]):
@@ -862,20 +863,20 @@ def task_63():
 
 
 def task_64():
-    """Заyesча 64: 3D NSE with b as thenрмоз раwithтяженandя"""
-    out = Output("64", "3D NSE with b as thenрмоз раwithтяженandя",
+    """Задача 64: 3D NSE с b как тормоз растяжения"""
+    out = Output("64", "3D NSE с b как тормоз растяжения",
                  "3D NSE with b as stretching brake")
 
     out.add_json("max_omega_inf", 24.25)
-    out.log("b thenрмоз раwithтяженandя: max ||ω||_∞ = 24.25 (withthatбandльbut in 5.5 раз!)",
+    out.log("b тормоз растяжения: max ||ω||_∞ = 24.25 (стабильно в 5.5 раз!)",
             "b stretching brake: max ||ω||_∞ = 24.25 (5.5x stabilization!)")
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    bars = ax.bar(['Иwithтandнные / True', 'b thenрмоз раwithтяженandя', 'b by/oninорfrom', 'b LES'],
+    bars = ax.bar(['Истинные / True', 'b тормоз растяжения', 'b поворот', 'b LES'],
                   [133.15, 24.25, 38.05, 89.60],
                   color=['red', 'purple', 'blue', 'green'], alpha=0.7)
     ax.set_ylabel('max ||ω||_∞')
-    ax.set_title('Task 64: 3D NSE — b as stretching brake\nЗаyesча 64: 3D NSE — b as thenрмоз раwithтяженandя')
+    ax.set_title('Task 64: 3D NSE — b as stretching brake\nЗадача 64: 3D NSE — b как тормоз растяжения')
     ax.grid(True, alpha=0.3, axis='y')
 
     for bar, val in zip(bars, [133.15, 24.25, 38.05, 89.60]):
@@ -888,16 +889,16 @@ def task_64():
 
 
 def task_65():
-    """Заyesча 65: Сраoutsideнandе all 5 моделей 3D NSE"""
-    out = Output("65", "Сраoutsideнandе all 5 моделей 3D NSE",
+    """Задача 65: Сравнение всех 5 моделей 3D NSE"""
+    out = Output("65", "Сравнение всех 5 моделей 3D NSE",
                  "Comparison of all 5 3D NSE models")
 
     models = [
-        ("Иwithтandнные 3D NSE", 133.15, "red", "notт / no"),
-        ("b thenрмоз раwithтяженandя", 24.25, "purple", "notт / no"),
-        ("b by/oninорfrom θ_b", 38.05, "blue", "notт / no"),
-        ("b лandnotйbutе thenрможенandе", 32.63, "orange", "yes / yes"),
-        ("b LES (ν·(1+b))", 89.60, "green", "yes / yes"),
+        ("Истинные 3D NSE", 133.15, "red", "нет / no"),
+        ("b тормоз растяжения", 24.25, "purple", "нет / no"),
+        ("b поворот θ_b", 38.05, "blue", "нет / no"),
+        ("b линейное торможение", 32.63, "orange", "да / yes"),
+        ("b LES (ν·(1+b))", 89.60, "green", "да / yes"),
     ]
 
     fig, ax = plt.subplots(figsize=(12, 7))
@@ -909,7 +910,7 @@ def task_65():
     ax.set_xticks(range(len(names)))
     ax.set_xticklabels(names, rotation=45, ha='right')
     ax.set_ylabel('max ||ω||_∞')
-    ax.set_title('Task 65: Comparison of all 5 3D NSE models\nЗаyesча 65: Сраoutsideнandе all 5 моделей 3D NSE')
+    ax.set_title('Task 65: Comparison of all 5 3D NSE models\nЗадача 65: Сравнение всех 5 моделей 3D NSE')
     ax.grid(True, alpha=0.3, axis='y')
 
     for bar, val, m in zip(bars, values, models):
@@ -930,12 +931,12 @@ def task_65():
 
 
 def task_66():
-    """Заyesча 66: Заinandwithandмоwithть withthatбorforцandand from b"""
-    out = Output("66", "Заinandwithandмоwithть withthatбorforцandand from b",
+    """Задача 66: Зависимость стабилизации от b"""
+    out = Output("66", "Зависимость стабилизации от b",
                  "Stabilization dependence on b")
 
     b_values = [0.0, 0.01, 0.02, 0.05, 0.0785, 0.1, 0.15, 0.2, 0.3, 0.5, 1.0]
-    # Гandпfromетandчеwithtoая dependence
+    # Гипотетическая зависимость
     omega_values = [133.15 * math.exp(-3 * b) for b in b_values]
 
     out.add_json("b_values", b_values)
@@ -946,7 +947,7 @@ def task_66():
     ax.axvline(CONFIG["b_value"], color='r', linestyle='--', label=f'b = {CONFIG["b_value"]}')
     ax.set_xlabel('b')
     ax.set_ylabel('max ||ω||_∞')
-    ax.set_title('Task 66: Stabilization vs b\nЗаyesча 66: Сthatбorforцandя from b')
+    ax.set_title('Task 66: Stabilization vs b\nЗадача 66: Стабилизация от b')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -956,8 +957,8 @@ def task_66():
 
 
 def task_67():
-    """Заyesча 67: Заinandwithandмоwithть from угла by/oninорfromа"""
-    out = Output("67", "Заinandwithandмоwithть from угла by/oninорfromа",
+    """Задача 67: Зависимость от угла поворота"""
+    out = Output("67", "Зависимость от угла поворота",
                  "Dependence on rotation angle")
 
     angles = [0, 7, 15, 30, 45, 60, 75, 90]
@@ -967,9 +968,9 @@ def task_67():
     ax.plot(angles, omega_values, 'ro-', lw=2, markersize=10)
     ax.axvline(math.degrees(CONFIG["b_value"] * math.pi / 2), color='b', linestyle='--',
                label=f'θ_b = {math.degrees(CONFIG["b_value"] * math.pi / 2):.2f}°')
-    ax.set_xlabel('θ_b (градуwithы / degrees)')
+    ax.set_xlabel('θ_b (градусы / degrees)')
     ax.set_ylabel('max ||ω||_∞')
-    ax.set_title('Task 67: Stabilization vs rotation angle\nЗаyesча 67: Сthatбorforцandя from угла by/oninорfromа')
+    ax.set_title('Task 67: Stabilization vs rotation angle\nЗадача 67: Стабилизация от угла поворота')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -979,20 +980,20 @@ def task_67():
 
 
 def task_68():
-    """Заyesча 68: Заinandwithandмоwithть from чandwithла Рейbutльдwithа"""
-    out = Output("68", "Заinandwithandмоwithть from чandwithла Рейbutльдwithа",
+    """Задача 68: Зависимость от числа Рейнольдса"""
+    out = Output("68", "Зависимость от числа Рейнольдса",
                  "Dependence on Reynolds number")
 
     Re_values = [10, 50, 100, 500, 1000, 5000]
-    omega_no_b = [10, 30, 80, 200, 500, 133.15]  # раwithтёт with Re
-    omega_with_b = [8, 20, 35, 38, 38.05, 38.05]  # withthatбorзandруетwithя
+    omega_no_b = [10, 30, 80, 200, 500, 133.15]  # растёт с Re
+    omega_with_b = [8, 20, 35, 38, 38.05, 38.05]  # стабилизируется
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.loglog(Re_values, omega_no_b, 'r-', lw=2, markersize=8, label='Без b (раwithтёт)')
-    ax.loglog(Re_values, omega_with_b, 'b-', lw=2, markersize=8, label='С b by/oninорfromом (withthatбandльbut)')
+    ax.loglog(Re_values, omega_no_b, 'r-', lw=2, markersize=8, label='Без b (растёт)')
+    ax.loglog(Re_values, omega_with_b, 'b-', lw=2, markersize=8, label='С b поворотом (стабильно)')
     ax.set_xlabel('Re')
     ax.set_ylabel('max ||ω||_∞')
-    ax.set_title('Task 68: Stabilization vs Reynolds number\nЗаyesча 68: Сthatбorforцandя from Re')
+    ax.set_title('Task 68: Stabilization vs Reynolds number\nЗадача 68: Стабилизация от Re')
     ax.legend()
     ax.grid(True, alpha=0.3, which='both')
 
@@ -1002,40 +1003,40 @@ def task_68():
 
 
 def task_69():
-    """Заyesча 69: Вtheirреinое раwithтяженandе in 3D"""
-    out = Output("69", "Вtheirреinое раwithтяженandе in 3D",
+    """Задача 69: Вихревое растяжение в 3D"""
+    out = Output("69", "Вихревое растяжение в 3D",
                  "Vortex stretching in 3D")
 
-    out.log("3D NSE (intheirреinая form): ∂ω/∂t + (u·∇)ω = (ω·∇)u + ν·Δω",
+    out.log("3D NSE (вихревая форма): ∂ω/∂t + (u·∇)ω = (ω·∇)u + ν·Δω",
             "3D NSE (vorticity form): ∂ω/∂t + (u·∇)ω = (ω·∇)u + ν·Δω")
-    out.log("(ω·∇)u — intheirреinое раwithтяженandе (only in 3D)",
+    out.log("(ω·∇)u — вихревое растяжение (только в 3D)",
             "(ω·∇)u — vortex stretching (only in 3D)")
-    out.log("В 2D: (ω·∇)u = 0 (notт раwithтяженandя)",
+    out.log("В 2D: (ω·∇)u = 0 (нет растяжения)",
             "In 2D: (ω·∇)u = 0 (no stretching)")
-    out.log("b by/oninорfrom уменьшает эффеtoт раwithтяженandя without his/its уyesленandя",
+    out.log("b поворот уменьшает эффект растяжения без его удаления",
             "b rotation reduces stretching effect without removing it")
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     ax = axes[0]
     ax.axis('off')
-    ax.text(0.1, 0.7, '2D NSE:\n∂ω/∂t + (u·∇)ω = ν·Δω\n(notт раwithтяженandя / no stretching)',
+    ax.text(0.1, 0.7, '2D NSE:\n∂ω/∂t + (u·∇)ω = ν·Δω\n(нет растяжения / no stretching)',
             fontsize=14, family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.7))
-    ax.text(0.1, 0.3, '→ Глобальonя regularity totoаforon\n→ Global regularity proven',
+    ax.text(0.1, 0.3, '→ Глобальная регулярность доказана\n→ Global regularity proven',
             fontsize=12, color='green', transform=ax.transAxes)
-    ax.set_title('Task 69: 2D NSE (no stretching)\nЗаyesча 69: 2D NSE (without раwithтяженandя)')
+    ax.set_title('Task 69: 2D NSE (no stretching)\nЗадача 69: 2D NSE (без растяжения)')
 
     ax = axes[1]
     ax.axis('off')
-    ax.text(0.1, 0.7, '3D NSE:\n∂ω/∂t + (u·∇)ω = (ω·∇)u + ν·Δω\n(раwithтяженandе! / stretching!)',
+    ax.text(0.1, 0.7, '3D NSE:\n∂ω/∂t + (u·∇)ω = (ω·∇)u + ν·Δω\n(растяжение! / stretching!)',
             fontsize=14, family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.7))
-    ax.text(0.1, 0.3, '→ Отtoрыthatя problem (task Клэя)\n→ Open problem (Clay)\n\n'
-            'С b by/oninорfromом: stabilization in 3.5-6 раз\n'
+    ax.text(0.1, 0.3, '→ Открытая проблема (задача Клэя)\n→ Open problem (Clay)\n\n'
+            'С b поворотом: стабилизация в 3.5-6 раз\n'
             'With b rotation: 3.5-6x stabilization',
             fontsize=11, color='blue', transform=ax.transAxes)
-    ax.set_title('Task 69: 3D NSE (with stretching)\nЗаyesча 69: 3D NSE (with раwithтяженandем)')
+    ax.set_title('Task 69: 3D NSE (with stretching)\nЗадача 69: 3D NSE (с растяжением)')
 
     out.save_figure(fig, "task_69_vortex_stretching")
 
@@ -1043,8 +1044,8 @@ def task_69():
 
 
 def task_70():
-    """Заyesча 70: Сinодtoа 3D withandмуляцandй"""
-    out = Output("70", "Сinодtoа 3D withandмуляцandй",
+    """Задача 70: Сводка 3D симуляций"""
+    out = Output("70", "Сводка 3D симуляций",
                  "Summary of 3D simulations")
 
     summary = {
@@ -1053,9 +1054,9 @@ def task_70():
         "b_rotation": 38.05,
         "b_linear_brake": 32.63,
         "b_les": 89.60,
-        "best_stabilization": "b thenрмоз раwithтяженandя (5.5x)",
-        "best_without_dissipation": "b thenрмоз раwithтяженandя and b by/oninорfrom (оба without dissipation)",
-        "conclusion_ru": "b as by/oninорfrom withthatбorзandрует 3D NSE in 3.5 раfor БЕЗ toбаinленandя dissipation. b as thenрмоз раwithтяженandя — in 5.5 раз. Оба mechanismа not toбаinляют дandwithwithandпацandю (in fromлandчandе from LES).",
+        "best_stabilization": "b тормоз растяжения (5.5x)",
+        "best_without_dissipation": "b тормоз растяжения и b поворот (оба без диссипации)",
+        "conclusion_ru": "b как поворот стабилизирует 3D NSE в 3.5 раза БЕЗ добавления диссипации. b как тормоз растяжения — в 5.5 раз. Оба механизма не добавляют диссипацию (в отличие от LES).",
         "conclusion_en": "b as rotation stabilizes 3D NSE by 3.5x WITHOUT adding dissipation. b as stretching brake — by 5.5x. Both mechanisms don't add dissipation (unlike LES).",
     }
 
@@ -1068,23 +1069,23 @@ def task_70():
     text = (
         "СВОДКА 3D СИМУЛЯЦИЙ / SUMMARY OF 3D SIMULATIONS\n"
         "=" * 50 + "\n\n"
-        "RESULTS / RESULTS:\n"
-        f"  Иwithтandнные 3D NSE:           ||ω||_∞ = {summary['true_3d_nse']:.2f}\n"
-        f"  b thenрмоз раwithтяженandя:       ||ω||_∞ = {summary['b_brake_stretching']:.2f} (5.5x)\n"
-        f"  b by/oninорfrom θ_b:             ||ω||_∞ = {summary['b_rotation']:.2f} (3.5x)\n"
-        f"  b лandnotйbutе thenрможенandе:     ||ω||_∞ = {summary['b_linear_brake']:.2f} (4x)\n"
+        "РЕЗУЛЬТАТЫ / RESULTS:\n"
+        f"  Истинные 3D NSE:           ||ω||_∞ = {summary['true_3d_nse']:.2f}\n"
+        f"  b тормоз растяжения:       ||ω||_∞ = {summary['b_brake_stretching']:.2f} (5.5x)\n"
+        f"  b поворот θ_b:             ||ω||_∞ = {summary['b_rotation']:.2f} (3.5x)\n"
+        f"  b линейное торможение:     ||ω||_∞ = {summary['b_linear_brake']:.2f} (4x)\n"
         f"  b LES (ν·(1+b)):           ||ω||_∞ = {summary['b_les']:.2f} (1.5x)\n\n"
         "ВЫВОД / CONCLUSION:\n"
-        "b as by/oninорfrom — 3.5x БЕЗ dissipation\n"
-        "b as thenрмоз раwithтяженandя — 5.5x БЕЗ dissipation\n"
-        "Оба mechanismа not toбаinляют дandwithwithandпацandю\n"
-        "(in fromлandчandе from LES)"
+        "b как поворот — 3.5x БЕЗ диссипации\n"
+        "b как тормоз растяжения — 5.5x БЕЗ диссипации\n"
+        "Оба механизма не добавляют диссипацию\n"
+        "(в отличие от LES)"
     )
 
     ax.text(0.05, 0.95, text, fontsize=11, verticalalignment='top',
             family='monospace',
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.9))
-    ax.set_title('Task 70: Summary of 3D simulations\nЗаyesча 70: Сinодtoа 3D withandмуляцandй',
+    ax.set_title('Task 70: Summary of 3D simulations\nЗадача 70: Сводка 3D симуляций',
                  fontsize=13, fontweight='bold')
 
     out.save_figure(fig, "task_70_3d_summary")
@@ -1093,22 +1094,22 @@ def task_70():
 
 
 # ----------------------------------------------------------------------------
-# ЧАСТЬ VIII. УНИВЕРСАЛЬНОСТЬ И ФИНАЛЬНАЯ VERIFICATION (ЗАДАЧИ 71-75)
+# ЧАСТЬ VIII. УНИВЕРСАЛЬНОСТЬ И ФИНАЛЬНАЯ ВЕРИФИКАЦИЯ (ЗАДАЧИ 71-75)
 # ----------------------------------------------------------------------------
 
 def task_71():
-    """Заyesча 71: Унandinерwithальbutwithть b — разные by/oninерхbutwithтand"""
-    out = Output("71", "Унandinерwithальbutwithть b — разные by/oninерхbutwithтand",
+    """Задача 71: Универсальность b — разные поверхности"""
+    out = Output("71", "Универсальность b — разные поверхности",
                  "Universality of b — different surfaces")
 
     surfaces = [
-        ("Плоwithtoоwithть 2D / Flat 2D", "euclidean"),
+        ("Плоскость 2D / Flat 2D", "euclidean"),
         ("Сфера S² / Sphere S²", "spherical"),
-        ("Гandперболandчеwithtoая H² / Hyperbolic H²", "hyperbolic"),
+        ("Гиперболическая H² / Hyperbolic H²", "hyperbolic"),
         ("Тор T² / Torus T²", "flat_periodic"),
-        ("Крandinая Klein / Klein curve", "hyperbolic_klein"),
+        ("Кривая Клейна / Klein curve", "hyperbolic_klein"),
         ("3D R³", "euclidean_3d"),
-        ("3D withфера S³ / 3D sphere S³", "spherical_3d"),
+        ("3D сфера S³ / 3D sphere S³", "spherical_3d"),
     ]
 
     b = CONFIG["b_value"]
@@ -1132,11 +1133,11 @@ def task_71():
     bars = ax.bar(range(len(names)), theta_values, color='steelblue', alpha=0.7)
     ax.set_xticks(range(len(names)))
     ax.set_xticklabels(names, rotation=45, ha='right', fontsize=9)
-    ax.set_ylabel(r'$\theta_b = b\cdot\pi/2$ (градуwithы / degrees)')
-    ax.set_title('Task 71: Universality of b across surfaces\nЗаyesча 71: Унandinерwithальbutwithть b')
+    ax.set_ylabel(r'$\theta_b = b\cdot\pi/2$ (градусы / degrees)')
+    ax.set_title('Task 71: Universality of b across surfaces\nЗадача 71: Универсальность b')
     ax.grid(True, alpha=0.3, axis='y')
     ax.axhline(math.degrees(theta_b), color='r', linestyle='--',
-               label=f'θ_b = {math.degrees(theta_b):.4f}° (унandinерwithальbutе / universal)')
+               label=f'θ_b = {math.degrees(theta_b):.4f}° (универсальное / universal)')
     ax.legend()
 
     out.save_figure(fig, "task_71_universality_surfaces")
@@ -1148,13 +1149,13 @@ def task_71():
 
 
 def task_72():
-    """Заyesча 72: Заinandwithandмоwithть dissipation from амплandтуды inолны"""
-    out = Output("72", "Заinandwithandмоwithть dissipation from амплandтуды inолны",
+    """Задача 72: Зависимость диссипации от амплитуды волны"""
+    out = Output("72", "Зависимость диссипации от амплитуды волны",
                  "Dissipation dependence on wave amplitude")
 
-    # Чем more/greater inолon, thoseм more/greater thenрможенandе b, thoseм more/greater фfromandчеwithtoая dissipation
+    # Чем больше волна, тем больше торможение b, тем больше физическая диссипация
     amplitudes = np.linspace(0, 2, 50)
-    # Эффеtoтandinonя dissipation проby/onрцandshe/itльon амплandтуде² · sin(θ_b)
+    # Эффективная диссипация пропорциональна амплитуде² · sin(θ_b)
     b = CONFIG["b_value"]
     theta_b = b * math.pi / 2
     dissipations = amplitudes**2 * math.sin(theta_b)
@@ -1165,11 +1166,11 @@ def task_72():
     out.add_json("dissipations", dissipations.tolist())
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(amplitudes, dissipations, 'b-', lw=2, label='Дandwithwithandпацandя ~ A²·sin(θ_b)')
-    ax.set_xlabel('Амплandтуyes inолны A / Wave amplitude')
-    ax.set_ylabel('Эффеtoтandinonя dissipation / Effective dissipation')
+    ax.plot(amplitudes, dissipations, 'b-', lw=2, label='Диссипация ~ A²·sin(θ_b)')
+    ax.set_xlabel('Амплитуда волны A / Wave amplitude')
+    ax.set_ylabel('Эффективная диссипация / Effective dissipation')
     ax.set_title('Task 72: Dissipation vs wave amplitude\n'
-                 'Заyesча 72: Дandwithwithandпацandя from амплandтуды inолны')
+                 'Задача 72: Диссипация от амплитуды волны')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -1179,11 +1180,11 @@ def task_72():
 
 
 def task_73():
-    """Заyesча 73: Фandonльbutе comparison all results"""
-    out = Output("73", "Фandonльbutе comparison all results",
+    """Задача 73: Финальное сравнение всех результатов"""
+    out = Output("73", "Финальное сравнение всех результатов",
                  "Final comparison of all results")
 
-    # Сinoneя table all toлючеyouх results
+    # Сводная таблица всех ключевых результатов
     results = {
         "b_value": CONFIG["b_value"],
         "theta_b_deg": math.degrees(CONFIG["b_value"] * math.pi / 2),
@@ -1204,29 +1205,29 @@ def task_73():
     ax.axis('off')
 
     text = (
-        "ФИНАЛЬНЫЕ RESULTS / FINAL RESULTS\n"
+        "ФИНАЛЬНЫЕ РЕЗУЛЬТАТЫ / FINAL RESULTS\n"
         "=" * 50 + "\n\n"
         f"b = {results['b_value']}\n"
         f"θ_b = {results['theta_b_deg']:.4f}°\n"
-        f"γ (via/through e) = {results['gamma_from_e']:.6f}\n"
+        f"γ (через e) = {results['gamma_from_e']:.6f}\n"
         f"C_K = {results['C_K']}\n"
         f"C_s (Lilly) = {results['C_s_lilly']:.5f}\n"
         f"C_s (Germano) = {results['C_s_germano']}\n\n"
         "СТАБИЛИЗАЦИЯ 3D NSE / 3D NSE STABILIZATION:\n"
-        f"  b thenрмоз раwithтяженandя: {results['stabilization_3d_brake']:.2f}x (without dissipation)\n"
-        f"  b by/oninорfrom:           {results['stabilization_3d_rotation']:.2f}x (without dissipation)\n"
-        f"  b LES:               {results['stabilization_3d_les']:.2f}x (with дandwithwithandпацandей)\n\n"
+        f"  b тормоз растяжения: {results['stabilization_3d_brake']:.2f}x (без диссипации)\n"
+        f"  b поворот:           {results['stabilization_3d_rotation']:.2f}x (без диссипации)\n"
+        f"  b LES:               {results['stabilization_3d_les']:.2f}x (с диссипацией)\n\n"
         "ВЫВОД / CONCLUSION:\n"
-        "b рабfromает as by/oninорfrom (аonлог Лоренца/Корandолandwithа)\n"
-        "Без toбаinленandя dissipation\n"
-        "Сthatбorзandрует 3D NSE in 3.5-5.5 раз"
+        "b работает как поворот (аналог Лоренца/Кориолиса)\n"
+        "Без добавления диссипации\n"
+        "Стабилизирует 3D NSE в 3.5-5.5 раз"
     )
 
     ax.text(0.05, 0.95, text, fontsize=11, verticalalignment='top',
             family='monospace',
             bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.9))
     ax.set_title('Task 73: Final comparison of all results\n'
-                 'Заyesча 73: Фandonльbutе comparison all results',
+                 'Задача 73: Финальное сравнение всех результатов',
                  fontsize=13, fontweight='bold')
 
     out.save_figure(fig, "task_73_final_comparison")
@@ -1235,8 +1236,8 @@ def task_73():
 
 
 def task_74():
-    """Заyesча 74: Фandonльonя infromуалandforцandя — complete/full цеby/onчtoа"""
-    out = Output("74", "Фandonльonя infromуалandforцandя — complete/full цеby/onчtoа",
+    """Задача 74: Финальная визуализация — полная цепочка"""
+    out = Output("74", "Финальная визуализация — полная цепочка",
                  "Final visualization — full chain")
 
     fig, ax = plt.subplots(figsize=(16, 10))
@@ -1244,21 +1245,21 @@ def task_74():
     ax.set_xlim(0, 10)
     ax.set_ylim(0, 10)
 
-    # Шагand цеby/onчtoand
+    # Шаги цепочки
     steps = [
         (1, 9, "PSL(2,7)\nα = 2.247", 'lightblue'),
         (3, 9, "L_min = 2.898", 'lightblue'),
         (5, 9, "e = 2.718", 'lightblue'),
         (7, 9, "Selberg Z\nb = 0.0785", 'lightyellow'),
         (9, 9, "θ_b = b·π/2\n= 7.07°", 'lightgreen'),
-        (1, 6, "C_K = 1.5\n(предwithtoаforнandе)", 'lightyellow'),
+        (1, 6, "C_K = 1.5\n(предсказание)", 'lightyellow'),
         (3, 6, "C_s = 0.173\n(Lilly)", 'lightyellow'),
-        (5, 6, "γ = 0.9545\n(via/through e)", 'lightyellow'),
-        (7, 6, "F-аттраtothenр\n(Anosov)", 'lightyellow'),
-        (9, 6, "3D NSE\nstabilization", 'lightgreen'),
-        (3, 3, "b by/oninорfrom\n3.5x withthatб.\n(without дandwithwith.)", 'lightgreen'),
-        (5, 3, "b thenрмоз\n5.5x withthatб.\n(without дandwithwith.)", 'lightgreen'),
-        (7, 3, "b LES\n1.5x withthatб.\n(with дandwithwith.)", 'lightyellow'),
+        (5, 6, "γ = 0.9545\n(через e)", 'lightyellow'),
+        (7, 6, "F-аттрактор\n(Anosov)", 'lightyellow'),
+        (9, 6, "3D NSE\nстабилизация", 'lightgreen'),
+        (3, 3, "b поворот\n3.5x стаб.\n(без дисс.)", 'lightgreen'),
+        (5, 3, "b тормоз\n5.5x стаб.\n(без дисс.)", 'lightgreen'),
+        (7, 3, "b LES\n1.5x стаб.\n(с дисс.)", 'lightyellow'),
     ]
 
     for x, y, text, color in steps:
@@ -1267,7 +1268,7 @@ def task_74():
         ax.add_patch(rect)
         ax.text(x, y, text, ha='center', va='center', fontsize=9, fontweight='bold')
 
-    # Стрелtoand
+    # Стрелки
     arrows = [
         ((1.9, 9), (2.1, 9)), ((3.9, 9), (4.1, 9)), ((5.9, 9), (6.1, 9)), ((7.9, 9), (8.1, 9)),
         ((9, 8.6), (9, 6.4)), ((7, 8.6), (5, 6.4)),
@@ -1280,7 +1281,7 @@ def task_74():
                     arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
 
     ax.set_title('Task 74: Full chain — from PSL(2,7) to 3D NSE stabilization\n'
-                 'Заyesча 74: Полonя цеby/onчtoа — from PSL(2,7) to withthatбorforцandand 3D NSE',
+                 'Задача 74: Полная цепочка — от PSL(2,7) до стабилизации 3D NSE',
                  fontsize=14, fontweight='bold')
 
     out.save_figure(fig, "task_74_full_chain_visualization")
@@ -1289,7 +1290,7 @@ def task_74():
 
 
 def task_75():
-    """Заyesча 75: ФИНАЛЬНЫЙ ВЕРДИКТ"""
+    """Задача 75: ФИНАЛЬНЫЙ ВЕРДИКТ"""
     out = Output("75", "ФИНАЛЬНЫЙ ВЕРДИКТ",
                  "FINAL VERDICT")
 
@@ -1299,24 +1300,24 @@ def task_75():
     ax = axes[0, 0]
     ax.axis('off')
     ax.text(0.05, 0.9, "1. ПОПРАВКА b / CORRECTION b\n\n"
-            "• Аonлandтandчеwithtoand from Кandрхгофа\n"
+            "• Аналитически из Кирхгофа\n"
             "  Analytically from Kirchhoff\n"
-            "• Унandinерwithальon\n"
+            "• Универсальна\n"
             "  Universal\n"
-            "• 5 аonлогandй\n"
+            "• 5 аналогий\n"
             "  5 analogies",
             fontsize=11, va='top', family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.8))
 
-    # 2. γ via/through e
+    # 2. γ через e
     ax = axes[0, 1]
     ax.axis('off')
     ax.text(0.05, 0.9, "2. γ ЧЕРЕЗ e / γ VIA e\n\n"
             "γ = (ln(C_K)-1/3)/ln(1+b)\n"
             "= 0.9545\n\n"
-            "Соinпаyesет with totoуменthenм\n"
+            "Совпадает с документом\n"
             "Matches document\n"
-            "(разнandца / diff 7e-5)",
+            "(разница / diff 7e-5)",
             fontsize=11, va='top', family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.8))
 
@@ -1326,34 +1327,34 @@ def task_75():
     ax.text(0.05, 0.9, "3. C_K = 1.5\n\n"
             "ПРЕДСКАЗАНИЕ\n"
             "PREDICTION\n\n"
-            "Через e and b\n"
+            "Через e и b\n"
             "Via e and b\n\n"
             "C_s = 0.173 (Lilly)",
             fontsize=11, va='top', family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.8))
 
-    # 4. b as by/oninорfrom
+    # 4. b как поворот
     ax = axes[1, 0]
     ax.axis('off')
     ax.text(0.05, 0.9, "4. b КАК ПОВОРОТ\n    b AS ROTATION\n\n"
             "θ_b = b·π/2 ≈ 7.07°\n\n"
-            "• R^T·R = I (орthatн.)\n"
-            "• F·v = 0 (notт рабfromы)\n"
+            "• R^T·R = I (ортогон.)\n"
+            "• F·v = 0 (нет работы)\n"
             "• БЕЗ ДИССИПАЦИИ\n"
             "  NO DISSIPATION",
             fontsize=11, va='top', family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.8))
 
-    # 5. Сthatбorforцandя 3D
+    # 5. Стабилизация 3D
     ax = axes[1, 1]
     ax.axis('off')
     ax.text(0.05, 0.9, "5. СТАБИЛИЗАЦИЯ 3D NSE\n    3D NSE STABILIZATION\n\n"
-            "b by/oninорfrom: 3.5x\n"
-            "  (without dissipation)\n\n"
-            "b thenрмоз: 5.5x\n"
-            "  (without dissipation)\n\n"
+            "b поворот: 3.5x\n"
+            "  (без диссипации)\n\n"
+            "b тормоз: 5.5x\n"
+            "  (без диссипации)\n\n"
             "b LES: 1.5x\n"
-            "  (with дandwithwithandпацandей)",
+            "  (с диссипацией)",
             fontsize=11, va='top', family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.8))
 
@@ -1361,42 +1362,42 @@ def task_75():
     ax = axes[1, 2]
     ax.axis('off')
     ax.text(0.05, 0.9, "6. BKM КРИТЕРИЙ\n    BKM CRITERION\n\n"
-            "||ω||_∞ огранandчеbut\n"
-            "→ BKM youby/onлnotн\n\n"
-            "Гладtoоwithть for T>0\n"
+            "||ω||_∞ ограничено\n"
+            "→ BKM выполнен\n\n"
+            "Гладкость для T>0\n"
             "Smoothness for T>0",
             fontsize=11, va='top', family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
 
-    # 7. Фfromandчеwithtoая dissipation
+    # 7. Физическая диссипация
     ax = axes[2, 0]
     ax.axis('off')
     ax.text(0.05, 0.9, "7. ФИЗ. ДИССИПАЦИЯ\n    PHYSICAL DISSIPATION\n\n"
-            "• Прояinленandе b\n"
+            "• Проявление b\n"
             "  Manifestation of b\n\n"
-            "• Чем more/greater inолon,\n"
-            "  thoseм more/greater thenрможенandе\n"
+            "• Чем больше волна,\n"
+            "  тем больше торможение\n"
             "  Larger wave → more braking\n\n"
             "• C_K = 1.5-1.7",
             fontsize=11, va='top', family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
 
-    # 8. Аonлогandand
+    # 8. Аналогии
     ax = axes[2, 1]
     ax.axis('off')
     ax.text(0.05, 0.9, "8. АНАЛОГИИ / ANALOGIES\n\n"
             "1. Лоренц / Lorentz\n"
             "   F = qv×B\n\n"
-            "2. Корandолandwith / Coriolis\n"
+            "2. Кориолис / Coriolis\n"
             "   F = -2mΩ×v\n\n"
-            "3. Магнуwith / Magnus\n"
+            "3. Магнус / Magnus\n"
             "   F = ρΓv×ẑ\n\n"
-            "4. Беррand / Berry\n"
-            "5. Оwithцandлляthenр / Oscillator",
+            "4. Берри / Berry\n"
+            "5. Осциллятор / Oscillator",
             fontsize=11, va='top', family='monospace', transform=ax.transAxes,
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
 
-    # 9. Глаinный youinод
+    # 9. Главный вывод
     ax = axes[2, 2]
     ax.axis('off')
     ax.text(0.05, 0.9, "ГЛАВНЫЙ ВЫВОД\nMAIN CONCLUSION\n\n"
@@ -1421,12 +1422,12 @@ def task_75():
 
 
 # ============================================================================
-# ОСНОВНОЙ RUN / MAIN RUN
+# ОСНОВНОЙ ЗАПУСК / MAIN RUN
 # ============================================================================
 def run_part3():
-    """Run tasks 51-75 / Run tasks 51-75"""
+    """Запуск задач 51-75 / Run tasks 51-75"""
     print("=" * 78)
-    print("ЧАСТЬ III: ЗАДАЧИ 51-75 — СИМУЛЯЦИИ И ФИНАЛЬНАЯ VERIFICATION")
+    print("ЧАСТЬ III: ЗАДАЧИ 51-75 — СИМУЛЯЦИИ И ФИНАЛЬНАЯ ВЕРИФИКАЦИЯ")
     print("PART III: TASKS 51-75 — SIMULATIONS AND FINAL VERIFICATION")
     print("=" * 78)
 
@@ -1443,47 +1444,47 @@ def run_part3():
         ("task_74", task_74), ("task_75", task_75),
     ]
 
-    print(f"\nTotal tasks: {len(tasks_part3)}\n")
+    print(f"\nВсего задач / Total tasks: {len(tasks_part3)}\n")
 
     results = {}
     total_time = 0.0
 
     for name, func in tasks_part3:
-        print(f"\n>>> Run / Running: {name}")
+        print(f"\n>>> Запуск / Running: {name}")
         t0 = time.time()
         try:
             paths = func()
             dt = time.time() - t0
             total_time += dt
             results[name] = {"status": "OK", "time": dt, "paths": paths}
-            print(f"    OK ({dt:.2f} sec)")
+            print(f"    OK ({dt:.2f} сек / sec)")
         except Exception as e:
             import traceback
             dt = time.time() - t0
             total_time += dt
             results[name] = {"status": "ERROR", "time": dt, "error": str(e)}
-            print(f"    ERROR ({dt:.2f} sec): {e}")
+            print(f"    ERROR ({dt:.2f} сек / sec): {e}")
             traceback.print_exc()
 
     print("\n" + "=" * 78)
     print("ИТОГ ЧАСТИ III / PART III SUMMARY")
     print("=" * 78)
-    print(f"Вwithhis/its tasks / Total: {len(tasks_part3)}")
-    print(f"Successful: {sum(1 for r in results.values() if r['status']=='OK')}")
-    print(f"Errors: {sum(1 for r in results.values() if r['status']=='ERROR')}")
-    print(f"Total time: {total_time:.2f} sec")
+    print(f"Всего задач / Total: {len(tasks_part3)}")
+    print(f"Успешных / Successful: {sum(1 for r in results.values() if r['status']=='OK')}")
+    print(f"Ошибок / Errors: {sum(1 for r in results.values() if r['status']=='ERROR')}")
+    print(f"Общее время / Total time: {total_time:.2f} сек / sec")
 
     return results
 
 
-# Run all трёх чаwiththoseй / Run all three parts
+# Запуск всех трёх частей / Run all three parts
 def run_all():
-    """Run ВСЕХ 75 tasks / Run ALL 75 tasks"""
+    """Запуск ВСЕХ 75 задач / Run ALL 75 tasks"""
     print("=" * 78)
-    print("RUN ВСЕХ 75 ЗАДАЧ / RUNNING ALL 75 TASKS")
+    print("ЗАПУСК ВСЕХ 75 ЗАДАЧ / RUNNING ALL 75 TASKS")
     print("=" * 78)
 
-    # Имby/onртandруем and forпуwithtoаем чаwithть 1
+    # Импортируем и запускаем часть 1
     from monograph_verification import run_all_tasks
     print("\n>>> ЧАСТЬ I: ЗАДАЧИ 1-30 / PART I: TASKS 1-30")
     results1 = run_all_tasks()
@@ -1502,9 +1503,9 @@ def run_all():
     print("\n" + "=" * 78)
     print("ОБЩИЙ ИТОГ / TOTAL SUMMARY")
     print("=" * 78)
-    print(f"Total tasks: {total}")
-    print(f"Successful: {ok}")
-    print(f"Errors: {total - ok}")
+    print(f"Всего задач / Total tasks: {total}")
+    print(f"Успешных / Successful: {ok}")
+    print(f"Ошибок / Errors: {total - ok}")
 
 
 if __name__ == "__main__":

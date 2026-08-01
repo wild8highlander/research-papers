@@ -1,7 +1,17 @@
-#!/usr/bin/env python3
+"""
+ab_cloud_genus_universality — English Version
+============================================================
+
+Genus universality study: c=T(g) for g=2,3,4,5,6.
+
+This is the English translation of ab_cloud_genus_universality.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: ab_cloud_genus_universality.py
+"""
+
 # -*- coding: utf-8 -*-
 """
-    English translation of ab_cloud_genus_universality.py.
 GENUS UNIVERSALITY STUDY: c=T(g) for g=2,3,4,5,6
 ==================================================
 Following the discovery that optimal c=T(g)=6 for g=3, we test:
@@ -302,14 +312,14 @@ def fig_genus_universality(genus_results):
     # (a) Best c vs T(g)
     ax = axes[0]
     ax.plot(T_g_vals, best_c_vals, "bo-", lw=2.5, markersize=12,
-             label="optimal $c$")
+             label="оптимальное $c$")
     ax.plot(T_g_vals, T_g_vals, "r--", lw=2,
-             label="$c = T(g)$ (ideal match)")
+             label="$c = T(g)$ (идеальное совпадение)")
     for g, Tg, bc in zip(g_vals, T_g_vals, best_c_vals):
         ax.text(Tg, bc + 0.5, f"g={g}\nT(g)={Tg}", ha="center", fontsize=9)
-    ax.set_xlabel("triangular number $T(g) = g(g+1)/2$")
-    ax.set_ylabel("optimal coefficient $c$")
-    ax.set_title("(a) Унandinерwithальbutwithть: оптandмальbutе $c = T(g)$ for each genus $g$")
+    ax.set_xlabel("треугольное число $T(g) = g(g+1)/2$")
+    ax.set_ylabel("оптимальный коэффициент $c$")
+    ax.set_title("(a) Универсальность: оптимальное $c = T(g)$ для каждого genus $g$")
     ax.legend()
     ax.grid(alpha=0.3)
 
@@ -318,12 +328,12 @@ def fig_genus_universality(genus_results):
     ax.bar(g_vals, best_sigma_vals, color="forestgreen", alpha=0.85,
             edgecolor="darkgreen")
     ax.axhline(5.0, color="orange", ls="--", lw=2,
-                label="5% threshold (JC holds)")
+                label="порог 5% (JC выполняется)")
     for g, s in zip(g_vals, best_sigma_vals):
         ax.text(g, s + 0.001, f"{s:.4f}%", ha="center", fontsize=9)
     ax.set_xlabel("genus $g$")
     ax.set_ylabel(r"$\sigma/|\mu|$ (%)")
-    ax.set_title("(b) Achieved $\sigma/|\mu|$ with $c=T(g)$ for each $g$")
+    ax.set_title("(b) Достигнутое $\sigma/|\mu|$ с $c=T(g)$ для каждого $g$")
     ax.legend()
     ax.grid(alpha=0.3, axis="y")
     ax.set_yscale('log')
@@ -348,14 +358,14 @@ def fig_kopt_extended(kopt):
     ax.bar(n_vals, k_vals, color=colors, alpha=0.85, edgecolor="black")
     for n, k in zip(n_vals, k_vals):
         ax.text(n, k + 0.3, str(k), ha="center", fontsize=10, fontweight="bold")
-    ax.axhline(5, color="coral", ls=":", lw=1.5, alpha=0.6, label="k=5 (odd)")
-    ax.axhline(15, color="steelblue", ls=":", lw=1.5, alpha=0.6, label="k=15 (even)")
+    ax.axhline(5, color="coral", ls=":", lw=1.5, alpha=0.6, label="k=5 (нечётные)")
+    ax.axhline(15, color="steelblue", ls=":", lw=1.5, alpha=0.6, label="k=15 (чётные)")
     ax.axvline(6.5, color="red", ls="--", lw=2, alpha=0.5,
-                label="$n=2g=6$ — boundary режandмоin")
-    ax.set_xlabel("dimension $n$")
-    ax.set_ylabel("optimal power $k$")
-    ax.set_title("(a) $k_{\\mathrm{opt}}(n)$ with $c=T(g)=6$ for $n=1,...,12$\n"
-                  "(withandнandй = even, toораллоyouй = odd)")
+                label="$n=2g=6$ — граница режимов")
+    ax.set_xlabel("размерность $n$")
+    ax.set_ylabel("оптимальная степень $k$")
+    ax.set_title("(a) $k_{\\mathrm{opt}}(n)$ с $c=T(g)=6$ для $n=1,...,12$\n"
+                  "(синий = чётные, коралловый = нечётные)")
     ax.set_xticks(n_vals)
     ax.legend(fontsize=9)
     ax.grid(alpha=0.3, axis="y")
@@ -363,13 +373,13 @@ def fig_kopt_extended(kopt):
     # (b) σ/|μ| achieved
     ax = axes[1]
     ax.bar(n_vals, sigma_vals, color=colors, alpha=0.85, edgecolor="black")
-    ax.axhline(5.0, color="orange", ls="--", lw=2, label="5% threshold (JC)")
+    ax.axhline(5.0, color="orange", ls="--", lw=2, label="порог 5% (JC)")
     for n, s in zip(n_vals, sigma_vals):
         ax.text(n, s + 0.001, f"{s:.4f}%", ha="center", fontsize=8)
-    ax.set_xlabel("dimension $n$")
+    ax.set_xlabel("размерность $n$")
     ax.set_ylabel(r"$\sigma/|\mu|$ (%)")
-    ax.set_title("(b) Achieved $\\sigma/|\\mu|$ for $n=1,...,12$\n"
-                  "(all — JC holds absolutely)")
+    ax.set_title("(b) Достигнутое $\\sigma/|\\mu|$ для $n=1,...,12$\n"
+                  "(все — JC выполняется абсолютно)")
     ax.set_xticks(n_vals)
     ax.legend()
     ax.grid(alpha=0.3, axis="y")

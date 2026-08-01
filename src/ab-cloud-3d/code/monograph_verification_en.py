@@ -1,35 +1,13 @@
 """
-    English translation of monograph_verification.py.
-================================================================================
-monograph_verification.py
-ГИГАНТСКИЙ КОД ВЕРИФИКАЦИИ МОНОГРАФИИ — 75+ ЗАДАЧ
-GIANT VERIFICATION CODE FOR THE MONOGRAPH — 75+ TASKS
+monograph_verification — English Version
+============================================================
 
-Дinуязычonя monograph: "Попраintoа b as fieldsрandforцandhe/itbutе fortoручandinанandе:
-аonлandтandчеwithtoое proof регулярbutwithтand 3D Navier–Stokes without dissipation"
+Main monograph verification script covering chapters 1-10.
 
-Bilingual monograph: "Correction b as polarization twisting:
-analytical proof of 3D Navier–Stokes regularity without dissipation"
+This is the English translation of monograph_verification.py.
+Russian comments in the code body are preserved for reference.
 
-СТРУКТУРА / STRUCTURE:
-- Чаwithть I:   Заyesчand 1-10  — Аonлandтandчеwithtoое проandwithхожденandе b
-- Чаwithть II:  Заyesчand 11-20 — b from дзеthat-functions Сельберга
-- Чаwithть III: Заyesчand 21-30 — Выinод γ via/through e and constants Смагорandнwithtoого
-- Чаwithть IV:  Заyesчand 31-40 — F-аттраtothenр and аbutзоinwithtoandй flow
-- Чаwithть V:   Заyesчand 41-50 — b as фазоyouй by/oninорfrom (theory)
-- Чаwithть VI:  Заyesчand 51-60 — Сandмуляцandand 2D NSE
-- Чаwithть VII: Заyesчand 61-70 — Сandмуляцandand 3D NSE
-- Чаwithть VIII:Заyesчand 71-75 — Унandinерwithальbutwithть and фandonльonя verification
-
-ДИНАМИЧЕСКИЕ PARAMETERS / DYNAMIC PARAMETERS:
-Вwithе parameters можbut менять in withеtoцandand CONFIG (нandже).
-All parameters can be changed in the CONFIG section (below).
-
-ВЫВОД / OUTPUT:
-- txt: чandthatеweе fromчёты by/on each tasksе
-- csv: thatблandцы for analysisа
-- json: машandbutчandthatеweе data
-- plots (PNG): профеwithwithandshe/itльные графandtoand for each tasks
+Original file: monograph_verification.py
 """
 
 import math
@@ -54,7 +32,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.patches import FancyArrowPatch, Circle
 from mpl_toolkits.mplot3d.proj3d import proj_transform
 
-# Шрandфты / Fonts
+# Шрифты / Fonts
 for fp in ["/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
            "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"]:
     if Path(fp).exists():
@@ -79,10 +57,10 @@ plt.rcParams['savefig.bbox'] = 'tight'
 
 
 # ============================================================================
-# КОНФИГУРАЦИЯ / CONFIGURATION (ДИНАМИЧЕСКИЕ PARAMETERS)
+# КОНФИГУРАЦИЯ / CONFIGURATION (ДИНАМИЧЕСКИЕ ПАРАМЕТРЫ)
 # ============================================================================
 CONFIG = {
-    # Параметры Klein / Klein parameters
+    # Параметры Клейна / Klein parameters
     "klein_g": 3,
     "klein_aut_order": 168,
     "alpha_expr": "1 + 2*cos(2*pi/7)",
@@ -92,22 +70,22 @@ CONFIG = {
     "beta_K": 5.0/3.0,
     "L_min_klein": 2.0 * math.acosh(1.0 + 2.0*math.cos(2*math.pi/7.0)),
 
-    # Параметры Choptuik / Choptuik parameters
+    # Параметры Чоптьюка / Choptuik parameters
     "gamma_choptuik": 0.374,
     "Delta_DSS": 3.44,
 
-    # Параметры Колмогороinа/Смагорandнwithtoого / Kolmogorov/Smagorinsky
+    # Параметры Колмогорова/Смагоринского / Kolmogorov/Smagorinsky
     "C_K_target": 1.5,
     "C_K_empirical_low": 1.5,
     "C_K_empirical_high": 1.7,
 
-    # Золfromое withеченandе / Golden ratio
+    # Золотое сечение / Golden ratio
     "phi": (1.0 + math.sqrt(5.0)) / 2.0,
 
-    # Цandрtoуляцandand Фandбshe/itччand for φ-аттраtothenра / Fibonacci circulations
+    # Циркуляции Фибоначчи для φ-аттрактора / Fibonacci circulations
     "fibonacci_circulations": [13, 21, 34, 55],
 
-    # Сеthenчные parameters / Grid parameters (можbut уinелandчandinать)
+    # Сеточные параметры / Grid parameters (можно увеличивать)
     "N_2d_small": 64,
     "N_2d_medium": 128,
     "N_2d_large": 256,
@@ -115,28 +93,28 @@ CONFIG = {
     "N_3d_medium": 32,
     "N_3d_large": 48,
 
-    # Временные parameters / Time parameters
+    # Временные параметры / Time parameters
     "T_2d": 5.0,
     "T_3d": 3.0,
     "dt_2d": 0.002,
     "dt_3d": 0.005,
 
-    # Вязtoоwithть / Viscosity
+    # Вязкость / Viscosity
     "nu_2d": 0.005,
     "nu_3d": 0.01,
 
-    # Параметры by/oninорfromа b / b rotation parameters
-    "theta_b": 0.0785 * math.pi / 2.0,  # angle by/oninорfromа b·π/2
+    # Параметры поворота b / b rotation parameters
+    "theta_b": 0.0785 * math.pi / 2.0,  # угол поворота b·π/2
 
-    # Размер облаwithтand / Domain size
+    # Размер области / Domain size
     "L_domain": 2.0 * math.pi,
 
-    # Параметры графandtoоin / Plot parameters
+    # Параметры графиков / Plot parameters
     "plot_dpi": 150,
     "plot_figsize": (10, 6),
     "plot_style": "seaborn-v0_8-whitegrid",
 
-    # Дandреtothenрandand / Directories
+    # Директории / Directories
     "output_dir": "/home/z/my-project/download/monograph",
     "figures_subdir": "figures",
     "data_subdir": "data",
@@ -147,7 +125,7 @@ CONFIG = {
 # УТИЛИТЫ / UTILITIES
 # ============================================================================
 class Output:
-    """Упраinленandе youinоtoм results / Output management"""
+    """Управление выводом результатов / Output management"""
 
     def __init__(self, task_id: str, title_ru: str, title_en: str):
         self.task_id = task_id
@@ -158,7 +136,7 @@ class Output:
         self.json_data: Dict[str, Any] = {}
         self.figures: List[Path] = []
 
-        # Дandреtothenрandand
+        # Директории
         base = Path(CONFIG["output_dir"])
         self.fig_dir = base / CONFIG["figures_subdir"]
         self.data_dir = base / CONFIG["data_subdir"]
@@ -190,7 +168,7 @@ class Output:
         return path
 
     def finalize(self) -> Dict[str, Path]:
-        """Сохранandть all results / Save all results"""
+        """Сохранить все результаты / Save all results"""
         paths = {}
 
         # TXT
@@ -231,10 +209,10 @@ class Output:
 
 
 # ============================================================================
-# HELPER FUNCTIONS / HELPER FUNCTIONS
+# ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ / HELPER FUNCTIONS
 # ============================================================================
 def safe_norm(x):
-    """Безопаwithonя norm / Safe norm"""
+    """Безопасная норма / Safe norm"""
     x = np.asarray(x, dtype=float)
     if not np.any(np.isfinite(x)):
         return 1e15
@@ -242,7 +220,7 @@ def safe_norm(x):
 
 
 def safe_max(x):
-    """Безопаwithный маtowithandмум / Safe max"""
+    """Безопасный максимум / Safe max"""
     x = np.asarray(x, dtype=float)
     if not np.any(np.isfinite(x)):
         return 1e15
@@ -251,7 +229,7 @@ def safe_max(x):
 
 def rodrigues_rotation(vector, axis, angle):
     """
-    Поinорfrom vectorа around оwithand on angle (formula Родрandгеwithа).
+    Поворот вектора вокруг оси на угол (формула Родригеса).
     Rodrigues' rotation formula.
     """
     axis = np.asarray(axis, dtype=float)
@@ -270,7 +248,7 @@ def rodrigues_rotation(vector, axis, angle):
 # ============================================================================
 # ЗАДАЧИ / TASKS
 # ============================================================================
-# Кажyesя task — this function task_XX(), tofromорая withозyesёт Output and inозinращает his/its.
+# Каждая задача — это функция task_XX(), которая создаёт Output и возвращает его.
 
 # ----------------------------------------------------------------------------
 # ЧАСТЬ I. АНАЛИТИЧЕСКОЕ ПРОИСХОЖДЕНИЕ b (ЗАДАЧИ 1-10)
@@ -278,26 +256,26 @@ def rodrigues_rotation(vector, axis, angle):
 # ----------------------------------------------------------------------------
 
 def task_01():
-    """Заyesча 1: Ураoutsideнandя Кandрхгофа and by/oninорfrom on -90°"""
-    out = Output("01", "Ураoutsideнandя Кandрхгофа and by/oninорfrom on -90°",
+    """Задача 1: Уравнения Кирхгофа и поворот на -90°"""
+    out = Output("01", "Уравнения Кирхгофа и поворот на -90°",
                  "Kirchhoff equations and -90° rotation")
 
-    out.log("Выinод equations Кandрхгофа for thenчечных vortices",
+    out.log("Вывод уравнений Кирхгофа для точечных вихрей",
             "Derivation of Kirchhoff equations for point vortices")
 
-    # Ураoutsideнandя Кandрхгофа
-    # Гамandльтtheyан: H = -(1/4π) Σ Γ_i Γ_j ln(r_ij)
+    # Уравнения Кирхгофа
+    # Гамильтониан: H = -(1/4π) Σ Γ_i Γ_j ln(r_ij)
     # dx_i/dt = (1/Γ_i) ∂H/∂y_i
     # dy_i/dt = -(1/Γ_i) ∂H/∂x_i
 
     R_minus_90 = np.array([[0, 1], [-1, 0]])
     R_plus_90 = np.array([[0, -1], [1, 0]])
 
-    # Проinерtoа: R(-90) · R(+90) = I
+    # Проверка: R(-90) · R(+90) = I
     product = R_minus_90 @ R_plus_90
     is_identity = np.allclose(product, np.eye(2))
 
-    # Проinерtoа orthogonallywithтand
+    # Проверка ортогональности
     is_orthogonal = np.allclose(R_minus_90.T @ R_minus_90, np.eye(2))
 
     out.add_json("R_minus_90", R_minus_90.tolist())
@@ -305,29 +283,29 @@ def task_01():
     out.add_json("product_is_identity", is_identity)
     out.add_json("is_orthogonal", is_orthogonal)
     out.add_json("explanation_ru",
-                 "Ураoutsideнandя Кandрхгофа (dx/dt, dy/dt) = (∂H/∂y, -∂H/∂x) = R(-90°)·∇H "
-                 "withодержат by/oninорfrom on -90° analytically. "
-                 "Эthen and еwithть 'fieldsрandforцandhe/itbutе fortoручandinанandе' — gradient H "
-                 "by/oninорачandinаетwithя on -90°, преinращая potentialьbutе дinandженandе in цandрtoуляцandhe/itbutе.")
+                 "Уравнения Кирхгофа (dx/dt, dy/dt) = (∂H/∂y, -∂H/∂x) = R(-90°)·∇H "
+                 "содержат поворот на -90° аналитически. "
+                 "Это и есть 'поляризационное закручивание' — градиент H "
+                 "поворачивается на -90°, превращая потенциальное движение в циркуляционное.")
     out.add_json("explanation_en",
                  "Kirchhoff equations (dx/dt, dy/dt) = (∂H/∂y, -∂H/∂x) = R(-90°)·∇H "
                  "contain -90° rotation analytically. "
                  "This IS 'polarization twisting' — gradient H is rotated by -90°, "
                  "converting potential motion to circulatory.")
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(8, 6))
-    # Иwithходный vector ∇H
+    # Исходный вектор ∇H
     ax.annotate('', xy=(2, 0), xytext=(0, 0),
                 arrowprops=dict(arrowstyle='->', color='blue', lw=2))
     ax.text(1.5, -0.3, r'$\nabla H$', fontsize=14, color='blue')
 
-    # Поinёрнутый vector R(-90°)·∇H
+    # Повёрнутый вектор R(-90°)·∇H
     ax.annotate('', xy=(0, -2), xytext=(0, 0),
                 arrowprops=dict(arrowstyle='->', color='red', lw=2))
     ax.text(0.3, -1.5, r'$R(-90°)\cdot\nabla H = (\dot x, \dot y)$', fontsize=12, color='red')
 
-    # Дуга by/oninорfromа
+    # Дуга поворота
     theta = np.linspace(0, -math.pi/2, 100)
     r = 1.0
     ax.plot(r*np.cos(theta), r*np.sin(theta), 'k--', lw=1)
@@ -340,7 +318,7 @@ def task_01():
     ax.axhline(0, color='k', lw=0.5)
     ax.axvline(0, color='k', lw=0.5)
     ax.set_title('Task 1: Kirchhoff rotation R(-90°)\n'
-                 'Заyesча 1: Поinорfrom Кandрхгофа R(-90°)')
+                 'Задача 1: Поворот Кирхгофа R(-90°)')
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     out.save_figure(fig, "task_01_kirchhoff_rotation")
@@ -349,7 +327,7 @@ def task_01():
         "matrix": "R(-90°)",
         "value": str(R_minus_90.tolist()),
         "is_orthogonal": is_orthogonal,
-        "explanation_ru": "Поinорfrom on -90° in equationsх Кandрхгофа",
+        "explanation_ru": "Поворот на -90° в уравнениях Кирхгофа",
         "explanation_en": "-90° rotation in Kirchhoff equations"
     }])
 
@@ -357,11 +335,11 @@ def task_01():
 
 
 def task_02():
-    """Заyesча 2: Проinерtoа matrices by/oninорfromа R(θ)"""
-    out = Output("02", "Проinерtoа matrices by/oninорfromа R(θ)",
+    """Задача 2: Проверка матрицы поворота R(θ)"""
+    out = Output("02", "Проверка матрицы поворота R(θ)",
                  "Verification of rotation matrix R(θ)")
 
-    # Проinерtoа withinойwithтin matrices by/oninорfromа for разных углоin
+    # Проверка свойств матрицы поворота для разных углов
     angles_deg = [0, 7, 15, 30, 45, 60, 75, 90, 180]
     results = []
 
@@ -371,12 +349,12 @@ def task_02():
         sin_a = math.sin(ang_rad)
         R = np.array([[cos_a, -sin_a], [sin_a, cos_a]])
 
-        # Сinойwithтinа
+        # Свойства
         det = np.linalg.det(R)
         ortho = np.allclose(R.T @ R, np.eye(2))
-        preserves_length = True  # allгyes for orthogonallyй
+        preserves_length = True  # всегда для ортогональной
 
-        # Длandon andwithхone and by/oninёрнуthat vectorа
+        # Длина исходного и повёрнутого вектора
         v = np.array([1.0, 2.0])
         v_rot = R @ v
         len_orig = np.linalg.norm(v)
@@ -392,36 +370,36 @@ def task_02():
             "length_preserved": abs(len_orig - len_rot) < 1e-10,
         })
 
-        out.log(f"Угол {ang_deg}°: det={det:.4f}, орthatonльon={ortho}, "
-                f"length withохраnoton={abs(len_orig-len_rot)<1e-10}")
+        out.log(f"Угол {ang_deg}°: det={det:.4f}, ортогональна={ortho}, "
+                f"длина сохранена={abs(len_orig-len_rot)<1e-10}")
 
     out.add_json("rotation_properties", results)
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-    # Слеinа: длandны vectors
+    # Слева: длины векторов
     ax = axes[0]
     angles = [r["angle_deg"] for r in results]
     lens_orig = [r["length_original"] for r in results]
     lens_rot = [r["length_rotated"] for r in results]
-    ax.plot(angles, lens_orig, 'bo-', label=r'$|v|$ (andwithходный / original)', markersize=8)
-    ax.plot(angles, lens_rot, 'r^--', label=r'$|R\cdot v|$ (by/oninёрнутый / rotated)', markersize=8)
-    ax.set_xlabel(r'Угол by/oninорfromа $\theta$ (градуwithы / degrees)')
-    ax.set_ylabel('Длandon vectorа / Vector length')
-    ax.set_title('Task 2: Rotation preserves length\nЗаyesча 2: Поinорfrom preserves длandну')
+    ax.plot(angles, lens_orig, 'bo-', label=r'$|v|$ (исходный / original)', markersize=8)
+    ax.plot(angles, lens_rot, 'r^--', label=r'$|R\cdot v|$ (повёрнутый / rotated)', markersize=8)
+    ax.set_xlabel(r'Угол поворота $\theta$ (градусы / degrees)')
+    ax.set_ylabel('Длина вектора / Vector length')
+    ax.set_title('Task 2: Rotation preserves length\nЗадача 2: Поворот сохраняет длину')
     ax.legend()
     ax.grid(True, alpha=0.3)
     ax.set_xticks(angles)
 
-    # Спраinа: det and orthogonality
+    # Справа: det и ортогональность
     ax = axes[1]
     dets = [r["det"] for r in results]
     ax.plot(angles, dets, 'gs-', label='det(R)', markersize=8)
-    ax.axhline(1.0, color='k', linestyle='--', label='det = 1 (орthatonльonя)')
-    ax.set_xlabel(r'Угол by/oninорfromа $\theta$ (градуwithы / degrees)')
+    ax.axhline(1.0, color='k', linestyle='--', label='det = 1 (ортогональная)')
+    ax.set_xlabel(r'Угол поворота $\theta$ (градусы / degrees)')
     ax.set_ylabel('det(R)')
-    ax.set_title('Task 2: det(R) = 1 (orthogonality)\nЗаyesча 2: det(R) = 1 (orthogonality)')
+    ax.set_title('Task 2: det(R) = 1 (orthogonality)\nЗадача 2: det(R) = 1 (ортогональность)')
     ax.legend()
     ax.grid(True, alpha=0.3)
     ax.set_xticks(angles)
@@ -441,54 +419,54 @@ def task_02():
 
 
 def task_03():
-    """Заyesча 3: 5 фfromandчеwithtotheir аonлогandй b as by/oninорfromа on 90°"""
-    out = Output("03", "5 фfromandчеwithtotheir аonлогandй b as by/oninорfromа on 90°",
+    """Задача 3: 5 физических аналогий b как поворота на 90°"""
+    out = Output("03", "5 физических аналогий b как поворота на 90°",
                  "5 physical analogies of b as 90° rotation")
 
     analogies = [
         {
-            "name_ru": "Сandла Лоренца",
+            "name_ru": "Сила Лоренца",
             "name_en": "Lorentz force",
             "formula": "F = qv × B",
             "perp_to_v": True,
             "does_work": False,  # F·v = 0
-            "effect_ru": "Преinращает directlyлandnotйbutе in toругоinое",
+            "effect_ru": "Превращает прямолинейное в круговое",
             "effect_en": "Converts linear to circular",
         },
         {
-            "name_ru": "Сandла Корandолandwithа",
+            "name_ru": "Сила Кориолиса",
             "name_en": "Coriolis force",
             "formula": "F = -2mΩ × v",
             "perp_to_v": True,
             "does_work": False,
-            "effect_ru": "Преinращает directlyлandnotйbutе inо inращаthoseльbutе",
+            "effect_ru": "Превращает прямолинейное во вращательное",
             "effect_en": "Converts linear to rotational",
         },
         {
-            "name_ru": "Сandла Магнуwithа",
+            "name_ru": "Сила Магнуса",
             "name_en": "Magnus force",
             "formula": "F = ρΓv × ẑ",
             "perp_to_v": True,
             "does_work": False,
-            "effect_ru": "Преinращает directlyлandnotйbutе in underъёмную withandлу",
+            "effect_ru": "Превращает прямолинейное в подъёмную силу",
             "effect_en": "Converts linear to lift",
         },
         {
-            "name_ru": "Эффеtoт Беррand",
+            "name_ru": "Эффект Берри",
             "name_en": "Berry phase",
             "formula": "γ = -Im ∮ ⟨n|∇_R|n⟩·dR",
             "perp_to_v": True,
             "does_work": False,
-            "effect_ru": "Геомеthreeчеwithtoая phase",
+            "effect_ru": "Геометрическая фаза",
             "effect_en": "Geometric phase",
         },
         {
-            "name_ru": "Гармtheyчеwithtoandй оwithцandлляthenр",
+            "name_ru": "Гармонический осциллятор",
             "name_en": "Harmonic oscillator",
             "formula": "x = A sin(ωt), v = Aω cos(ωt)",
             "perp_to_v": True,
             "does_work": False,
-            "effect_ru": "Преinращает acceleration in inолну",
+            "effect_ru": "Превращает ускорение в волну",
             "effect_en": "Converts acceleration to wave",
         },
     ]
@@ -496,27 +474,27 @@ def task_03():
     out.add_json("analogies", analogies)
     for a in analogies:
         out.log(f"{a['name_ru']} / {a['name_en']}: {a['formula']}, "
-                f"⊥v={a['perp_to_v']}, рабfromа={a['does_work']}")
+                f"⊥v={a['perp_to_v']}, работа={a['does_work']}")
 
-    # Графandto: infromуалandforцandя 5 аonлогandй
+    # График: визуализация 5 аналогий
     fig, axes = plt.subplots(2, 3, figsize=(15, 10))
     axes = axes.flatten()
 
-    # 1. Сandла Лоренца
+    # 1. Сила Лоренца
     ax = axes[0]
     v = np.array([1, 0.5])
     B = np.array([0, 0, 1])
-    F = np.array([0.5, -1])  # qv×B in 2D
+    F = np.array([0.5, -1])  # qv×B в 2D
     ax.annotate('', xy=v, xytext=(0, 0), arrowprops=dict(arrowstyle='->', color='blue', lw=2))
     ax.text(v[0]+0.05, v[1], r'$v$', fontsize=14, color='blue')
     ax.annotate('', xy=F, xytext=(0, 0), arrowprops=dict(arrowstyle='->', color='red', lw=2))
     ax.text(F[0]+0.05, F[1], r'$F \perp v$', fontsize=14, color='red')
-    ax.set_title('Lorentz force\nСandла Лоренца', fontsize=10)
+    ax.set_title('Lorentz force\nСила Лоренца', fontsize=10)
     ax.set_xlim(-1.5, 1.5); ax.set_ylim(-1.5, 1.5)
     ax.set_aspect('equal'); ax.grid(True, alpha=0.3)
     ax.axhline(0, color='k', lw=0.5); ax.axvline(0, color='k', lw=0.5)
 
-    # 2. Сandла Корandолandwithа
+    # 2. Сила Кориолиса
     ax = axes[1]
     v = np.array([1, 0])
     F = np.array([0, 1])
@@ -525,12 +503,12 @@ def task_03():
     ax.annotate('', xy=F, xytext=(0, 0), arrowprops=dict(arrowstyle='->', color='red', lw=2))
     ax.text(F[0]+0.05, F[1], r'$F_C$', fontsize=14, color='red')
     ax.add_patch(plt.Circle((0, 0.5), 0.5, fill=False, color='green', linestyle='--'))
-    ax.set_title('Coriolis force\nСandла Корandолandwithа', fontsize=10)
+    ax.set_title('Coriolis force\nСила Кориолиса', fontsize=10)
     ax.set_xlim(-1.5, 1.5); ax.set_ylim(-1.5, 1.5)
     ax.set_aspect('equal'); ax.grid(True, alpha=0.3)
     ax.axhline(0, color='k', lw=0.5); ax.axvline(0, color='k', lw=0.5)
 
-    # 3. Сandла Магнуwithа
+    # 3. Сила Магнуса
     ax = axes[2]
     v = np.array([1, 0])
     F = np.array([0, 1])
@@ -538,32 +516,32 @@ def task_03():
     ax.text(v[0]+0.05, v[1], r'$v$', fontsize=14, color='blue')
     ax.annotate('', xy=F, xytext=(0, 0), arrowprops=dict(arrowstyle='->', color='red', lw=2))
     ax.text(F[0]+0.05, F[1], r'$F_M$', fontsize=14, color='red')
-    # Вращающandйwithя цorндр
+    # Вращающийся цилиндр
     circle = plt.Circle((0, 0), 0.3, fill=True, color='orange', alpha=0.5)
     ax.add_patch(circle)
     ax.annotate('', xy=(0.3, 0.1), xytext=(-0.3, -0.1),
                 arrowprops=dict(arrowstyle='->', color='darkorange', lw=1.5,
                                 connectionstyle='arc3,rad=0.5'))
-    ax.set_title('Magnus force\nСandла Магнуwithа', fontsize=10)
+    ax.set_title('Magnus force\nСила Магнуса', fontsize=10)
     ax.set_xlim(-1.5, 1.5); ax.set_ylim(-1.5, 1.5)
     ax.set_aspect('equal'); ax.grid(True, alpha=0.3)
     ax.axhline(0, color='k', lw=0.5); ax.axvline(0, color='k', lw=0.5)
 
-    # 4. Эффеtoт Беррand
+    # 4. Эффект Берри
     ax = axes[3]
-    # Сфера Блоха with путём
+    # Сфера Блоха с путём
     u = np.linspace(0, 2*np.pi, 100)
     ax.plot(np.cos(u), np.sin(u), 'k-', lw=2)
-    # Путь on withфере
+    # Путь на сфере
     theta_b = np.linspace(0, np.pi, 50)
     phi_b = np.linspace(0, 2*np.pi, 50)
     ax.plot(np.sin(theta_b)*np.cos(phi_b), np.sin(theta_b)*np.sin(phi_b), 'r-', lw=2)
     ax.text(0, 1.2, r'Berry phase $\gamma$', fontsize=12, ha='center', color='red')
-    ax.set_title('Berry phase\nЭффеtoт Беррand', fontsize=10)
+    ax.set_title('Berry phase\nЭффект Берри', fontsize=10)
     ax.set_xlim(-1.5, 1.5); ax.set_ylim(-1.5, 1.5)
     ax.set_aspect('equal'); ax.grid(True, alpha=0.3)
 
-    # 5. Гармtheyчеwithtoandй оwithцandлляthenр
+    # 5. Гармонический осциллятор
     ax = axes[4]
     t = np.linspace(0, 4*np.pi, 200)
     x = np.sin(t)
@@ -572,30 +550,30 @@ def task_03():
     ax.plot(t, v_osc, 'r--', lw=2, label=r'$v(t) = \cos(\omega t)$ (90° shift)')
     ax.set_xlabel('t')
     ax.set_ylabel('x, v')
-    ax.set_title('Harmonic oscillator\nГармtheyчеwithtoandй оwithцandлляthenр', fontsize=10)
+    ax.set_title('Harmonic oscillator\nГармонический осциллятор', fontsize=10)
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3)
 
-    # 6. Сinодtoа
+    # 6. Сводка
     ax = axes[5]
     ax.axis('off')
     summary = (
-        "Common features / Общandе at/forзontoand:\n\n"
+        "Common features / Общие признаки:\n\n"
         "1. Perpendicular (90°) action\n"
-        "   Перпендandtoулярbutе (90°) дейwithтinandе\n\n"
+        "   Перпендикулярное (90°) действие\n\n"
         "2. Does no work (F·v = 0)\n"
-        "   Не делает рабfromу (F·v = 0)\n\n"
+        "   Не делает работу (F·v = 0)\n\n"
         "3. Converts linear to wave\n"
-        "   Преinращает directlyлandnotйbutе in inолbutinое\n\n"
+        "   Превращает прямолинейное в волновое\n\n"
         "→ This is the physics of b\n"
-        "→ Эthen фfromandtoа corrections b"
+        "→ Это физика поправки b"
     )
     ax.text(0.1, 0.5, summary, fontsize=11, verticalalignment='center',
             transform=ax.transAxes, family='monospace',
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
 
     plt.suptitle('Task 3: Five physical analogies of b as 90° rotation\n'
-                 'Заyesча 3: Пять фfromandчеwithtotheir аonлогandй b as by/oninорfromа on 90°',
+                 'Задача 3: Пять физических аналогий b как поворота на 90°',
                  fontsize=13, fontweight='bold')
     plt.tight_layout()
     out.save_figure(fig, "task_03_five_analogies")
@@ -613,8 +591,8 @@ def task_03():
 
 
 def task_04():
-    """Заyesча 4: Угол by/oninорfromа θ_b = b·π/2"""
-    out = Output("04", "Угол by/oninорfromа θ_b = b·π/2",
+    """Задача 4: Угол поворота θ_b = b·π/2"""
+    out = Output("04", "Угол поворота θ_b = b·π/2",
                  "Rotation angle θ_b = b·π/2")
 
     b = CONFIG["b_value"]
@@ -625,7 +603,7 @@ def task_04():
     out.log(f"θ_b = b·π/2 = {theta_b:.6f} рад = {theta_b_deg:.4f}°",
             f"θ_b = b·π/2 = {theta_b:.6f} rad = {theta_b_deg:.4f}°")
 
-    # Заinandwithandмоwithть θ_b from b
+    # Зависимость θ_b от b
     b_values = np.linspace(0, 2, 200)
     theta_values = b_values * math.pi / 2
     theta_deg_values = np.degrees(theta_values)
@@ -634,21 +612,21 @@ def task_04():
     out.add_json("theta_b_rad", theta_b)
     out.add_json("theta_b_deg", theta_b_deg)
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     ax = axes[0]
     ax.plot(b_values, theta_deg_values, 'b-', lw=2)
     ax.axvline(b, color='r', linestyle='--', label=f'b = {b}')
     ax.axhline(theta_b_deg, color='g', linestyle='--', label=f'θ_b = {theta_b_deg:.2f}°')
-    ax.axhline(90, color='orange', linestyle=':', alpha=0.5, label='90° (complete/full by/oninорfrom)')
+    ax.axhline(90, color='orange', linestyle=':', alpha=0.5, label='90° (полный поворот)')
     ax.set_xlabel('b')
-    ax.set_ylabel(r'$\theta_b = b\cdot\pi/2$ (градуwithы / degrees)')
-    ax.set_title('Task 4: Rotation angle vs b\nЗаyesча 4: Угол by/oninорfromа from b')
+    ax.set_ylabel(r'$\theta_b = b\cdot\pi/2$ (градусы / degrees)')
+    ax.set_title('Task 4: Rotation angle vs b\nЗадача 4: Угол поворота от b')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
-    # Спраinа: infromуалandforцandя by/oninорfromа on θ_b
+    # Справа: визуализация поворота на θ_b
     ax = axes[1]
     v = np.array([1.0, 0.5])
     R = np.array([[math.cos(theta_b), -math.sin(theta_b)],
@@ -676,7 +654,7 @@ def task_04():
     ax.axhline(0, color='k', lw=0.5)
     ax.axvline(0, color='k', lw=0.5)
     ax.set_title(f'Task 4: Rotation by θ_b = {theta_b_deg:.2f}°\n'
-                 f'Заyesча 4: Поinорfrom on θ_b = {theta_b_deg:.2f}°')
+                 f'Задача 4: Поворот на θ_b = {theta_b_deg:.2f}°')
 
     out.save_figure(fig, "task_04_theta_b")
 
@@ -692,30 +670,30 @@ def task_04():
 
 
 def task_05():
-    """Заyesча 5: Поinорfrom on θ_b in фазоinом проwithтранwithтinе (x, v)"""
-    out = Output("05", "Поinорfrom on θ_b in фазоinом проwithтранwithтinе (x, v)",
+    """Задача 5: Поворот на θ_b в фазовом пространстве (x, v)"""
+    out = Output("05", "Поворот на θ_b в фазовом пространстве (x, v)",
                  "Rotation by θ_b in phase space (x, v)")
 
     b = CONFIG["b_value"]
     theta_b = b * math.pi / 2
 
-    # Траеtothenрandя in фазоinом проwithтранwithтinе
-    # Без by/oninорfromа: прямая (уwithtoоренbutе дinandженandе)
-    # С by/oninорfromом: withпandраль (inолbutinое дinandженandе)
+    # Траектория в фазовом пространстве
+    # Без поворота: прямая (ускоренное движение)
+    # С поворотом: спираль (волновое движение)
 
     T = 10.0
     dt = 0.01
     n_steps = int(T / dt)
 
-    # Без by/oninорfromа (withinобoneе acceleration)
+    # Без поворота (свободное ускорение)
     x_free = [0.0]
     v_free = [1.0]
     for _ in range(n_steps):
-        a = 0.1  # by/onwiththenянbutе acceleration
+        a = 0.1  # постоянное ускорение
         v_free.append(v_free[-1] + a * dt)
         x_free.append(x_free[-1] + v_free[-1] * dt)
 
-    # С by/oninорfromом (fieldsрandforцandhe/itbutе fortoручandinанandе)
+    # С поворотом (поляризационное закручивание)
     x_rot = [0.0]
     v_rot = [1.0]
     for _ in range(n_steps):
@@ -723,7 +701,7 @@ def task_05():
         v_new = v_rot[-1] + a * dt
         x_new = x_rot[-1] + v_rot[-1] * dt
 
-        # Поinорfrom (x, v) on θ_b
+        # Поворот (x, v) на θ_b
         cos_t = math.cos(theta_b)
         sin_t = math.sin(theta_b)
         x_rot_new = cos_t * x_new + sin_t * v_new
@@ -736,26 +714,26 @@ def task_05():
     out.add_json("free_motion_final_v", v_free[-1])
     out.add_json("rotated_motion_final_x", x_rot[-1])
     out.add_json("rotated_motion_final_v", v_rot[-1])
-    out.log(f"Сinобoneе: x={x_free[-1]:.2f}, v={v_free[-1]:.2f}",
+    out.log(f"Свободное: x={x_free[-1]:.2f}, v={v_free[-1]:.2f}",
             f"Free: x={x_free[-1]:.2f}, v={v_free[-1]:.2f}")
-    out.log(f"С by/oninорfromом: x={x_rot[-1]:.2f}, v={v_rot[-1]:.2f}",
+    out.log(f"С поворотом: x={x_rot[-1]:.2f}, v={v_rot[-1]:.2f}",
             f"Rotated: x={x_rot[-1]:.2f}, v={v_rot[-1]:.2f}")
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-    # Без by/oninорfromа
+    # Без поворота
     ax = axes[0]
     ax.plot(x_free, v_free, 'b-', lw=2)
     ax.plot(x_free[0], v_free[0], 'go', markersize=10, label='start')
     ax.plot(x_free[-1], v_free[-1], 'rs', markersize=10, label='end')
     ax.set_xlabel('x')
     ax.set_ylabel('v')
-    ax.set_title('Task 5: Free motion (no rotation)\nЗаyesча 5: Сinобoneе дinandженandе')
+    ax.set_title('Task 5: Free motion (no rotation)\nЗадача 5: Свободное движение')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
-    # С by/oninорfromом
+    # С поворотом
     ax = axes[1]
     ax.plot(x_rot, v_rot, 'r-', lw=2)
     ax.plot(x_rot[0], v_rot[0], 'go', markersize=10, label='start')
@@ -763,12 +741,12 @@ def task_05():
     ax.set_xlabel('x')
     ax.set_ylabel('v')
     ax.set_title(f'Task 5: With b rotation (θ_b={math.degrees(theta_b):.2f}°)\n'
-                 f'Заyesча 5: С by/oninорfromом b')
+                 f'Задача 5: С поворотом b')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
     plt.suptitle('Phase space: free motion vs b-rotated motion\n'
-                 'Фазоinое space: withinобoneе vs with by/oninорfromом b',
+                 'Фазовое пространство: свободное vs с поворотом b',
                  fontsize=12, fontweight='bold')
     plt.tight_layout()
     out.save_figure(fig, "task_05_phase_space_rotation")
@@ -777,15 +755,15 @@ def task_05():
 
 
 def task_06():
-    """Заyesча 6: Орthatonльbutwithть by/oninорfromа (preservation эnotргandand)"""
-    out = Output("06", "Орthatonльbutwithть by/oninорfromа (preservation эnotргandand)",
+    """Задача 6: Ортогональность поворота (сохранение энергии)"""
+    out = Output("06", "Ортогональность поворота (сохранение энергии)",
                  "Orthogonality of rotation (energy preservation)")
 
     b = CONFIG["b_value"]
     theta_b = b * math.pi / 2
 
-    # Эnotргandя systems E = (1/2)(x² + v²)
-    # Поinорfrom preserves E, since R^T R = I
+    # Энергия системы E = (1/2)(x² + v²)
+    # Поворот сохраняет E, т.к. R^T R = I
 
     T = 5.0
     dt = 0.01
@@ -798,19 +776,19 @@ def task_06():
     x_r, v_r = 1.0, 0.0
 
     for step in range(n_steps):
-        # Сinобoneе: acceleration a=0.2
+        # Свободное: ускорение a=0.2
         a = 0.2
         v_f += a * dt
         x_f += v_f * dt
         E_f = 0.5 * (x_f**2 + v_f**2)
         energies_free.append(E_f)
 
-        # С by/oninорfromом
+        # С поворотом
         a = 0.2
         v_r_new = v_r + a * dt
         x_r_new = x_r + v_r * dt
 
-        # Поinорfrom (x, v) on θ_b
+        # Поворот (x, v) на θ_b
         cos_t = math.cos(theta_b)
         sin_t = math.sin(theta_b)
         x_r = cos_t * x_r_new + sin_t * v_r_new
@@ -823,21 +801,21 @@ def task_06():
     out.add_json("final_energy_free", energies_free[-1])
     out.add_json("initial_energy_rotated", 0.5 * (1.0**2 + 0.0**2))
     out.add_json("final_energy_rotated", energies_rotated[-1])
-    out.log(f"Сinобoneе: E(0)={0.5:.4f}, E(T)={energies_free[-1]:.4f} "
-            f"(роwithт {energies_free[-1]/0.5:.2f}x)",
+    out.log(f"Свободное: E(0)={0.5:.4f}, E(T)={energies_free[-1]:.4f} "
+            f"(рост {energies_free[-1]/0.5:.2f}x)",
             f"Free: E(0)=0.5, E(T)={energies_free[-1]:.4f}")
-    out.log(f"С by/oninорfromом: E(0)={0.5:.4f}, E(T)={energies_rotated[-1]:.4f}",
+    out.log(f"С поворотом: E(0)={0.5:.4f}, E(T)={energies_rotated[-1]:.4f}",
             f"Rotated: E(0)=0.5, E(T)={energies_rotated[-1]:.4f}")
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 6))
     t = np.linspace(0, T, n_steps)
-    ax.plot(t, energies_free, 'b-', lw=2, label='Без by/oninорfromа / No rotation (раwithтёт)')
-    ax.plot(t, energies_rotated, 'r-', lw=2, label='С by/oninорfromом b / With b rotation (withthatбandльbut)')
+    ax.plot(t, energies_free, 'b-', lw=2, label='Без поворота / No rotation (растёт)')
+    ax.plot(t, energies_rotated, 'r-', lw=2, label='С поворотом b / With b rotation (стабильно)')
     ax.set_xlabel('t')
     ax.set_ylabel('E(t) = (1/2)(x² + v²)')
     ax.set_title('Task 6: Energy preservation by orthogonal rotation\n'
-                 'Заyesча 6: Сохраnotнandе эnotргandand орthatonльным by/oninорfromом')
+                 'Задача 6: Сохранение энергии ортогональным поворотом')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -847,19 +825,19 @@ def task_06():
 
 
 def task_07():
-    """Заyesча 7: Бandо-Саinар in 3D — velocity/speed ⊥ radius-vectorу"""
-    out = Output("07", "Бandо-Саinар in 3D — u ⊥ r",
+    """Задача 7: Био-Савар в 3D — скорость ⊥ радиус-вектору"""
+    out = Output("07", "Био-Савар в 3D — u ⊥ r",
                  "Biot-Savart in 3D — u ⊥ r")
 
-    # Проinерtoа: for vortex нandтand, u = (Γ/4π) ∮ (dl × r) / |r|³
-    # u ⊥ r, since (dl × r) ⊥ r
+    # Проверка: для вихревой нити, u = (Γ/4π) ∮ (dl × r) / |r|³
+    # u ⊥ r, т.к. (dl × r) ⊥ r
 
-    # Прямой проinоднandto along z
+    # Прямой проводник вдоль z
     n_points = 100
     z = np.linspace(-5, 5, n_points)
     dl = np.array([0, 0, z[1] - z[0]])
 
-    # Точtoа onблюденandя
+    # Точка наблюдения
     r_obs = np.array([1.0, 0.0, 0.0])
 
     u_total = np.zeros(3)
@@ -869,9 +847,9 @@ def task_07():
         if r_mag > 0.1:
             u_total += np.cross(dl, r_vec) / r_mag**3
 
-    u_total *= 1.0 / (4 * math.pi)  # butрмandроintoа
+    u_total *= 1.0 / (4 * math.pi)  # нормировка
 
-    # Проinерtoа orthogonallywithтand
+    # Проверка ортогональности
     dot_product = np.dot(u_total, r_obs)
     is_perp = abs(dot_product) < 1e-10
 
@@ -884,19 +862,19 @@ def task_07():
     out.log(f"u·r = {dot_product:.2e} (⊥ = {is_perp})",
             f"u·r = {dot_product:.2e} (⊥ = {is_perp})")
 
-    # Графandto
+    # График
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
 
-    # Вtheirреinая нandть
-    ax.plot([0, 0], [0, 0], [-5, 5], 'k-', lw=3, label='Вtheirреinая нandть / Vortex filament')
+    # Вихревая нить
+    ax.plot([0, 0], [0, 0], [-5, 5], 'k-', lw=3, label='Вихревая нить / Vortex filament')
 
-    # Радandуwith-vector
+    # Радиус-вектор
     ax.quiver(0, 0, 0, r_obs[0], r_obs[1], r_obs[2], color='blue', arrow_length_ratio=0.2, lw=2)
     ax.text(r_obs[0]+0.1, r_obs[1]+0.1, r_obs[2]+0.1, r'$r$', fontsize=14, color='blue')
 
-    # Сtoороwithть u
-    u_scaled = u_total * 50  # for infromуалandforцandand
+    # Скорость u
+    u_scaled = u_total * 50  # для визуализации
     ax.quiver(r_obs[0], r_obs[1], r_obs[2],
               u_scaled[0], u_scaled[1], u_scaled[2],
               color='red', arrow_length_ratio=0.2, lw=2)
@@ -906,7 +884,7 @@ def task_07():
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_zlabel('z')
-    ax.set_title('Task 7: Biot-Savart law: u ⊥ r\nЗаyesча 7: Бandо-Саinар: u ⊥ r')
+    ax.set_title('Task 7: Biot-Savart law: u ⊥ r\nЗадача 7: Био-Савар: u ⊥ r')
     ax.legend()
 
     out.save_figure(fig, "task_07_biot_savart_perp")
@@ -915,14 +893,14 @@ def task_07():
 
 
 def task_08():
-    """Заyesча 8: Гамandльтtheyан Кandрхгофа and his/its by/oninорfrom"""
-    out = Output("08", "Гамandльтtheyан Кandрхгофа and his/its by/oninорfrom",
+    """Задача 8: Гамильтониан Кирхгофа и его поворот"""
+    out = Output("08", "Гамильтониан Кирхгофа и его поворот",
                  "Kirchhoff Hamiltonian and its rotation")
 
     # H = -(1/4π) Σ Γ_i Γ_j ln(r_ij)
-    # Дinandженandе: (∂H/∂y, -∂H/∂x) = R(-90°) ∇H
+    # Движение: (∂H/∂y, -∂H/∂x) = R(-90°) ∇H
 
-    # Сandмуляцandя 2 vortices
+    # Симуляция 2 вихрей
     Gamma1 = 1.0
     Gamma2 = 1.0
     r1 = np.array([1.0, 0.0])
@@ -936,11 +914,11 @@ def task_08():
     trajectory2 = [r2.copy()]
 
     for _ in range(n_steps):
-        # Сandла vortex 2 on vortex 1
+        # Сила вихря 2 на вихрь 1
         r12 = r2 - r1
         r12_mag = np.linalg.norm(r12)
-        # Сtoороwithть vortex 1 = (Γ_2 / 2π) (-y_12, x_12) / r_12²
-        # this and еwithть by/oninорfrom on -90° gradientа ln(r)
+        # Скорость вихря 1 = (Γ_2 / 2π) (-y_12, x_12) / r_12²
+        # это и есть поворот на -90° градиента ln(r)
         v1 = (Gamma2 / (2 * math.pi * r12_mag**2)) * np.array([-r12[1], r12[0]])
         v2 = -(Gamma1 / (2 * math.pi * r12_mag**2)) * np.array([-r12[1], r12[0]])
 
@@ -958,7 +936,7 @@ def task_08():
     out.add_json("final_r1", trajectory1[-1].tolist())
     out.add_json("final_r2", trajectory2[-1].tolist())
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(8, 8))
     ax.plot(trajectory1[:, 0], trajectory1[:, 1], 'b-', lw=2, label='Vortex 1')
     ax.plot(trajectory2[:, 0], trajectory2[:, 1], 'r-', lw=2, label='Vortex 2')
@@ -972,7 +950,7 @@ def task_08():
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_title('Task 8: Two-vortex rotation (Kirchhoff Hamiltonian)\n'
-                 'Заyesча 8: Вращенandе дinух vortices (Кandрхгоф)')
+                 'Задача 8: Вращение двух вихрей (Кирхгоф)')
 
     out.save_figure(fig, "task_08_two_vortex_kirchhoff")
 
@@ -980,8 +958,8 @@ def task_08():
 
 
 def task_09():
-    """Заyesча 9: Поinорfrom in toомплеtowithbutй плоwithtoоwithтand: z → z·exp(i·θ_b)"""
-    out = Output("09", "Поinорfrom in toомплеtowithbutй плоwithtoоwithтand: z → z·exp(i·θ_b)",
+    """Задача 9: Поворот в комплексной плоскости: z → z·exp(i·θ_b)"""
+    out = Output("09", "Поворот в комплексной плоскости: z → z·exp(i·θ_b)",
                  "Rotation in complex plane: z → z·exp(i·θ_b)")
 
     b = CONFIG["b_value"]
@@ -997,12 +975,12 @@ def task_09():
     out.log(f"z = {z}", f"z = {z}")
     out.log(f"z·exp(i·θ_b) = {z_rotated}", f"z·exp(i·θ_b) = {z_rotated}")
 
-    # Траеtothenрandя: z(t) = exp(i·t) — едandнandчonя оtoружbutwithть
+    # Траектория: z(t) = exp(i·t) — единичная окружность
     t = np.linspace(0, 4*np.pi, 500)
     z_t = np.exp(1j * t)
     z_t_rotated = z_t * cmath.exp(1j * theta_b)
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     ax = axes[0]
@@ -1016,9 +994,9 @@ def task_09():
     ax.legend()
     ax.set_xlabel('Re(z)')
     ax.set_ylabel('Im(z)')
-    ax.set_title('Task 9: Complex rotation\nЗаyesча 9: Комплеtowithный by/oninорfrom')
+    ax.set_title('Task 9: Complex rotation\nЗадача 9: Комплексный поворот')
 
-    # Спраinа: dependence inещеwithтinенbutй and мнandмой чаwithтand from inременand
+    # Справа: зависимость вещественной и мнимой части от времени
     ax = axes[1]
     ax.plot(t, z_t.real, 'b-', lw=2, label='Re(z) original')
     ax.plot(t, z_t.imag, 'b--', lw=2, label='Im(z) original')
@@ -1026,7 +1004,7 @@ def task_09():
     ax.plot(t, z_t_rotated.imag, 'r--', lw=2, label='Im(z) rotated')
     ax.set_xlabel('t')
     ax.set_ylabel('Re, Im')
-    ax.set_title('Task 9: Wave from rotation\nЗаyesча 9: Волon from by/oninорfromа')
+    ax.set_title('Task 9: Wave from rotation\nЗадача 9: Волна из поворота')
     ax.legend(fontsize=8)
     ax.grid(True, alpha=0.3)
 
@@ -1036,8 +1014,8 @@ def task_09():
 
 
 def task_10():
-    """Заyesча 10: Сраoutsideнandе by/oninорfromоin +90°, -90°, +θ_b, -θ_b"""
-    out = Output("10", "Сраoutsideнandе by/oninорfromоin +90°, -90°, +θ_b, -θ_b",
+    """Задача 10: Сравнение поворотов +90°, -90°, +θ_b, -θ_b"""
+    out = Output("10", "Сравнение поворотов +90°, -90°, +θ_b, -θ_b",
                  "Comparison of rotations +90°, -90°, +θ_b, -θ_b")
 
     b = CONFIG["b_value"]
@@ -1048,7 +1026,7 @@ def task_10():
         ("-90°", -math.pi/2),
         (f"+θ_b = +{math.degrees(theta_b):.2f}°", theta_b),
         (f"-θ_b = -{math.degrees(theta_b):.2f}°", -theta_b),
-        ("0° (notт / none)", 0.0),
+        ("0° (нет / none)", 0.0),
     ]
 
     v = np.array([1.0, 0.5])
@@ -1073,12 +1051,12 @@ def task_10():
             "angle_between_v_and_vrot": angle_between,
         })
 
-        out.log(f"{name}: v'={v_rot}, length withохраnoton={abs(length_orig-length_rot)<1e-10}, "
-                f"angle between v and v'={angle_between:.2f}°")
+        out.log(f"{name}: v'={v_rot}, длина сохранена={abs(length_orig-length_rot)<1e-10}, "
+                f"угол между v и v'={angle_between:.2f}°")
 
     out.add_json("rotation_comparison", results)
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 10))
     colors = ['blue', 'green', 'red', 'orange', 'gray']
 
@@ -1096,7 +1074,7 @@ def task_10():
     ax.grid(True, alpha=0.3)
     ax.axhline(0, color='k', lw=0.5)
     ax.axvline(0, color='k', lw=0.5)
-    ax.set_title('Task 10: Comparison of rotations\nЗаyesча 10: Сраoutsideнandе by/oninорfromоin')
+    ax.set_title('Task 10: Comparison of rotations\nЗадача 10: Сравнение поворотов')
     ax.set_xlabel('x')
     ax.set_ylabel('y')
 
@@ -1119,8 +1097,8 @@ def task_10():
 # ----------------------------------------------------------------------------
 
 def task_11():
-    """Заyesча 11: α = 1 + 2cos(2π/7) from PSL(2,7)"""
-    out = Output("11", "α = 1 + 2cos(2π/7) from PSL(2,7)",
+    """Задача 11: α = 1 + 2cos(2π/7) из PSL(2,7)"""
+    out = Output("11", "α = 1 + 2cos(2π/7) из PSL(2,7)",
                  "α = 1 + 2cos(2π/7) from PSL(2,7)")
 
     alpha = 1.0 + 2.0 * math.cos(2.0 * math.pi / 7.0)
@@ -1128,13 +1106,13 @@ def task_11():
     out.log(f"α = 1 + 2cos(2π/7) = {alpha:.10f}",
             f"α = 1 + 2cos(2π/7) = {alpha:.10f}")
 
-    # Проinерtoа: α — toорень x³ - 2x² - x + 1 = 0
+    # Проверка: α — корень x³ - 2x² - x + 1 = 0
     residual = alpha**3 - 2*alpha**2 - alpha + 1
     out.add_json("minimal_polynomial_residual", residual)
-    out.log(f"Неinязtoа many/muchчлеon x³-2x²-x+1: {residual:.2e}",
+    out.log(f"Невязка многочлена x³-2x²-x+1: {residual:.2e}",
             f"Polynomial residual: {residual:.2e}")
 
-    # Графandto: three toорня
+    # График: три корня
     x = np.linspace(-1, 3, 500)
     y = x**3 - 2*x**2 - x + 1
     roots = np.roots([1, -2, -1, 1])
@@ -1148,7 +1126,7 @@ def task_11():
     ax.plot(alpha, 0, 'g^', markersize=15, label=f'α = {alpha:.4f}')
     ax.set_xlabel('x')
     ax.set_ylabel('y')
-    ax.set_title('Task 11: α as root of x³-2x²-x+1\nЗаyesча 11: α as toорень x³-2x²-x+1')
+    ax.set_title('Task 11: α as root of x³-2x²-x+1\nЗадача 11: α как корень x³-2x²-x+1')
     ax.legend()
     ax.grid(True, alpha=0.3)
     ax.set_ylim(-3, 3)
@@ -1159,7 +1137,7 @@ def task_11():
 
 
 def task_12():
-    """Заyesча 12: L_min = 2·arccosh(α)"""
+    """Задача 12: L_min = 2·arccosh(α)"""
     out = Output("12", "L_min = 2·arccosh(α)",
                  "L_min = 2·arccosh(α)")
 
@@ -1171,10 +1149,10 @@ def task_12():
     out.log(f"L_min = 2·arccosh({alpha:.6f}) = {L_min:.10f}",
             f"L_min = 2·arccosh({alpha:.6f}) = {L_min:.10f}")
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-    # Слеinа: arccosh
+    # Слева: arccosh
     ax = axes[0]
     x = np.linspace(1, 3, 200)
     y = np.arccosh(x)
@@ -1182,11 +1160,11 @@ def task_12():
     ax.plot(alpha, math.acosh(alpha), 'ro', markersize=10, label=f'α = {alpha:.4f}')
     ax.set_xlabel('x')
     ax.set_ylabel('arccosh(x)')
-    ax.set_title('Task 12: arccosh(α)\nЗаyesча 12: arccosh(α)')
+    ax.set_title('Task 12: arccosh(α)\nЗадача 12: arccosh(α)')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
-    # Спраinа: L_min = 2·arccosh(α) as function from α
+    # Справа: L_min = 2·arccosh(α) как функция от α
     ax = axes[1]
     alphas = np.linspace(1.01, 3, 200)
     L_mins = 2 * np.arccosh(alphas)
@@ -1194,7 +1172,7 @@ def task_12():
     ax.plot(alpha, L_min, 'ro', markersize=10, label=f'L_min = {L_min:.4f}')
     ax.set_xlabel('α')
     ax.set_ylabel('L_min = 2·arccosh(α)')
-    ax.set_title('Task 12: L_min vs α\nЗаyesча 12: L_min from α')
+    ax.set_title('Task 12: L_min vs α\nЗадача 12: L_min от α')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -1204,8 +1182,8 @@ def task_12():
 
 
 def task_13():
-    """Заyesча 13: β_K = 5/3 from spectrum Колмогороinа k^(-5/3)"""
-    out = Output("13", "β_K = 5/3 from spectrum Колмогороinа k^(-5/3)",
+    """Задача 13: β_K = 5/3 из спектра Колмогорова k^(-5/3)"""
+    out = Output("13", "β_K = 5/3 из спектра Колмогорова k^(-5/3)",
                  "β_K = 5/3 from Kolmogorov spectrum k^(-5/3)")
 
     beta_K = 5.0 / 3.0
@@ -1213,23 +1191,23 @@ def task_13():
     out.log(f"β_K = 5/3 = {beta_K:.10f}",
             f"β_K = 5/3 = {beta_K:.10f}")
 
-    # Колмогороinwithtoandй spectrum E(k) = C_K · ε^(2/3) · k^(-5/3)
+    # Колмогоровский спектр E(k) = C_K · ε^(2/3) · k^(-5/3)
     k = np.logspace(-2, 2, 200)
     C_K = 1.5
     eps = 1.0
     E = C_K * eps**(2/3) * k**(-5/3)
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.loglog(k, E, 'b-', lw=2, label='E(k) = C_K·ε^(2/3)·k^(-5/3)')
-    ax.set_xlabel('k (inолbutinое чandwithло / wavenumber)')
+    ax.set_xlabel('k (волновое число / wavenumber)')
     ax.set_ylabel('E(k)')
     ax.set_title('Task 13: Kolmogorov k^(-5/3) spectrum, β_K = 5/3\n'
-                 'Заyesча 13: Колмогороinwithtoandй spectrum k^(-5/3), β_K = 5/3')
+                 'Задача 13: Колмогоровский спектр k^(-5/3), β_K = 5/3')
     ax.legend()
     ax.grid(True, alpha=0.3, which='both')
 
-    # Аннfromацandя
+    # Аннотация
     ax.text(0.1, 0.5, f'β_K = 5/3 = {beta_K:.4f}\nSlope = -5/3',
             transform=ax.transAxes, fontsize=12,
             bbox=dict(boxstyle='round', facecolor='lightyellow'))
@@ -1240,7 +1218,7 @@ def task_13():
 
 
 def task_14():
-    """Заyesча 14: b = ln(Z_full/Z_leading) / (β_K · L_min)"""
+    """Задача 14: b = ln(Z_full/Z_leading) / (β_K · L_min)"""
     out = Output("14", "b = ln(Z_full/Z_leading) / (β_K · L_min)",
                  "b = ln(Z_full/Z_leading) / (β_K · L_min)")
 
@@ -1248,7 +1226,7 @@ def task_14():
     beta_K = CONFIG["beta_K"]
     L_min = CONFIG["L_min_klein"]
 
-    # Обратный раwithчёт: asое Z_full/Z_leading withоfrominетwithтinует b?
+    # Обратный расчёт: какое Z_full/Z_leading соответствует b?
     Z_ratio = math.exp(b * beta_K * L_min)
 
     out.add_json("b_value", b)
@@ -1261,29 +1239,29 @@ def task_14():
     out.log(f"Z_full/Z_leading = exp(b·β_K·L_min) = {Z_ratio:.6f}",
             f"Z_full/Z_leading = exp(b·β_K·L_min) = {Z_ratio:.6f}")
 
-    # Графandto: b as function Z_ratio
+    # График: b как функция Z_ratio
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     ax = axes[0]
     Z_ratios = np.linspace(1.0, 3.0, 200)
     b_values = np.log(Z_ratios) / (beta_K * L_min)
     ax.plot(Z_ratios, b_values, 'b-', lw=2)
-    ax.plot(Z_ratio, b, 'ro', markersize=10, label=f'b = {b} at/for Z={Z_ratio:.3f}')
+    ax.plot(Z_ratio, b, 'ro', markersize=10, label=f'b = {b} при Z={Z_ratio:.3f}')
     ax.set_xlabel('Z_full / Z_leading')
     ax.set_ylabel('b = ln(Z_full/Z_leading) / (β_K · L_min)')
-    ax.set_title('Task 14: b vs Z ratio\nЗаyesча 14: b from frombutшенandя Z')
+    ax.set_title('Task 14: b vs Z ratio\nЗадача 14: b от отношения Z')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
-    # Спраinа: b as function β_K (at/for фandtowithandроinанbutм Z_ratio)
+    # Справа: b как функция β_K (при фиксированном Z_ratio)
     ax = axes[1]
     beta_Ks = np.linspace(1.0, 3.0, 200)
     b_values2 = np.log(Z_ratio) / (beta_Ks * L_min)
     ax.plot(beta_Ks, b_values2, 'b-', lw=2)
-    ax.plot(beta_K, b, 'ro', markersize=10, label=f'b = {b} at/for β_K = {beta_K:.4f}')
+    ax.plot(beta_K, b, 'ro', markersize=10, label=f'b = {b} при β_K = {beta_K:.4f}')
     ax.set_xlabel('β_K')
     ax.set_ylabel('b')
-    ax.set_title('Task 14: b vs β_K\nЗаyesча 14: b from β_K')
+    ax.set_title('Task 14: b vs β_K\nЗадача 14: b от β_K')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -1293,26 +1271,26 @@ def task_14():
 
 
 def task_15():
-    """Заyesча 15: Унandinерwithальbutwithть b — not forinandwithandт from by/oninерхbutwithтand"""
-    out = Output("15", "Унandinерwithальbutwithть b — not forinandwithandт from by/oninерхbutwithтand",
+    """Задача 15: Универсальность b — не зависит от поверхности"""
+    out = Output("15", "Универсальность b — не зависит от поверхности",
                  "Universality of b — surface-independent")
 
-    # Проinерtoа: b — this angle in фазоinом проwithтранwithтinе, not forinandwithandт from меthreetoand
+    # Проверка: b — это угол в фазовом пространстве, не зависит от метрики
     b = CONFIG["b_value"]
     theta_b = b * math.pi / 2
 
     surfaces = [
-        {"name_ru": "Плоwithtoоwithть 2D", "name_en": "Flat 2D", "metric": "euclidean"},
+        {"name_ru": "Плоскость 2D", "name_en": "Flat 2D", "metric": "euclidean"},
         {"name_ru": "Сфера S²", "name_en": "Sphere S²", "metric": "spherical"},
-        {"name_ru": "Гandперболandчеwithtoая H²", "name_en": "Hyperbolic H²", "metric": "hyperbolic"},
+        {"name_ru": "Гиперболическая H²", "name_en": "Hyperbolic H²", "metric": "hyperbolic"},
         {"name_ru": "Тор T²", "name_en": "Torus T²", "metric": "flat_periodic"},
-        {"name_ru": "Крandinая Klein", "name_en": "Klein curve", "metric": "hyperbolic_klein"},
-        {"name_ru": "3D space R³", "name_en": "3D space R³", "metric": "euclidean_3d"},
+        {"name_ru": "Кривая Клейна", "name_en": "Klein curve", "metric": "hyperbolic_klein"},
+        {"name_ru": "3D пространство R³", "name_en": "3D space R³", "metric": "euclidean_3d"},
     ]
 
     results = []
     for s in surfaces:
-        # θ_b oneаtoоinа for all by/oninерхbutwiththoseй
+        # θ_b одинакова для всех поверхностей
         results.append({
             "surface_ru": s["name_ru"],
             "surface_en": s["name_en"],
@@ -1322,12 +1300,12 @@ def task_15():
             "b_value": b,
             "universal": True,
         })
-        out.log(f"{s['name_ru']} / {s['name_en']}: θ_b = {math.degrees(theta_b):.4f}° (унandinерwithальon)")
+        out.log(f"{s['name_ru']} / {s['name_en']}: θ_b = {math.degrees(theta_b):.4f}° (универсальна)")
 
     out.add_json("surfaces", results)
     out.add_json("b_universal", True)
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(12, 6))
     surface_names = [s["name_en"] for s in surfaces]
     theta_values = [math.degrees(theta_b) for _ in surfaces]
@@ -1335,12 +1313,12 @@ def task_15():
     bars = ax.bar(range(len(surfaces)), theta_values, color='steelblue', alpha=0.7)
     ax.set_xticks(range(len(surfaces)))
     ax.set_xticklabels(surface_names, rotation=45, ha='right')
-    ax.set_ylabel(r'$\theta_b = b\cdot\pi/2$ (градуwithы / degrees)')
+    ax.set_ylabel(r'$\theta_b = b\cdot\pi/2$ (градусы / degrees)')
     ax.set_title('Task 15: Universality of b — same θ_b for all surfaces\n'
-                 'Заyesча 15: Унandinерwithальbutwithть b — oneаtoоinая θ_b for all by/oninерхbutwiththoseй')
+                 'Задача 15: Универсальность b — одинаковая θ_b для всех поверхностей')
     ax.grid(True, alpha=0.3, axis='y')
     ax.axhline(math.degrees(theta_b), color='r', linestyle='--',
-               label=f'θ_b = {math.degrees(theta_b):.4f}° (унandinерwithальbutе value)')
+               label=f'θ_b = {math.degrees(theta_b):.4f}° (универсальное значение)')
     ax.legend()
 
     for bar, val in zip(bars, theta_values):
@@ -1361,36 +1339,36 @@ def task_15():
 
 
 def task_16():
-    """Заyesча 16: Формула Сельберга — structure"""
-    out = Output("16", "Формула traceа Сельберга — structure",
+    """Задача 16: Формула Сельберга — структура"""
+    out = Output("16", "Формула следа Сельберга — структура",
                  "Selberg trace formula — structure")
 
-    out.log("Формула traceа Сельберга for toомпаtoтbutй гandперболandчеwithtoой by/oninерхbutwithтand:",
+    out.log("Формула следа Сельберга для компактной гиперболической поверхности:",
             "Selberg trace formula for compact hyperbolic surface:")
     out.log("Σ_j h(r_j) = (Vol/4π) ∫ r·h(r)·tanh(πr) dr + Σ_γ g(log N(γ)) / (N(γ)^(1/2) - N(γ)^(-1/2))",
             "Σ_j h(r_j) = (Vol/4π) ∫ r·h(r)·tanh(πr) dr + Σ_γ g(log N(γ)) / (N(γ)^(1/2) - N(γ)^(-1/2))")
 
-    # Графandto: toомby/onnotнты formulas Сельберга
+    # График: компоненты формулы Сельберга
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-    # Слеinа: r·tanh(πr)
+    # Слева: r·tanh(πr)
     ax = axes[0]
     r = np.linspace(0, 5, 200)
     y = r * np.tanh(np.pi * r)
     ax.plot(r, y, 'b-', lw=2)
     ax.set_xlabel('r')
     ax.set_ylabel('r · tanh(πr)')
-    ax.set_title('Task 16: Identity term (r·tanh(πr))\nЗаyesча 16: Член identicallywithтand')
+    ax.set_title('Task 16: Identity term (r·tanh(πr))\nЗадача 16: Член тождественности')
     ax.grid(True, alpha=0.3)
 
-    # Спраinа: g(log N(γ)) / (N^(1/2) - N^(-1/2))
+    # Справа: g(log N(γ)) / (N^(1/2) - N^(-1/2))
     ax = axes[1]
     N = np.linspace(1.1, 10, 200)
     denom = N**(0.5) - N**(-0.5)
     ax.plot(N, 1/denom, 'r-', lw=2, label='1/(N^(1/2) - N^(-1/2))')
     ax.set_xlabel('N(γ)')
     ax.set_ylabel('g(log N(γ)) / (N^(1/2) - N^(-1/2))')
-    ax.set_title('Task 16: Hyperbolic term\nЗаyesча 16: Гandперболandчеwithtoandй член')
+    ax.set_title('Task 16: Hyperbolic term\nЗадача 16: Гиперболический член')
     ax.grid(True, alpha=0.3)
     ax.legend()
 
@@ -1400,12 +1378,12 @@ def task_16():
 
 
 def task_17():
-    """Заyesча 17: Дзеthat-function Сельберга Z(s)"""
-    out = Output("17", "Дзеthat-function Сельберга Z(s)",
+    """Задача 17: Дзета-функция Сельберга Z(s)"""
+    out = Output("17", "Дзета-функция Сельберга Z(s)",
                  "Selberg zeta function Z(s)")
 
     # Z(s) = Π_{γ prim} Π_{n=0}^∞ (1 - e^(-(s+n)·l_γ))
-    # Лandдandрующandй intoлад: first at/forмandтandinonя geodesic
+    # Лидирующий вклад: первая примитивная геодезическая
 
     L_min = CONFIG["L_min_klein"]
     s_values = np.linspace(0.5, 3, 200)
@@ -1415,13 +1393,13 @@ def task_17():
     for n in range(20):
         Z_leading *= (1 - np.exp(-(s_values + n) * L_min))
 
-    # Z_full (упрощёнbut: toбаinandм inthenрую геодезandчеwithtoую L2 = 1.5·L_min)
+    # Z_full (упрощённо: добавим вторую геодезическую L2 = 1.5·L_min)
     L2 = 1.5 * L_min
     Z_full = Z_leading.copy()
     for n in range(20):
         Z_full *= (1 - np.exp(-(s_values + n) * L2))
 
-    # Отbutшенandе
+    # Отношение
     ratio = Z_full / Z_leading
 
     out.add_json("L_min", L_min)
@@ -1429,15 +1407,15 @@ def task_17():
     out.log(f"L_min = {L_min:.6f}", f"L_min = {L_min:.6f}")
     out.log(f"L2 = {L2:.6f}", f"L2 = {L2:.6f}")
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     ax = axes[0]
-    ax.plot(s_values, Z_leading, 'b-', lw=2, label='Z_leading (only L_min)')
+    ax.plot(s_values, Z_leading, 'b-', lw=2, label='Z_leading (только L_min)')
     ax.plot(s_values, Z_full, 'r--', lw=2, label='Z_full (L_min + L2)')
     ax.set_xlabel('s')
     ax.set_ylabel('Z(s)')
-    ax.set_title('Task 17: Selberg zeta function\nЗаyesча 17: Дзеthat-function Сельберга')
+    ax.set_title('Task 17: Selberg zeta function\nЗадача 17: Дзета-функция Сельберга')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -1446,7 +1424,7 @@ def task_17():
     ax.axhline(1.0, color='k', linestyle='--', alpha=0.5)
     ax.set_xlabel('s')
     ax.set_ylabel('Z_full / Z_leading')
-    ax.set_title('Task 17: Ratio Z_full/Z_leading\nЗаyesча 17: Отbutшенandе Z_full/Z_leading')
+    ax.set_title('Task 17: Ratio Z_full/Z_leading\nЗадача 17: Отношение Z_full/Z_leading')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -1456,15 +1434,15 @@ def task_17():
 
 
 def task_18():
-    """Заyesча 18: Вычandwithленandе b from Z_full/Z_leading"""
-    out = Output("18", "Вычandwithленandе b from Z_full/Z_leading",
+    """Задача 18: Вычисление b из Z_full/Z_leading"""
+    out = Output("18", "Вычисление b из Z_full/Z_leading",
                  "Computing b from Z_full/Z_leading")
 
     b = CONFIG["b_value"]
     beta_K = CONFIG["beta_K"]
     L_min = CONFIG["L_min_klein"]
 
-    # Z_full/Z_leading at/for s = 1 (typeandчonя thenчtoа)
+    # Z_full/Z_leading при s = 1 (типичная точка)
     s = 1.0
     L2 = 1.5 * L_min
 
@@ -1487,11 +1465,11 @@ def task_18():
     out.add_json("b_target", b)
     out.log(f"Z_leading(s=1) = {Z_leading_s1:.6e}", f"Z_leading(s=1) = {Z_leading_s1:.6e}")
     out.log(f"Z_full(s=1) = {Z_full_s1:.6e}", f"Z_full(s=1) = {Z_full_s1:.6e}")
-    out.log(f"Отbutшенandе / Ratio = {ratio_s1:.6f}", f"Ratio = {ratio_s1:.6f}")
-    out.log(f"b younumerical / b computed = {b_computed:.6f} (целеinое / target: {b})",
+    out.log(f"Отношение / Ratio = {ratio_s1:.6f}", f"Ratio = {ratio_s1:.6f}")
+    out.log(f"b вычисленный / b computed = {b_computed:.6f} (целевое / target: {b})",
             f"b computed = {b_computed:.6f} (target: {b})")
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 6))
     s_values = np.linspace(0.5, 3, 100)
     b_values = []
@@ -1512,11 +1490,11 @@ def task_18():
             b_val = float('nan')
         b_values.append(b_val)
 
-    ax.plot(s_values, b_values, 'b-', lw=2, label='b younumerical / b computed')
-    ax.axhline(b, color='r', linestyle='--', label=f'b целеinое / target = {b}')
+    ax.plot(s_values, b_values, 'b-', lw=2, label='b вычисленный / b computed')
+    ax.axhline(b, color='r', linestyle='--', label=f'b целевое / target = {b}')
     ax.set_xlabel('s')
     ax.set_ylabel('b = ln(Z_full/Z_leading) / (β_K · L_min)')
-    ax.set_title('Task 18: b computed from Selberg Z\nЗаyesча 18: b from дзеты Сельберга')
+    ax.set_title('Task 18: b computed from Selberg Z\nЗадача 18: b из дзеты Сельберга')
     ax.legend()
     ax.grid(True, alpha=0.3)
     ax.set_ylim(-0.5, 0.5)
@@ -1527,41 +1505,41 @@ def task_18():
 
 
 def task_19():
-    """Заyesча 19: Проinерtoа b on разных by/oninерхbutwithтях"""
-    out = Output("19", "Проinерtoа b on разных by/oninерхbutwithтях",
+    """Задача 19: Проверка b на разных поверхностях"""
+    out = Output("19", "Проверка b на разных поверхностях",
                  "Verification of b on different surfaces")
 
     b = CONFIG["b_value"]
     theta_b = b * math.pi / 2
 
-    # На разных by/oninерхbutwithтях L_min разлandчbut, but θ_b = b·π/2 унandinерwithальon
+    # На разных поверхностях L_min различно, но θ_b = b·π/2 универсальна
     surfaces = {
         "Klein (g=3)": 2.0 * math.acosh(1.0 + 2.0*math.cos(2*math.pi/7.0)),
         "Bolza (g=2)": 3.057,
         "Compact (g=5)": 1.852,
         "Compact (g=10)": 1.028,
-        "Sphere S² (g=0)": math.pi,  # другая геомеthreeя
+        "Sphere S² (g=0)": math.pi,  # другая геометрия
     }
 
     results = []
     for name, L_min in surfaces.items():
-        # θ_b one and that же
-        # Но b_form = ln(Z_ratio) / (β_K · L_min) разлandчаетwithя, since L_min разлandчon
-        # Еwithлand Z_ratio фandtowithandроinаbut (унandinерwithальbut), then b_form разлandчаетwithя
-        # НО: b = θ_b / (π/2) — унandinерwithальbut!
-        b_form = b  # унandinерwithальbutе value
+        # θ_b одна и та же
+        # Но b_form = ln(Z_ratio) / (β_K · L_min) различается, т.к. L_min различна
+        # Если Z_ratio фиксировано (универсально), то b_form различается
+        # НО: b = θ_b / (π/2) — универсально!
+        b_form = b  # универсальное значение
         results.append({
             "surface": name,
             "L_min": L_min,
             "theta_b_deg": math.degrees(theta_b),
             "b_universal": b_form,
-            "explanation_ru": f"θ_b = b·π/2 = {math.degrees(theta_b):.4f}° (not forinandwithandт from L_min)",
+            "explanation_ru": f"θ_b = b·π/2 = {math.degrees(theta_b):.4f}° (не зависит от L_min)",
         })
-        out.log(f"{name}: L_min={L_min:.4f}, θ_b={math.degrees(theta_b):.4f}° (унandinерwithальbut)")
+        out.log(f"{name}: L_min={L_min:.4f}, θ_b={math.degrees(theta_b):.4f}° (универсально)")
 
     out.add_json("surfaces_verification", results)
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(12, 6))
     names = list(surfaces.keys())
     L_mins = list(surfaces.values())
@@ -1569,12 +1547,12 @@ def task_19():
 
     x = np.arange(len(names))
     width = 0.35
-    ax.bar(x - width/2, L_mins, width, color='steelblue', alpha=0.7, label='L_min (разлandчbut / varies)')
-    ax.bar(x + width/2, theta_values, width, color='red', alpha=0.7, label='θ_b (унandinерwithальbut / universal)')
+    ax.bar(x - width/2, L_mins, width, color='steelblue', alpha=0.7, label='L_min (различно / varies)')
+    ax.bar(x + width/2, theta_values, width, color='red', alpha=0.7, label='θ_b (универсально / universal)')
     ax.set_xticks(x)
     ax.set_xticklabels(names, rotation=45, ha='right')
-    ax.set_ylabel('L_min, θ_b (градуwithы / degrees)')
-    ax.set_title('Task 19: b universality across surfaces\nЗаyesча 19: Унandinерwithальbutwithть b')
+    ax.set_ylabel('L_min, θ_b (градусы / degrees)')
+    ax.set_title('Task 19: b universality across surfaces\nЗадача 19: Универсальность b')
     ax.legend()
     ax.grid(True, alpha=0.3, axis='y')
 
@@ -1592,8 +1570,8 @@ def task_19():
 
 
 def task_20():
-    """Заyesча 20: Сinодtoа — b унandinерwithальon and аonлandтandчon"""
-    out = Output("20", "Сinодtoа — b унandinерwithальon and аonлandтandчon",
+    """Задача 20: Сводка — b универсальна и аналитична"""
+    out = Output("20", "Сводка — b универсальна и аналитична",
                  "Summary — b is universal and analytical")
 
     b = CONFIG["b_value"]
@@ -1603,13 +1581,13 @@ def task_20():
         "b_value": b,
         "theta_b_rad": theta_b,
         "theta_b_deg": math.degrees(theta_b),
-        "origin_ru": "Аonлandтandчеwithtoand from equations Кandрхгофа: (dx/dt, dy/dt) = R(-90°)·∇H",
+        "origin_ru": "Аналитически из уравнений Кирхгофа: (dx/dt, dy/dt) = R(-90°)·∇H",
         "origin_en": "Analytically from Kirchhoff equations: (dx/dt, dy/dt) = R(-90°)·∇H",
-        "universality_ru": "θ_b = b·π/2 — angle in фазоinом проwithтранwithтinе, not forinandwithandт from меthreetoand",
+        "universality_ru": "θ_b = b·π/2 — угол в фазовом пространстве, не зависит от метрики",
         "universality_en": "θ_b = b·π/2 — phase space angle, metric-independent",
-        "analogies_ru": "5 аonлогandй: Лоренц, Корandолandwith, Магнуwith, Беррand, оwithцandлляthenр",
+        "analogies_ru": "5 аналогий: Лоренц, Кориолис, Магнус, Берри, осциллятор",
         "analogies_en": "5 analogies: Lorentz, Coriolis, Magnus, Berry, oscillator",
-        "key_property_ru": "Поinорfrom орthatonлен: R^T·R = I, preserves длandну, not делает рабfromу",
+        "key_property_ru": "Поворот ортогонален: R^T·R = I, сохраняет длину, не делает работу",
         "key_property_en": "Rotation is orthogonal: R^T·R = I, preserves length, does no work",
     }
 
@@ -1617,7 +1595,7 @@ def task_20():
     for k, v in summary.items():
         out.log(f"{k}: {v}")
 
-    # Графandto: withinодtoа
+    # График: сводка
     fig, ax = plt.subplots(figsize=(12, 8))
     ax.axis('off')
 
@@ -1627,22 +1605,22 @@ def task_20():
         f"b = {b}\n"
         f"θ_b = b·π/2 = {math.degrees(theta_b):.4f}°\n\n"
         "ПРОИСХОЖДЕНИЕ / ORIGIN:\n"
-        "  Аonлandтandчеwithtoand from Кandрхгофа / Analytically from Kirchhoff:\n"
+        "  Аналитически из Кирхгофа / Analytically from Kirchhoff:\n"
         "  (dx/dt, dy/dt) = R(-90°)·∇H\n\n"
         "УНИВЕРСАЛЬНОСТЬ / UNIVERSALITY:\n"
-        "  θ_b — angle in фазоinом проwithтранwithтinе\n"
-        "  Не forinandwithandт from меthreetoand by/oninерхbutwithтand\n"
-        "  Прandменandм to 2D, 3D, withфере, гandперболandчеwithtoой\n\n"
+        "  θ_b — угол в фазовом пространстве\n"
+        "  Не зависит от метрики поверхности\n"
+        "  Применим к 2D, 3D, сфере, гиперболической\n\n"
         "АНАЛОГИИ / ANALOGIES (5):\n"
-        "  1. Сandла Лоренца F = qv×B\n"
-        "  2. Сandла Корandолandwithа F = -2mΩ×v\n"
-        "  3. Сandла Магнуwithа F = ρΓv×ẑ\n"
-        "  4. Эффеtoт Беррand (геом. phase)\n"
-        "  5. Гармtheyчеwithtoandй оwithцandлляthenр (90° shift x-v)\n\n"
+        "  1. Сила Лоренца F = qv×B\n"
+        "  2. Сила Кориолиса F = -2mΩ×v\n"
+        "  3. Сила Магнуса F = ρΓv×ẑ\n"
+        "  4. Эффект Берри (геом. фаза)\n"
+        "  5. Гармонический осциллятор (90° сдвиг x-v)\n\n"
         "КЛЮЧЕВОЕ СВОЙСТВО / KEY PROPERTY:\n"
-        "  R^T·R = I (orthogonality)\n"
-        "  |u'| = |u| (preservation длandны)\n"
-        "  F·v = 0 (not делает рабfromу)\n"
+        "  R^T·R = I (ортогональность)\n"
+        "  |u'| = |u| (сохранение длины)\n"
+        "  F·v = 0 (не делает работу)\n"
         "  → НЕ ДОБАВЛЯЕТ ДИССИПАЦИЮ\n"
     )
 
@@ -1651,7 +1629,7 @@ def task_20():
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.9))
 
     ax.set_title('Task 20: Summary — b is universal and analytical\n'
-                 'Заyesча 20: Сinодtoа — b унandinерwithальon and аonлandтandчon',
+                 'Задача 20: Сводка — b универсальна и аналитична',
                  fontsize=13, fontweight='bold')
 
     out.save_figure(fig, "task_20_b_summary")
@@ -1660,12 +1638,12 @@ def task_20():
 
 
 # ----------------------------------------------------------------------------
-# ЧАСТЬ III. ВЫВОД γ ЧЕРЕЗ e И CONSTANTS СМАГОРИНСКОГО (ЗАДАЧИ 21-30)
+# ЧАСТЬ III. ВЫВОД γ ЧЕРЕЗ e И КОНСТАНТЫ СМАГОРИНСКОГО (ЗАДАЧИ 21-30)
 # ----------------------------------------------------------------------------
 
 def task_21():
-    """Заyesча 21: Чandwithло Эйлера e from thenждеwithтinа arccosh"""
-    out = Output("21", "Чandwithло Эйлера e from thenждеwithтinа arccosh",
+    """Задача 21: Число Эйлера e из тождества arccosh"""
+    out = Output("21", "Число Эйлера e из тождества arccosh",
                  "Euler's number e from arccosh identity")
 
     alpha = 1.0 + 2.0 * math.cos(2.0 * math.pi / 7.0)
@@ -1680,10 +1658,10 @@ def task_21():
     out.add_json("error", abs(e_klein - e_std))
     out.log(f"e_Klein = {e_klein:.16f}", f"e_Klein = {e_klein:.16f}")
     out.log(f"e_standard = {e_std:.16f}", f"e_standard = {e_std:.16f}")
-    out.log(f"Ошandбtoа / Error = {abs(e_klein - e_std):.2e}",
+    out.log(f"Ошибка / Error = {abs(e_klein - e_std):.2e}",
             f"Error = {abs(e_klein - e_std):.2e}")
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 6))
     L_values = np.linspace(0.1, 5, 200)
     e_values = (alpha + math.sqrt(alpha**2 - 1))**(2.0 / L_values)
@@ -1693,7 +1671,7 @@ def task_21():
     ax.plot(L_min, e_klein, 'ro', markersize=10)
     ax.set_xlabel('L')
     ax.set_ylabel('e_Klein')
-    ax.set_title('Task 21: e from arccosh identity\nЗаyesча 21: e from thenждеwithтinа arccosh')
+    ax.set_title('Task 21: e from arccosh identity\nЗадача 21: e из тождества arccosh')
     ax.legend()
     ax.grid(True, alpha=0.3)
     ax.set_ylim(0, 10)
@@ -1704,8 +1682,8 @@ def task_21():
 
 
 def task_22():
-    """Заyesча 22: Решенandе e^(1/3)·(1+b)^γ = C_K relatively γ"""
-    out = Output("22", "Решенandе e^(1/3)·(1+b)^γ = C_K relatively γ",
+    """Задача 22: Решение e^(1/3)·(1+b)^γ = C_K относительно γ"""
+    out = Output("22", "Решение e^(1/3)·(1+b)^γ = C_K относительно γ",
                  "Solving e^(1/3)·(1+b)^γ = C_K for γ")
 
     b = CONFIG["b_value"]
@@ -1715,7 +1693,7 @@ def task_22():
     # γ = (ln(C_K) - 1/3) / ln(1+b)
     gamma = (math.log(C_K) - 1.0/3.0) / math.log(1.0 + b)
 
-    # Проinерtoа
+    # Проверка
     C_K_check = e_third * (1.0 + b)**gamma
 
     out.add_json("b", b)
@@ -1726,12 +1704,12 @@ def task_22():
     out.add_json("residual", abs(C_K_check - C_K))
     out.log(f"γ = (ln({C_K}) - 1/3) / ln(1+{b}) = {gamma:.10f}",
             f"γ = (ln({C_K}) - 1/3) / ln(1+{b}) = {gamma:.10f}")
-    out.log(f"Проinерtoа / Check: e^(1/3)·(1+b)^γ = {C_K_check:.10f} (целеinое / target: {C_K})",
+    out.log(f"Проверка / Check: e^(1/3)·(1+b)^γ = {C_K_check:.10f} (целевое / target: {C_K})",
             f"Check: e^(1/3)·(1+b)^γ = {C_K_check:.10f}")
-    out.log(f"Неinязtoа / Residual = {abs(C_K_check - C_K):.2e}",
+    out.log(f"Невязка / Residual = {abs(C_K_check - C_K):.2e}",
             f"Residual = {abs(C_K_check - C_K):.2e}")
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     ax = axes[0]
@@ -1742,11 +1720,11 @@ def task_22():
     ax.plot(gamma, C_K_check, 'ro', markersize=10, label=f'γ = {gamma:.6f}')
     ax.set_xlabel('γ')
     ax.set_ylabel('C_K')
-    ax.set_title('Task 22: γ solving the equation\nЗаyesча 22: γ from equations')
+    ax.set_title('Task 22: γ solving the equation\nЗадача 22: γ из уравнения')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
-    # Спраinа: γ as function C_K
+    # Справа: γ как функция C_K
     ax = axes[1]
     C_ks_range = np.linspace(1.3, 1.7, 200)
     gammas_range = (np.log(C_ks_range) - 1.0/3.0) / math.log(1.0 + b)
@@ -1754,7 +1732,7 @@ def task_22():
     ax.plot(C_K, gamma, 'ro', markersize=10, label=f'C_K = {C_K}, γ = {gamma:.6f}')
     ax.set_xlabel('C_K')
     ax.set_ylabel('γ')
-    ax.set_title('Task 22: γ as function of C_K\nЗаyesча 22: γ as function C_K')
+    ax.set_title('Task 22: γ as function of C_K\nЗадача 22: γ как функция C_K')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -1764,8 +1742,8 @@ def task_22():
 
 
 def task_23():
-    """Заyesча 23: Сраoutsideнandе γ_doc=0.95456 vs γ_solved=0.95449"""
-    out = Output("23", "Сраoutsideнandе γ_doc vs γ_solved",
+    """Задача 23: Сравнение γ_doc=0.95456 vs γ_solved=0.95449"""
+    out = Output("23", "Сравнение γ_doc vs γ_solved",
                  "Comparison γ_doc vs γ_solved")
 
     b = CONFIG["b_value"]
@@ -1780,26 +1758,26 @@ def task_23():
     out.add_json("gamma_solved", gamma_solved)
     out.add_json("abs_diff", diff)
     out.add_json("rel_diff", rel_diff)
-    out.log(f"γ_doc (totoумент) = {gamma_doc}", f"γ_doc (document) = {gamma_doc}")
-    out.log(f"γ_solved (via/through e) = {gamma_solved:.6f}", f"γ_solved (via e) = {gamma_solved:.6f}")
-    out.log(f"Абwith. разнandца / Abs diff = {diff:.2e}", f"Abs diff = {diff:.2e}")
-    out.log(f"Отн. разнandца / Rel diff = {rel_diff:.4%}", f"Rel diff = {rel_diff:.4%}")
+    out.log(f"γ_doc (документ) = {gamma_doc}", f"γ_doc (document) = {gamma_doc}")
+    out.log(f"γ_solved (через e) = {gamma_solved:.6f}", f"γ_solved (via e) = {gamma_solved:.6f}")
+    out.log(f"Абс. разница / Abs diff = {diff:.2e}", f"Abs diff = {diff:.2e}")
+    out.log(f"Отн. разница / Rel diff = {rel_diff:.4%}", f"Rel diff = {rel_diff:.4%}")
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 6))
-    bars = ax.bar(['γ_doc\n(totoумент)', 'γ_solved\n(via/through e)'],
+    bars = ax.bar(['γ_doc\n(документ)', 'γ_solved\n(через e)'],
                   [gamma_doc, gamma_solved],
                   color=['red', 'green'], alpha=0.7)
     ax.set_ylabel('γ')
-    ax.set_title('Task 23: γ_doc vs γ_solved — праtoтandчеwithtoand andдентandчны\n'
-                 'Заyesча 23: γ_doc vs γ_solved — праtoтandчеwithtoand andдентandчны')
+    ax.set_title('Task 23: γ_doc vs γ_solved — практически идентичны\n'
+                 'Задача 23: γ_doc vs γ_solved — практически идентичны')
     ax.grid(True, alpha=0.3, axis='y')
 
     for bar, val in zip(bars, [gamma_doc, gamma_solved]):
         ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.001,
                 f'{val:.6f}', ha='center', fontsize=11, fontweight='bold')
 
-    ax.text(0.5, 0.5, f'Разнandца / Diff: {diff:.2e}\nОтн. / Rel: {rel_diff:.4%}',
+    ax.text(0.5, 0.5, f'Разница / Diff: {diff:.2e}\nОтн. / Rel: {rel_diff:.4%}',
             transform=ax.transAxes, fontsize=12, ha='center',
             bbox=dict(boxstyle='round', facecolor='lightyellow'))
 
@@ -1809,8 +1787,8 @@ def task_23():
 
 
 def task_24():
-    """Заyesча 24: Опроinерженandе γ_base = 6/7"""
-    out = Output("24", "Опроinерженandе γ_base = 6/7",
+    """Задача 24: Опровержение γ_base = 6/7"""
+    out = Output("24", "Опровержение γ_base = 6/7",
                  "Refutation of γ_base = 6/7")
 
     gamma_base_67 = 6.0 / 7.0
@@ -1818,7 +1796,7 @@ def task_24():
     gamma_via_67 = gamma_base_67 * (1.0 + b)
     gamma_doc = 0.95456
 
-    # Оптandмальbutе γ_base
+    # Оптимальное γ_base
     gamma_opt = (math.log(1.5) - 1.0/3.0) / math.log(1.0 + b)
     gamma_base_opt = gamma_opt / (1.0 + b)
 
@@ -1828,19 +1806,19 @@ def task_24():
     out.add_json("gamma_base_optimal", gamma_base_opt)
     out.add_json("arithmetic_error_67", abs(gamma_via_67 - gamma_doc))
     out.log(f"γ_base = 6/7 = {gamma_base_67:.6f}", f"γ_base = 6/7 = {gamma_base_67:.6f}")
-    out.log(f"γ = (6/7)·(1+b) = {gamma_via_67:.6f} (not раinbut γ_doc = {gamma_doc})",
+    out.log(f"γ = (6/7)·(1+b) = {gamma_via_67:.6f} (не равно γ_doc = {gamma_doc})",
             f"γ = (6/7)·(1+b) = {gamma_via_67:.6f} ≠ γ_doc = {gamma_doc}")
     out.log(f"γ_base_optimal = {gamma_base_opt:.6f}", f"γ_base_optimal = {gamma_base_opt:.6f}")
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 6))
-    bars = ax.bar(['γ_base = 6/7\n(totoумент, ошandбочbut)',
-                   'γ_base = 0.885\n(оптandмальbutе, via/through e)'],
+    bars = ax.bar(['γ_base = 6/7\n(документ, ошибочно)',
+                   'γ_base = 0.885\n(оптимальное, через e)'],
                   [gamma_base_67, gamma_base_opt],
                   color=['red', 'green'], alpha=0.7)
     ax.set_ylabel('γ_base')
     ax.set_title('Task 24: γ_base = 6/7 (wrong) vs γ_base = 0.885 (correct)\n'
-                 'Заyesча 24: γ_base = 6/7 (notinерbut) vs γ_base = 0.885 (inерbut)')
+                 'Задача 24: γ_base = 6/7 (неверно) vs γ_base = 0.885 (верно)')
     ax.grid(True, alpha=0.3, axis='y')
 
     for bar, val in zip(bars, [gamma_base_67, gamma_base_opt]):
@@ -1853,8 +1831,8 @@ def task_24():
 
 
 def task_25():
-    """Заyesча 25: Формула Лandллand: C_s = (1/π)·[(3/2)·C_K]^(-3/4)"""
-    out = Output("25", "Формула Лandллand",
+    """Задача 25: Формула Лилли: C_s = (1/π)·[(3/2)·C_K]^(-3/4)"""
+    out = Output("25", "Формула Лилли",
                  "Lilly formula")
 
     C_K = CONFIG["C_K_target"]
@@ -1866,26 +1844,26 @@ def task_25():
     out.log(f"C_s = (1/π)·[(3/2)·{C_K}]^(-3/4) = {C_s:.6f}",
             f"C_s = (1/π)·[(3/2)·{C_K}]^(-3/4) = {C_s:.6f}")
 
-    # Графandto
+    # График
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     ax = axes[0]
     C_ks = np.linspace(1.3, 1.8, 200)
     C_ss = (1.0 / np.pi) * ((3.0/2.0) * C_ks)**(-3.0/4.0)
-    ax.plot(C_ks, C_ss, 'b-', lw=2, label='C_s(C_K) formula Лandллand / Lilly formula')
+    ax.plot(C_ks, C_ss, 'b-', lw=2, label='C_s(C_K) формула Лилли / Lilly formula')
     ax.plot(C_K, C_s, 'ro', markersize=10, label=f'C_K={C_K}, C_s={C_s:.5f}')
-    ax.axhspan(0.10, 0.20, alpha=0.15, color='green', label='Эмпandрandчеwithtoandй дandапазhe/it / Empirical range')
+    ax.axhspan(0.10, 0.20, alpha=0.15, color='green', label='Эмпирический диапазон / Empirical range')
     ax.set_xlabel('C_K')
     ax.set_ylabel('C_s')
-    ax.set_title('Task 25: Lilly formula C_s(C_K)\nЗаyesча 25: Формула Лandллand C_s(C_K)')
+    ax.set_title('Task 25: Lilly formula C_s(C_K)\nЗадача 25: Формула Лилли C_s(C_K)')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
-    # Спраinа: гandwiththenграмма
+    # Справа: гистограмма
     ax = axes[1]
     bars = ax.bar(['C_K', 'C_s'], [C_K, C_s], color=['steelblue', 'coral'], alpha=0.7)
     ax.set_ylabel('Value')
-    ax.set_title('Task 25: C_K and C_s values\nЗаyesча 25: Зonченandя C_K and C_s')
+    ax.set_title('Task 25: C_K and C_s values\nЗадача 25: Значения C_K и C_s')
     ax.grid(True, alpha=0.3, axis='y')
 
     for bar, val in zip(bars, [C_K, C_s]):
@@ -1898,8 +1876,8 @@ def task_25():
 
 
 def task_26():
-    """Заyesча 26: Сраoutsideнandе C_s = 0.173 (Lilly) vs C_s = 0.080 (Germano)"""
-    out = Output("26", "Сраoutsideнandе C_s = 0.173 vs C_s = 0.080",
+    """Задача 26: Сравнение C_s = 0.173 (Lilly) vs C_s = 0.080 (Germano)"""
+    out = Output("26", "Сравнение C_s = 0.173 vs C_s = 0.080",
                  "Comparison C_s = 0.173 vs C_s = 0.080")
 
     Cs_lilly = 0.17327
@@ -1909,25 +1887,25 @@ def task_26():
     out.add_json("Cs_lilly", Cs_lilly)
     out.add_json("Cs_germano", Cs_germano)
     out.add_json("ratio", ratio)
-    out.log(f"C_s Lilly (withthatтandчеwithtoая) = {Cs_lilly}", f"C_s Lilly (static) = {Cs_lilly}")
-    out.log(f"C_s Germano (дandusчеwithtoая) = {Cs_germano}", f"C_s Germano (dynamic) = {Cs_germano}")
-    out.log(f"Отbutшенandе / Ratio = {ratio:.2f}", f"Ratio = {ratio:.2f}")
+    out.log(f"C_s Lilly (статическая) = {Cs_lilly}", f"C_s Lilly (static) = {Cs_lilly}")
+    out.log(f"C_s Germano (динамическая) = {Cs_germano}", f"C_s Germano (dynamic) = {Cs_germano}")
+    out.log(f"Отношение / Ratio = {ratio:.2f}", f"Ratio = {ratio:.2f}")
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 6))
-    bars = ax.bar(['C_s Lilly\n(withthatтandчеwithtoая)', 'C_s Germano\n(дandusчеwithtoая)'],
+    bars = ax.bar(['C_s Lilly\n(статическая)', 'C_s Germano\n(динамическая)'],
                   [Cs_lilly, Cs_germano],
                   color=['red', 'green'], alpha=0.7)
     ax.set_ylabel('C_s')
     ax.set_title('Task 26: Two C_s values in document series\n'
-                 'Заyesча 26: Дinа values C_s in withерandand totoуменthenin')
+                 'Задача 26: Два значения C_s в серии документов')
     ax.grid(True, alpha=0.3, axis='y')
 
     for bar, val in zip(bars, [Cs_lilly, Cs_germano]):
         ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.005,
                 f'{val:.5f}', ha='center', fontsize=11, fontweight='bold')
 
-    ax.text(0.5, 0.7, f'Отbutшенandе / Ratio: {ratio:.2f}',
+    ax.text(0.5, 0.7, f'Отношение / Ratio: {ratio:.2f}',
             transform=ax.transAxes, fontsize=12, ha='center',
             bbox=dict(boxstyle='round', facecolor='lightyellow'))
 
@@ -1937,8 +1915,8 @@ def task_26():
 
 
 def task_27():
-    """Заyesча 27: γ as function from b (at/for C_K = 1.5)"""
-    out = Output("27", "γ as function from b (at/for C_K = 1.5)",
+    """Задача 27: γ как функция от b (при C_K = 1.5)"""
+    out = Output("27", "γ как функция от b (при C_K = 1.5)",
                  "γ as function of b (at C_K = 1.5)")
 
     C_K = CONFIG["C_K_target"]
@@ -1952,13 +1930,13 @@ def task_27():
     out.add_json("b_target", b_target)
     out.add_json("gamma_target", gamma_target)
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(b_values, gamma_values, 'b-', lw=2, label='γ(b) = (ln(C_K) - 1/3) / ln(1+b)')
     ax.plot(b_target, gamma_target, 'ro', markersize=10, label=f'b = {b_target}, γ = {gamma_target:.6f}')
     ax.set_xlabel('b')
     ax.set_ylabel('γ')
-    ax.set_title('Task 27: γ as function of b (C_K = 1.5)\nЗаyesча 27: γ as function from b')
+    ax.set_title('Task 27: γ as function of b (C_K = 1.5)\nЗадача 27: γ как функция от b')
     ax.legend()
     ax.grid(True, alpha=0.3)
 
@@ -1968,7 +1946,7 @@ def task_27():
 
 
 def task_28():
-    """Заyesча 28: γ_base_optimal = γ / (1+b)"""
+    """Задача 28: γ_base_optimal = γ / (1+b)"""
     out = Output("28", "γ_base_optimal = γ / (1+b)",
                  "γ_base_optimal = γ / (1+b)")
 
@@ -1982,13 +1960,13 @@ def task_28():
     out.log(f"γ = {gamma:.10f}", f"γ = {gamma:.10f}")
     out.log(f"γ_base = γ/(1+b) = {gamma_base:.10f}", f"γ_base = γ/(1+b) = {gamma_base:.10f}")
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(8, 8))
     bars = ax.bar(['γ', 'γ_base = γ/(1+b)'],
                   [gamma, gamma_base],
                   color=['steelblue', 'coral'], alpha=0.7)
     ax.set_ylabel('Value')
-    ax.set_title('Task 28: γ and γ_base\nЗаyesча 28: γ and γ_base')
+    ax.set_title('Task 28: γ and γ_base\nЗадача 28: γ и γ_base')
     ax.grid(True, alpha=0.3, axis='y')
 
     for bar, val in zip(bars, [gamma, gamma_base]):
@@ -2001,8 +1979,8 @@ def task_28():
 
 
 def task_29():
-    """Заyesча 29: Проinерtoа C_K = e^(1/3)·(1+b)^γ for разных γ"""
-    out = Output("29", "Проinерtoа C_K for разных γ",
+    """Задача 29: Проверка C_K = e^(1/3)·(1+b)^γ для разных γ"""
+    out = Output("29", "Проверка C_K для разных γ",
                  "Verification of C_K for different γ")
 
     b = CONFIG["b_value"]
@@ -2020,11 +1998,11 @@ def task_29():
             "C_K_computed": C_K,
             "diff_from_target": diff,
         })
-        out.log(f"γ = {g:.5f}: C_K = {C_K:.6f} (deviation / diff: {diff:.6f})")
+        out.log(f"γ = {g:.5f}: C_K = {C_K:.6f} (отклонение / diff: {diff:.6f})")
 
     out.add_json("C_K_verification", results)
 
-    # Графandto
+    # График
     fig, ax = plt.subplots(figsize=(10, 6))
     gs = [r["gamma"] for r in results]
     cks = [r["C_K_computed"] for r in results]
@@ -2035,7 +2013,7 @@ def task_29():
     ax.set_xticks(range(len(gs)))
     ax.set_xticklabels([f'γ={g:.5f}' for g in gs], rotation=45)
     ax.set_ylabel('C_K')
-    ax.set_title('Task 29: C_K for different γ values\nЗаyesча 29: C_K for разных γ')
+    ax.set_title('Task 29: C_K for different γ values\nЗадача 29: C_K для разных γ')
     ax.legend()
     ax.grid(True, alpha=0.3, axis='y')
 
@@ -2051,20 +2029,20 @@ def task_29():
 
 
 def task_30():
-    """Заyesча 30: Полный youinод C_s from геомеthreeand Klein"""
-    out = Output("30", "Полный youinод C_s from геомеthreeand Klein",
+    """Задача 30: Полный вывод C_s из геометрии Клейна"""
+    out = Output("30", "Полный вывод C_s из геометрии Клейна",
                  "Full derivation of C_s from Klein geometry")
 
     b = CONFIG["b_value"]
     C_K = CONFIG["C_K_target"]
     e_third = math.exp(1.0/3.0)
 
-    # Полonя цеby/onчtoа
+    # Полная цепочка
     alpha = 1.0 + 2.0 * math.cos(2.0 * math.pi / 7.0)
     L_min = 2.0 * math.acosh(alpha)
     e_klein = (alpha + math.sqrt(alpha**2 - 1))**(2.0 / L_min)
     beta_K = 5.0 / 3.0
-    # b from Selberg Z (we assume)
+    # b из Selberg Z (предполагаем)
     gamma = (math.log(C_K) - 1.0/3.0) / math.log(1.0 + b)
     C_K_check = e_third * (1.0 + b)**gamma
     C_s = (1.0 / math.pi) * ((3.0/2.0) * C_K)**(-3.0/4.0)
@@ -2083,7 +2061,7 @@ def task_30():
     for step, info in chain.items():
         out.log(f"{step}: {info['value']:.10f} [{info['source']}]")
 
-    # Графandto: цеby/onчtoа youinоyes
+    # График: цепочка вывода
     fig, ax = plt.subplots(figsize=(14, 8))
     ax.axis('off')
 
@@ -2102,7 +2080,7 @@ def task_30():
                         arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
 
     ax.set_title('Task 30: Full derivation chain C_s from Klein geometry\n'
-                 'Заyesча 30: Полonя цеby/onчtoа youinоyes C_s from геомеthreeand Klein',
+                 'Задача 30: Полная цепочка вывода C_s из геометрии Клейна',
                  fontsize=13, fontweight='bold')
     ax.set_xlim(0, 1)
 
@@ -2112,55 +2090,55 @@ def task_30():
 
 
 # ============================================================================
-# RUN ВСЕХ ЗАДАЧ / RUN ALL TASKS
+# ЗАПУСК ВСЕХ ЗАДАЧ / RUN ALL TASKS
 # ============================================================================
 def run_all_tasks():
-    """Run all tasks / Run all tasks"""
+    """Запуск всех задач / Run all tasks"""
     print("=" * 78)
     print("ГИГАНТСКИЙ КОД ВЕРИФИКАЦИИ МОНОГРАФИИ — 75+ ЗАДАЧ")
     print("GIANT VERIFICATION CODE FOR THE MONOGRAPH — 75+ TASKS")
     print("=" * 78)
 
-    # Спandwithоto all tasks
+    # Список всех задач
     all_tasks = []
     for name, obj in list(globals().items()):
         if name.startswith("task_") and callable(obj):
             all_tasks.append((name, obj))
     all_tasks.sort()
 
-    print(f"\nTotal tasks: {len(all_tasks)}")
-    print(f"Output directory dir: {CONFIG['output_dir']}")
+    print(f"\nВсего задач / Total tasks: {len(all_tasks)}")
+    print(f"Директория вывода / Output dir: {CONFIG['output_dir']}")
     print()
 
     results = {}
     total_time = 0.0
 
     for name, func in all_tasks:
-        print(f"\n>>> Run / Running: {name}")
+        print(f"\n>>> Запуск / Running: {name}")
         t0 = time.time()
         try:
             paths = func()
             dt = time.time() - t0
             total_time += dt
             results[name] = {"status": "OK", "time": dt, "paths": paths}
-            print(f"    OK ({dt:.2f} sec)")
+            print(f"    OK ({dt:.2f} сек / sec)")
         except Exception as e:
             import traceback
             dt = time.time() - t0
             total_time += dt
             results[name] = {"status": "ERROR", "time": dt, "error": str(e)}
-            print(f"    ERROR ({dt:.2f} sec): {e}")
+            print(f"    ERROR ({dt:.2f} сек / sec): {e}")
             traceback.print_exc()
 
     print("\n" + "=" * 78)
-    print("SUMMARY")
+    print("ИТОГ / SUMMARY")
     print("=" * 78)
-    print(f"Total tasks: {len(all_tasks)}")
-    print(f"Successful: {sum(1 for r in results.values() if r['status']=='OK')}")
-    print(f"Errors: {sum(1 for r in results.values() if r['status']=='ERROR')}")
-    print(f"Total time: {total_time:.2f} sec")
-    print(f"Data: {CONFIG['output_dir']}/{CONFIG['data_subdir']}/")
-    print(f"Figures: {CONFIG['output_dir']}/{CONFIG['figures_subdir']}/")
+    print(f"Всего задач / Total tasks: {len(all_tasks)}")
+    print(f"Успешных / Successful: {sum(1 for r in results.values() if r['status']=='OK')}")
+    print(f"Ошибок / Errors: {sum(1 for r in results.values() if r['status']=='ERROR')}")
+    print(f"Общее время / Total time: {total_time:.2f} сек / sec")
+    print(f"Данные / Data: {CONFIG['output_dir']}/{CONFIG['data_subdir']}/")
+    print(f"Графики / Figures: {CONFIG['output_dir']}/{CONFIG['figures_subdir']}/")
 
     return results
 

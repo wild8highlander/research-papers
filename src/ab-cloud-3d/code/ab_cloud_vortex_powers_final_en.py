@@ -1,7 +1,17 @@
-#!/usr/bin/env python3
+"""
+ab_cloud_vortex_powers_final — English Version
+============================================================
+
+Exploratory V3: Find optimal pi^(-2k) for n=4 and confirm absolute JC for all n.
+
+This is the English translation of ab_cloud_vortex_powers_final.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: ab_cloud_vortex_powers_final.py
+"""
+
 # -*- coding: utf-8 -*-
 """
-    English translation of ab_cloud_vortex_powers_final.py.
 EXPLORATORY V3: Find optimal π^(-2k) for n=4 and confirm absolute JC for all n
 ================================================================================
 Following the discovery that W_k = π^(-8) gives absolute JC (σ/|μ| < 5%) for
@@ -179,13 +189,13 @@ def fig_powers_summary(results_grid, best_per_n):
         sigmas = [results_grid[n][k] for k in k_values]
         ax.semilogy(k_values, sigmas, "bo-", lw=2, markersize=8)
         ax.axhline(5.0, color="orange", ls="--", lw=1.5,
-                    label="5% threshold (JC holds)")
+                    label="порог 5% (JC выполняется)")
         best_k = best_per_n[n]["k"]
         ax.axvline(best_k, color="red", ls=":", lw=1.5,
-                    label=f"best k = {best_k}")
-        ax.set_xlabel("k (degree π^(-2k))")
+                    label=f"лучший k = {best_k}")
+        ax.set_xlabel("k (степень π^(-2k))")
         ax.set_ylabel(r"$\sigma/|\mu|$ (%)")
-        ax.set_title(f"n = {n}: лучшая toонфandгурацandя $W_k = \\pi^{{-{2*best_k}}}$\n"
+        ax.set_title(f"n = {n}: лучшая конфигурация $W_k = \\pi^{{-{2*best_k}}}$\n"
                       f"$\\sigma/|\\mu| = {best_per_n[n]['sigma_pct']:.4f}\\%$ "
                       f"({'✓' if best_per_n[n]['jc_holds'] else '✗'})")
         ax.legend(fontsize=8)
@@ -193,8 +203,8 @@ def fig_powers_summary(results_grid, best_per_n):
         # Highlight JC region
         ax.fill_between(k_values, 0.001, 5.0, alpha=0.1, color="green")
 
-    fig.suptitle("Search for optimal power $\\pi^{-2k}$ for абwithолютного totoазательwithтinа JC\n"
-                  "(green zone = JC holds with $\\sigma/|\\mu| < 5\\%$)",
+    fig.suptitle("Поиск оптимальной степени $\\pi^{-2k}$ для абсолютного доказательства JC\n"
+                  "(зелёная зона = JC выполняется с $\\sigma/|\\mu| < 5\\%$)",
                   fontsize=14, fontweight="bold")
     out = os.path.join(FIG_DIR, "fig14_21_powers_pi_search.png")
     fig.savefig(out, dpi=300)
@@ -217,7 +227,7 @@ def fig_final_summary(best_per_n):
     bars = ax.bar(n_values, best_sigmas, color=colors, alpha=0.85,
                    edgecolor="black", linewidth=1.2)
     ax.axhline(5.0, color="orange", ls="--", lw=2,
-                label="5% threshold (JC holds)")
+                label="порог 5% (JC выполняется)")
     for i, (n, sigma, k, jc) in enumerate(zip(n_values, best_sigmas, best_ks, jc_status)):
         marker = "✓ JC" if jc else "✗"
         ax.text(n, sigma * 1.3 if sigma > 0 else 0.01,
@@ -225,10 +235,10 @@ def fig_final_summary(best_per_n):
                  f"W = π^(-{2*k})\n"
                  f"{marker}",
                  ha="center", fontsize=9, fontweight="bold")
-    ax.set_xlabel("dimension $n$")
+    ax.set_xlabel("размерность $n$")
     ax.set_ylabel(r"лучшее $\sigma/|\mu|$ (%)")
-    ax.set_title("ABSOLUTE JC PROOF: $W_k = \\pi^{-2k}$ for AB-cloud vortices\n"
-                  "Цель: $\\sigma/|\\mu| < 5\\%$ (green bars)")
+    ax.set_title("АБСОЛЮТНОЕ ДОКАЗАТЕЛЬСТВО JC: $W_k = \\pi^{-2k}$ для вихрей AB-облака\n"
+                  "Цель: $\\sigma/|\\mu| < 5\\%$ (зелёные столбцы)")
     ax.legend()
     ax.grid(alpha=0.3, axis="y")
     ax.set_yscale('log')
@@ -258,7 +268,7 @@ def main():
     print("\n" + "=" * 90)
     print("FINAL SUMMARY: Absolute JC proof with W_k = π^(-2k)")
     print("=" * 90)
-    print(f"{'n':>3} | {'best k':>10} | {'W = π^(-2k)':>15} | {'σ/|μ|':>12} | {'JC?':>5}")
+    print(f"{'n':>3} | {'лучший k':>10} | {'W = π^(-2k)':>15} | {'σ/|μ|':>12} | {'JC?':>5}")
     print("-" * 90)
     for n in range(1, 7):
         b = best_per_n[n]

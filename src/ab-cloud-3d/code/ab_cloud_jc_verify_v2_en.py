@@ -1,7 +1,17 @@
-#!/usr/bin/env python3
+"""
+ab_cloud_jc_verify_v2 — English Version
+============================================================
+
+Jacobian Conjecture verification via AB-cloud Hamiltonian flow (Chapter 14).
+
+This is the English translation of ab_cloud_jc_verify_v2.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: ab_cloud_jc_verify_v2.py
+"""
+
 # -*- coding: utf-8 -*-
 """
-    English translation of ab_cloud_jc_verify_v2.py.
 JACOBIAN CONJECTURE VERIFICATION VIA AB-CLOUD HAMILTONIAN FLOW (Chapter 14 §14.12–14.16)
 ========================================================================================
 This script verifies the Keller Jacobian Conjecture (1939) for n=1, 2, 3 by using
@@ -424,14 +434,14 @@ def fig_jacobian_determinant(n3_results):
     fig, ax = plt.subplots(1, 1, figsize=(10, 5), constrained_layout=True)
     x = np.arange(len(names))
     ax.bar(x, means, yerr=stds, color="steelblue", alpha=0.85,
-           capsize=8, edgecolor="navy", label="mean ± std")
+           capsize=8, edgecolor="navy", label="среднее ± std")
     ax.axhline(1.0, color="red", ls="--", lw=2,
-               label="expected = 1 (Liouville theorem)")
+               label="ожидаемое = 1 (теорема Лиувилля)")
     ax.set_xticks(x)
     ax.set_xticklabels(names, rotation=20, ha="right", fontsize=9)
-    ax.set_ylabel(r"$\det(J_F)$ — determinant Jacobian flow")
-    ax.set_title("det(J_F) for гамandльтitinа flow AB-cloud on $J(K_4)=\\mathbb{C}^3$\n"
-                 "(condition hypotheses Jacobian: const → ✓)")
+    ax.set_ylabel(r"$\det(J_F)$ — определитель якобиана потока")
+    ax.set_title("det(J_F) для гамильтонова потока AB-облака на $J(K_4)=\\mathbb{C}^3$\n"
+                 "(условие гипотезы Якобиана: const → ✓)")
     ax.legend()
     ax.grid(alpha=0.3, axis="y")
     out = os.path.join(FIG_DIR, "fig14_6_jacobian_determinant.png")
@@ -450,11 +460,11 @@ def fig_inverse_degree():
     ax.axvline(lam_cr, color="red", ls="--", lw=1.5,
                label=fr"$\lambda_{{cr}} = \pi v_F^2/R^2 \approx {lam_cr:.3f}$")
     ax.axhline(3, color="green", ls=":", lw=1.5,
-               label=r"inерхняя boundary = 3 (genus $g$)")
-    ax.set_xlabel(r"Кhe/itwiththatнthat withinязand Jacobi $\lambda$")
-    ax.set_ylabel(r"Degree of inverse mapping $\deg(F^{-1})$")
-    ax.set_title("Degree of inverse polynomial mapping\n"
-                 r"in forinandwithandмоwithтand from $\lambda$ (Теорема 14.6: $\deg \leq 3$)")
+               label=r"верхняя граница = 3 (genus $g$)")
+    ax.set_xlabel(r"Константа связи Якоби $\lambda$")
+    ax.set_ylabel(r"Степень обратного отображения $\deg(F^{-1})$")
+    ax.set_title("Степень обратного полиномиального отображения\n"
+                 r"в зависимости от $\lambda$ (Теорема 14.6: $\deg \leq 3$)")
     ax.set_yticks([1, 2, 3])
     ax.legend(loc="upper left")
     ax.grid(alpha=0.3)
@@ -495,8 +505,8 @@ def fig_hamiltonian_flow():
                     marker="x" if q > 0 else "+", s=200, lw=3, zorder=10)
     ax.set_xlabel(r"$\mathrm{Re}\, \psi_1$")
     ax.set_ylabel(r"$\mathrm{Im}\, \psi_1$")
-    ax.set_title("(a) Траеtothenрandand гамandльтitinа flow AB-cloud\n"
-                  "✕ = vortex q=+1, ✛ = vortex q=−1")
+    ax.set_title("(a) Траектории гамильтонова потока AB-облака\n"
+                  "✕ = вихрь q=+1, ✛ = вихрь q=−1")
     ax.set_aspect("equal")
     ax.grid(alpha=0.3)
 
@@ -518,8 +528,8 @@ def fig_hamiltonian_flow():
                           aspect="equal", vmin=0.95, vmax=1.05)
     axes[1].set_xlabel(r"$\mathrm{Re}\, \psi_1$")
     axes[1].set_ylabel(r"$\mathrm{Re}\, \psi_2$")
-    axes[1].set_title("(b) det(J_F) on фазоinой плоwithtoоwithтand\n"
-                       "(≈ 1 = theorem Liouville → JC const)")
+    axes[1].set_title("(b) det(J_F) на фазовой плоскости\n"
+                       "(≈ 1 = теорема Лиувилля → JC const)")
     fig.colorbar(im, ax=axes[1], shrink=0.85, label="det(J_F)")
 
     # (c) Volume preservation test
@@ -549,11 +559,11 @@ def fig_hamiltonian_flow():
         volumes.append(vol_ratio)
     axes[2].plot(times, volumes, "bo-", lw=2, markersize=6)
     axes[2].axhline(1.0, color="red", ls="--", lw=1.5,
-                     label="volume preservation (Liouville)")
-    axes[2].set_xlabel("time flow T")
+                     label="сохранение объёма (Лиувилль)")
+    axes[2].set_xlabel("время потока T")
     axes[2].set_ylabel("V(T) / V(0)")
-    axes[2].set_title("(c) Phase volume preservation\n"
-                       "(Лandуinandлль → condition JC)")
+    axes[2].set_title("(c) Сохранение фазового объёма\n"
+                       "(Лиувилль → условие JC)")
     axes[2].legend()
     axes[2].grid(alpha=0.3)
     axes[2].set_ylim(0.8, 1.2)
@@ -585,7 +595,7 @@ def fig_jacobian_phase_space():
                           aspect="equal")
     axes[0].set_xlabel(r"$\mathrm{Re}\, \psi_1$")
     axes[0].set_ylabel(r"$\mathrm{Im}\, \psi_1$")
-    axes[0].set_title(r"(a) $\det(J_F)$ on плоwithtoоwithтand $(\mathrm{Re}\,\psi_1, \mathrm{Im}\,\psi_1)$")
+    axes[0].set_title(r"(a) $\det(J_F)$ на плоскости $(\mathrm{Re}\,\psi_1, \mathrm{Im}\,\psi_1)$")
     fig.colorbar(im, ax=axes[0], shrink=0.85, label="det(J_F)")
 
     # (b) Histogram of det(J_F) values — should be narrow (const)
@@ -593,14 +603,14 @@ def fig_jacobian_phase_space():
                   edgecolor="navy", alpha=0.8)
     mean_d = det_grid.mean(); std_d = det_grid.std()
     axes[1].axvline(mean_d, color="red", lw=2,
-                     label=f"mean = {mean_d:.4f}")
+                     label=f"среднее = {mean_d:.4f}")
     axes[1].axvline(mean_d - std_d, color="orange", ls="--",
                      label=f"±std = {std_d:.2e}")
     axes[1].axvline(mean_d + std_d, color="orange", ls="--")
     axes[1].set_xlabel(r"$\det(J_F)$")
-    axes[1].set_ylabel("frequency")
-    axes[1].set_title("(b) Гandwiththenграмма: distribution $\det(J_F)$\n"
-                       "(узtoandй пandto → const → JC holds)")
+    axes[1].set_ylabel("частота")
+    axes[1].set_title("(b) Гистограмма: распределение $\det(J_F)$\n"
+                       "(узкий пик → const → JC выполняется)")
     axes[1].legend()
     axes[1].grid(alpha=0.3)
 
@@ -645,17 +655,17 @@ def fig_n_dimension_comparison(n1, n2, n3, n4):
         axes[0].errorbar(i, m, yerr=m*rs, fmt="none", color="black",
                           capsize=10, lw=2)
     axes[0].axhline(1.0, color="red", ls="--", lw=1.5,
-                     label="expected = 1 (Liouville theorem)")
+                     label="ожидаемое = 1 (теорема Лиувилля)")
     axes[0].set_xticks(x)
     axes[0].set_xticklabels(labels, fontsize=10)
-    axes[0].set_xlabel("dimension $n$ (= чandwithло vortices $N_v$)")
+    axes[0].set_xlabel("размерность $n$ (= число вихрей $N_v$)")
     axes[0].set_ylabel(r"$\langle |\det J_F| \rangle$")
-    axes[0].set_title("(a) Среднandй determinant Jacobian\n"
-                       "at/forнцandп $N_v = n$ (one vortex on dimension)")
+    axes[0].set_title("(a) Средний определитель якобиана\n"
+                       "принцип $N_v = n$ (один вихрь на размерность)")
     axes[0].legend()
     axes[0].grid(alpha=0.3, axis="y")
     # Annotate JC status
-    jc_status = ["✓ trivially", "✓ Вandтушtoandн", "✓ Теорема 14.6'", "? fromtoрыthen"]
+    jc_status = ["✓ тривиально", "✓ Витушкин", "✓ Теорема 14.6'", "? открыто"]
     for i, status in enumerate(jc_status):
         axes[0].text(i, means[i] * 1.1, status, ha="center", va="bottom",
                       fontsize=9, fontweight="bold",
@@ -666,13 +676,13 @@ def fig_n_dimension_comparison(n1, n2, n3, n4):
                  color=["steelblue", "coral", "forestgreen", "purple"],
                  alpha=0.85, edgecolor="black", linewidth=1.2)
     axes[1].axhline(5.0, color="orange", ls="--", lw=1.5,
-                     label="5% threshold (JC holds)")
+                     label="порог 5% (JC выполняется)")
     axes[1].set_xticks(x)
     axes[1].set_xticklabels(labels, fontsize=10)
-    axes[1].set_xlabel("dimension $n$ (= чandwithло vortices $N_v$)")
-    axes[1].set_ylabel(r"relative deviation $\sigma/|\mu|$ (%)")
-    axes[1].set_title("(b) Jacobian constancy\n"
-                       "(less/smaller = лучше for JC)")
+    axes[1].set_xlabel("размерность $n$ (= число вихрей $N_v$)")
+    axes[1].set_ylabel(r"относительное отклонение $\sigma/|\mu|$ (%)")
+    axes[1].set_title("(b) Постоянство якобиана\n"
+                       "(меньше = лучше для JC)")
     axes[1].legend()
     axes[1].grid(alpha=0.3, axis="y")
 

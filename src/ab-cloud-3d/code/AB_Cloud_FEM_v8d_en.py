@@ -1,17 +1,13 @@
-#!/usr/bin/env python3
 """
-    English translation of AB_Cloud_FEM_v8d.py.
-AB_Cloud_FEM_v8d.py — FEM on Kleinе with toалandброinочным fieldм and BC Неймаon
+AB_Cloud_FEM_v8d — English Version
+============================================================
 
-KEY CHANGE: instead of ошandбочbutй slave-master andдентandфandtoацandand гранandчных
-nodes, use natural Neumann BC (all boundary nodes are free)
-+ gauge field A for encoding monodromy around conical points.
+FEM on Klein quartic with gauge field and Neumann boundary conditions. Uses natural Neumann BC instead of erroneous slave-master identification.
 
-For scalar torsion (ω_A, ω_B, ω_C):
-- Кtheyчеwithtoая thenчtoа A: Dirichlet if |ω_A-1| > tol, andonче withinобone
-- Кtheyчеwithtoая thenчtoа B: Dirichlet if |ω_B-1| > tol, andonче withinобone
-- Кtheyчеwithtoая thenчtoа C: Dirichlet if |ω_C-1| > tol, andonче withinобone
-- All other boundary nodes: FREE (Neumann BC — natural condition)
+This is the English translation of AB_Cloud_FEM_v8d.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: AB_Cloud_FEM_v8d.py
 """
 
 import numpy as np
@@ -252,13 +248,13 @@ def solve_dir(K,M,fixed,ne=20):
 def main():
     t0=time.time()
     print("="*70)
-    print("AB-CLOUD v8d — Gauge field + Neumann BC")
+    print("AB-CLOUD v8d — Калибровочное поле + BC Неймана")
     print("="*70)
     elems,s_mat,u_mat=gen_psl27()
     print(f"  |PSL(2,7)|={len(elems)}")
     reps=build_reps(s_mat,u_mat,elems)
     for rn in REPS:
-        if rn not in reps: print(f"  {rn}: MISSING"); continue
+        if rn not in reps: print(f"  {rn}: ОТСУТСТВУЕТ"); continue
         rs,ru,d=reps[rn]; chi=CHAR_TABLE[rn]
         es=norm(rs@rs-np.eye(d)); eu=norm(ru@ru@ru-np.eye(d))
         esu=norm(np.linalg.matrix_power(rs@ru,7)-np.eye(d))
@@ -270,8 +266,8 @@ def main():
     nv=len(vs); cone_pts=[vA,vB,vC]; cone_orders=[2,3,7]
     print(f"  n_v={nv}, level={level}")
 
-    # Check: Neumann BC (1a, without gauge)
-    print("\n  TEST: Neumann BC (1a, without gauge)")
+    # Проверка: Neumann BC (1a, без калибровки)
+    print("\n  ТЕСТ: Neumann BC (1a, без калибровки)")
     K_geo=np.zeros((nv,nv)); M_geo=np.zeros((nv,nv)); Ae=Ah=0.0
     for e in es:
         i1,i2,i3=e; x1,y1=vs[i1]; x2,y2=vs[i2]; x3,y3=vs[i3]
@@ -289,16 +285,16 @@ def main():
         Ae+=A; Ah+=A*(w1+w2+w3)/3
     print(f"  A_hyp={Ah:.6f} (π/42={PI/42:.6f})")
 
-    # Neumann: all nodes free → K_geo v = λ M_geo v
+    # Neumann: все узлы свободны → K_geo v = λ M_geo v
     ev_neu=solve_dir(K_geo,M_geo,[])
     if len(ev_neu)>1: ev_neu=ev_neu[1:]  # skip λ=0
-    if len(ev_neu)>0: print(f"  Neumann λ₁={ev_neu[0]:.4f} (first 5: {ev_neu[:5].round(2)})")
+    if len(ev_neu)>0: print(f"  Neumann λ₁={ev_neu[0]:.4f} (первые 5: {ev_neu[:5].round(2)})")
 
-    # Now with gauge field for each representation
+    # Теперь с калибровкой для каждого представления
     print(f"\n{'='*70}")
-    print("FEM WITH GAUGE FIELD + NEUMANN BC")
+    print("FEM С КАЛИБРОВОЧНЫМ ПОЛЕМ + NEUMANN BC")
     print(f"{'='*70}")
-    print(f"  {'ρ':>4s} {'withеtoт':>4s} {'λ₁(min)':>10s} {'λ₁(Cook)':>10s} {'Δ%':>7s}")
+    print(f"  {'ρ':>4s} {'сект':>4s} {'λ₁(min)':>10s} {'λ₁(Cook)':>10s} {'Δ%':>7s}")
     print("  "+"─"*40)
 
     for rn in REPS:
@@ -307,7 +303,7 @@ def main():
             rs,ru,d=reps[rn]
             triples=find_triples(rs,ru,d)
         else:
-            # For 8a and 6a: use known eigenvalues
+            # Для 8a и 6a: используем известные собственные значения
             if rn=='8a':
                 # ρ(s): eigenvalues ±1, tr=0, dim=8 → 4×(+1), 4×(-1)
                 # ρ(u): eigenvalues, tr=-1, dim=8 → 2×1, 3×ω₃, 3×ω₃²
@@ -341,7 +337,7 @@ def main():
                 triples=[]
 
         if not triples:
-            print(f"  {rn:>4s}    — notт withеtothenроin"); continue
+            print(f"  {rn:>4s}    — нет секторов"); continue
 
         all_lam=[]
         for wa,wb,wc in triples:
@@ -359,9 +355,9 @@ def main():
             dls=f"{dl:.1f}" if not np.isnan(dl) else "—"
             print(f"  {rn:>4s} {len(triples):>4d} {lam1:>10.4f} {ck:>10s} {dls:>7s}")
         else:
-            print(f"  {rn:>4s} {len(triples):>4d}    — notт withеtothenроin")
+            print(f"  {rn:>4s} {len(triples):>4d}    — нет секторов")
 
     el=time.time()-t0
-    print(f"\n  Time: {el:.0f}with")
+    print(f"\n  Время: {el:.0f}с")
 
 if __name__=='__main__': main()

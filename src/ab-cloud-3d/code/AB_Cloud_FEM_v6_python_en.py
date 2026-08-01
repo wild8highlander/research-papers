@@ -1,41 +1,30 @@
-#!/usr/bin/env python3
 """
-    English translation of AB_Cloud_FEM_v6_python.py.
-AB_Cloud_FEM_v6_python — FEM on Klein quartic (2,3,7) with MeatAxe
-====================================================================
+AB_Cloud_FEM_v6_python — English Version
+============================================================
 
-Python prototype for debugging the Finite Element Method algorithm on the
-Klein quartic surface using the (2,3,7) triangle group and PSL(2,7)
-representation theory.
+FEM on Klein quartic (2,3,7) with MeatAxe — Python prototype for debugging the algorithm. Fixes eigenvalue clustering for tensor-structured representations of PSL(2,7).
 
-Key fix (v6 → v6_python):
-  In v6, MeatAxe searched for SIMPLE eigenvalues of H = α·ρ_R(s) + β·ρ_R(u)
-  on Im(P_ρ) ≅ V_ρ ⊗ V_ρ*. Due to the tensor structure I ⊗ (α·ρ̄(s)+β·ρ̄(u)),
-  ALL eigenvalues have multiplicity d_ρ. The gap < 1e-6 filter removed them ALL.
+This is the English translation of AB_Cloud_FEM_v6_python.py.
+Russian comments in the code body are preserved for reference.
 
-  Fix: cluster eigenvalues, find a cluster of size d_ρ, take ONE eigenvector
-  from the cluster, apply left regular action to construct a d_ρ-dimensional
-  invariant subspace V_ρ ⊗ w_λ.
-
-Usage: python3 AB_Cloud_FEM_v6_python.py
-
-Dependencies: numpy, scipy
+Original file: AB_Cloud_FEM_v6_python.py
 """
+
 # ============================================================================
-# AB_Cloud_FEM_v6_python.py — FEM on Klein quartic (2,3,7) with MeatAxe
-# Python prototype for debugging the algorithm
+# AB_Cloud_FEM_v6_python.py — FEM на Klein quartic (2,3,7) с MeatAxe
+# Python-прототип для отладки алгоритма
 #
-# Ключеinое andwithпраinленandе v6 → v6_python:
+# Ключевое исправление v6 → v6_python:
 #
-#   In v6, MeatAxe searched for SIMPLE eigenvalues H = α·ρ_R(s) + β·ρ_R(u)
-# on Im(P_ρ) ≅ V_ρ ⊗ V_ρ*. Но from-for tensor structure I ⊗ (α·ρ̄(s)+β·ρ̄(u))
-# ВСЕ eigen- values andмеют multiplicity d_ρ. Фandльтр gap < 1e-6 fromwithеtoал their ВСЕ.
+#   В v6 MeatAxe искал ПРОСТЫЕ собственные значения H = α·ρ_R(s) + β·ρ_R(u)
+#   на Im(P_ρ) ≅ V_ρ ⊗ V_ρ*. Но из-за тензорной структуры I ⊗ (α·ρ̄(s)+β·ρ̄(u))
+#   ВСЕ собственные значения имеют кратность d_ρ. Фильтр gap < 1e-6 отсекал их ВСЕ.
 #
-# Иwithпраinленandе: toлаwiththoseрfromуем eigen- values, we seek toлаwiththoseр размера d_ρ,
-# берём ОДИН eigenvector from toлаwiththoseра, at/forменяем left regular action
-# for by/onwithтроенandя d_ρ-мерbutго invariant subspace V_ρ ⊗ w_λ.
+#   Исправление: кластеризуем собственные значения, ищем кластер размера d_ρ,
+#   берём ОДИН собственный вектор из кластера, применяем левое регулярное действие
+#   для построения d_ρ-мерного инвариантного подпространства V_ρ ⊗ w_λ.
 #
-# Run: python3 AB_Cloud_FEM_v6_python.py
+# Запуск: python3 AB_Cloud_FEM_v6_python.py
 # ============================================================================
 
 import numpy as np
@@ -45,14 +34,14 @@ import time
 import sys
 
 # ============================================================================
-# CONSTANTS
+# КОНСТАНТЫ
 # ============================================================================
 
 PI = np.pi
 SQRT7 = np.sqrt(7.0)
 PSL27_ORDER = 168
 
-# Known eigenvalues of Klein quartic (Cook 2018)
+# Известные собственные значения Klein quartic (Cook 2018)
 KNOWN_EIGENVALUES = [
     (2.67793,  8, "8a"),
     (6.62251,  7, "7a"),
@@ -67,9 +56,9 @@ KNOWN_EIGENVALUES = [
 ]
 
 # ============================================================================
-# CHARACTER TABLE OF PSL(2,7)
-# Classes: 1a, 2a, 3a, 4a, 7a, 7b
-# Dimensions:  1, 21, 56, 42, 24, 24
+# ТАБЛИЦА ХАРАКТЕРОВ PSL(2,7)
+# Классы: 1a, 2a, 3a, 4a, 7a, 7b
+# Размеры:  1, 21, 56, 42, 24, 24
 # ============================================================================
 
 def psl27_character_table():
@@ -87,11 +76,11 @@ def psl27_character_table():
 CLASS_SIZES = np.array([1, 21, 56, 42, 24, 24])
 
 # ============================================================================
-# CONSTRUCTION OF PSL(2,7)
+# ПОСТРОЕНИЕ PSL(2,7)
 # ============================================================================
 
 def enumerate_psl27():
-    """Enumeration of PSL(2,7) elements as 2x2 matrices over F_7"""
+    """Перечисление элементов PSL(2,7) как матриц 2x2 над F_7"""
     elements = []
     seen = set()
     for a in range(7):
@@ -231,29 +220,29 @@ def classify_conjugacy_classes(elements, mt, eid):
 
 
 # ============================================================================
-# REPRESENTATION MATRICES — CORRECTED MeatAxe
+# МАТРИЦЫ ПРЕДСТАВЛЕНИЙ — ИСПРАВЛЕННЫЙ MeatAxe
 # ============================================================================
 #
-# Structure of Im(P_ρ) ≅ V_ρ ⊗ V_ρ*:
-#   ρ_L(g) acts as ρ(g) ⊗ I   (left regular)
-#   ρ_R(g) acts as I ⊗ ρ̄(g)  (right regular)
-#   ρ_L and ρ_R commute!
+# Структура Im(P_ρ) ≅ V_ρ ⊗ V_ρ*:
+#   ρ_L(g) действует как ρ(g) ⊗ I   (левое регулярное)
+#   ρ_R(g) действует как I ⊗ ρ̄(g)  (правое регулярное)
+#   ρ_L и ρ_R коммутируют!
 #
-# H = α·ρ_R(s) + β·ρ_R(u) on Im(P_ρ) дейwithтinует as
+# H = α·ρ_R(s) + β·ρ_R(u) на Im(P_ρ) действует как
 #   I ⊗ (α·ρ̄(s) + β·ρ̄(u))
 #
-# Поthisму eigen- values H = {λ_i : i=1..d_ρ}, where λ_i — with.з.
-# the d_ρ×d_ρ matrix (α·ρ̄(s) + β·ρ̄(u)), EACH with multiplicity d_ρ.
+# Поэтому собственные значения H = {λ_i : i=1..d_ρ}, где λ_i — с.з.
+# матрицы d_ρ×d_ρ (α·ρ̄(s) + β·ρ̄(u)), КАЖДОЕ кратности d_ρ.
 #
-# Algorithm:
-#   1. Cluster eigenvalues of H (find clusters of size d_ρ)
-#   2. Take ONE eigenvector from cluster → lies in V_ρ ⊗ w_λ
-#   3. Apply ρ_L(s), ρ_L(u) → generate all of V_ρ ⊗ w_λ (dimension d_ρ)
-#   4. Extract representation matrices S_ρ, U_ρ
+# Алгоритм:
+#   1. Кластеризуем с.з. H (ищем кластеры размера d_ρ)
+#   2. Берём ОДИН собственный вектор из кластера → лежит в V_ρ ⊗ w_λ
+#   3. Применяем ρ_L(s), ρ_L(u) → генерируем всё V_ρ ⊗ w_λ (размерность d_ρ)
+#   4. Извлекаем матрицы представления S_ρ, U_ρ
 # ============================================================================
 
 def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
-    """Construction of representation matrices S_ρ, U_ρ via MeatAxe algorithm"""
+    """Построение матриц представления S_ρ, U_ρ алгоритмом MeatAxe"""
     chi_table = psl27_character_table()
     chi_rho = chi_table[rep_name]
     dim_rho = int(np.real(chi_rho[0]))
@@ -261,16 +250,16 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
 
     print(f"    {rep_name}: dim={dim_rho}")
 
-    # Trivial representation
+    # Тривиальное представление
     if dim_rho == 1:
         return np.array([[1.0+0j]]), np.array([[1.0+0j]]), True
 
-    # --- Step 1: Build projector P_ρ ---
+    # --- Шаг 1: Строим проектор P_ρ ---
     s_inv = find_inverse(mt, s_idx, eid)
     u_inv = find_inverse(mt, u_idx, eid)
 
     # P_ρ = (dim_ρ/|G|) Σ_g χ̄_ρ(g) ρ_L(g)
-    # ρ_L(g) — permutation matrix: (ρ_L(g))_{i,j} = δ_{i, mt[g,j]}
+    # ρ_L(g) — перестановочная матрица: (ρ_L(g))_{i,j} = δ_{i, mt[g,j]}
     P_rho = np.zeros((n, n), dtype=complex)
     for g_idx in range(n):
         coeff = (dim_rho / PSL27_ORDER) * np.conj(chi_rho[class_map[g_idx] - 1])
@@ -278,11 +267,11 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
             i = mt[g_idx, j]
             P_rho[i, j] += coeff
 
-    # Verify that P_ρ is a projector
+    # Проверяем, что P_ρ — проектор
     err_proj = np.linalg.norm(P_rho @ P_rho - P_rho)
     print(f"      ||P²-P|| = {err_proj:.2e}")
 
-    # SVD of projector → basis of image (LEFT singular vectors = image of P_ρ)
+    # SVD проектора → базис образа (ЛЕВЫЕ сингулярные векторы = образ P_ρ)
     U_svd, S_svd, Vh_svd = np.linalg.svd(P_rho)
     tol = S_svd[0] * n * np.finfo(float).eps
     proj_rank = int(np.sum(S_svd > tol))
@@ -294,11 +283,11 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
 
     print(f"      rank(P)={proj_rank} = dim²={dim_rho**2} ✓")
 
-    # Use LEFT singular vectors (columns of U_svd) — image of P_ρ
+    # Используем ЛЕВЫЕ сингулярные векторы (столбцы U_svd) — образ P_ρ
     basis = U_svd[:, :proj_rank]  # n × d_ρ²
 
-    # --- Step 2: Left and right regular representations ---
-    # Left: ρ_L(g)·e_j = e_{g·j}  →  (ρ_L(g))_{mt[g,j], j} = 1
+    # --- Шаг 2: Левое и правое регулярные представления ---
+    # Левое: ρ_L(g)·e_j = e_{g·j}  →  (ρ_L(g))_{mt[g,j], j} = 1
     perm_s_L = np.zeros((n, n))
     for j in range(n):
         perm_s_L[mt[s_idx, j], j] = 1.0
@@ -307,7 +296,7 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
     for j in range(n):
         perm_u_L[mt[u_idx, j], j] = 1.0
 
-    # Right: ρ_R(g)·e_j = e_{j·g⁻¹}  →  (ρ_R(g))_{mt[j,g⁻¹], j} = 1
+    # Правое: ρ_R(g)·e_j = e_{j·g⁻¹}  →  (ρ_R(g))_{mt[j,g⁻¹], j} = 1
     perm_s_R = np.zeros((n, n))
     for j in range(n):
         perm_s_R[mt[j, s_inv], j] = 1.0
@@ -316,36 +305,36 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
     for j in range(n):
         perm_u_R[mt[j, u_inv], j] = 1.0
 
-    # Restrict to image of P_ρ (in coordinates of image basis)
+    # Ограничиваем на образ P_ρ (в координатах базиса образа)
     M_s_L = basis.T.conj() @ perm_s_L @ basis   # d_ρ² × d_ρ²
     M_u_L = basis.T.conj() @ perm_u_L @ basis
     M_s_R = basis.T.conj() @ perm_s_R @ basis
     M_u_R = basis.T.conj() @ perm_u_R @ basis
 
-    # Verify that left and right actions commute
+    # Проверяем, что левые и правые действия коммутируют
     comm_su = np.linalg.norm(M_s_L @ M_u_R - M_u_R @ M_s_L)
     print(f"      ||[ρ_L(s), ρ_R(u)]|| = {comm_su:.2e}")
 
-    # --- Шаг 3: MeatAxe with toлаwiththoseрandforцandей ---
+    # --- Шаг 3: MeatAxe с кластеризацией ---
     rng = np.random.RandomState(42)
 
     for attempt in range(100):
-        # Случайonя toомбandonцandя праyouх регулярных matrices
-        # Иwithby/onльзуем notwithtoольtoо imageующtheir for лучшhis/its sectionенandя
+        # Случайная комбинация правых регулярных матриц
+        # Используем несколько образующих для лучшего разделения
         alpha = rng.randn() + 1j * rng.randn()
         beta  = rng.randn() + 1j * rng.randn()
         H = alpha * M_s_R + beta * M_u_R
 
-        # Дandагshe/itлandforцandя
+        # Диагонализация
         evals_H, evecs_H = np.linalg.eig(H)
 
-        # Сортandруем by/on inещеwithтinенbutй чаwithтand
+        # Сортируем по вещественной части
         sort_idx = np.argsort(np.real(evals_H))
         evals_sorted = evals_H[sort_idx]
         evecs_sorted = evecs_H[:, sort_idx]
 
-        # Клаwiththoseрfromуем eigen- values
-        # Сonчала we compute all by/onпарные раwithwiththenянandя
+        # Кластеризуем собственные значения
+        # Сначала вычисляем все попарные расстояния
         clusters = []
         used = set()
         for i in range(len(evals_sorted)):
@@ -356,7 +345,7 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
             for j in range(i + 1, len(evals_sorted)):
                 if j in used:
                     continue
-                # Отbutwithandthoseльbutе distance between with.з.
+                # Относительное расстояние между с.з.
                 dist = abs(evals_sorted[j] - evals_sorted[i])
                 scale = max(1.0, abs(evals_sorted[i]))
                 if dist < 1e-6 * scale:
@@ -365,22 +354,22 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
             clusters.append(cluster)
 
         cluster_sizes = [len(c) for c in clusters]
-        print(f"      Попытtoа {attempt+1}: toлаwiththoseры = {cluster_sizes}")
+        print(f"      Попытка {attempt+1}: кластеры = {cluster_sizes}")
 
-        # Ищем toлаwiththoseр размером d_ρ
+        # Ищем кластер размером d_ρ
         good_clusters = [c for c in clusters if len(c) == dim_rho]
 
         if not good_clusters:
             continue
 
-        # Пробуем each approachящandй toлаwiththoseр
+        # Пробуем каждый подходящий кластер
         for cluster in good_clusters:
-            # Take one eigenvector from cluster
-            for ci in cluster[:3]:  # пробуем to 3 vectors from toлаwiththoseра
+            # Берём один собственный вектор из кластера
+            for ci in cluster[:3]:  # пробуем до 3 векторов из кластера
                 v = evecs_sorted[:, ci].copy()
                 v = v / np.linalg.norm(v)
 
-                # Building леinо-invariant subspace
+                # Строим лево-инвариантное подпространство
                 Q_list = [v.copy()]
                 queue = [v.copy()]
                 head = 0
@@ -390,7 +379,7 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
                     head += 1
                     for M_L in [M_s_L, M_u_L]:
                         w_new = M_L @ w
-                        # Орthatonлfromуем прfromandin thosetoущhis/its basisа (modified Gram-Schmidt)
+                        # Ортогонализуем против текущего базиса (modified Gram-Schmidt)
                         Q_mat = np.column_stack(Q_list)
                         w_orth = w_new - Q_mat @ (Q_mat.T.conj() @ w_new)
                         nrm = np.linalg.norm(w_orth)
@@ -408,11 +397,11 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
 
                 Q_sub = np.column_stack(Q_list)  # d_ρ² × d_ρ
 
-                # --- Изinлеtoаем representation matrices ---
+                # --- Извлекаем матрицы представления ---
                 S_rep = Q_sub.T.conj() @ M_s_L @ Q_sub   # d_ρ × d_ρ
                 U_rep = Q_sub.T.conj() @ M_u_L @ Q_sub
 
-                # Verifying relations groups
+                # Проверяем соотношения группы
                 err_S2 = np.linalg.norm(S_rep @ S_rep - np.eye(dim_rho))
                 err_U3 = np.linalg.norm(np.linalg.matrix_power(U_rep, 3) - np.eye(dim_rho))
                 SU = S_rep @ U_rep
@@ -423,18 +412,18 @@ def build_rep_matrices(elements, mt, class_map, rep_name, s_idx, u_idx, eid):
                 if success:
                     tr_S = np.real(np.trace(S_rep))
                     tr_U = np.real(np.trace(U_rep))
-                    chi_S = np.real(chi_rho[1])  # χ(s) for classа 2a
-                    chi_U = np.real(chi_rho[2])  # χ(u) for classа 3a
+                    chi_S = np.real(chi_rho[1])  # χ(s) для класса 2a
+                    chi_U = np.real(chi_rho[2])  # χ(u) для класса 3a
                     print(f"      ✓ S²={err_S2:.2e}, U³={err_U3:.2e}, (SU)⁷={err_SU7:.2e}")
                     print(f"      tr(S)={tr_S:.4f} (χ={chi_S:.4f}), "
                           f"tr(U)={tr_U:.4f} (χ={chi_U:.4f})")
                     return S_rep, U_rep, True
                 else:
-                    if attempt < 5:  # underробный youinод for перyouх by/onпыcurrent
+                    if attempt < 5:  # подробный вывод для первых попыток
                         print(f"        n_basis={len(Q_list)}, "
                               f"S²={err_S2:.2e}, U³={err_U3:.2e}, (SU)⁷={err_SU7:.2e}")
 
-    print(f"    ✗ MeatAxe not withмог by/onwithтроandть matrices for {rep_name} after 100 by/onпыcurrent")
+    print(f"    ✗ MeatAxe не смог построить матрицы для {rep_name} после 100 попыток")
     return (np.zeros((dim_rho, dim_rho), dtype=complex),
             np.zeros((dim_rho, dim_rho), dtype=complex), False)
 
@@ -448,7 +437,7 @@ def poincare_omega2(x, y):
 
 
 def moebius_rotation(z, center, angle):
-    """Вращенandе on angle θ around thenчtoand center in дandwithtoе Пуанtoаре"""
+    """Вращение на угол θ вокруг точки center в диске Пуанкаре"""
     cz = complex(z[0], z[1])
     cc = complex(center[0], center[1])
     cc_bar = np.conj(cc)
@@ -517,20 +506,20 @@ def geodesic_arc_points(p1, p2, n_points):
 # СЕТКА ДВОЙНОГО ТРЕУГОЛЬНИКА
 # ============================================================================
 #
-# D = T⁺ ∪ T⁻,  T⁻ = fromраженandе T⁺ from AB (оwithand x)
+# D = T⁺ ∪ T⁻,  T⁻ = отражение T⁺ от AB (оси x)
 #
 # T⁺: A(0,0), B(xB,0), C(0,yC)
 # T⁻: A(0,0), B(xB,0), C'(0,-yC)
 #
-# Гранandца D:
-# e₁: C→B   (geodesic дуга, inерхняя)
-# e₂: B→C'  (geodesic дуга, нandжняя)
-# e₃: C'→A  (прямая, оthreeцаthoseльonя y-оwithь)
-# e₄: A→C   (прямая, by/onложandthoseльonя y-оwithь)
+# Граница D:
+#   e₁: C→B   (геодезическая дуга, верхняя)
+#   e₂: B→C'  (геодезическая дуга, нижняя)
+#   e₃: C'→A  (прямая, отрицательная y-ось)
+#   e₄: A→C   (прямая, положительная y-ось)
 #
-# Сtoлейtoand:
-# R₁ (by/oninорfrom π around A):    e₃ ↔ e₄
-# R₂ (by/oninорfrom 2π/3 around B): e₁ ↔ e₂
+# Склейки:
+#   R₁ (поворот π вокруг A):    e₃ ↔ e₄
+#   R₂ (поворот 2π/3 вокруг B): e₁ ↔ e₂
 # ============================================================================
 
 def create_double_triangle_mesh(level, verbose=True):
@@ -550,7 +539,7 @@ def create_double_triangle_mesh(level, verbose=True):
 
     n_sub = 2**level
 
-    # Precomputing геодезandчеwithtoandе дугand
+    # Предвычисляем геодезические дуги
     arc_upper = geodesic_arc_points(vC, vB, n_sub)
     arc_lower = geodesic_arc_points(vC_prime, vB, n_sub)
 
@@ -560,7 +549,7 @@ def create_double_triangle_mesh(level, verbose=True):
     bary_plus  = {}
     bary_minus = {}
 
-    # --- T⁺ inершandны ---
+    # --- T⁺ вершины ---
     idx = 0
     for i in range(n_sub + 1):
         for j in range(n_sub - i + 1):
@@ -592,7 +581,7 @@ def create_double_triangle_mesh(level, verbose=True):
             if i == n_sub and j == 0 and k == 0:  iv = 3  # C
             is_vertex.append(iv)
 
-    # --- T⁻ inершandны ---
+    # --- T⁻ вершины ---
     for i in range(n_sub + 1):
         for j in range(n_sub - i + 1):
             k = n_sub - i - j
@@ -623,7 +612,7 @@ def create_double_triangle_mesh(level, verbose=True):
             if i == n_sub and j == 0 and k == 0:  iv = 4  # C'
             is_vertex.append(iv)
 
-    # --- Треangleьные elements ---
+    # --- Треугольные элементы ---
     elements = []
     for bary in [bary_plus, bary_minus]:
         for i in range(n_sub):
@@ -637,7 +626,7 @@ def create_double_triangle_mesh(level, verbose=True):
                     v4 = bary[(i+1,j+1,k-2)]
                     elements.append([v2, v4, v3])
 
-    # --- Сtoлейtoа T⁺ and T⁻ by/on withthenроnot AB ---
+    # --- Склейка T⁺ и T⁻ по стороне AB ---
     replace_map = {}
     for j in range(n_sub + 1):
         idx_p = bary_plus[(0, j, n_sub-j)]
@@ -650,7 +639,7 @@ def create_double_triangle_mesh(level, verbose=True):
             if elem[k] in replace_map:
                 elem[k] = replace_map[elem[k]]
 
-    # Перенумерацandя
+    # Перенумерация
     removed = set(replace_map.keys())
     old2new = {}
     new_idx = 0
@@ -669,7 +658,7 @@ def create_double_triangle_mesh(level, verbose=True):
         for k in range(3):
             elem[k] = old2new[elem[k]]
 
-    # Уyesленandе дублandtoаthenin
+    # Удаление дубликатов
     seen = set()
     unique_elems = []
     for elem in elements:
@@ -684,8 +673,8 @@ def create_double_triangle_mesh(level, verbose=True):
                          (new_verts[e[2]-1][0]-new_verts[e[0]-1][0])*
                          (new_verts[e[1]-1][1]-new_verts[e[0]-1][1]))/2
                     for e in unique_elems)
-        print(f"  Сетtoа D(2,3,7): {len(new_verts)} inершandн, "
-              f"{len(unique_elems)} elementоin, A_euc={A_euc:.6f}")
+        print(f"  Сетка D(2,3,7): {len(new_verts)} вершин, "
+              f"{len(unique_elems)} элементов, A_euc={A_euc:.6f}")
 
     return new_verts, unique_elems, new_edge, new_ivert, vA, vB, vC, vC_prime, n_sub
 
@@ -694,11 +683,11 @@ def create_double_triangle_mesh(level, verbose=True):
 # FEM СБОРКА
 # ============================================================================
 #
-# Слабая form гandперболandчеwithtoого Laplacianа:
+# Слабая форма гиперболического лапласиана:
 #   -Δ_hyp ψ = λ ψ   ↔   ∫∇u·∇v dA_euc = λ ∫uv ω² dA_euc
 #
-# K = ∫∇φ_i·∇φ_j dA_euc     (еintoлandtoinа matrix жёwithтtoоwithтand)
-# M = ∫φ_i φ_j ω² dA_euc     (гandперболandчеwithtoая matrix маwithwithы)
+# K = ∫∇φ_i·∇φ_j dA_euc     (евклидова матрица жёсткости)
+# M = ∫φ_i φ_j ω² dA_euc     (гиперболическая матрица массы)
 # ============================================================================
 
 def assemble_laplacian(vertices, elements, verbose=True):
@@ -727,7 +716,7 @@ def assemble_laplacian(vertices, elements, verbose=True):
         w1 = poincare_omega2(x1, y1)
         w2 = poincare_omega2(x2, y2)
         w3 = poincare_omega2(x3, y3)
-        # Маwithwithа: toinадратурonя formula by/onyouшенbutй exactlywithтand
+        # Масса: квадратурная формула повышенной точности
         M[elem[0]-1, elem[0]-1] += A*(3*w1+w2+w3)/30
         M[elem[1]-1, elem[1]-1] += A*(w1+3*w2+w3)/30
         M[elem[2]-1, elem[2]-1] += A*(w1+w2+3*w3)/30
@@ -766,13 +755,13 @@ def build_bc_identification(vertices, edge_id, is_vertex, vA, vB, vC, vC_prime):
         if is_vertex[i] == 3: idx_C = i
         if is_vertex[i] == 4: idx_Cp = i
 
-    # Внутреннandе узлы on each boundary (without tohe/itуwithоin)
+    # Внутренние узлы на каждой границе (без конусов)
     e4 = [i for i in range(n_v) if edge_id[i] == 4 and is_vertex[i] == 0]
     e3 = [i for i in range(n_v) if edge_id[i] == 3 and is_vertex[i] == 0]
     e1 = [i for i in range(n_v) if edge_id[i] == 1 and is_vertex[i] == 0]
     e2 = [i for i in range(n_v) if edge_id[i] == 2 and is_vertex[i] == 0]
 
-    # R₁: by/oninорfrom π around A (onчала toоордandonт) → z ↦ -z
+    # R₁: поворот π вокруг A (начала координат) → z ↦ -z
     R1_map = {}
     e4_positions = [vertices[n4] for n4 in e4]
     for n3 in e3:
@@ -787,11 +776,11 @@ def build_bc_identification(vertices, edge_id, is_vertex, vA, vB, vC, vC_prime):
         if best_node >= 0 and best_dist < 0.01:
             R1_map[n3] = best_node
 
-    # R₁ also: C' ↔ C
+    # R₁ также: C' ↔ C
     if idx_C is not None and idx_Cp is not None:
         R1_map[idx_Cp] = idx_C
 
-    # R₂: by/oninорfrom 2π/3 around B (Мёбandуwith-inращенandе)
+    # R₂: поворот 2π/3 вокруг B (Мёбиус-вращение)
     def try_R2_angle(angle):
         test_map = {}
         total_dist = 0.0
@@ -829,7 +818,7 @@ def build_bc_identification(vertices, edge_id, is_vertex, vA, vB, vC, vC_prime):
 
 
 # ============================================================================
-# ПЕРИОДИЧЕСКИЕ BC (1a representation)
+# ПЕРИОДИЧЕСКИЕ BC (1a представление)
 # ============================================================================
 
 def apply_periodic_bc(K, M, free_dofs, slave_map):
@@ -853,12 +842,12 @@ def apply_periodic_bc(K, M, free_dofs, slave_map):
 # ВЕКТОРНО-РАССЛОЁННЫЙ FEM
 # ============================================================================
 #
-# Для representations ρ dimensions d_ρ:
+# Для представления ρ размерности d_ρ:
 #   ψ: D → C^{d_ρ},  ψ(g·z) = ρ(g)·ψ(z)
 #
-# Гранandчные conditions:
-#   slave on e₃ (R₁ = s): ψ(slave) = ρ(s)·ψ(master)
-#   slave on e₂ (R₂ = u): ψ(slave) = ρ(u)·ψ(master)
+# Граничные условия:
+#   slave на e₃ (R₁ = s): ψ(slave) = ρ(s)·ψ(master)
+#   slave на e₂ (R₂ = u): ψ(slave) = ρ(u)·ψ(master)
 # ============================================================================
 
 def apply_vector_bundle_bc(K, M, free_dofs, slave_map, R1_map, R2_map,
@@ -882,7 +871,7 @@ def apply_vector_bundle_bc(K, M, free_dofs, slave_map, R1_map, R2_map,
 
     P_vb = np.zeros((n * dim_rho, N_red), dtype=complex)
 
-    # Сinободные узлы: identity block
+    # Свободные узлы: identity block
     for fi, gi in enumerate(free_dofs):
         for k in range(dim_rho):
             P_vb[gi * dim_rho + k, fi * dim_rho + k] = 1.0 + 0j
@@ -897,7 +886,7 @@ def apply_vector_bundle_bc(K, M, free_dofs, slave_map, R1_map, R2_map,
         if slave in R1_map:
             rep_mat = rep_S      # ρ(s)⁻¹ = ρ(s) since s² = e
         elif slave in R2_map:
-            rep_mat = rep_U_R2   # ρ(R₂)⁻¹ — beforeаётwithя as аргумент
+            rep_mat = rep_U_R2   # ρ(R₂)⁻¹ — передаётся как аргумент
         else:
             continue
         for k in range(dim_rho):
@@ -909,9 +898,9 @@ def apply_vector_bundle_bc(K, M, free_dofs, slave_map, R1_map, R2_map,
     Kc = K.astype(complex)
     Mc = M.astype(complex)
     # КРИТИЧЕСКИ: kron(K, I_d), НЕ kron(I_d, K)!
-    # P_vb andwithby/onльзует andндеtowithацandю (node*d + comp),
-    # therefore K_vb[node1*d+c1, node2*d+c2] = K[node1,node2] * delta(c1,c2)
-    # Эthen yesёт kron(K, I_d), а НЕ kron(I_d, K)
+    # P_vb использует индексацию (node*d + comp),
+    # поэтому K_vb[node1*d+c1, node2*d+c2] = K[node1,node2] * delta(c1,c2)
+    # Это даёт kron(K, I_d), а НЕ kron(I_d, K)
     K_vb = np.kron(Kc, np.eye(dim_rho, dtype=complex))
     M_vb = np.kron(Mc, np.eye(dim_rho, dtype=complex))
 
@@ -949,14 +938,14 @@ def solve_eigen(K, M, n_eig=20):
 def main():
     t0 = time.time()
     print("=" * 80)
-    print("AB Cloud v6 Python — FEM on Klein quartic (2,3,7) with MeatAxe")
+    print("AB Cloud v6 Python — FEM на Klein quartic (2,3,7) с MeatAxe")
     print("=" * 80)
 
     chi = psl27_character_table()
     reps = ["1a", "3a", "3b", "6a", "7a", "8a"]
 
-    # --- Верandфandtoацandя ---
-    print("\nVERIFICATION:")
+    # --- Верификация ---
+    print("\nВЕРИФИКАЦИЯ:")
     ortho_ok = True
     for i, r1 in enumerate(reps):
         for j, r2 in enumerate(reps):
@@ -965,18 +954,18 @@ def main():
             expected = 1.0 if i == j else 0.0
             if abs(inner - expected) > 0.01:
                 ortho_ok = False
-    print(f"  Орthatonльbutwithть characters: {'✓' if ortho_ok else '✗'}")
+    print(f"  Ортогональность характеров: {'✓' if ortho_ok else '✗'}")
 
     dim_sum = sum(int(np.real(chi[r][0]))**2 for r in reps)
     print(f"  Σ dim² = {dim_sum}, |G| = {PSL27_ORDER}: "
           f"{'✓' if dim_sum == PSL27_ORDER else '✗'}")
 
-    print("\n  Изinеwithтные λ Klein quartic (Cook 2018):")
+    print("\n  Известные λ Klein quartic (Cook 2018):")
     for ev in KNOWN_EIGENVALUES[:5]:
         print(f"    λ = {ev[0]:.4f}  mult={ev[1]}  irrep={ev[2]}")
 
-    # --- Поwithтроенandе PSL(2,7) ---
-    print("\nПоwithтроенandе PSL(2,7)...")
+    # --- Построение PSL(2,7) ---
+    print("\nПостроение PSL(2,7)...")
     elements = enumerate_psl27()
     mt = build_mult_table(elements)
     eid = find_identity(mt)
@@ -984,15 +973,15 @@ def main():
 
     for c in range(1, 7):
         cnt = int(np.sum(class_map == c))
-        print(f"  Клаwithwith {c}: {cnt} elementоin")
+        print(f"  Класс {c}: {cnt} элементов")
 
     s_idx, u_idx = find_generators(elements, mt, eid)
     su_idx = mt[s_idx, u_idx]
-    print(f"  Образующandе: s={s_idx} (by/onр.2), u={u_idx} (by/onр.3), "
-          f"su={su_idx} (by/onр.{element_order(mt, su_idx, eid)})")
+    print(f"  Образующие: s={s_idx} (пор.2), u={u_idx} (пор.3), "
+          f"su={su_idx} (пор.{element_order(mt, su_idx, eid)})")
 
-    # --- Маthreeцы representations (MeatAxe) ---
-    print("\nПоwithтроенandе matrices representations (MeatAxe)...")
+    # --- Матрицы представлений (MeatAxe) ---
+    print("\nПостроение матриц представлений (MeatAxe)...")
     rep_mats = {}
     for rep_name in reps:
         S, U, ok = build_rep_matrices(elements, mt, class_map, rep_name,
@@ -1006,8 +995,8 @@ def main():
         else:
             print(f"  {rep_name} (dim={dim_rho}): ✗")
 
-    # --- Верandфandtoацandя fromомеthreeй ---
-    print("\nВерandфandtoацandя fromомеthreeй:")
+    # --- Верификация изометрий ---
+    print("\nВерификация изометрий:")
     alpha_a = PI / 2; beta_v = PI / 3; gamma_v = PI / 7
     ca, sa = np.cos(alpha_a), np.sin(alpha_a)
     cb, sb = np.cos(beta_v),  np.sin(beta_v)
@@ -1028,7 +1017,7 @@ def main():
     d_neg = np.sqrt((R2_Cp_neg[0]-vC_chk[0])**2 + (R2_Cp_neg[1]-vC_chk[1])**2)
     print(f"  R₂(C'): d+2π/3={d_pos:.4f}, d-2π/3={d_neg:.4f}")
 
-    # --- FEM: 1a representation ---
+    # --- FEM: 1a представление ---
     print("\n" + "=" * 80)
     print("1a ПРЕДСТАВЛЕНИЕ — ПЕРИОДИЧЕСКИЕ BC НА ДВОЙНОМ Δ")
     print("=" * 80)
@@ -1044,20 +1033,20 @@ def main():
 
         Kr, Mr = apply_periodic_bc(K, M, free, slaves)
         evals, _ = solve_eigen(Kr, Mr, n_eig=10)
-        print("  Перyouе λ:")
+        print("  Первые λ:")
         for k in range(min(10, len(evals))):
             print(f"    λ_{k+1} = {evals[k]:.4f}")
 
-    # --- Vector bundle FEM: thosewithтandроinанandе обоtheir onпраinленandй R2 ---
+    # --- Vector bundle FEM: тестирование обоих направлений R2 ---
     has_any = any(rep_mats[r][2] for r in reps if int(np.real(chi[r][0])) > 1)
     if not has_any:
-        print("\n  Нand one representation dim>1 not by/onwithтроеbut")
+        print("\n  Ни одно представление dim>1 не построено")
         return
 
     print("\n" + "=" * 80)
-    print("ВЕКТОРНО-РАССЛОЁННЫЙ FEM — TESTING НАПРАВЛЕНИЯ R2")
+    print("ВЕКТОРНО-РАССЛОЁННЫЙ FEM — ТЕСТИРОВАНИЕ НАПРАВЛЕНИЯ R2")
     print("=" * 80)
-    print("\n  R2 fromображает e2(slave) -> e1(master)")
+    print("\n  R2 отображает e2(slave) -> e1(master)")
     print("  BC: psi(slave) = rho(R2)^{-1} * psi(master)")
     print("  Variant A: R2 = u  -> rho(R2)^{-1} = rho(u^2) = U^2")
     print("  Variant B: R2 = u^2 -> rho(R2)^{-1} = rho(u)  = U")
@@ -1151,7 +1140,7 @@ def main():
 
     elapsed = time.time() - t0
     print(f"\n{'█' * 80}")
-    print(f"█  ЗАВЕРШЕНО for {elapsed:.1f} withеto")
+    print(f"█  ЗАВЕРШЕНО за {elapsed:.1f} сек")
     print(f"{'█' * 80}")
 
 

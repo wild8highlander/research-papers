@@ -1,22 +1,15 @@
 """
-    English translation of full_AB_simulation.py.
-TASK 3: FULL AB-CLOUD SIMULATION WITH KERR-SCHWARZSCHILD METRIC
-=================================================================
-Build a complete numerical simulation of the AB-cloud using:
-- Kerr-Schwarzschild metric (rotating + non-rotating)
-- Hofstadter Hamiltonian on the Klein quartic graph
-- All 4 CPT-violation signatures
+full_AB_simulation — English Version
+============================================================
 
-Simulation components:
-1. Build AB-cloud Hamiltonian on Klein graph (56 vertices, d=3)
-2. Apply Kerr-Schwarzschild deformation (parameter a_AB = 2α-1)
-3. Compute spectrum at various α (rotation parameter)
-4. Verify 4 CPT-violation signatures:
-   a. Cross-section anomaly: Δσ/σ₀ = ε(α)
-   b. Detailed balance: σ_forward / σ_backward
-   c. Polarization asymmetry: A ≈ ε
-   d. Missing energy: fraction of "free" eigenstates
+Full AB simulation combining all verification components.
+
+This is the English translation of full_AB_simulation.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: full_AB_simulation.py
 """
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
@@ -361,28 +354,28 @@ ax.axis('off')
 ax.text(0.5, 0.95, 'Full AB-cloud Simulation', ha='center', va='top',
         fontsize=13, fontweight='bold', color='#166534')
 text = (
-    "FULL AB-CLOUD SIMULATION:\n"
-    "• Klein graph (56 vertices, d=3)\n"
-    "• Hofstadter Hamiltonian with AB phase\n"
-    "• Kerr-Schwarzschild deformation (a_AB=2α-1)\n"
-    "• Choptuik correction ε (CPT violation)\n\n"
-    "4 CPT VIOLATION SIGNATURES:\n"
+    "ПОЛНАЯ СИМУЛЯЦИЯ AB-ОБЛАКА:\n"
+    "• Граф Клейна (56 вершин, d=3)\n"
+    "• Гамильтониан Хофштадтера с AB-фазой\n"
+    "• Kerr-Schwarzschild деформация (a_AB=2α-1)\n"
+    "• Choptiuk-поправка ε (CPT-нарушение)\n\n"
+    "4 СИГНАТУРЫ CPT-НАРУШЕНИЯ:\n"
     "1. Δσ/σ₀ = -ε ✓\n"
     "2. σ_rev/σ_fwd = 1 + 2ε ✓\n"
     "3. A ≈ ε ✓\n"
     "4. Free fraction = ε ✓\n\n"
-    "GUE STATISTICS:\n"
-    "• α=1/2: GUE conformity is maximal\n"
-    "• α≠1/2: GUE conformity drops\n"
-    "• T-symmetry broken at α=1/2\n\n"
-    "PHASE DIAGRAM:\n"
-    "• (α=1/2, ε=0): pure GUE\n"
-    "• (α≠1/2, ε>0): mixed regime\n"
-    "• (α≠1/2, ε>>0): Poisson (complete localization)\n\n"
-    "CONCLUSION:\n"
-    "All 4 signatures confirmed numerically.\n"
-    "GUE = T-violation at α=1/2.\n"
-    "CPT-violation = Choptiuk correction ε."
+    "GUE-СТАТИСТИКА:\n"
+    "• α=1/2: GUE conformity максимальна\n"
+    "• α≠1/2: GUE conformity падает\n"
+    "• T-симметрия нарушена при α=1/2\n\n"
+    "ФАЗОВАЯ ДИАГРАММА:\n"
+    "• (α=1/2, ε=0): чистый GUE\n"
+    "• (α≠1/2, ε>0): смешанный режим\n"
+    "• (α≠1/2, ε>>0): Poisson (полная локализация)\n\n"
+    "ВЫВОД:\n"
+    "Все 4 сигнатуры подтверждены численно.\n"
+    "GUE = T-нарушение при α=1/2.\n"
+    "CPT-нарушение = Choptiuk поправка ε."
 )
 ax.text(0.5, 0.5, text, ha='center', va='center', fontsize=9.5,
         bbox=dict(boxstyle='round,pad=0.6', facecolor='#DCFCE7', edgecolor='#166534'))

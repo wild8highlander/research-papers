@@ -1,7 +1,17 @@
-#!/usr/bin/env python3
+"""
+ab_cloud_extended_kopt_study — English Version
+============================================================
+
+Extended study of k_opt(n) for n=1..10 with Choptuik correction variations.
+
+This is the English translation of ab_cloud_extended_kopt_study.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: ab_cloud_extended_kopt_study.py
+"""
+
 # -*- coding: utf-8 -*-
 """
-    English translation of ab_cloud_extended_kopt_study.py.
 EXTENDED STUDY: k_opt(n) for n=1..10 + Choptuik correction variations
 =======================================================================
 Following user's intuition:
@@ -424,13 +434,13 @@ def fig_kopt_pattern(kopt_per_n):
         ax.text(n, k + 0.3, str(k), ha="center", fontsize=11, fontweight="bold")
     # Mark user's hypothesis
     ax.axhline(4, color="coral", ls=":", lw=1.5, alpha=0.5,
-                label="hypothesis: k=4 (odd n)")
+                label="гипотеза: k=4 (нечётные n)")
     ax.axhline(14, color="steelblue", ls=":", lw=1.5, alpha=0.5,
-                label="hypothesis: k=14 (even n)")
-    ax.set_xlabel("dimension $n$")
-    ax.set_ylabel("optimal power $k$")
-    ax.set_title("(a) $k_{\\mathrm{opt}}(n)$ for $n=1,...,10$\n"
-                  "Blue = even, coral = odd")
+                label="гипотеза: k=14 (чётные n)")
+    ax.set_xlabel("размерность $n$")
+    ax.set_ylabel("оптимальная степень $k$")
+    ax.set_title("(a) $k_{\\mathrm{opt}}(n)$ для $n=1,...,10$\n"
+                  "Синий = чётные, коралловый = нечётные")
     ax.set_xticks(n_vals)
     ax.legend(fontsize=9)
     ax.grid(alpha=0.3, axis="y")
@@ -440,13 +450,13 @@ def fig_kopt_pattern(kopt_per_n):
     sigma_vals = [kopt_per_n[n]["sigma_pct"] for n in n_vals]
     ax.bar(n_vals, sigma_vals, color=colors, alpha=0.85, edgecolor="black")
     ax.axhline(5.0, color="orange", ls="--", lw=2,
-                label="5% threshold (JC holds)")
+                label="порог 5% (JC выполняется)")
     for n, s in zip(n_vals, sigma_vals):
         ax.text(n, s + 0.001, f"{s:.4f}%", ha="center", fontsize=9, fontweight="bold")
-    ax.set_xlabel("dimension $n$")
+    ax.set_xlabel("размерность $n$")
     ax.set_ylabel(r"$\sigma/|\mu|$ (%)")
-    ax.set_title("(b) Achieved $\\sigma/|\\mu|$ with $k_{\\mathrm{opt}}$\n"
-                  "(all $n$ — JC holds absolutely)")
+    ax.set_title("(b) Достигнутое $\\sigma/|\\mu|$ с $k_{\\mathrm{opt}}$\n"
+                  "(все $n$ — JC выполняется абсолютно)")
     ax.set_xticks(n_vals)
     ax.legend()
     ax.grid(alpha=0.3, axis="y")
@@ -465,16 +475,16 @@ def fig_variable_choptuik(results):
     sigma_vals = [r["rel_std_pct"] for r in results]
     corrections = [r["correction"] for r in results]
     ax.semilogy(c_vals, sigma_vals, "bo-", lw=2, markersize=10)
-    ax.axhline(5.0, color="orange", ls="--", lw=2, label="5% threshold (JC)")
+    ax.axhline(5.0, color="orange", ls="--", lw=2, label="порог 5% (JC)")
     # Mark standard Choptuik (c=1)
-    ax.axvline(1.0, color="red", ls=":", lw=2, label="standard correction (c=1)")
+    ax.axvline(1.0, color="red", ls=":", lw=2, label="стандартная поправка (c=1)")
     # Add correction values on top
     for c, s, corr in zip(c_vals, sigma_vals, corrections):
         ax.text(c, s * 1.3, f"corr={corr:.3f}", ha="center", fontsize=8)
-    ax.set_xlabel("coefficient $c$ in by/onпраintoе $(1 - c/\\pi^2)$")
+    ax.set_xlabel("коэффициент $c$ в поправке $(1 - c/\\pi^2)$")
     ax.set_ylabel(r"$\sigma/|\mu|$ (%)")
-    ax.set_title("Effect of variable Choptuik correction on JC ($n=3$, $k=4$)\n"
-                  "Цель: onйтand optimal $c$ for мandнandмandforцandand $\\sigma/|\\mu|$")
+    ax.set_title("Влияние переменной поправки Чоптьюка на JC ($n=3$, $k=4$)\n"
+                  "Цель: найти оптимальное $c$ для минимизации $\\sigma/|\\mu|$")
     ax.legend()
     ax.grid(alpha=0.3)
     out = os.path.join(FIG_DIR, "fig14_28_variable_choptuik.png")
@@ -489,14 +499,14 @@ def fig_log_power(results):
     p_vals = [r["p"] for r in results]
     sigma_vals = [r["rel_std_pct"] for r in results]
     ax.semilogy(p_vals, sigma_vals, "go-", lw=2, markersize=10)
-    ax.axhline(5.0, color="orange", ls="--", lw=2, label="5% threshold (JC)")
-    ax.axvline(0.0, color="red", ls=":", lw=2, label="standard logarithm (p=0)")
+    ax.axhline(5.0, color="orange", ls="--", lw=2, label="порог 5% (JC)")
+    ax.axvline(0.0, color="red", ls=":", lw=2, label="стандартный логарифм (p=0)")
     for p, s in zip(p_vals, sigma_vals):
         ax.text(p, s * 1.3, f"{s:.4f}%", ha="center", fontsize=9)
-    ax.set_xlabel("degree/power $p$ in $\\|\\psi - r\\|^{2p}/(2p)$ (instead of $\\log\\|\\psi-r\\|^2$)")
+    ax.set_xlabel("степень $p$ в $\\|\\psi - r\\|^{2p}/(2p)$ (вместо $\\log\\|\\psi-r\\|^2$)")
     ax.set_ylabel(r"$\sigma/|\mu|$ (%)")
-    ax.set_title("Change of logarithm form: $\\log\\|\\psi-r\\|^2 \\to \\|\\psi-r\\|^{2p}/(2p)$\n"
-                  "Цель: onйтand оптandмальbutе $p$ for JC")
+    ax.set_title("Изменение формы логарифма: $\\log\\|\\psi-r\\|^2 \\to \\|\\psi-r\\|^{2p}/(2p)$\n"
+                  "Цель: найти оптимальное $p$ для JC")
     ax.legend()
     ax.grid(alpha=0.3)
     out = os.path.join(FIG_DIR, "fig14_29_log_power.png")

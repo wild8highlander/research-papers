@@ -1,7 +1,17 @@
-#!/usr/bin/env python3
+"""
+ab_cloud_vortex_search — English Version
+============================================================
+
+Exploratory: Vortex numerical values for absolute JC proof (Chapter 14 research).
+
+This is the English translation of ab_cloud_vortex_search.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: ab_cloud_vortex_search.py
+"""
+
 # -*- coding: utf-8 -*-
 """
-    English translation of ab_cloud_vortex_search.py.
 EXPLORATORY: Vortex numerical values for absolute JC proof (Chapter 14 research)
 =================================================================================
 Systematically searches over numerical values assigned to vortices to find
@@ -452,15 +462,15 @@ def fig_best_per_n(best_per_n):
     bars = ax.bar(n_values, best_sigmas, color="forestgreen", alpha=0.85,
                    edgecolor="darkgreen")
     ax.axhline(5.0, color="orange", ls="--", lw=1.5,
-                label="5% threshold (JC holds)")
+                label="порог 5% (JC выполняется)")
     for i, (n, sigma, name) in enumerate(zip(n_values, best_sigmas, best_names)):
         ax.text(n, sigma + 0.5, f"{sigma:.2f}%", ha="center", fontsize=10, fontweight="bold")
         ax.text(n, sigma / 2, name, ha="center", fontsize=8, color="white",
                 rotation=90, va="center")
-    ax.set_xlabel("dimension $n$")
-    ax.set_ylabel(r"best $\sigma/|\mu|$ (%)")
-    ax.set_title("Best vortex configurations (by/on чandwithлоyouм valuesм $W_k$) for $n=1,...,6$\n"
-                  "Цель: onйтand tohe/itфandгурацandю with $\\sigma/|\\mu| < 5\\%$ (absolute JC proof)")
+    ax.set_xlabel("размерность $n$")
+    ax.set_ylabel(r"лучшее $\sigma/|\mu|$ (%)")
+    ax.set_title("Лучшие конфигурации вихрей (по числовым значениям $W_k$) для $n=1,...,6$\n"
+                  "Цель: найти конфигурацию с $\\sigma/|\\mu| < 5\\%$ (абсолютное доказательство JC)")
     ax.legend()
     ax.grid(alpha=0.3, axis="y")
     ax.set_yscale('log')

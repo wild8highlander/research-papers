@@ -1,12 +1,13 @@
-#!/usr/bin/env python3
 """
-    English translation of run_all_75_tasks.py.
-run_all_75_tasks.py
-Run ALL 75 monograph tasks.
-Run ALL 75 monograph tasks.
+run_all_75_tasks — English Version
+============================================================
 
-Usage:
-    python3 run_all_75_tasks.py
+Run all 75 parametric verification tasks for the monograph.
+
+This is the English translation of run_all_75_tasks.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: run_all_75_tasks.py
 """
 
 import sys
@@ -15,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-# Import all tasks
+# Импорт всех задач
 from monograph_verification import (
     CONFIG, task_01, task_02, task_03, task_04, task_05,
     task_06, task_07, task_08, task_09, task_10,
@@ -41,10 +42,10 @@ from monograph_verification_part3 import (
 
 def main():
     print("=" * 78)
-    print("RUNNING ALL 75 MONOGRAPH TASKS")
+    print("ЗАПУСК ВСЕХ 75 ЗАДАЧ МОНОГРАФИИ")
     print("RUNNING ALL 75 MONOGRAPH TASKS")
     print("=" * 78)
-    print(f"Output directory: {CONFIG['output_dir']}")
+    print(f"Директория вывода / Output: {CONFIG['output_dir']}")
     print()
 
     all_tasks = []
@@ -54,7 +55,7 @@ def main():
         if task_func:
             all_tasks.append((task_name, task_func))
 
-    print(f"Total tasks: {len(all_tasks)}")
+    print(f"Всего задач / Total tasks: {len(all_tasks)}")
     print()
 
     results = {}
@@ -75,22 +76,22 @@ def main():
             results[name] = {"status": "ERROR", "time": dt, "error": str(e)}
             print(f"ERROR ({dt:.2f}s): {e}")
 
-    # Сinодка
+    # Сводка
     print()
     print("=" * 78)
-    print("SUMMARY")
+    print("ИТОГ / SUMMARY")
     print("=" * 78)
     ok = sum(1 for r in results.values() if r['status'] == 'OK')
     err = sum(1 for r in results.values() if r['status'] == 'ERROR')
-    print(f"Total tasks: {len(all_tasks)}")
-    print(f"Successful: {ok}")
-    print(f"Errors: {err}")
-    print(f"Total time: {total_time:.2f} sec")
-    print(f"Data: {CONFIG['output_dir']}/{CONFIG['data_subdir']}/")
-    print(f"Figures: {CONFIG['output_dir']}/{CONFIG['figures_subdir']}/")
+    print(f"Всего задач / Total tasks: {len(all_tasks)}")
+    print(f"Успешных / Successful: {ok}")
+    print(f"Ошибок / Errors: {err}")
+    print(f"Общее время / Total time: {total_time:.2f} сек / sec")
+    print(f"Данные / Data: {CONFIG['output_dir']}/{CONFIG['data_subdir']}/")
+    print(f"Графики / Figures: {CONFIG['output_dir']}/{CONFIG['figures_subdir']}/")
 
     if err > 0:
-        print("\nErrors:")
+        print("\nОшибки / Errors:")
         for name, r in results.items():
             if r['status'] == 'ERROR':
                 print(f"  {name}: {r['error']}")

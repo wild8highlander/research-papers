@@ -1,29 +1,15 @@
 """
-    English translation of isospectral_b.py.
-isospectral_b.py — Isospectral b-modification via Darboux/Bäcklund
-transformation, with Wilson RG interpretation.
+isospectral_b — English Version
+============================================================
 
-This module addresses Open Question 1 of §16.22 of the monograph:
+Isospectral deformation for the b-correction and spectral geometry verification.
 
-    "Does there exist a modified Lax pair in which the b-rotation
-     is included isospectrally (via gauge transformation)?"
+This is the English translation of isospectral_b.py.
+Russian comments in the code body are preserved for reference.
 
-Answer: YES.  The Darboux transformation provides a continuous family
-of isospectral potentials parameterized by an angle θ.  When θ = θ_b
-(the universal polarization angle), this gives an ISOSPECTRAL b-
-modification that preserves the Lax spectrum to machine precision.
-
-Connection to Wilson RG (user's intuition, verified):
-    Wilson RG: integrate out high-energy modes → effective theory
-               with same IR observables (masses, couplings)
-    Isospectral b: "integrate out" continuous-spectrum radiation
-                  → effective potential with same discrete spectrum
-                  (soliton eigenvalues λ_n = -c_n²)
-    Both preserve the physical observables while modifying the
-    underlying field.  The b-parameter plays the role of the RG scale μ.
-
-Author: Z.ai Research, 2026 (companion to monograph chapter 16, §16.24)
+Original file: isospectral_b.py
 """
+
 from __future__ import annotations
 
 import numpy as np

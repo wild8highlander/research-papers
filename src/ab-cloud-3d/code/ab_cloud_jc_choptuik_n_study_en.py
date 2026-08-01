@@ -1,7 +1,17 @@
-#!/usr/bin/env python3
+"""
+ab_cloud_jc_choptuik_n_study — English Version
+============================================================
+
+JC verification with Choptuik correction for n=1..6 (Chapter 14).
+
+This is the English translation of ab_cloud_jc_choptuik_n_study.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: ab_cloud_jc_choptuik_n_study.py
+"""
+
 # -*- coding: utf-8 -*-
 """
-    English translation of ab_cloud_jc_choptuik_n_study.py.
 JC VERIFICATION WITH CHOPTUIK CORRECTION FOR n = 1..6 (Chapter 14 §14.19-14.20)
 ================================================================================
 Systematic study of how the Choptuik correction (1 - 1/π²) = 0.89868 affects
@@ -271,17 +281,17 @@ def fig_jc_n_comparison(all_results):
     width = 0.35
     bars1 = axes[0].bar(x - width/2, rel_std_plain, width,
                          color="steelblue", alpha=0.85, edgecolor="navy",
-                         label="without Choptuik correction")
+                         label="без поправки Чоптьюка")
     bars2 = axes[0].bar(x + width/2, rel_std_chop, width,
                          color="coral", alpha=0.85, edgecolor="darkred",
-                         label=fr"with correction $(1-1/\pi^2)$")
+                         label=fr"с поправкой $(1-1/\pi^2)$")
     axes[0].axhline(5.0, color="green", ls="--", lw=1.5,
-                     label="5% threshold (JC holds)")
+                     label="порог 5% (JC выполняется)")
     axes[0].set_xticks(x)
     axes[0].set_xticklabels([f"n={n}\nN_v={n}" for n in n_values])
-    axes[0].set_xlabel("dimension $n$ (= чandwithло vortices $N_v$)")
-    axes[0].set_ylabel(r"relative deviation $\sigma/|\mu|$ (%)")
-    axes[0].set_title("(a) Jacobian constancy: JC with/without correction Choptuik")
+    axes[0].set_xlabel("размерность $n$ (= число вихрей $N_v$)")
+    axes[0].set_ylabel(r"относительное отклонение $\sigma/|\mu|$ (%)")
+    axes[0].set_title("(a) Постоянство якобиана: JC с/без поправкой Чоптьюка")
     axes[0].legend(loc="upper left", fontsize=9)
     axes[0].grid(alpha=0.3, axis="y")
     axes[0].set_yscale('log')
@@ -299,10 +309,10 @@ def fig_jc_n_comparison(all_results):
     axes[1].axhline(0, color="black", lw=0.5)
     axes[1].set_xticks(x)
     axes[1].set_xticklabels([f"n={n}" for n in n_values])
-    axes[1].set_xlabel("dimension $n$")
-    axes[1].set_ylabel(r"improvement $\sigma/|\mu|$ (%)")
-    axes[1].set_title("(b) Improvement from Choptuik correction\n"
-                       "(positivelyе = correction by/onмогает JC)")
+    axes[1].set_xlabel("размерность $n$")
+    axes[1].set_ylabel(r"улучшение $\sigma/|\mu|$ (%)")
+    axes[1].set_title("(b) Улучшение от поправки Чоптьюка\n"
+                       "(положительное = поправка помогает JC)")
     axes[1].grid(alpha=0.3, axis="y")
     for i, v in enumerate(improvements):
         axes[1].text(i, v + (1 if v >= 0 else -3), f"{v:+.1f}%",
@@ -327,16 +337,16 @@ def fig_slowdown_n(all_results):
 
     fig, ax = plt.subplots(1, 1, figsize=(8, 5), constrained_layout=True)
     ax.plot(n_values, slowdowns, "bo-", lw=2.5, markersize=12,
-             label="measured slowdown")
+             label="измеренное замедление")
     ax.axhline(SLOWDOWN_FACTOR, color="red", ls="--", lw=2,
-                label=fr"ожandyesемое $1/(1-1/\pi^2) = {SLOWDOWN_FACTOR:.4f}$")
+                label=fr"ожидаемое $1/(1-1/\pi^2) = {SLOWDOWN_FACTOR:.4f}$")
     ax.fill_between(n_values, [SLOWDOWN_FACTOR*0.95]*len(n_values),
                       [SLOWDOWN_FACTOR*1.05]*len(n_values),
-                      color="red", alpha=0.15, label="±5% toорandtoр")
-    ax.set_xlabel("dimension $n$")
-    ax.set_ylabel(r"coefficient forмедленandя $\tau_{\mathrm{Ch}}/\tau_0$")
-    ax.set_title("Universal slowdown of processes from Choptuik correction\n"
-                  "by/on all размерbutwithтям $n=1,\\ldots,6$")
+                      color="red", alpha=0.15, label="±5% коридор")
+    ax.set_xlabel("размерность $n$")
+    ax.set_ylabel(r"коэффициент замедления $\tau_{\mathrm{Ch}}/\tau_0$")
+    ax.set_title("Универсальное замедление процессов от поправки Чоптьюка\n"
+                  "по всем размерностям $n=1,\\ldots,6$")
     ax.set_xticks(n_values)
     ax.legend(loc="best")
     ax.grid(alpha=0.3)
@@ -377,24 +387,24 @@ def fig_jc_phase_diagram(all_results):
                           extent=[lam_values[0], lam_values[-1],
                                   n_values[0]-0.5, n_values[-1]+0.5],
                           cmap="RdYlGn", vmin=0, vmax=1)
-    axes[0].set_xlabel(r"constant withinязand $\lambda$")
-    axes[0].set_ylabel("dimension $n$")
-    axes[0].set_title("(a) JC without Choptuik correction\n"
-                       "(зелёный = JC holds, toраwithный = onрушеon)")
+    axes[0].set_xlabel(r"константа связи $\lambda$")
+    axes[0].set_ylabel("размерность $n$")
+    axes[0].set_title("(a) JC без поправки Чоптьюка\n"
+                       "(зелёный = JC выполняется, красный = нарушена)")
     axes[0].set_yticks(n_values)
-    fig.colorbar(im0, ax=axes[0], shrink=0.85, label="JC withthatтуwith")
+    fig.colorbar(im0, ax=axes[0], shrink=0.85, label="JC статус")
 
     # (b) With correction
     im1 = axes[1].imshow(jc_chop, origin="lower", aspect="auto",
                           extent=[lam_values[0], lam_values[-1],
                                   n_values[0]-0.5, n_values[-1]+0.5],
                           cmap="RdYlGn", vmin=0, vmax=1)
-    axes[1].set_xlabel(r"constant withinязand $\lambda$")
-    axes[1].set_ylabel("dimension $n$")
-    axes[1].set_title(fr"(b) JC with correction $(1-1/\pi^2)$"
-                       "\n(зелёный = JC holds, toраwithный = onрушеon)")
+    axes[1].set_xlabel(r"константа связи $\lambda$")
+    axes[1].set_ylabel("размерность $n$")
+    axes[1].set_title(fr"(b) JC с поправкой $(1-1/\pi^2)$"
+                       "\n(зелёный = JC выполняется, красный = нарушена)")
     axes[1].set_yticks(n_values)
-    fig.colorbar(im1, ax=axes[1], shrink=0.85, label="JC withthatтуwith")
+    fig.colorbar(im1, ax=axes[1], shrink=0.85, label="JC статус")
 
     out = os.path.join(FIG_DIR, "fig14_19_jc_phase_diagram.png")
     fig.savefig(out, dpi=300)

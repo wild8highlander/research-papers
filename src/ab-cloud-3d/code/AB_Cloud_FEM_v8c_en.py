@@ -1,8 +1,13 @@
-#!/usr/bin/env python3
 """
-    English translation of AB_Cloud_FEM_v8c.py.
-AB_Cloud_FEM_v8c.py — FEM on Kleinе with маthreeчнымand twisted BC
-Corrected generation of PSL(2,7) and conjugacy classes
+AB_Cloud_FEM_v8c — English Version
+============================================================
+
+FEM on Klein quartic with matrix twisted boundary conditions. Corrected PSL(2,7) generation and conjugacy classes.
+
+This is the English translation of AB_Cloud_FEM_v8c.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: AB_Cloud_FEM_v8c.py
 """
 
 import numpy as np
@@ -28,18 +33,18 @@ REPS = ['1a', '3a', '3b', '6a', '7a', '8a']
 COOK = {'1a': 0.0, '3a': 3.577, '3b': None, '6a': 10.869, '7a': 6.6225, '8a': 2.6779}
 
 # ============================================================================
-# PSL(2,7) — 2×2 MATRICES OVER F_7
+# PSL(2,7) — МАТРИЦЫ 2×2 НАД F_7
 # ============================================================================
 
 def mm(A, B):
-    """Matrix multiplication over F_7."""
+    """Умножение матриц над F_7."""
     return np.array([
         [(A[0,0]*B[0,0]+A[0,1]*B[1,0])%7, (A[0,0]*B[0,1]+A[0,1]*B[1,1])%7],
         [(A[1,0]*B[0,0]+A[1,1]*B[1,0])%7, (A[1,0]*B[0,1]+A[1,1]*B[1,1])%7]
     ], dtype=int)
 
 def minv(A):
-    """Inverse matrix in SL(2,F_7)."""
+    """Обратная матрица в SL(2,F_7)."""
     d = (A[0,0]*A[1,1]-A[0,1]*A[1,0])%7
     di = pow(int(d), -1, 7)
     return np.array([[A[1,1]*di%7, (-A[0,1]*di)%7],
@@ -50,7 +55,7 @@ def nk(M): return tuple(((-M)%7).flatten())
 def eq(A,B): return mk(A)==mk(B) or nk(A)==mk(B)
 
 def order_psl(M):
-    """Order of element in PSL(2,7)."""
+    """Порядок элемента в PSL(2,7)."""
     I = np.array([[1,0],[0,1]], dtype=int)
     if eq(M, I): return 1
     Mp = M.copy()
@@ -60,7 +65,7 @@ def order_psl(M):
     return -1
 
 def gen_psl27():
-    """Generation of PSL(2,7) via BFS."""
+    """Генерация PSL(2,7) через BFS."""
     s = np.array([[0,1],[6,0]], dtype=int)
     u = np.array([[0,1],[6,1]], dtype=int)
     I = np.array([[1,0],[0,1]], dtype=int)
@@ -82,22 +87,22 @@ def gen_psl27():
     return elems, s, u
 
 def classify(elems, s_mat, u_mat):
-    """Classification of elements by conjugacy classes."""
+    """Классификация элементов по классам сопряжённости."""
     n = len(elems)
-    # Precompute order
+    # Предвычисляем порядок
     orders = [order_psl(M) for M in elems]
     
-    # For order 7: check conjugacy with su or its powers
+    # Для порядка 7: проверяем сопряжённость с su или его степенями
     su = mm(s_mat, u_mat)
     
-    # Compute all powers of su
+    # Вычисляем все степени su
     su_pows = [su.copy()]
     for k in range(1, 7):
         su_pows.append(mm(su_pows[-1], su))
     # su_pows[k] = su^(k+1)
     
-    # For each element of order 7, check conjugacy
-    # Full verification: h M h⁻¹ = su^k for some h and k
+    # Для каждого элемента порядка 7 проверяем сопряжённость
+    # Полная проверка: h M h⁻¹ = su^k для некоторого h и k
     classes = []
     for i, M in enumerate(elems):
         o = orders[i]
@@ -106,7 +111,7 @@ def classify(elems, s_mat, u_mat):
         elif o == 3: classes.append(2)
         elif o == 4: classes.append(3)
         elif o == 7:
-            # Check conjugacy with su^k
+            # Проверяем сопряжённость с su^k
             found = False
             for h in elems:
                 hinv = minv(h)
@@ -123,25 +128,25 @@ def classify(elems, s_mat, u_mat):
                         break
                 if found: break
             if not found:
-                classes.append(-1)  # error
+                classes.append(-1)  # ошибка
         else:
             classes.append(-1)
     
     return classes, orders
 
 # ============================================================================
-# REPRESENTATIONS — DIRECT FORMULAS
+# ПРЕДСТАВЛЕНИЯ — ПРЯМЫЕ ФОРМУЛЫ
 # ============================================================================
 
 def build_all_reps(s_mat, u_mat, elems):
-    """Builds all 6 representations of PSL(2,7) by direct constructions."""
+    """Строит все 6 представлений PSL(2,7) прямыми конструкциями."""
     reps = {}
     
-    # 1a: trivial
+    # 1a: тривиальное
     reps['1a'] = (np.array([[1.0]]), np.array([[1.0]]), 1)
     
-    # 7a: representation on P¹(F_7) minus trivial
-    # P¹(F_7) = {0,1,2,3,4,5,6,∞}, action: z → (az+b)/(cz+d)
+    # 7a: представление на P¹(F_7) минус тривиальное
+    # P¹(F_7) = {0,1,2,3,4,5,6,∞}, действие: z → (az+b)/(cz+d)
     def psl_action(M, z):
         a,b,c,d = int(M[0,0]), int(M[0,1]), int(M[1,0]), int(M[1,1])
         if z == 7:  # ∞
@@ -164,17 +169,17 @@ def build_all_reps(s_mat, u_mat, elems):
     B7 = U7[:, :7]
     reps['7a'] = (B7.T @ P_s @ B7, B7.T @ P_u @ B7, 7)
     
-    # 7a⊗7a contains: 1a(×1) + 3a(×1) + 3b(×1) + 6a(×2) + 7a(×2) + 8a(×2)
-    # Extract 3a, 3b, 8a, 6a via character projectors from 7a⊗7a
-    print("  Extracting 3a, 3b, 8a, 6a from 7a⊗7a...")
+    # 7a⊗7a содержит: 1a(×1) + 3a(×1) + 3b(×1) + 6a(×2) + 7a(×2) + 8a(×2)
+    # Извлекаем 3a, 3b, 8a, 6a через проекторы характеров из 7a⊗7a
+    print("  Извлекаю 3a, 3b, 8a, 6a из 7a⊗7a...")
     
     rho7_s, rho7_u, d7 = reps['7a']
     Rs49 = np.kron(rho7_s, rho7_s)  # 49×49
     Ru49 = np.kron(rho7_u, rho7_u)
     
-    # We already have all group elements and their classes
-    # Build all matrices of 7a-representation
-    print("  Building all matrices of 7a-representation...")
+    # У нас уже есть все элементы группы и их классы
+    # Строим все матрицы 7a-представления
+    print("  Строю все матрицы 7a-представления...")
     def psl_action(M, z):
         a,b,c,d = int(M[0,0]), int(M[0,1]), int(M[1,0]), int(M[1,1])
         if z == 7: return 7 if c == 0 else (a*pow(c,-1,7))%7
@@ -187,18 +192,18 @@ def build_all_reps(s_mat, u_mat, elems):
         perm = [psl_action(g, z) for z in range(8)]
         P = np.zeros((8,8))
         for i in range(8): P[i, perm[i]] = 1
-        rho7_all[mk(g)] = B7.T @ P @ B7  # in 7a basis
+        rho7_all[mk(g)] = B7.T @ P @ B7  # в базисе 7a
     
-    # Precompute classes for all elements
+    # Предвычисляем классы для всех элементов
     classes, _ = classify(elems, s_mat, u_mat)
     
     rng = np.random.RandomState(42)
     
-    # General function for extracting irrep from 7a⊗7a
+    # Общая функция извлечения irrep из 7a⊗7a
     def extract_from_7a7a(rep_name, target_dim):
         chi = CHAR_TABLE[rep_name]
         d = target_dim
-        print(f"    Extracting {rep_name} (dim={d})...")
+        print(f"    Извлечение {rep_name} (dim={d})...")
         
         v = rng.randn(49) + 1j*rng.randn(49)
         Pv = np.zeros(49, dtype=complex)
@@ -211,7 +216,7 @@ def build_all_reps(s_mat, u_mat, elems):
             Pv += chi_bar * (Rg @ v)
         Pv *= d / 168.0
         
-        # SVD for image basis
+        # SVD для базиса образа
         basis = [Pv.copy()]
         for trial in range(200):
             new_v = Rs49 @ basis[-1] if trial % 2 == 0 else Ru49 @ basis[-1]
@@ -227,12 +232,12 @@ def build_all_reps(s_mat, u_mat, elems):
         mask = S > 1e-6
         rank = np.sum(mask)
         Ub = U[:, mask]
-        print(f"      Ранг projectorа: {rank} (ожandyesетwithя {d*d})")
+        print(f"      Ранг проектора: {rank} (ожидается {d*d})")
         
         Rs_V = Ub.conj().T @ Rs49 @ Ub
         Ru_V = Ub.conj().T @ Ru49 @ Ub
         
-        # Спandн-method
+        # Спин-метод
         for attempt in range(30):
             w = rng.randn(rank) + 1j*rng.randn(rank)
             w /= norm(w)
@@ -270,7 +275,7 @@ def build_all_reps(s_mat, u_mat, elems):
                 
                 if ok: return (rho_s, rho_u, d)
         
-        print(f"      НЕ УДАЛОСЬ frominлечь {rep_name}")
+        print(f"      НЕ УДАЛОСЬ извлечь {rep_name}")
         return None
     
     r = extract_from_7a7a('3a', 3)
@@ -285,7 +290,7 @@ def build_all_reps(s_mat, u_mat, elems):
     return reps
 
 # ============================================================================
-# СЕТКА, ЛАПЛАСИАН, BC, SOLVER — those же that and in v8b
+# СЕТКА, ЛАПЛАСИАН, BC, SOLVER — те же что и в v8b
 # ============================================================================
 
 def create_mesh(level):
@@ -444,27 +449,27 @@ def solve(K,M,ne=20):
 def main():
     t0=time.time()
     print("="*70)
-    print("AB-CLOUD v8c — Маthreeчные twisted BC + пряweе tohe/itwithтруtoцandand representations")
+    print("AB-CLOUD v8c — Матричные twisted BC + прямые конструкции представлений")
     print("="*70)
     
     elems, s_mat, u_mat = gen_psl27()
     print(f"  |PSL(2,7)| = {len(elems)}")
     print(f"  ord(s)={order_psl(s_mat)}, ord(u)={order_psl(u_mat)}, ord(su)={order_psl(mm(s_mat,u_mat))}")
     
-    # Клаwithwithы conjugacy
+    # Классы сопряжённости
     classes, orders = classify(elems, s_mat, u_mat)
     cc = [0]*6
     for c in classes:
         if 0<=c<6: cc[c]+=1
-    print(f"  Клаwithwithы: {cc} (ожandд. [1,21,56,42,24,24])")
+    print(f"  Классы: {cc} (ожид. [1,21,56,42,24,24])")
     
-    # Building representations
+    # Строим представления
     reps = build_all_reps(s_mat, u_mat, elems)
     
-    # Верandфandtoацandя
-    print("\n  Верandфandtoацandя representations:")
+    # Верификация
+    print("\n  Верификация представлений:")
     for rn in REPS:
-        if rn not in reps: print(f"  {rn}: MISSING"); continue
+        if rn not in reps: print(f"  {rn}: ОТСУТСТВУЕТ"); continue
         rs,ru,d = reps[rn]; chi = CHAR_TABLE[rn]
         es=norm(rs@rs-np.eye(d)); eu=norm(ru@ru@ru-np.eye(d))
         esu=norm(np.linalg.matrix_power(rs@ru,7)-np.eye(d))
@@ -475,7 +480,7 @@ def main():
     
     # FEM
     level=5
-    print(f"\n  Сетtoа level={level}")
+    print(f"\n  Сетка level={level}")
     vs,es,bd,ic,by,_,_,_,ns = create_mesh(level)
     nv=len(vs); print(f"  n_v={nv}, n_elem={len(es)}")
     K,M,Ae,Ah = assemble(vs,es)
@@ -490,7 +495,7 @@ def main():
     results = {}
     for rn in REPS:
         if rn not in reps:
-            print(f"  {rn:>4s}  — notт representations"); continue
+            print(f"  {rn:>4s}  — нет представления"); continue
         rs,ru,d = reps[rn]; ck = COOK.get(rn)
         try:
             fd,sm,fx,nt = build_bc(by,bd,ic,ns,rs,ru,d)
@@ -504,13 +509,13 @@ def main():
             print(f"  {rn:>4s} {d:>3d} {len(fd):>6d} {len(sm):>5d} {len(fx):>4d} {l1:>10.4f} {cks:>10s} {dls:>7s}")
             results[rn] = {'l1':l1, 'cook':ck, 'd':dl, 'ev':ev[:10]}
         except Exception as e:
-            print(f"  {rn:>4s} ERROR: {e}")
+            print(f"  {rn:>4s} ОШИБКА: {e}")
             import traceback; traceback.print_exc()
     
-    # Сinодtoа
+    # Сводка
     el = time.time()-t0
     print(f"\n{'█'*70}")
-    print(f"█  ИТОГ v8c ({el:.0f}with)")
+    print(f"█  ИТОГ v8c ({el:.0f}с)")
     for rn in REPS:
         if rn not in results: continue
         r=results[rn]; ck=f"{r['cook']:.4f}" if r['cook'] else "—"

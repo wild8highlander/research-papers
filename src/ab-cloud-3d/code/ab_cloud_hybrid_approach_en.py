@@ -1,7 +1,17 @@
-#!/usr/bin/env python3
+"""
+ab_cloud_hybrid_approach — English Version
+============================================================
+
+Hybrid approach: Simplified AB-cloud Hamiltonian without geometry (Chapter 14).
+
+This is the English translation of ab_cloud_hybrid_approach.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: ab_cloud_hybrid_approach.py
+"""
+
 # -*- coding: utf-8 -*-
 """
-    English translation of ab_cloud_hybrid_approach.py.
 HYBRID APPROACH: Simplified AB-cloud Hamiltonian without geometry (Chapter 14 §14.21)
 ================================================================================
 Removes ALL geometric structure (τ, theta-functions, PSL(2,7)) and keeps only:
@@ -274,20 +284,20 @@ def fig_hybrid_vs_geometric(all_results):
     x = np.arange(len(n_values))
     width = 0.2
     ax.bar(x - 1.5*width, geom_plain, width, color="steelblue", alpha=0.85,
-            edgecolor="navy", label="Geometric without correction")
+            edgecolor="navy", label="Геометрический без поправки")
     ax.bar(x - 0.5*width, geom_chop, width, color="coral", alpha=0.85,
-            edgecolor="darkred", label=r"Geometric + Choptuik correction")
+            edgecolor="darkred", label=r"Геометрический + поправка Чоптьюка")
     ax.bar(x + 0.5*width, hybrid_plain, width, color="forestgreen", alpha=0.85,
-            edgecolor="darkgreen", label="Hybrid without correction")
+            edgecolor="darkgreen", label="Гибридный без поправки")
     ax.bar(x + 1.5*width, hybrid_chop, width, color="purple", alpha=0.85,
-            edgecolor="indigo", label=r"Hybrid + Choptuik correction")
-    ax.axhline(5.0, color="orange", ls="--", lw=1.5, label="5% threshold (JC holds)")
+            edgecolor="indigo", label=r"Гибридный + поправка Чоптьюка")
+    ax.axhline(5.0, color="orange", ls="--", lw=1.5, label="порог 5% (JC выполняется)")
     ax.set_xticks(x)
     ax.set_xticklabels([f"n={n}" for n in n_values])
-    ax.set_xlabel("dimension $n$ (= чandwithло vortices $N_v$)")
-    ax.set_ylabel(r"relative deviation $\sigma/|\mu|$ (%)")
-    ax.set_title("Hybrid approach vs geometric: 4-withthenрhe/itnotе comparison JC for $n=1,...,6$\n"
-                  "(гandбрandдный approach убandрает τ, thosethat-functions and PSL(2,7), оwiththatinляя only Hamiltonian + correction)")
+    ax.set_xlabel("размерность $n$ (= число вихрей $N_v$)")
+    ax.set_ylabel(r"относительное отклонение $\sigma/|\mu|$ (%)")
+    ax.set_title("Гибридный подход vs геометрический: 4-стороннее сравнение JC для $n=1,...,6$\n"
+                  "(гибридный подход убирает τ, тета-функции и PSL(2,7), оставляя только гамильтониан + поправку)")
     ax.legend(loc="upper left", fontsize=9)
     ax.grid(alpha=0.3, axis="y")
     ax.set_yscale('log')
@@ -308,18 +318,18 @@ def fig_improvement_comparison(all_results):
     x = np.arange(len(n_values))
     width = 0.27
     ax.bar(x - width, geom_imp, width, color="coral", alpha=0.85,
-            edgecolor="darkred", label="Improvement from Choptuik (geometric)")
+            edgecolor="darkred", label="Улучшение от Чоптьюка (геометрический)")
     ax.bar(x, hybrid_imp, width, color="purple", alpha=0.85,
-            edgecolor="indigo", label="Improvement from Choptuik (hybrid)")
+            edgecolor="indigo", label="Улучшение от Чоптьюка (гибридный)")
     ax.bar(x + width, hybrid_vs_geom, width, color="forestgreen", alpha=0.85,
-            edgecolor="darkgreen", label="Hybrid vs Geometric (without correction)")
+            edgecolor="darkgreen", label="Гибрид vs Геометрический (без поправки)")
     ax.axhline(0, color="black", lw=0.5)
     ax.set_xticks(x)
     ax.set_xticklabels([f"n={n}" for n in n_values])
-    ax.set_xlabel("dimension $n$")
-    ax.set_ylabel("improvement (%)")
-    ax.set_title("Comparison of improvements: hybrid approach outperforms geometric\n"
-                  "for all $n$, оwithобенbut for чётных (where geometric yesinал 0%)")
+    ax.set_xlabel("размерность $n$")
+    ax.set_ylabel("улучшение (%)")
+    ax.set_title("Сравнение улучшений: гибридный подход превосходит геометрический\n"
+                  "для всех $n$, особенно для чётных (где геометрический давал 0%)")
     ax.legend(loc="upper left", fontsize=9)
     ax.grid(alpha=0.3, axis="y")
     out = os.path.join(FIG_DIR, "fig14_20_hybrid_improvement.png")

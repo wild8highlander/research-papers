@@ -1,7 +1,17 @@
-#!/usr/bin/env python3
+"""
+ab_cloud_jacobi_verify — English Version
+============================================================
+
+AB-cloud Jacobian extension verification suite (Chapter 14).
+
+This is the English translation of ab_cloud_jacobi_verify.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: ab_cloud_jacobi_verify.py
+"""
+
 # -*- coding: utf-8 -*-
 """
-    English translation of ab_cloud_jacobi_verify.py.
 AB-CLOUD JACOBIAN EXTENSION — Verification Suite (Chapter 14)
 =============================================================
 Numerical verification of the Lagrangian hierarchy with Jacobi theta-function
@@ -492,7 +502,7 @@ def fig_theta_heatmap():
                     extent=[-0.5, 0.5, -0.5, 0.5], cmap="viridis", aspect="equal")
     ax.set_xlabel(r"$\mathrm{Re}\, z_1$")
     ax.set_ylabel(r"$\mathrm{Re}\, z_2$")
-    ax.set_title(r"$|\theta_{\varepsilon}(z,\tau_{K})|$  ($\varepsilon$ = first notчётonя thosethat-characteristic)")
+    ax.set_title(r"$|\theta_{\varepsilon}(z,\tau_{K})|$  ($\varepsilon$ = первая нечётная тета-характеристика)")
     cb = fig.colorbar(im, ax=ax, shrink=0.85)
     cb.set_label(r"$|\theta_{\varepsilon}|$")
     out = os.path.join(FIG_DIR, "fig14_1_theta_heatmap.png")
@@ -531,12 +541,12 @@ def fig_vortex_profile(vortex_result: Dict[str, Any]):
 
     fig, ax = plt.subplots(1, 1, figsize=(7, 4.5), constrained_layout=True)
     ax.plot(r_centers, psi_radial_norm, "b-", lw=2.0,
-            label=r"numerical solution $|\psi(r)|^2$")
+            label=r"численное решение $|\psi(r)|^2$")
     ax.plot(r_centers, f_bog, "r--", lw=1.5,
-            label=r"анwithазц Богомольbutго (usыщенandе inequalities)")
-    ax.set_xlabel(r"$r$ (lattice nodes)")
-    ax.set_ylabel(r"$|\psi|^2$ (butрмandроinаbut)")
-    ax.set_title(f"Профandль vortex-solitonа ($n=1$, $\\lambda$={cfg.lam}, $R$={R})")
+            label=r"ансазц Богомольного (насыщение неравенства)")
+    ax.set_xlabel(r"$r$ (узлы решётки)")
+    ax.set_ylabel(r"$|\psi|^2$ (нормировано)")
+    ax.set_title(f"Профиль вихря-солитона ($n=1$, $\\lambda$={cfg.lam}, $R$={R})")
     ax.legend(loc="upper right")
     ax.grid(alpha=0.3)
     out = os.path.join(FIG_DIR, "fig14_2_vortex_profile.png")
@@ -555,9 +565,9 @@ def fig_instanton_action():
         ax.plot(k_vals, S, "o-", lw=2, markersize=8, label=fr"$\lambda = {lam}$")
     ax.axhline(0, color="gray", lw=0.5)
     ax.axvline(0, color="gray", lw=0.5)
-    ax.set_xlabel(r"topological charge $k \in \mathbb{Z}$")
+    ax.set_xlabel(r"топологический заряд $k \in \mathbb{Z}$")
     ax.set_ylabel(r"$S_{\mathrm{inst}}(k) = 2\pi^2 k / \lambda$")
-    ax.set_title("Дейwithтinandе andнwiththatнтshe/it vs topological charge (Теорема 14.2)")
+    ax.set_title("Действие инстантона vs топологический заряд (Теорема 14.2)")
     ax.legend(loc="best")
     ax.grid(alpha=0.3)
     out = os.path.join(FIG_DIR, "fig14_3_instanton_action.png")
@@ -576,12 +586,12 @@ def fig_qnm_spectrum(qnm: Dict[str, Any]):
 
     fig, ax = plt.subplots(1, 1, figsize=(7, 4.5), constrained_layout=True)
     ax.plot(n_vals, omega_vals, "bo-", lw=2, markersize=8,
-            label=fr"AB-cloud + Jacobi ($\lambda$=0.05)")
+            label=fr"AB-cloud + Якоби ($\lambda$=0.05)")
     ax.plot(n_vals, omega_ref, "r--", lw=1.5,
-            label=r"pure Klein-BTZ ($\lambda=0$)")
-    ax.set_xlabel(r"оберthenн $n$")
+            label=r"чистый Klein-BTZ ($\lambda=0$)")
+    ax.set_xlabel(r"обертон $n$")
     ax.set_ylabel(r"$\omega_n$")
-    ax.set_title(r"Quasinormal modes: $\omega_n = (n+1/2)\cdot 2\pi/\log 7 + \mathcal{O}(\lambda)$")
+    ax.set_title(r"Квазинормальные моды: $\omega_n = (n+1/2)\cdot 2\pi/\log 7 + \mathcal{O}(\lambda)$")
     ax.legend(loc="upper left")
     ax.grid(alpha=0.3)
     out = os.path.join(FIG_DIR, "fig14_4_qnm_spectrum.png")
@@ -595,15 +605,15 @@ def fig_gue_preservation(gue: Dict[str, Any]):
     fig, ax = plt.subplots(1, 1, figsize=(7, 4.5), constrained_layout=True)
     samples = gue["r_samples"]
     ax.bar(range(len(samples)), samples, color="steelblue",
-           alpha=0.8, label="imageцы AB+Jacobi")
+           alpha=0.8, label="образцы AB+Якоби")
     ax.axhline(gue["r_gue_target"], color="red", ls="--", lw=2,
                label=fr"GUE $\langle r\rangle = {gue['r_gue_target']:.4f}$")
     ax.axhline(np.mean(samples), color="green", ls="-", lw=1.5,
-               label=fr"mean = {np.mean(samples):.4f}")
-    ax.set_xlabel("configuration number")
+               label=fr"среднее = {np.mean(samples):.4f}")
+    ax.set_xlabel("номер конфигурации")
     ax.set_ylabel(r"$\langle r \rangle$")
-    ax.set_title(f"Сохраnotнandе GUE-withthatтandwithтandtoand with inwiththatintoой Jacobi "
-                 f"(deviation {gue['deviation_from_gue']:.4f})")
+    ax.set_title(f"Сохранение GUE-статистики с вставкой Якоби "
+                 f"(отклонение {gue['deviation_from_gue']:.4f})")
     ax.legend(loc="lower right")
     ax.grid(alpha=0.3, axis="y")
     out = os.path.join(FIG_DIR, "fig14_5_gue_preservation.png")

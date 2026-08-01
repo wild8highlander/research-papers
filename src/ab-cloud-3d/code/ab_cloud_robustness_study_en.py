@@ -1,7 +1,17 @@
-#!/usr/bin/env python3
+"""
+ab_cloud_robustness_study — English Version
+============================================================
+
+Robustness study: W_k = pi^(-2k) — stability across T_flow, r_k, n_test_points.
+
+This is the English translation of ab_cloud_robustness_study.py.
+Russian comments in the code body are preserved for reference.
+
+Original file: ab_cloud_robustness_study.py
+"""
+
 # -*- coding: utf-8 -*-
 """
-    English translation of ab_cloud_robustness_study.py.
 ROBUSTNESS STUDY: W_k = π^(-2k) — stability across T_flow, r_k, n_test_points
 ================================================================================
 Following the discovery that W_k = π^(-2k) gives absolute JC (σ/|μ| < 0.04%)
@@ -290,11 +300,11 @@ def fig_stability_tflow(results):
         T_vals = [r["T"] for r in results[n]]
         sigmas = [r["rel_std_pct"] for r in results[n]]
         ax.semilogy(T_vals, sigmas, "o-", lw=2, markersize=8, label=f"n={n}")
-    ax.axhline(5.0, color="orange", ls="--", lw=2, label="5% threshold (JC)")
-    ax.set_xlabel("time flow $T_{\\mathrm{flow}}$")
+    ax.axhline(5.0, color="orange", ls="--", lw=2, label="порог 5% (JC)")
+    ax.set_xlabel("время потока $T_{\\mathrm{flow}}$")
     ax.set_ylabel(r"$\sigma/|\mu|$ (%)")
-    ax.set_title("Stability $W_k = \\pi^{-2k}$: dependence from $T_{\\mathrm{flow}}$\n"
-                  "(all $n$ оwiththatютwithя нandже by/onрога 5% — JC уwiththatчandinо)")
+    ax.set_title("Устойчивость $W_k = \\pi^{-2k}$: зависимость от $T_{\\mathrm{flow}}$\n"
+                  "(все $n$ остаются ниже порога 5% — JC устойчиво)")
     ax.legend()
     ax.grid(alpha=0.3)
     out = os.path.join(FIG_DIR, "fig14_23_stability_tflow.png")
@@ -309,11 +319,11 @@ def fig_stability_position(results):
         seeds = [r["seed"] for r in results[n]]
         sigmas = [r["rel_std_pct"] for r in results[n]]
         ax.semilogy(seeds, sigmas, "o-", lw=2, markersize=8, label=f"n={n}")
-    ax.axhline(5.0, color="orange", ls="--", lw=2, label="5% threshold (JC)")
-    ax.set_xlabel("seed (by/onзandцandand vortices $r_k$)")
+    ax.axhline(5.0, color="orange", ls="--", lw=2, label="порог 5% (JC)")
+    ax.set_xlabel("seed (позиции вихрей $r_k$)")
     ax.set_ylabel(r"$\sigma/|\mu|$ (%)")
-    ax.set_title("Stability $W_k = \\pi^{-2k}$: dependence from by/onзandцandй vortices $r_k$\n"
-                  "(all $n$ оwiththatютwithя нandже by/onрога 5% — JC not forinandwithandт from $r_k$)")
+    ax.set_title("Устойчивость $W_k = \\pi^{-2k}$: зависимость от позиций вихрей $r_k$\n"
+                  "(все $n$ остаются ниже порога 5% — JC не зависит от $r_k$)")
     ax.legend()
     ax.grid(alpha=0.3)
     out = os.path.join(FIG_DIR, "fig14_24_stability_position.png")
@@ -328,11 +338,11 @@ def fig_stability_npoints(results):
         npts = [r["n_points"] for r in results[n]]
         sigmas = [r["rel_std_pct"] for r in results[n]]
         ax.semilogy(npts, sigmas, "o-", lw=2, markersize=8, label=f"n={n}")
-    ax.axhline(5.0, color="orange", ls="--", lw=2, label="5% threshold (JC)")
-    ax.set_xlabel("чandwithло thosewiththenyouх thenчеto")
+    ax.axhline(5.0, color="orange", ls="--", lw=2, label="порог 5% (JC)")
+    ax.set_xlabel("число тестовых точек")
     ax.set_ylabel(r"$\sigma/|\mu|$ (%)")
-    ax.set_title("Stability $W_k = \\pi^{-2k}$: dependence from чandwithла thosewiththenyouх thenчеto\n"
-                  "(all $n$ оwiththatютwithя нandже by/onрога 5% — JC уwiththatчandinо to withэмплandнгу)")
+    ax.set_title("Устойчивость $W_k = \\pi^{-2k}$: зависимость от числа тестовых точек\n"
+                  "(все $n$ остаются ниже порога 5% — JC устойчиво к сэмплингу)")
     ax.legend()
     ax.grid(alpha=0.3)
     out = os.path.join(FIG_DIR, "fig14_25_stability_npoints.png")
@@ -359,10 +369,10 @@ def fig_analytic_decomposition():
     ax.semilogy(factors_k, pi_vals, "bo-", lw=2, markersize=10, label=r"$\pi^{-2k}$")
     ax.semilogy(factors_k, T_vals, "rs-", lw=2, markersize=10, label=r"$T(g)^{-k} = 6^{-k}$")
     ax.semilogy(factors_k, zeta_vals, "g^-", lw=2, markersize=10, label=r"$\zeta(2)^{-k}$")
-    ax.set_xlabel("degree/power $k$")
-    ax.set_ylabel("magnitude")
-    ax.set_title("(a) Decomposition $W_k = \\pi^{-2k} = T(g)^{-k} \\cdot \\zeta(2)^{-k}$\n"
-                  "(where $T(g) = g(g+1)/2 = 6$ for $g=3$)")
+    ax.set_xlabel("степень $k$")
+    ax.set_ylabel("величина")
+    ax.set_title("(a) Разложение $W_k = \\pi^{-2k} = T(g)^{-k} \\cdot \\zeta(2)^{-k}$\n"
+                  "(где $T(g) = g(g+1)/2 = 6$ для $g=3$)")
     ax.legend()
     ax.grid(alpha=0.3)
 
@@ -371,14 +381,14 @@ def fig_analytic_decomposition():
     best_k_vals = [BEST_K[n] for n in n_vals]
     ax = axes[1]
     ax.bar(n_vals, best_k_vals, color="steelblue", alpha=0.85, edgecolor="navy",
-            label="лучшandй $k$")
+            label="лучший $k$")
     # Hypothesis: k = 2·ceil(n/2)·2 for small n? Just show actual values.
     for n, k in zip(n_vals, best_k_vals):
         ax.text(n, k + 0.3, f"k={k}", ha="center", fontsize=11, fontweight="bold")
-    ax.set_xlabel("dimension $n$")
-    ax.set_ylabel("optimal power $k$")
-    ax.set_title("(b) Optimal power $k$ for $W_k = \\pi^{-2k}$ by/on $n$\n"
-                  "(numerically onйденные values)")
+    ax.set_xlabel("размерность $n$")
+    ax.set_ylabel("оптимальная степень $k$")
+    ax.set_title("(b) Оптимальная степень $k$ для $W_k = \\pi^{-2k}$ по $n$\n"
+                  "(численно найденные значения)")
     ax.set_xticks(n_vals)
     ax.grid(alpha=0.3, axis="y")
     ax.legend()
