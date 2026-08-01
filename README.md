@@ -569,6 +569,6 @@ This research program sits at the confluence of several deep mathematical tradit
 
 <div align="center">
 
-**Built with ❤️ by [Isaev Shak Hamzatovich](https://github.com/wild8highlander)**
+**Built with ❤️ by [Isaev Ishak Hamzatovich](https://github.com/wild8highlander)**
 
 </div>
