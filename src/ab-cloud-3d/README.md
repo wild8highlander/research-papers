@@ -226,7 +226,7 @@ If you use this code or the verification results, please cite:
 ```bibtex
 @misc{ab-cloud-3d-2026,
   title   = {AB-Cloud: A Universal Lattice Operating System for the Riemann Zeros},
-  author  = {Isaev Shak Hamzatovich},
+  author  = {Isaev Ishak Hamzatovich},
   year    = {2026},
   url     = {https://github.com/wild8highlander/research-papers/tree/main/src/ab-cloud-3d}
 }

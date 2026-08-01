@@ -302,7 +302,7 @@ If you use this work, please cite:
 ```bibtex
 @article{isaev-2026,
   title   = {Correction $b$ as Polarization Twisting: Analytical Proof of 3D {Navier--Stokes} Regularity without Dissipation},
-  author  = {Isaev Shak Hamzatovich},
+  author  = {Isaev Ishak Hamzatovich},
   year    = {2026},
   journal = {Preprint},
   url     = {https://github.com/wild8highlander/research-papers}
@@ -314,7 +314,7 @@ For the AB-Cloud / Riemann zeros preprint:
 ```bibtex
 @misc{ab-cloud-3d-2026,
   title   = {AB-Cloud: A Universal Lattice Operating System for the Riemann Zeros},
-  author  = {Isaev Shak Hamzatovich},
+  author  = {Isaev Ishak Hamzatovich},
   year    = {2026},
   url     = {https://github.com/wild8highlander/research-papers/tree/main/src/ab-cloud-3d}
 }
@@ -335,5 +335,5 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to contribute to 
 ---
 
 <p align="center">
-  <sub>Built with ❤️ by <a href="https://github.com/wild8highlander">Isaev Shak Hamzatovich</a></sub>
+  <sub>Built with ❤️ by <a href="https://github.com/wild8highlander">Isaev Ishak Hamzatovich</a></sub>
 </p>
