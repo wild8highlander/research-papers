@@ -1,11 +1,15 @@
 # 🔬 Research Papers: Correction *b* & 3D Navier–Stokes Regularity
 
+[![CI](https://img.shields.io/github/actions/workflow/status/wild8highlander/research-papers/ci.yml?branch=main&label=CI&logo=github)](https://github.com/wild8highlander/research-papers/actions/workflows/ci.yml)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](./LICENSE)
+[![Code size](https://img.shields.io/github/languages/code-size/wild8highlander/research-papers?label=Repo%20size)](https://github.com/wild8highlander/research-papers)
+[![Last commit](https://img.shields.io/github/last-commit/wild8highlander/research-papers?label=Last%20commit)](https://github.com/wild8highlander/research-papers/commits/main)
 [![Papers](https://img.shields.io/badge/Papers-14-blue.svg)](./papers/)
 [![Documents](https://img.shields.io/badge/Documents-15-green.svg)](./docs/)
 [![LaTeX Sources](https://img.shields.io/badge/LaTeX%20Sources-4-orange.svg)](./src/)
 [![Source Code](https://img.shields.io/badge/Code-Python%20%7C%20Julia-purple.svg)](./src/ab-cloud-3d/)
 [![Languages](https://img.shields.io/badge/Languages-EN%20%2F%20RU-yellow.svg)]()
+[![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
 
 > **Analytical proof of 3D Navier–Stokes regularity without dissipation** — based on the universal polarization correction *b* ≈ 0.0785, arising from Kirchhoff equations for point vortices as a −90° rotation.
 
@@ -14,14 +18,16 @@
 ## 📑 Table of Contents
 
 - [Overview](#-overview)
+- [Key Results](#-key-results)
 - [Research Topics](#-research-topics)
 - [Repository Structure](#-repository-structure)
+- [Installation & Quick Start](#-installation--quick-start)
 - [Papers](#-papers)
 - [Documents](#-documents)
 - [LaTeX Sources](#-latex-sources)
 - [Numerical Source Code (AB-Cloud 3D)](#-numerical-source-code-ab-cloud-3d)
-- [Getting Started](#-getting-started)
 - [Citation](#-citation)
+- [Contributing](#-contributing)
 - [License](#-license)
 
 ---
@@ -38,6 +44,31 @@ The correction *b* ≈ 0.0785 arises analytically from Kirchhoff equations for p
 4. **Stabilizes by 3.5×** numerically (133.15 → 38.05) without dissipation
 
 A second research thread — the **AB-Cloud as a universal lattice operating system for the Riemann zeros** — extends the framework to the spectral side, realising the Hilbert–Pólya conjecture, the Montgomery–Dyson GUE correspondence, and the Langlands programme in a single programmable $36^3$ non-Hermitian Hofstadter Hamiltonian.
+
+---
+
+## 🏆 Key Results
+
+### 3D Navier–Stokes Regularity
+
+| Property | Value | Significance |
+|---|---|---|
+| Polarization correction *b* | ≈ 0.0785 | Universal constant from Kirchhoff vortex equations |
+| Rotation angle θ_b | ≈ 7.07° | Phase rotation of velocity **u** around vortex axis **ω** |
+| Stabilization factor | 3.5× (133.15 → 38.05) | Without adding dissipation |
+| Energy preservation | R^T R = I | Rotation, not damping — no energy lost |
+| BKM criterion | ∫‖**ω**‖_∞ dt < ∞ | ⟹ global smoothness |
+
+### AB-Cloud & Riemann Zeros
+
+| Property | Value | Significance |
+|---|---|---|
+| KS test *p*-value | 0.27–0.88 | AB-Cloud spectrum indistinguishable from ζ-zeros |
+| L² distance P(s) | 0.0127 | 34× closer than either to GUE Wigner surmise |
+| Permutation test | Z = 14.10σ (p < 10⁻⁴⁴) | Excludes randomness |
+| ⟨r⟩ value | 0.6159 (GUE: 0.5996) | Within 2.7% of GUE theory |
+| Arf invariant | 0 | Preserved across all 5 lattice resolutions |
+| Lattice size | 36³ = 46,656 sites | Non-Hermitian Hofstadter Hamiltonian |
 
 ---
 
@@ -68,7 +99,9 @@ The AB-Cloud as a universal lattice operating system running on the non-trivial 
 ```
 research-papers/
 ├── .github/
-│   └── FUNDING.yml
+│   ├── FUNDING.yml
+│   └── workflows/
+│       └── ci.yml                  # CI: syntax check on Python 3.10/3.11/3.12
 ├── docs/                           # Research documents (Word .docx)
 │   ├── correction-b/
 │   │   ├── en/                     # English versions
@@ -81,7 +114,7 @@ research-papers/
 │   │   ├── en/
 │   │   └── ru/
 │   ├── choptuik-riemann/
-│   ├── riemann-zeros/              # NEW (v1.3.0) — AB-Cloud / Riemann zeros
+│   ├── riemann-zeros/              # AB-Cloud / Riemann zeros
 │   │   └── en/                     # English monograph v2
 │   └── monographs/                 # Full monographs (EN/RU)
 ├── papers/                         # Published papers & preprints (PDF)
@@ -90,23 +123,82 @@ research-papers/
 │   ├── ab-cloud/
 │   ├── kdv/
 │   ├── monographs/
-│   └── riemann-zeros/              # NEW (v1.3.0) — preprints + key figures
+│   └── riemann-zeros/              # Preprints + key figures
 │       └── figures/                # PNG previews of headline plots
 ├── src/                            # LaTeX sources + numerical code
 │   ├── main/                       # Main paper LaTeX (v1, v2)
 │   ├── preprint/                   # Preprint LaTeX (English)
-│   └── ab-cloud-3d/                # NEW (v1.3.0) — full reproducibility package
+│   └── ab-cloud-3d/                # Full reproducibility package
 │       ├── code/                   # Python + Julia sources (EN + RU)
+│       │   ├── CODE_OF_CONDUCT.md # Contributor Covenant
+│       │   └── README.md          # Code-level documentation
 │       ├── preprint/               # AB-Cloud preprint LaTeX source
 │       ├── data/                   # 5000 embedded Riemann zeta zeros
 │       ├── build/                  # Compiled .pyc artifacts (CPython 3.12)
-│       └── outputs/                # 4 verification runs (92 figures + JSON/CSV/MD/TXT/HTML)
+│       ├── outputs/                # 4 verification runs (92 figures + JSON/CSV/MD/TXT/HTML)
+│       ├── requirements.txt        # Python dependencies
+│       ├── pyproject.toml          # Package configuration
+│       └── README.md               # Detailed code & reproduction guide
 ├── .gitignore
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md
 ```
+
+---
+
+## 🚀 Installation & Quick Start
+
+### Clone the repository
+
+```bash
+git clone https://github.com/wild8highlander/research-papers.git
+cd research-papers
+```
+
+### Browse by topic
+
+- **Quick start (NSE)**: Read the [preprint](./papers/preprint/preprint_v2.pdf) for a concise overview of the *b*-correction
+- **Deep dive (NSE)**: Read the [full monograph](./papers/monographs/Monograph_full_EN.pdf) for the complete treatment
+- **AB-Cloud / Riemann zeros**: Read [`papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf`](./papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf), then explore [`src/ab-cloud-3d/`](./src/ab-cloud-3d/) to reproduce the numerical verification
+- **Build from source**: See [LaTeX Sources](#-latex-sources) for compilation instructions
+
+### Run numerical verification (AB-Cloud 3D)
+
+```bash
+cd src/ab-cloud-3d/
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the interactive simulation
+python code/ab_cloud_3d_en.py     # English interactive menu (10 modes A–J)
+```
+
+Or install as a package:
+```bash
+cd src/ab-cloud-3d/
+pip install -e .                   # Editable install
+```
+
+### Build LaTeX papers
+
+```bash
+cd src/main/
+xelatex main.tex
+xelatex main.tex   # run twice for TOC and cross-references
+```
+
+### Recommended reading order
+
+1. `papers/preprint/preprint_v2.pdf` — concise overview of the main NSE result
+2. `papers/correction-b/main_v2.pdf` — detailed analytical proof
+3. `papers/monographs/Monograph_full_EN.pdf` — complete monograph with all chapters
+4. `docs/kdv/` — KdV extension of the *b*-correction
+5. `docs/klein-attractor/` — Klein attractor connection
+6. `papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf` — AB-Cloud as a lattice OS for the Riemann zeros
+7. `src/ab-cloud-3d/` — full numerical reproducibility package for the AB-Cloud preprint
 
 ---
 
@@ -229,7 +321,7 @@ The full set of 92 figures (PDF + PNG) is bundled with the source code in [`src/
 | [`src/main/main.tex`](./src/main/main.tex) | Main paper source (v1, Russian) |
 | [`src/main/main_v2.tex`](./src/main/main_v2.tex) | Main paper source (v2, Russian) |
 | [`src/preprint/preprint.tex`](./src/preprint/preprint.tex) | Preprint source (English) |
-| [`src/ab-cloud-3d/preprint/ab_cloud_preprint.tex`](./src/ab-cloud-3d/preprint/ab_cloud_preprint.tex) | **NEW** — AB-Cloud preprint source (English, ~940 lines) |
+| [`src/ab-cloud-3d/preprint/ab_cloud_preprint.tex`](./src/ab-cloud-3d/preprint/ab_cloud_preprint.tex) | AB-Cloud preprint source (English, ~940 lines) |
 
 **Build instructions:**
 ```bash
@@ -247,6 +339,8 @@ The complete reproducibility package for the AB-Cloud preprint — **Python + Ju
 ```
 src/ab-cloud-3d/
 ├── README.md                # Detailed code & reproduction guide
+├── requirements.txt         # Python dependencies
+├── pyproject.toml           # Package configuration (pip install -e .)
 ├── code/                    # Python + Julia sources (EN + RU, ~2000 lines each)
 ├── preprint/                # LaTeX source of the preprint
 ├── data/                    # 5000 embedded Riemann zeta zeros (1.8 MB)
@@ -256,9 +350,9 @@ src/ab-cloud-3d/
 
 **Quick start:**
 ```bash
-cd src/ab-cloud-3d/code/
-pip install numpy scipy matplotlib mpmath      # Python deps
-python3 ab_cloud_3d_en.py                      # Interactive menu (10 modes A–J)
+cd src/ab-cloud-3d/
+pip install -r requirements.txt           # Install dependencies
+python3 code/ab_cloud_3d_en.py            # Interactive menu (10 modes A–J)
 ```
 
 The ten verification modes cover the 3D solver, RMT analysis of the $\zeta$ zeros, finite-size scaling, the Arf invariant, decay-time correspondence, Dirac/QED cone, full reviewer-point verification, deep Riemann-zeros analysis, the 3D AB-Cloud ↔ Riemann bridge, and advanced 3D topology (Chern marker, edge states, probability current, winding number, Hofstadter butterfly, exceptional points).
@@ -267,70 +361,42 @@ The ten verification modes cover the 3D solver, RMT analysis of the $\zeta$ zero
 
 ---
 
-## 🚀 Getting Started
-
-### Clone the repository
-
-```bash
-git clone https://github.com/wild8highlander/research-papers.git
-cd research-papers
-```
-
-### Browse by topic
-
-- **Quick start (NSE)**: Read the [preprint](./papers/preprint/preprint_v2.pdf) for a concise overview of the *b*-correction
-- **Deep dive (NSE)**: Read the [full monograph](./papers/monographs/Monograph_full_EN.pdf) for the complete treatment
-- **AB-Cloud / Riemann zeros**: Read [`papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf`](./papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf), then explore [`src/ab-cloud-3d/`](./src/ab-cloud-3d/) to reproduce the numerical verification
-- **Build from source**: See [LaTeX Sources](#-latex-sources) for compilation instructions
-
-### Recommended reading order
-
-1. `papers/preprint/preprint_v2.pdf` — concise overview of the main NSE result
-2. `papers/correction-b/main_v2.pdf` — detailed analytical proof
-3. `papers/monographs/Monograph_full_EN.pdf` — complete monograph with all chapters
-4. `docs/kdv/` — KdV extension of the *b*-correction
-5. `docs/klein-attractor/` — Klein attractor connection
-6. `papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf` — AB-Cloud as a lattice OS for the Riemann zeros
-7. `src/ab-cloud-3d/` — full numerical reproducibility package for the AB-Cloud preprint
-
----
-
 ## 📖 Citation
 
-If you use this work, please cite:
+If you use this work, please cite the main *b*-correction paper:
 
 ```bibtex
-@article{isaev-2026,
-  title   = {Correction $b$ as Polarization Twisting: Analytical Proof of 3D {Navier--Stokes} Regularity without Dissipation},
-  author  = {Isaev Ishak Hamzatovich},
-  year    = {2026},
-  journal = {Preprint},
-  url     = {https://github.com/wild8highlander/research-papers}
+@article{isaev-2026-b-correction,
+  title     = {Correction $b$ as Polarization Twisting: Analytical Proof of 3D {Navier--Stokes} Regularity without Dissipation},
+  author    = {Isaev Ishak Hamzatovich},
+  year      = {2026},
+  journal   = {Preprint},
+  url       = {https://github.com/wild8highlander/research-papers}
 }
 ```
 
 For the AB-Cloud / Riemann zeros preprint:
 
 ```bibtex
-@misc{ab-cloud-3d-2026,
-  title   = {AB-Cloud: A Universal Lattice Operating System for the Riemann Zeros},
-  author  = {Isaev Ishak Hamzatovich},
-  year    = {2026},
-  url     = {https://github.com/wild8highlander/research-papers/tree/main/src/ab-cloud-3d}
+@misc{isaev-2026-ab-cloud-3d,
+  title     = {AB-Cloud: A Universal Lattice Operating System for the Riemann Zeros},
+  author    = {Isaev Ishak Hamzatovich},
+  year      = {2026},
+  url       = {https://github.com/wild8highlander/research-papers/tree/main/src/ab-cloud-3d}
 }
 ```
-
----
-
-## 📜 License
-
-This work is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License** (CC BY-NC-SA 4.0). See [LICENSE](./LICENSE) for details.
 
 ---
 
 ## 🤝 Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to contribute to this repository.
+
+---
+
+## 📜 License
+
+This work is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License** (CC BY-NC-SA 4.0). See [LICENSE](./LICENSE) for details.
 
 ---
 
