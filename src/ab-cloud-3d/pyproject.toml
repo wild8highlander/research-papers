@@ -10,7 +10,7 @@ readme = "README.md"
 license = {text = "CC-BY-NC-SA-4.0"}
 requires-python = ">=3.10"
 authors = [
-    {name = "Isaev Ishak Hamzatovich"},
+    {name = "Iskhak Hamzatovich Isaev"},
 ]
 keywords = [
     "riemann-zeros",

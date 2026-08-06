@@ -350,7 +350,7 @@ If you use this code or the verification results, please cite:
 ```bibtex
 @misc{isaev-2026-ab-cloud-3d,
   title     = {AB-Cloud: A Universal Lattice Operating System for the Riemann Zeros},
-  author    = {Isaev Ishak Hamzatovich},
+  author    = {Iskhak Hamzatovich Isaev},
   year      = {2026},
   url       = {https://github.com/wild8highlander/research-papers/tree/main/src/ab-cloud-3d}
 }

@@ -506,7 +506,7 @@ If you use this work in your research, please cite the relevant papers:
 @article{isaev2026bcorrection,
   title     = {Correction {$b$} as Polarization Twisting: Analytical Proof of
                3D {Navier--Stokes} Regularity without Dissipation},
-  author    = {Isaev, Ishak Hamzatovich},
+  author    = {Isaev, Iskhak Hamzatovich},
   year      = {2026},
   journal   = {Preprint},
   url       = {https://github.com/wild8highlander/research-papers}
@@ -519,7 +519,7 @@ If you use this work in your research, please cite the relevant papers:
 @misc{isaev2026abcloud3d,
   title     = {{AB-Cloud}: A Universal Lattice Operating System for the
                Riemann Zeros},
-  author    = {Isaev, Ishak Hamzatovich},
+  author    = {Isaev, Iskhak Hamzatovich},
   year      = {2026},
   url       = {https://github.com/wild8highlander/research-papers/tree/main/src/ab-cloud-3d}
 }
@@ -569,6 +569,6 @@ This research program sits at the confluence of several deep mathematical tradit
 
 <div align="center">
 
-**Built with ❤️ by [Isaev Ishak Hamzatovich](https://github.com/wild8highlander)**
+**Built with ❤️ by [Iskhak Hamzatovich Isaev](https://github.com/wild8highlander)**
 
 </div>
