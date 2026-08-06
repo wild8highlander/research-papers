@@ -1,0 +1,46 @@
+{
+  "title": "research-papers — Correction b, 3D Navier-Stokes regularity & AB-Cloud / Riemann zeta zeros",
+  "description": "<p>A research-papers repository by <strong>Iskhak Hamzatovich Isaev</strong> containing two independent research programs that converge on the universal polarization correction <code>b &asymp; 0.0785</code> from Kirchhoff point-vortex equations.</p><p><strong>Thread 1 (3D Navier&ndash;Stokes regularity).</strong> The correction <code>b</code> acts as a rotation angle (&theta;<sub>b</sub> &asymp; 7.07&deg;) that stabilises the 3D Navier&ndash;Stokes equations <em>without adding any dissipation</em> &mdash; the velocity field is rotated around the vortex axis by R<sub>b</sub> with R<sub>b</sub><sup>T</sup>R<sub>b</sub> = I, preserving energy while reducing the BKM blow-up criterion integral by a factor of 3.5&times;. This delivers an analytical proof of global-in-time smoothness for 3D NSE.</p><p><strong>Thread 2 (AB-Cloud &amp; Riemann zeta zeros).</strong> The AB-Cloud &mdash; a 36<sup>3</sup> non-Hermitian Hofstadter Hamiltonian whose phase pattern is dictated by the Riemann &zeta;-zeros &mdash; reproduces the GUE spacing statistics of &zeta;-zeros to KS p-values of 0.27&ndash;0.88, and the form factor K(&tau;) to L&sup2; distance 0.0127 (34&times; closer than either to the GUE Wigner surmise). A permutation test excludes randomness at <strong>Z = 14.10&sigma;</strong> (p &lt; 10<sup>-44</sup>).</p><p>The repository ships 14 PDF papers (EN/RU), 16 editable DOCX sources, 60+ Python files, 2 Julia files, 3 LaTeX preprint sources, and pre-generated verification figures. All artefacts are authored by Iskhak Hamzatovich Isaev.</p>",
+  "creators": [
+    {
+      "name": "Isaev, Iskhak Hamzatovich",
+      "affiliation": "Independent researcher, Russia"
+    }
+  ],
+  "keywords": [
+    "Navier-Stokes-regularity",
+    "Riemann-zeros",
+    "Hilbert-Polya-conjecture",
+    "AB-Cloud",
+    "Hofstadter-Hamiltonian",
+    "Montgomery-pair-correlation",
+    "GUE-random-matrices",
+    "Choptuik-correction",
+    "polarization-b",
+    "BKM-criterion",
+    "Klein-quartic",
+    "KdV-equation",
+    "mathematical-physics",
+    "reproducible-research",
+    "open-science"
+  ],
+  "license": "CC-BY-NC-SA-4.0",
+  "access_right": "open",
+  "upload_type": "publication",
+  "publication_type": "article",
+  "language": "eng",
+  "communities": [
+    {"identifier": "zenodo"}
+  ],
+  "version": "1.0.0",
+  "publication_date": "2026-08-06",
+  "code_repository": "https://github.com/wild8highlander/research-papers",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/wild8highlander/research-papers",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ]
+}
