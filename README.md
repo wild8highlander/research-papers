@@ -16,6 +16,7 @@
 [![Last Commit](https://img.shields.io/github/last-commit/wild8highlander/research-papers?label=Last%20commit&style=flat-square)](https://github.com/wild8highlander/research-papers/commits/main)
 [![Repo Size](https://img.shields.io/github/languages/code-size/wild8highlander/research-papers?label=Repo%20size&style=flat-square)](https://github.com/wild8highlander/research-papers)
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB.svg?logo=python&logoColor=white&style=flat-square)](https://www.python.org/)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.21825394-blue)](https://doi.org/10.5281/zenodo.21825394)
 
 </div>
 
