@@ -149,13 +149,12 @@ tramp
 *.orig
 
 # ============================================================================
-# Build artifacts (preserve intentionally committed .pyc)
+# Build artifacts
 # ============================================================================
-# Python bytecode caches are auto-regenerated on import.
-# NOTE: a small number of .pyc files under src/ab-cloud-3d/build/ are
-# committed intentionally to preserve the exact runtime state of the
-# verification runs. Do not delete them.
-!src/ab-cloud-3d/build/*.pyc
+# Python bytecode caches are auto-regenerated on import — never commit.
+*.pyc
+src/ab-cloud-3d/build/
+htmlcov/
 
 # ============================================================================
 # Julia

@@ -16,7 +16,10 @@
 [![Last Commit](https://img.shields.io/github/last-commit/wild8highlander/research-papers?label=Last%20commit&style=flat-square)](https://github.com/wild8highlander/research-papers/commits/main)
 [![Repo Size](https://img.shields.io/github/languages/code-size/wild8highlander/research-papers?label=Repo%20size&style=flat-square)](https://github.com/wild8highlander/research-papers)
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB.svg?logo=python&logoColor=white&style=flat-square)](https://www.python.org/)
+[![ORCID](https://img.shields.io/badge/ORCID-0009--0003--7299--0701-a6ce39?logo=orcid&logoColor=white&style=flat-square)](https://orcid.org/0009-0003-7299-0701)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.21825394-blue)](https://doi.org/10.5281/zenodo.21825394)
+[![Security](https://img.shields.io/badge/Security-Scorecard%20Monitored-yellow.svg?style=flat-square)](https://securityscorecards.dev/viewer/?uri=github.com/wild8highlander/research-papers)
+[![Codecov](https://img.shields.io/badge/Coverage-Codecov-f39f37?logo=codecov&style=flat-square)](https://codecov.io/gh/wild8highlander/research-papers)
 
 </div>
 
@@ -113,6 +116,55 @@ Study of the **Choptuik critical collapse** and its unexpected connection to the
 ### 6. AB-Cloud & Riemann Zeros
 
 The AB-Cloud as a **universal lattice operating system** running on the non-trivial zeros of the Riemann zeta function. A three-dimensional 36³ non-Hermitian Hofstadter Hamiltonian with topological vortices whose spectrum is **statistically indistinguishable** from the ζ-zero sequence (KS *p* = 0.27–0.88; permutation test Z = 14.10σ, *p* < 10⁻⁴⁴). This construction realises the Hilbert–Pólya conjecture, the Montgomery–Dyson GUE correspondence, and provides a spectral-theoretic bridge to the Langlands programme. The full Python + Julia reproducibility package, LaTeX preprint source, and 4 complete numerical verification runs with 92 figures are included. See [`src/ab-cloud-3d/`](./src/ab-cloud-3d/) for the code and [`papers/riemann-zeros/`](./papers/riemann-zeros/) for the preprint PDFs.
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart TB
+    subgraph Thread1["Thread 1 — 3D Navier–Stokes Regularity"]
+        direction TB
+        KC["Klein Quartic<br/><b>PSL(2,7), order 168</b><br/>genus 3, α = 1+2cos(2π/7)"]
+        SEL["Selberg Zeta<br/><b>Z(s) → b ≈ 0.0785</b><br/>universal correction"]
+        ROT["Rotation R_b<br/><b>θ_b ≈ 7.07°</b><br/>R_b^T R_b = I, det = 1"]
+        NSE["3D NSE Stabilization<br/><b>BKM reduced 3.5×</b><br/>no dissipation added"]
+        KC --> SEL --> ROT --> NSE
+    end
+
+    subgraph Thread2["Thread 2 — AB-Cloud / Riemann Zeros"]
+        direction TB
+        RZ["Riemann ζ Zeros<br/><b>5000 zeros embedded</b><br/>zeros1.txt"]
+        HAM["Hofstadter Hamiltonian<br/><b>36³ non-Hermitian</b><br/>AB-Cloud lattice"]
+        GUE["GUE Statistics<br/><b>KS p = 0.27–0.88</b><br/>L² = 0.0127"]
+        PERM["Permutation Test<br/><b>Z = 14.10σ</b><br/>p &lt; 10⁻⁴⁴"]
+        RZ --> HAM --> GUE --> PERM
+    end
+
+    subgraph Code["Computational Verification"]
+        direction LR
+        PY["<b>92 Python modules</b><br/>Hamiltonian · RMT · FEM<br/>KS tests · Reports"]
+        JL["<b>3 Julia files</b><br/>High-performance<br/>AB-Cloud solver"]
+        TEX["<b>4 LaTeX sources</b><br/>Preprints EN/RU"]
+    end
+
+    subgraph Outputs["Outputs"]
+        direction LR
+        PDF["<b>14 PDF papers</b><br/>EN/RU bilingual"]
+        DOCX["<b>16 DOCX sources</b><br/>Editable + figures"]
+        FIG["<b>92 verification figures</b><br/>PDF + PNG 600 DPI"]
+    end
+
+    KC -.-> PY
+    RZ -.-> PY
+    RZ -.-> JL
+    PY --> PDF & DOCX & FIG
+
+    style Thread1 fill:#e8f4fd,stroke:#2980b9
+    style Thread2 fill:#fef9e7,stroke:#f1c40f
+    style Code fill:#eafaf1,stroke:#27ae60
+    style Outputs fill:#fdecea,stroke:#e74c3c
+```
 
 ---
 
@@ -570,6 +622,6 @@ This research program sits at the confluence of several deep mathematical tradit
 
 <div align="center">
 
-**Built with ❤️ by [Iskhak Hamzatovich Isaev](https://github.com/wild8highlander)**
+**Built with ❤️ by [Iskhak Hamzatovich Isaev](https://github.com/wild8highlander)** · [ORCID 0009-0003-7299-0701](https://orcid.org/0009-0003-7299-0701)
 
 </div>
