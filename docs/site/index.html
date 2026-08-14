@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>research-papers — Correction b, 3D Navier–Stokes Regularity & AB-Cloud / Riemann Zeros</title>
+    <meta name="description" content="Analytical proof of 3D Navier–Stokes regularity without artificial dissipation via the universal polarization correction b ≈ 0.0785, and the AB-Cloud — a 36³ non-Hermitian Hofstadter Hamiltonian whose spectrum matches the Riemann ζ-zeros. Author: Iskhak Hamzatovich Isaev.">
+    <meta name="author" content="Iskhak Hamzatovich Isaev">
+    <meta name="keywords" content="Navier-Stokes, Riemann-zeros, AB-Cloud, Hofstadter, Montgomery, GUE, polarization, Choptuik, mathematical-physics, Hilbert-Polya, reproducible-research">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">research-<span class="accent">papers</span></a>
+        <ul class="nav-links">
+            <li><a href="#tldr">TL;DR</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#papers">Papers</a></li>
+            <li><a href="#docs">Documents</a></li>
+            <li><a href="#code">Code</a></li>
+            <li><a href="#citation">Citation</a></li>
+            <li><a href="https://github.com/wild8highlander/research-papers">GitHub ↗</a></li>
+            <li><span class="nav-version">v1.0.0</span></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-inner">
+        <h1>Correction <em style="color:var(--accent);font-style:italic">b</em><br>3D Navier–Stokes regularity &amp; AB-Cloud / Riemann ζ-zeros</h1>
+        <p class="subtitle">Analytical proof of 3D Navier–Stokes regularity without artificial dissipation, grounded in the universal polarization correction <code>b ≈ 0.0785</code> from Kirchhoff point-vortex equations. Plus the <strong>AB-Cloud</strong> — a 36³ non-Hermitian Hofstadter Hamiltonian whose spectrum is statistically indistinguishable from the Riemann ζ-zeros, realising the Hilbert–Pólya conjecture, Montgomery–Dyson GUE correspondence, and a concrete bridge to the Langlands programme.</p>
+        <div class="cta-row">
+            <a href="#papers" class="cta">📖 Read the papers</a>
+            <a href="https://github.com/wild8highlander/research-papers" class="cta secondary">↓ View on GitHub</a>
+            <a href="https://github.com/wild8highlander/research-papers/blob/main/papers/monographs/Monograph_full_EN.pdf" class="cta secondary">📄 Full monograph (EN)</a>
+        </div>
+        <div class="badges">
+            <img alt="Papers" src="https://img.shields.io/badge/Papers-14-blue.svg">
+            <img alt="Documents" src="https://img.shields.io/badge/DOCX-16-green.svg">
+            <img alt="Languages" src="https://img.shields.io/badge/languages-EN%20%2F%20RU-yellow.svg">
+            <img alt="License: CC BY-NC-SA 4.0" src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey.svg">
+            <img alt="Author" src="https://img.shields.io/badge/author-Iskhak%20Hamzatovich%20Isaev-blueviolet.svg">
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="main-grid">
+        <aside class="toc">
+            <h3>On this page</h3>
+            <ul>
+                <li><a href="#tldr">TL;DR</a></li>
+                <li><a href="#results">Headline results</a></li>
+                <li><a href="#papers">Papers (PDF)</a></li>
+                <li><a href="#docs">Documents (DOCX)</a></li>
+                <li><a href="#code">Source code</a></li>
+                <li><a href="#author">Author</a></li>
+                <li><a href="#citation">Citation</a></li>
+                <li><a href="#license">License</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+
+<section id="tldr">
+    <h1>TL;DR <span class="subtitle">Two threads, one universal constant.</span></h1>
+
+    <p>The repository weaves together two independent research programs that converge on a single dimensionless constant — the <strong>polarization correction</strong></p>
+
+    <div class="formula">
+        <em>b</em> ≈ <strong>0.0785</strong> &nbsp; (from Kirchhoff point-vortex equations)
+    </div>
+
+    <p>In the first thread, <em>b</em> acts as a rotation angle (≈ 7.07°) that stabilises the 3D Navier–Stokes equations <strong>without adding any dissipation</strong> — the velocity field is rotated around the vortex axis by R<sub>b</sub> with R<sub>b</sub><sup>T</sup>R<sub>b</sub> = I, preserving energy while reducing the BKM blow-up criterion integral by a factor of 3.5×. This delivers an analytical proof of global-in-time smoothness for 3D NSE.</p>
+
+    <p>In the second thread, the <strong>AB-Cloud</strong> — a 36³ non-Hermitian Hofstadter Hamiltonian whose phase pattern is dictated by the Riemann ζ-zeros — reproduces the GUE spacing statistics of ζ-zeros to KS p-values of 0.27–0.88, and the form factor K(τ) to L² distance 0.0127 (34× closer than either to the GUE Wigner surmise). A permutation test excludes randomness at <strong>Z = 14.10σ</strong> (p &lt; 10⁻⁴⁴).</p>
+</section>
+
+<section id="results">
+    <h2>Headline results</h2>
+
+    <h3>3D Navier–Stokes regularity</h3>
+    <table>
+        <thead>
+            <tr><th>Property</th><th>Value</th><th>Significance</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Polarization correction <em>b</em></td><td><code>≈ 0.0785</code></td><td>Universal constant from Kirchhoff vortex equations</td></tr>
+            <tr><td>Rotation angle θ<sub>b</sub></td><td><code>≈ 7.07°</code></td><td>Phase rotation of <strong>u</strong> around vortex axis <strong>ω</strong></td></tr>
+            <tr><td>Stabilization factor</td><td><strong>3.5×</strong> (133.15 → 38.05)</td><td>Without adding dissipation</td></tr>
+            <tr><td>Energy preservation</td><td><code>R<sup>T</sup>R = I</code></td><td>Rotation, not damping — no energy lost</td></tr>
+            <tr><td>BKM criterion</td><td><code>∫‖ω‖<sub>∞</sub> dt &lt; ∞</code></td><td>⟹ global-in-time smoothness</td></tr>
+        </tbody>
+    </table>
+
+    <h3>AB-Cloud &amp; Riemann ζ-zeros</h3>
+    <table>
+        <thead>
+            <tr><th>Property</th><th>Value</th><th>Significance</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>KS test <em>p</em>-value</td><td><strong>0.27–0.88</strong></td><td>AB-Cloud spectrum indistinguishable from ζ-zeros</td></tr>
+            <tr><td>L² distance P(s)</td><td><code>0.0127</code></td><td>34× closer than either to GUE Wigner surmise</td></tr>
+            <tr><td>Permutation test</td><td><strong>Z = 14.10σ</strong> (p &lt; 10⁻⁴⁴)</td><td>Excludes randomness at extraordinary significance</td></tr>
+            <tr><td>⟨r⟩ value</td><td><code>0.6159</code> (GUE: 0.5996)</td><td>Within 2.7% of GUE theory</td></tr>
+            <tr><td>Arf invariant</td><td><code>0</code></td><td>Preserved across all 5 lattice resolutions</td></tr>
+            <tr><td>Lattice size</td><td><code>36³ = 46,656 sites</code></td><td>Non-Hermitian Hofstadter Hamiltonian</td></tr>
+        </tbody>
+    </table>
+
+    <div class="alert">
+        <strong>Why this matters.</strong> The Hilbert–Pólya conjecture (1900) proposes that the non-trivial zeros of ζ(s) are eigenvalues of a self-adjoint operator — proving the Riemann Hypothesis. The AB-Cloud is the first explicit lattice Hamiltonian whose spectrum reproduces the ζ-zeros statistically to a fidelity no random matrix can match. The same dimensionless constant <em>b</em> that closes the Navier–Stokes blow-up appears as the universal parameter governing the AB-Cloud's stability.
+    </div>
+</section>
+
+<section id="papers">
+    <h2>Papers (PDF)</h2>
+    <p>The repository ships <strong>14 peer-review-ready PDF papers</strong> in English and Russian, organised by topic. Each is generated from LaTeX or python-docx sources and is the canonical citable artefact.</p>
+
+    <h3>Monographs</h3>
+    <ul class="doc-list">
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/monographs/Monograph_full_EN.pdf">Monograph_full_EN.pdf</a> <span class="doc-meta">— 127 pages, English</span></span>
+        </li>
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/monographs/Monograph_full_RU.pdf">Monograph_full_RU.pdf</a> <span class="doc-meta">— Russian edition</span></span>
+        </li>
+    </ul>
+
+    <h3>AB-Cloud</h3>
+    <ul class="doc-list">
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/ab-cloud/AB_Cloud_Monograph_EN.pdf">AB_Cloud_Monograph_EN.pdf</a></span>
+        </li>
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/ab-cloud/AB_Cloud_Monograph_v23_EN.pdf">AB_Cloud_Monograph_v23_EN.pdf</a> <span class="doc-meta">— v23 (latest)</span></span>
+        </li>
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/ab-cloud/AB_Cloud_Monograph_v23_RU.pdf">AB_Cloud_Monograph_v23_RU.pdf</a> <span class="doc-meta">— Russian edition</span></span>
+        </li>
+    </ul>
+
+    <h3>Correction <em>b</em> (Navier–Stokes)</h3>
+    <ul class="doc-list">
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/correction-b/main.pdf">main.pdf</a> <span class="doc-meta">— primary paper</span></span>
+        </li>
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/correction-b/main_v2.pdf">main_v2.pdf</a> <span class="doc-meta">— revised edition</span></span>
+        </li>
+    </ul>
+
+    <h3>KdV equation</h3>
+    <ul class="doc-list">
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/kdv/KdV_b_correction_Chapter16_EN.pdf">KdV_b_correction_Chapter16_EN.pdf</a></span>
+        </li>
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/kdv/KdV_b_correction_Chapter16_RU.pdf">KdV_b_correction_Chapter16_RU.pdf</a></span>
+        </li>
+    </ul>
+
+    <h3>Preprints (Riemann zeros)</h3>
+    <ul class="doc-list">
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/preprint/preprint_v1.pdf">preprint_v1.pdf</a></span>
+        </li>
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/preprint/preprint_v2.pdf">preprint_v2.pdf</a></span>
+        </li>
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/riemann-zeros/AB_Cloud_Preprint_v1.pdf">AB_Cloud_Preprint_v1.pdf</a></span>
+        </li>
+        <li>
+            <span class="doc-icon">PDF</span>
+            <span class="doc-name"><a href="https://github.com/wild8highlander/research-papers/blob/main/papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf">AB_Cloud_Preprint_v2.pdf</a></span>
+        </li>
+    </ul>
+</section>
+
+<section id="docs">
+    <h2>Documents (DOCX)</h2>
+    <p>The repository also ships <strong>16 editable DOCX sources</strong> covering all monographs and research notes. Each DOCX has the author <code>Iskhak Hamzatovich Isaev</code> set in the document metadata and printed on the title page.</p>
+
+    <div class="card-grid">
+        <div class="card">
+            <span class="badge">ab-cloud</span>
+            <h4>AB_Cloud_Monograph.docx</h4>
+            <p>Bilingual (EN/RU) source for the AB-Cloud phase resonator monograph, including v1 and v23 revisions.</p>
+        </div>
+        <div class="card">
+            <span class="badge">correction-b</span>
+            <h4>monograph_with_figures.docx</h4>
+            <p>The primary correction-<em>b</em> monograph with embedded figures, in EN and RU.</p>
+        </div>
+        <div class="card">
+            <span class="badge">kdv</span>
+            <h4>KdV_b_correction_Chapter16.docx</h4>
+            <p>Application of the universal <em>b</em>-correction to the Korteweg–de Vries equation.</p>
+        </div>
+        <div class="card">
+            <span class="badge">choptuik-riemann</span>
+            <h4>Choptuik_Riemann_Monograph_RU.docx</h4>
+            <p>AB-Cloud as a universal quantum operator — the Choptuik constant and the critical line of Riemann.</p>
+        </div>
+        <div class="card">
+            <span class="badge">klein-attractor</span>
+            <h4>Klein_NS_Bridge_Research.docx</h4>
+            <p>From Klein curve geometry to Navier–Stokes regularity via the F-attractor bridge.</p>
+        </div>
+        <div class="card">
+            <span class="badge">monographs</span>
+            <h4>Monograph_full_EN/RU.docx</h4>
+            <p>The combined 127-page monograph in editable form (EN and RU editions).</p>
+        </div>
+    </div>
+</section>
+
+<section id="code">
+    <h2>Source code</h2>
+    <p>The <code>src/ab-cloud-3d/</code> directory contains the complete reproducible research codebase:</p>
+
+    <div class="card-grid">
+        <div class="card">
+            <h4>Python (60+ files)</h4>
+            <p>Hamiltonian builders, GUE/GOE/Poisson statistics, KS tests, Montgomery pair-correlation, Hofstadter butterfly, Klein quartic spin structures, Julia–Python FEM bridges, KdV/KP solvers, Riemann-zeros verifier.</p>
+        </div>
+        <div class="card">
+            <h4>Julia (2 files)</h4>
+            <p><code>ab_cloud_3d.jl</code> and <code>ab_cloud_3d_en.jl</code> — high-performance Julia implementations of the AB-Cloud Hamiltonian.</p>
+        </div>
+        <div class="card">
+            <h4>LaTeX</h4>
+            <p>Three preprint sources: <code>src/preprint/preprint.tex</code>, <code>src/main/main.tex</code> (and v2), <code>src/ab-cloud-3d/preprint/ab_cloud_preprint.tex</code>.</p>
+        </div>
+        <div class="card">
+            <h4>Outputs</h4>
+            <p>Pre-generated verification figures in <code>src/ab-cloud-3d/outputs/</code> — full_verification, 3d_bridge, deep_zeros, 3d_advanced.</p>
+        </div>
+    </div>
+
+    <h3>Quick start</h3>
+    <pre><code># Clone
+git clone https://github.com/wild8highlander/research-papers.git
+cd research-papers/src/ab-cloud-3d
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the full verification suite (regenerates all figures)
+python code/run_verification.py
+
+# Or run a single experiment
+python code/ab_cloud_3d_en.py</code></pre>
+</section>
+
+<section id="author">
+    <h2>Author</h2>
+    <p>All papers, monographs, code, and documentation in this repository are the work of:</p>
+    <div class="formula" style="font-size: 1.15em;">
+        <strong>Iskhak Hamzatovich Isaev</strong>
+    </div>
+    <p>The author name is set consistently across all artefacts:</p>
+    <ul>
+        <li>PDF metadata (<code>dc:author</code>) and visible title-page text — 13 PDFs</li>
+        <li>DOCX metadata (<code>dc:creator</code>) and visible title-page paragraph — 16 DOCXs</li>
+        <li>LaTeX <code>\author{}</code> and <code>pdfauthor={}</code> — 4 <code>.tex</code> files</li>
+        <li>BibTeX <code>author = {}</code> fields — 2 citations in <code>README.md</code></li>
+        <li>Python <code>pyproject.toml</code> <code>authors = [{name = "..."}]</code></li>
+    </ul>
+</section>
+
+<section id="citation">
+    <h2>Citation</h2>
+    <p>If you use any part of this repository in your research, please cite the relevant paper:</p>
+    <pre><code>@article{isaev2026bcorrection,
+  title     = {Correction {$b$} as Polarization Twisting: Analytical Proof of
+               3D {Navier--Stokes} Regularity without Dissipation},
+  author    = {Isaev, Iskhak Hamzatovich},
+  year      = {2026},
+  journal   = {Preprint},
+  url       = {https://github.com/wild8highlander/research-papers}
+}
+
+@misc{isaev2026abcloud3d,
+  title     = {{AB-Cloud}: A Universal Lattice Operating System for the
+               Riemann Zeros},
+  author    = {Isaev, Iskhak Hamzatovich},
+  year      = {2026},
+  url       = {https://github.com/wild8highlander/research-papers/tree/main/src/ab-cloud-3d}
+}</code></pre>
+</section>
+
+<section id="license">
+    <h2>License</h2>
+    <p>Documents (PDFs, DOCXs, LaTeX sources) are licensed under <strong>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</strong> (CC BY-NC-SA 4.0). Source code in <code>src/</code> is licensed under the GNU General Public License v3.0 or later. See <a href="https://github.com/wild8highlander/research-papers/blob/main/LICENSE">LICENSE</a> for full text.</p>
+</section>
+
+        </main>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>© 2026 <strong>Iskhak Hamzatovich Isaev</strong> · <a href="https://github.com/wild8highlander/research-papers">github.com/wild8highlander/research-papers</a></p>
+    <p style="margin-top: 8px;">Built with care · CC BY-NC-SA 4.0 · Generated from <code>docs/site/</code></p>
+</footer>
+
+</body>
+</html>

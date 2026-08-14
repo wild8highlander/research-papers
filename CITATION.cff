@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: "If you use this software or any of the accompanying papers, please cite it as below."
+title: >-
+  research-papers — Correction b, 3D Navier-Stokes regularity
+  & AB-Cloud / Riemann zeta zeros
+abstract: >-
+  Two independent research programs by Iskhak Hamzatovich Isaev that
+  converge on the universal polarization correction b ≈ 0.0785 from
+  Kirchhoff point-vortex equations. Thread 1 delivers an analytical
+  proof of 3D Navier-Stokes regularity without artificial dissipation
+  via a rotation R_b (R_b^T R_b = I) that reduces the BKM blow-up
+  integral by 3.5x. Thread 2 constructs the AB-Cloud — a 36^3
+  non-Hermitian Hofstadter Hamiltonian whose spectrum reproduces the
+  Riemann zeta zeros statistically (KS p = 0.27-0.88, L^2 = 0.0127,
+  permutation test Z = 14.10 sigma, p < 1e-44) — realising the
+  Hilbert-Polya conjecture, Montgomery-Dyson GUE correspondence, and
+  a concrete bridge to the Langlands programme.
+authors:
+  - family-names: Isaev
+    given-names: Iskhak Hamzatovich
+    affiliation: "Independent researcher, Russia"
+keywords:
+  - Navier-Stokes-regularity
+  - Riemann-zeros
+  - Hilbert-Polya-conjecture
+  - AB-Cloud
+  - Hofstadter-Hamiltonian
+  - Montgomery-pair-correlation
+  - GUE-random-matrices
+  - Choptuik-correction
+  - polarization-b
+  - BKM-criterion
+  - Klein-quartic
+  - KdV-equation
+  - mathematical-physics
+  - reproducible-research
+license: "CC-BY-NC-SA-4.0"
+license-url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+type: software
+version: "1.0.0"
+date-released: "2026-08-06"
+repository-code: "https://github.com/wild8highlander/research-papers"
+url: "https://github.com/wild8highlander/research-papers"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Isaev
+      given-names: Iskhak Hamzatovich
+  title: >-
+    Correction b as polarization twisting: analytical proof of 3D
+    Navier-Stokes regularity without dissipation
+  year: 2026
+  url: "https://github.com/wild8highlander/research-papers"

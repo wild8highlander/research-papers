@@ -2,10 +2,31 @@
 
 > **Numerical verification framework** accompanying the preprint *"AB-Cloud: A Universal Lattice Operating System for the Riemann Zeros"* — a three-dimensional non-Hermitian Hofstadter Hamiltonian with topological vortices whose spectrum is statistically indistinguishable from the non-trivial zeros of the Riemann zeta function.
 
+[![CI](https://img.shields.io/github/actions/workflow/status/wild8highlander/research-papers/ci.yml?branch=main&label=CI&logo=github)](https://github.com/wild8highlander/research-papers/actions/workflows/ci.yml)
 [![Language: Python + Julia](https://img.shields.io/badge/Languages-Python%20%7C%20Julia-blue.svg)](./code/)
 [![Zeros: 5000 embedded](https://img.shields.io/badge/Zeros-5000%20embedded-green.svg)](./data/)
 [![Lattice: 36³](https://img.shields.io/badge/Lattice-36%C2%B3-orange.svg)]()
+[![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](../../LICENSE)
+
+---
+
+## 📑 Table of Contents
+
+- [Overview](#-overview)
+- [Key Results](#-key-results)
+- [Directory Structure](#-directory-structure)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [The Ten Verification Modes](#-the-ten-verification-modes)
+- [Configuration](#-configuration)
+- [Verification Results](#-verification-results)
+- [Key Figures](#-key-figures)
+- [Module Descriptions](#-module-descriptions)
+- [Reproducibility Notes](#-reproducibility-notes)
+- [Links to Papers](#-links-to-papers)
+- [Citation](#-citation)
+- [License](#-license)
 
 ---
 
@@ -22,16 +43,37 @@ The principal empirical result is the **statistical indistinguishability** of th
 
 ---
 
+## 🏆 Key Results
+
+| Metric | Value | Theory / Reference |
+|---|---|---|
+| $\langle r\rangle$ (ζ-zeros) | 0.6159 | GUE: 0.5996, Poisson: 0.3863 |
+| KS *p* (AB-Cloud vs ζ-zeros) | 0.27–0.88 | Indistinguishable at α = 0.05 |
+| L² distance P(s) | 0.0127 | 34× closer than to GUE surmise |
+| Permutation test Z | 14.10σ | $p < 10^{-44}$ |
+| Arf invariant | 0 | Preserved across all N |
+| Winding number at RH | 1 | Verified at 11 points |
+
+---
+
 ## 📁 Directory Structure
 
 ```
 src/ab-cloud-3d/
 ├── README.md                          # This file
+├── requirements.txt                   # Python dependencies
+├── pyproject.toml                     # Package config (pip install -e .)
 ├── code/                              # Simulation source code (Python + Julia)
 │   ├── ab_cloud_3d.py                 # Python port — Russian UI (2009 lines)
 │   ├── ab_cloud_3d_en.py              # Python port — English UI (2009 lines)
 │   ├── ab_cloud_3d.jl                 # Julia original — Russian UI
-│   └── ab_cloud_3d_en.jl              # Julia original — English UI
+│   ├── ab_cloud_3d_en.jl              # Julia original — English UI
+│   ├── quick_start.py                 # Minimal demo
+│   ├── config.py                      # Configuration parameters
+│   ├── monograph_constants.py         # Physical & mathematical constants
+│   ├── README.md                      # Code-level documentation
+│   ├── CODE_OF_CONDUCT.md             # Contributor Covenant
+│   └── ...                            # 69 Python modules total
 ├── preprint/
 │   └── ab_cloud_preprint.tex          # LaTeX source of the preprint (~940 lines)
 ├── data/
@@ -45,6 +87,84 @@ src/ab-cloud-3d/
     ├── 3d_bridge_2026-07-31_15-36-37/            # 9 AB-Cloud ↔ Riemann visualizations
     └── 3d_advanced_2026-07-31_15-51-47/          # 8 advanced 3D visualizations
 ```
+
+---
+
+## 🚀 Installation
+
+### Prerequisites
+
+| Runtime | Version | Required packages |
+|---|---|---|
+| **Python** | 3.10+ | `numpy`, `scipy`, `matplotlib`, `sympy`, `mpmath` |
+| **Julia** | 1.10+ | `LinearAlgebra`, `Arpack`, `PyCall`, `Plots`, `SpecialFunctions` |
+
+### Option 1: Install from requirements.txt
+
+```bash
+cd src/ab-cloud-3d/
+pip install -r requirements.txt
+```
+
+### Option 2: Install as an editable package
+
+```bash
+cd src/ab-cloud-3d/
+pip install -e .
+```
+
+### Option 3: Install dependencies manually
+
+```bash
+pip install numpy scipy matplotlib sympy mpmath
+```
+
+---
+
+## 🎯 Quick Start
+
+### Python (English UI)
+
+```bash
+cd src/ab-cloud-3d/code/
+python3 ab_cloud_3d_en.py     # Interactive menu with 10 verification modes
+```
+
+### Python (Russian UI)
+
+```bash
+cd src/ab-cloud-3d/code/
+python3 ab_cloud_3d.py        # Русский интерактивное меню
+```
+
+### Minimal demo
+
+```bash
+cd src/ab-cloud-3d/code/
+python3 quick_start.py        # Quick demonstration
+```
+
+### Julia
+
+```bash
+cd src/ab-cloud-3d/code/
+julia ab_cloud_3d_en.jl       # English UI
+# or
+julia ab_cloud_3d.jl          # Russian UI
+```
+
+### Build the preprint PDF
+
+```bash
+cd src/ab-cloud-3d/preprint/
+xelatex ab_cloud_preprint.tex
+xelatex ab_cloud_preprint.tex   # run twice for TOC and cross-references
+```
+
+The interactive menu allows you to:
+- Tune any parameter with **no restrictions** (`inf`, `∞`, `nan`, `max`, `min` all accepted)
+- Switch between GUE / GOE / Poisson by changing $\sigma$ alone
+- Run any of the 10 verification modes (A–J) — each produces its own timestamped output folder
 
 ---
 
@@ -65,7 +185,11 @@ The simulation implements **ten operational modes (A–J)**, each producing its 
 | **I** | 3D Bridge | 9 visualizations tying AB-Cloud 3D spectrum to Riemann zeros |
 | **J** | Advanced 3D | Chern marker, edge states, $\mathbf{J}(x,y,z)$, winding, Hofstadter, exceptional points |
 
-### Configuration (default)
+---
+
+## ⚙️ Configuration
+
+Default parameters:
 
 | Parameter | Value | Meaning |
 |---|---|---|
@@ -80,57 +204,6 @@ The simulation implements **ten operational modes (A–J)**, each producing its 
 | `poly_deg` | 12 | Polynomial unfolding degree |
 | `fs_L_max` | 20 | Max $L$ for $\Delta_3$, $\Sigma^2$ |
 | `arf_levels` | 4 | Arf invariant lattice refinement levels |
-
----
-
-## 🚀 Reproduction
-
-### Prerequisites
-
-| Runtime | Version | Required packages |
-|---|---|---|
-| **Python** | 3.12+ | `numpy`, `scipy`, `matplotlib`, `mpmath` |
-| **Julia** | 1.10+ | `LinearAlgebra`, `Arpack`, `PyCall`, `Plots`, `SpecialFunctions` |
-
-Install Python dependencies:
-```bash
-pip install numpy scipy matplotlib mpmath
-```
-
-### Quick start (Python)
-
-```bash
-cd src/ab-cloud-3d/code/
-python3 ab_cloud_3d_en.py     # English interactive menu
-# or
-python3 ab_cloud_3d.py        # Russian interactive menu
-```
-
-The interactive menu allows you to:
-- Tune any parameter with **no restrictions** (`inf`, `∞`, `nan`, `max`, `min` all accepted)
-- Switch between GUE / GOE / Poisson by changing $\sigma$ alone
-- Run any of the 10 verification modes (A–J) — each produces its own timestamped output folder
-
-### Quick start (Julia)
-
-```bash
-cd src/ab-cloud-3d/code/
-julia ab_cloud_3d_en.jl       # English UI
-# or
-julia ab_cloud_3d.jl          # Russian UI
-```
-
-### Building the preprint PDF
-
-```bash
-cd src/ab-cloud-3d/preprint/
-xelatex ab_cloud_preprint.tex
-xelatex ab_cloud_preprint.tex   # run twice for TOC and cross-references
-```
-
-The resulting PDF is also available pre-compiled at:
-- [`papers/riemann-zeros/AB_Cloud_Preprint_v1.pdf`](../../papers/riemann-zeros/AB_Cloud_Preprint_v1.pdf) — v1 (1.4 MB)
-- [`papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf`](../../papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf) — v2 (15 MB, with embedded figures)
 
 ---
 
@@ -196,9 +269,9 @@ Eight advanced 3D visualizations:
 
 ---
 
-## 📊 Key Figures (preview)
+## 📊 Key Figures
 
-The most important figures are mirrored in [`papers/riemann-zeros/figures/`](../../papers/riemann-zeros/figures/) for quick access from the README:
+The most important figures are mirrored in [`papers/riemann-zeros/figures/`](../../papers/riemann-zeros/figures/) for quick access:
 
 | Figure | Description |
 |---|---|
@@ -207,6 +280,45 @@ The most important figures are mirrored in [`papers/riemann-zeros/figures/`](../
 | [`05_fss_ab_cloud.png`](../../papers/riemann-zeros/figures/05_fss_ab_cloud.png) | Finite-size scaling of $\langle r\rangle$ for the AB-Cloud spectrum |
 
 The full set of $92$ figures (PDF + PNG, $46$ plots) is bundled in [`outputs/`](./outputs/).
+
+---
+
+## 📦 Module Descriptions
+
+| Module | Category | Description |
+|---|---|---|
+| `ab_cloud_3d_en.py` | Core Solver | Main 3D AB-Cloud solver with English UI (10 modes A–J) |
+| `ab_cloud_3d.py` | Core Solver | Main 3D AB-Cloud solver with Russian UI |
+| `ab_cloud_3d_en.jl` | Core Solver | Julia original — English UI |
+| `ab_cloud_3d.jl` | Core Solver | Julia original — Russian UI |
+| `quick_start.py` | Demo | Minimal demonstration script |
+| `config.py` | Configuration | Global parameters and defaults |
+| `monograph_constants.py` | Constants | Physical & mathematical constants for the monograph |
+| `ab_cloud_zeta.py` | RMT | Riemann zeta zero analysis & GUE statistics |
+| `ab_cloud_zeta_v2.py` | RMT | Extended RMT analysis (v2) |
+| `ab_cloud_hamiltonian.py` | Hamiltonian | AB-Cloud Hamiltonian construction |
+| `ab_cloud_hamiltonian_v2.py` | Hamiltonian | Extended Hamiltonian (v2) |
+| `ab_cloud_ktheory.py` | Topology | K-theory computations |
+| `ab_cloud_spinor.py` | Spinor | Spinor field analysis |
+| `ab_cloud_spinor_v2.py` | Spinor | Extended spinor analysis (v2) |
+| `ab_cloud_advanced.py` | Advanced | Advanced 3D visualizations (Chern, edge states) |
+| `ab_cloud_advanced_v2.py` | Advanced | Advanced 3D v2 |
+| `ab_cloud_stats.py` | Statistics | Statistical analysis utilities |
+| `ab_cloud_stats_v2.py` | Statistics | Extended statistics (v2) |
+| `ab_cloud_sweeps.py` | Sweeps | Parameter sweep experiments |
+| `nse3d_core.py` | NSE | 3D Navier–Stokes core solver |
+| `kdv_core.py` | KdV | Korteweg–de Vries equation solver |
+| `kp_solver.py` | KP | Kadomtsev–Petviashvili equation solver |
+| `polchinski_rg.py` | RG | Polchinski renormalization group |
+| `isospectral_b.py` | Isospectral | Isospectral *b*-correction verification |
+| `verifier_core.py` | Verification | Core verification framework |
+| `monograph_verification.py` | Verification | Monograph hypothesis verification (Parts 1–4) |
+| `run_verification.py` | Runner | Run verification experiments |
+| `run_experiments.py` | Runner | Run experiment suite |
+| `generate_report.py` | Reports | Report generation (JSON, MD, HTML, TXT, CSV) |
+| `AB_Cloud_FEM_v8d.py` | FEM | Finite element method solver |
+| `AB_Cloud_Vortex_System_v2.py` | Vortex | Vortex system simulation |
+| `AB_CLOUD_ALL_HYPOTHESES.py` | Hypotheses | Consolidated verification of all 11 hypotheses |
 
 ---
 
@@ -219,16 +331,28 @@ The full set of $92$ figures (PDF + PNG, $46$ plots) is bundled in [`outputs/`](
 
 ---
 
+## 🔗 Links to Papers
+
+| Paper | Link | Description |
+|---|---|---|
+| AB-Cloud Preprint v1 | [`papers/riemann-zeros/AB_Cloud_Preprint_v1.pdf`](../../papers/riemann-zeros/AB_Cloud_Preprint_v1.pdf) | A Universal Lattice Operating System for the Riemann Zeros (1.4 MB) |
+| AB-Cloud Preprint v2 | [`papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf`](../../papers/riemann-zeros/AB_Cloud_Preprint_v2.pdf) | Revised with embedded figures (15 MB) |
+| Main *b*-correction paper | [`papers/correction-b/main_v2.pdf`](../../papers/correction-b/main_v2.pdf) | Correction *b* as polarization twisting |
+| Preprint (NSE regularity) | [`papers/preprint/preprint_v2.pdf`](../../papers/preprint/preprint_v2.pdf) | Analytical proof of 3D NSE regularity |
+| Full monograph | [`papers/monographs/Monograph_full_EN.pdf`](../../papers/monographs/Monograph_full_EN.pdf) | Complete monograph (English) |
+
+---
+
 ## 📖 Citation
 
 If you use this code or the verification results, please cite:
 
 ```bibtex
-@misc{ab-cloud-3d-2026,
-  title   = {AB-Cloud: A Universal Lattice Operating System for the Riemann Zeros},
-  author  = {Z.ai Research},
-  year    = {2026},
-  url     = {https://github.com/wild8highlander/research-papers/tree/main/src/ab-cloud-3d}
+@misc{isaev-2026-ab-cloud-3d,
+  title     = {AB-Cloud: A Universal Lattice Operating System for the Riemann Zeros},
+  author    = {Iskhak Hamzatovich Isaev},
+  year      = {2026},
+  url       = {https://github.com/wild8highlander/research-papers/tree/main/src/ab-cloud-3d}
 }
 ```
 
