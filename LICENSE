@@ -1,283 +1,241 @@
 ╔══════════════════════════════════════════════════════════════════════╗
 ║                                                                      ║
-║   АВТОРСКИЕ ПРАВА — ALL RIGHTS RESERVED                              ║
-║   ВСЕ ПРАВА ПРИНАДЛЕЖАТ АВТОРУ И ТОЛЬКО АВТОРУ                       ║
+║   COPYRIGHT — ALL RIGHTS RESERVED                                    ║
+║   ALL RIGHTS BELONG TO THE AUTHOR AND THE AUTHOR ONLY                ║
 ║                                                                      ║
 ╚══════════════════════════════════════════════════════════════════════╝
 
 Copyright (c) 2026 Isaev Iskhak Khamzatovich (Исаев Исхак Хамзатович)
-Date of birth: 08.05.1990
+Date of birth: 08.05.1990 (May 8, 1990)
 All rights reserved. Все права защищены.
 
 ════════════════════════════════════════════════════════════════════════
-  ПРАВООБЛАДАТЕЛЬ / COPYRIGHT HOLDER
+  COPYRIGHT HOLDER / ПРАВООБЛАДАТЕЛЬ
 ════════════════════════════════════════════════════════════════════════
 
-Правообладатель (автор) Проекта:
-  ФИО (рус):        Исаев Исхак Хамзатович
-  ФИО (англ):       Isaev Iskhak Khamzatovich
-  Дата рождения:    08.05.1990 (May 8, 1990)
+Copyright Holder (author) of the Project:
+  Full Name (EN):   Isaev Iskhak Khamzatovich
+  Full Name (RU):   Исаев Исхак Хамзатович
+  Date of birth:    08.05.1990 (May 8, 1990)
   GitHub:           wild8highlander
   Email:            aslan08_05@mail.ru
 
 ════════════════════════════════════════════════════════════════════════
-  УСЛОВИЯ ИСПОЛЬЗОВАНИЯ
+  TERMS OF USE / УСЛОВИЯ ИСПОЛЬЗОВАНИЯ
 ════════════════════════════════════════════════════════════════════════
 
-Настоящим устанавливается, что настоящее программное обеспечение, исходный
-код, документация, исследовательские материалы, формальные доказательства
-и любые сопутствующие файлы (далее — «Проект») являются объектом
-авторского права, все исключительные права на который принадлежат
-исключительно правообладателю — Исаеву Исхаку Хамзатовичу
-(Isaev Iskhak Khamzatovich).
+It is hereby established that this software, source code, documentation,
+research materials, formal proofs, and any accompanying files (hereinafter
+referred to as the "Project") are subject to copyright, with all exclusive
+rights belonging solely to the copyright holder — Isaev Iskhak Khamzatovich
+(Исаев Исхак Хамзатович).
 
 ════════════════════════════════════════════════════════════════════════
-  ЗАПРЕЩАЕТСЯ БЕЗ ПИСЬМЕННОГО РАЗРЕШЕНИЯ АВТОРА
+  PROHIBITED WITHOUT WRITTEN PERMISSION OF THE AUTHOR
 ════════════════════════════════════════════════════════════════════════
 
-Без предварительного письменного согласия правообладателя КАТЕГОРИЧЕСКИ
-ЗАПРЕЩАЕТСЯ:
+Without the prior written consent of the copyright holder, it is STRICTLY
+PROHIBITED to:
 
-  1. ВОСПРОИЗВЕДЕНИЕ — копирование Проекта или любой его части в любой
-     форме и любыми средствами, включая электронные, механические,
-     фотокопировальные, записывающие или иные.
+  1. REPRODUCTION — copying the Project or any part thereof in any form
+     and by any means, including electronic, mechanical, photocopying,
+     recording, or otherwise.
 
-  2. РАСПРОСТРАНЕНИЕ — распространение, передача, продажа, сдача в аренду,
-     лизинг или предоставление во временное пользование Проекта или любой
-     его части третьим лицам.
+  2. DISTRIBUTION — distributing, transmitting, selling, renting, leasing,
+     or otherwise making available the Project or any part thereof to
+     third parties.
 
-  3. МОДИФИКАЦИЯ — изменение, адаптация, перевод, переработка или создание
-     производных произведений на основе Проекта или любой его части.
+  3. MODIFICATION — altering, adapting, translating, reworking, or
+     creating derivative works based on the Project or any part thereof.
 
-  4. ПУБЛИКАЦИЯ — публичное воспроизведение, исполнение, показ, передача
-     в эфир или доведение до всеобщего сведения Проекта или любой его части.
+  4. PUBLICATION — public reproduction, performance, display, broadcast,
+     or communication to the public of the Project or any part thereof.
 
-  5. КОММЕРЧЕСКОЕ ИСПОЛЬЗОВАНИЕ — использование Проекта или любой его
-     части в коммерческих целях, включая встраивание в коммерческие
-     продукты или услуги.
+  5. COMMERCIAL USE — using the Project or any part thereof for commercial
+     purposes, including embedding in commercial products or services.
 
-  6. СУБЛИЦЕНЗИРОВАНИЕ — предоставление сублицензий или передача прав
-     третьим лицам.
+  6. SUBLICENSING — granting sublicenses or transferring rights to third
+     parties.
 
-  7. ОБХОД ТЕХНИЧЕСКИХ СРЕДСТВ ЗАЩИТЫ — удаление или изменение информации
-     об авторском праве, товарных знаках или иных уведомлениях о правах.
+  7. CIRCUMVENTION OF TECHNICAL PROTECTION MEASURES — removing or altering
+     copyright information, trademarks, or other rights notices.
 
-  8. ДЕКОМПИЛЯЦИЯ И РЕВЕРС-ИНЖИНИРИНГ — декомпиляция или обратная
-     разработка Проекта, кроме случаев, прямо разрешённых законом.
+  8. DECOMPILATION AND REVERSE ENGINEERING — decompiling or reverse
+     engineering the Project, except as expressly permitted by law.
 
-  9. ИСПОЛЬЗОВАНИЕ В НЕЙРОСЕТЯХ И ИИ — использование Проекта или любой
-     его части для обучения, тестирования или иного применения в системах
-     искусственного интеллекта и машинного обучения без письменного
-     разрешения правообладателя.
+  9. USE IN AI AND NEURAL NETWORKS — using the Project or any part thereof
+     for training, testing, or other application in artificial intelligence
+     and machine learning systems without written permission.
 
 ════════════════════════════════════════════════════════════════════════
-  РАЗРЕШЕНО
+  PERMITTED / РАЗРЕШЕНО
 ════════════════════════════════════════════════════════════════════════
 
-Разрешается исключительно:
-  • Личное ознакомление с Проектом в некоммерческих целях
-  • Создание форка (fork) репозитория исключительно для личного изучения
-    (без права распространения форка или его производных)
+The following is permitted exclusively:
+  • Personal review of the Project for non-commercial purposes
+  • Creating a fork of the repository solely for personal study
+    (without the right to distribute the fork or its derivatives)
 
-Любое иное использование требует письменного разрешения правообладателя.
+Any other use requires written permission from the copyright holder.
 
 ════════════════════════════════════════════════════════════════════════
-  ЗАПРОС РАЗРЕШЕНИЯ
+  REQUESTING PERMISSION / ЗАПРОС РАЗРЕШЕНИЯ
 ════════════════════════════════════════════════════════════════════════
 
-Для получения разрешения на использование Проекта свяжитесь с автором:
+To request permission to use the Project, contact the author:
 
   GitHub:  https://github.com/wild8highlander
   Email:   aslan08_05@mail.ru
 
-Все запросы должны быть направлены в письменной форме с указанием:
-  • Полного наименования лица, запрашивающего разрешение
-  • Целей предполагаемого использования
-  • Объёма и способов использования Проекта
-  • Срока предполагаемого использования
+All requests must be submitted in writing, specifying:
+  • Full name of the person/entity requesting permission
+  • Intended purposes of use
+  • Scope and methods of using the Project
+  • Duration of intended use
 
 ════════════════════════════════════════════════════════════════════════
-  ОТВЕТСТВЕННОСТЬ
+  DISCLAIMER OF LIABILITY / ОТВЕТСТВЕННОСТЬ
 ════════════════════════════════════════════════════════════════════════
 
-ПРОЕКТ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ
-ГАРАНТИЙ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ, ГАРАНТИИ ТОВАРНОЙ ПРИГОДНОСТИ,
-ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ И НЕНАРУШЕНИЯ ПРАВ. АВТОР НЕ НЕСЁТ
-ОТВЕТСТВЕННОСТИ ЗА ЛЮБЫЕ УБЫТКИ, ВОЗНИКШИЕ В РЕЗУЛЬТАТЕ ИСПОЛЬЗОВАНИЯ
-ИЛИ НЕВОЗМОЖНОСТИ ИСПОЛЬЗОВАНИЯ ПРОЕКТА.
+THE PROJECT IS PROVIDED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. THE AUTHOR SHALL
+NOT BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OR INABILITY TO USE
+THE PROJECT.
 
 ════════════════════════════════════════════════════════════════════════
-  НАРУШЕНИЕ АВТОРСКИХ ПРАВ
+  COPYRIGHT INFRINGEMENT / НАРУШЕНИЕ АВТОРСКИХ ПРАВ
 ════════════════════════════════════════════════════════════════════════
 
-Любое нарушение условий настоящей лицензии влечёт за собой ответственность
-в соответствии с действующим законодательством, включая:
-  • Возмещение убытков (реального ущерба и упущенной выгоды)
-  • Компенсацию морального вреда
-  • Изъятие и уничтожение контрафактных экземпляров
-  • Публикацию решения суда о нарушении с указанием действительного
-    правообладателя
+Any violation of the terms of this license shall result in liability in
+accordance with applicable law, including:
+  • Compensation for damages (actual damage and lost profits)
+  • Compensation for moral damage
+  • Seizure and destruction of infringing copies
+  • Publication of the court decision on the violation
 
 ════════════════════════════════════════════════════════════════════════
-  ПРИМЕНИМОЕ ЗАКОНОДАТЕЛЬСТВО
+  APPLICABLE LAW / ПРИМЕНИМОЕ ЗАКОНОДАТЕЛЬСТВО
 ════════════════════════════════════════════════════════════════════════
 
-Настоящая лицензия и все связанные с ней отношения регулируются следующим
-законодательством:
+This license and all related matters are governed by the following laws:
 
 ────────────────────────────────────────────────────────────────────
-  РОССИЙСКАЯ ФЕДЕРАЦИЯ / RUSSIAN FEDERATION
+  RUSSIAN FEDERATION / РОССИЙСКАЯ ФЕДЕРАЦИЯ
 ────────────────────────────────────────────────────────────────────
 
-  1. Конституция Российской Федерации (статья 44 — свобода творчества,
-     охрана интеллектуальной собственности)
+  1. Constitution of the Russian Federation (Article 44 — freedom of
+     creativity, protection of intellectual property)
 
-  2. Гражданский кодекс Российской Федерации (Часть четвёртая) от
-     18.12.2006 N 230-ФЗ:
-       • Часть IV. Раздел VII. Права на результаты интеллектуальной
-         деятельности и средства индивидуализации
-       • Глава 70. Авторское право (статьи 1255–1288)
-       • Глава 71. Права, смежные с авторскими (статьи 1303–1327)
-       • Глава 69. Общие положения (статьи 1225–1254)
-       • Статья 1229. Исключительное право
-       • Статья 1255. Авторское право
-       • Статья 1259. Объекты авторских прав
-       • Статья 1263. Аудиовизуальные произведения
-       • Статья 1265. Право авторства и право на авторское имя
-       • Статья 1266. Право на неприкосновенность произведения
-       • Статья 1268. Право на обнародование произведения
-       • Статья 1270. Нарушение исключительного права
-       • Статья 1271. Знак охраны авторского права
-       • Статья 1299. Технические средства защиты авторских прав
-       • Статья 1300. Информация об авторском праве
-       • Статья 1301. Ответственность за нарушение исключительного
-         права на произведение
-       • Статья 1301.1. Особенности защиты прав на произведения
-         в цифровой среде
+  2. Civil Code of the Russian Federation (Part Four) of 18.12.2006
+     N 230-FZ:
+     • Part IV. Section VII. Rights to results of intellectual activity
+     • Chapter 70. Copyright (Articles 1255–1288)
+     • Chapter 71. Rights related to copyright (Articles 1303–1327)
+     • Article 1229. Exclusive right
+     • Article 1255. Copyright
+     • Article 1259. Objects of copyright
+     • Article 1265. Right of authorship and right to author's name
+     • Article 1266. Right to inviolability of a work
+     • Article 1270. Infringement of exclusive right
+     • Article 1271. Copyright protection mark
+     • Article 1299. Technical protection measures
+     • Article 1300. Copyright management information
+     • Article 1301. Liability for infringement of exclusive right
 
-  3. Уголовный кодекс Российской Федерации от 13.06.1996 N 63-ФЗ:
-       • Статья 146. Нарушение авторских и смежных прав
-         (уголовная ответственность за незаконное использование,
-         приобретение, хранение, перевозку контрафактных экземпляров)
+  3. Criminal Code of the Russian Federation of 13.06.1996 N 63-FZ:
+     • Article 146. Violation of copyright and related rights
 
-  4. Кодекс Российской Федерации об административных правонарушениях
-     от 30.12.2001 N 195-ФЗ:
-       • Статья 7.12. Нарушение авторских и смежных прав,
-         изобретательских и патентных прав
-       • Статья 14.10. Незаконное использование средств
-         индивидуализации
+  4. Code of Administrative Offences of 30.12.2001 N 195-FZ:
+     • Article 7.12. Violation of copyright and related rights
+     • Article 14.10. Illegal use of means of individualization
 
-  5. Федеральный закон от 27.07.2006 N 149-ФЗ
-     «Об информации, информационных технологиях и о защите информации»:
-       • Статья 17. Ответственность за правонарушения в сфере
-         информации
+  5. Federal Law N 149-FZ "On information, information technologies
+     and information protection" of 27.07.2006
 
-  6. Федеральный закон от 29.07.2004 N 98-ФЗ
-     «О коммерческой тайне» (в части охраны конфиденциальности)
+  6. Federal Law N 98-FZ "On commercial secrecy" of 29.07.2004
 
 ────────────────────────────────────────────────────────────────────
-  МЕЖДУНАРОДНЫЕ ДОГОВОРЫ И КОНВЕНЦИИ / INTERNATIONAL TREATIES
+  INTERNATIONAL TREATIES / МЕЖДУНАРОДНЫЕ ДОГОВОРЫ
 ────────────────────────────────────────────────────────────────────
 
-  7. Бернская конвенция об охране литературных и художественных
-     произведений от 09.09.1886 (в редакции 1971 г.) —
-     Российская Федерация присоединилась 13.03.1995
+  7. Berne Convention for the Protection of Literary and Artistic Works
+     of 09.09.1886 (as revised 1971)
 
-  8. Всемирная конвенция об авторском праве от 06.09.1952
-     (в редакции 1971 г.) — вступила в силу для РФ 27.05.1973
+  8. Universal Copyright Convention of 06.09.1952 (as revised 1971)
 
-  9. Договор Всемирной организации интеллектуальной собственности
-     по авторскому праву (WCT) от 20.12.1996 — вступил в силу
-     для РФ 05.02.2009
+  9. WIPO Copyright Treaty (WCT) of 20.12.1996
 
-  10. Договор ВОИС по исполнениям и фонограммам (WPPT) от 20.12.1996 —
-      вступил в силу для РФ 05.02.2009
+  10. WIPO Performances and Phonograms Treaty (WPPT) of 20.12.1996
 
-  11. Соглашение TRIPS (Trade-Related Aspects of Intellectual Property
-      Rights) от 15.04.1994 — применяется в рамках членства в ВТО
-      (РФ вступила 22.08.2012)
+  11. Agreement on Trade-Related Aspects of Intellectual Property Rights
+      (TRIPS) of 15.04.1994
 
-  12. Договор о патентном праве (PLT) от 01.06.2000
+  12. Patent Law Treaty (PLT) of 01.06.2000
 
-  13. Международная конвенция об охране прав исполнителей,
-      производителей фонограмм и вещательных организаций
-      (Римская конвенция) от 26.10.1961
+  13. International Convention for the Protection of Performers,
+      Producers of Phonograms and Broadcasting Organizations
+      (Rome Convention) of 26.10.1961
 
-  14. Конвенция, учреждающая Всемирную организацию интеллектуальной
-      собственности (ВОИС/WIPO) от 14.07.1967
+  14. Convention Establishing the World Intellectual Property
+      Organization (WIPO) of 14.07.1967
 
 ────────────────────────────────────────────────────────────────────
-  ДРУГИЕ ЮРИСДИКЦИИ (ПРИМЕНИМЫЕ ПРИ МЕЖДУНАРОДНОМ ИСПОЛЬЗОВАНИИ)
+  OTHER JURISDICTIONS / ДРУГИЕ ЮРИСДИКЦИИ
 ────────────────────────────────────────────────────────────────────
 
-  15. Директива ЕС 2001/29/EC «О гармонизации некоторых аспектов
-      авторского права и смежных прав в информационном обществе»
-      (InfoSoc Directive) — применяется при использовании в странах ЕС
+  15. EU Directive 2001/29/EC (InfoSoc Directive)
 
-  16. Директива ЕС 2009/24/EC «О правовой охране компьютерных программ»
-      (Software Directive) — применяется к программному обеспечению
-      в странах ЕС
+  16. EU Directive 2009/24/EC (Software Directive)
 
-  17. Закон США об авторском праве (Title 17, United States Code) —
-      применяется при использовании в США, включая:
-       • Раздел 17 U.S.C. § 106. Исключительные права
-       • Раздел 17 U.S.C. § 501. Нарушение авторских прав
-       • Раздел 17 U.S.C. § 504. Возмещение убытков и прибыли
-       • Раздел 17 U.S.C. § 506. Уголовные правонарушения
+  17. United States Copyright Law (Title 17, United States Code):
+      • 17 U.S.C. § 106. Exclusive rights
+      • 17 U.S.C. § 501. Infringement of copyright
+      • 17 U.S.C. § 504. Remedies for infringement
+      • 17 U.S.C. § 506. Criminal offenses
 
-  18. Digital Millennium Copyright Act (DMCA) США от 28.10.1998 —
-      запрещает обход технических средств защиты авторских прав
+  18. Digital Millennium Copyright Act (DMCA) of 28.10.1998
 
-  19. Закон Великобритании о авторском праве, дизайнах и патентах
-      (Copyright, Designs and Patents Act 1988) — применяется
-      при использовании в Великобритании
+  19. Copyright, Designs and Patents Act 1988 (UK)
 
-  20. Uniform Computer Information Transactions Act (UCITA) —
-      применяется в США для сделок с компьютерной информацией
-
-────────────────────────────────────────────────────────────────────
-  СУДЕБНЫЙ РАЗБИРАТЕЛЬСТВО / DISPUTE RESOLUTION
-────────────────────────────────────────────────────────────────────
-
-Все споры, возникающие из настоящей лицензии или связанные с ней,
-подлежат разрешению:
-  1. В первую очередь — путём переговоров между сторонами
-  2. При недостижении согласия — в судебном порядке по месту
-     жительства правообладателя в Российской Федерации
-  3. При международном характере спора — в компетентных судебных
-     органах по месту нарушения прав
+  20. Uniform Computer Information Transactions Act (UCITA)
 
 ════════════════════════════════════════════════════════════════════════
-  СРОК ДЕЙСТВИЯ / TERM
+  DISPUTE RESOLUTION / РАЗРЕШЕНИЕ СПОРОВ
 ════════════════════════════════════════════════════════════════════════
 
-Авторское право действует в течение всей жизни автора и 70 лет,
-следующих за годом его смерти, в соответствии со статьёй 1281
-Гражданского кодекса Российской Федерации и статьёй 7 Бернской конвенции.
+All disputes arising from this license shall be resolved:
+  1. Primarily — through negotiations between the parties
+  2. If no agreement is reached — in court at the place of residence
+     of the copyright holder in the Russian Federation
+  3. For international disputes — in competent courts at the place
+     of infringement
 
-После истечения срока охраны Проект переходит в общественное достояние
-в соответствии с применимым законодательством.
+════════════════════════════════════════════════════════════════════════
+  TERM / СРОК ДЕЙСТВИЯ
+════════════════════════════════════════════════════════════════════════
+
+Copyright lasts for the lifetime of the author plus 70 years following
+the year of death, in accordance with Article 1281 of the Civil Code of
+the Russian Federation and Article 7 of the Berne Convention.
 
 ════════════════════════════════════════════════════════════════════════
 
 © 2026 Isaev Iskhak Khamzatovich (Исаев Исхак Хамзатович).
 All rights reserved. Все права защищены.
 
+No part of this Project may be reproduced, distributed, or used in any
+form without the written permission of the author.
+
 Никакая часть данного Проекта не может быть воспроизведена, распространена
 или использована в любой форме без письменного разрешения автора.
-
-No part of this Project may be reproduced, distributed, or used in any form
-without the written permission of the author.
 
 ════════════════════════════════════════════════════════════════════════
   КОНТАКТЫ / CONTACTS
 ════════════════════════════════════════════════════════════════════════
 
-Правообладатель / Copyright Holder:
+Copyright Holder / Правообладатель:
   Isaev Iskhak Khamzatovich / Исаев Исхак Хамзатович
   Date of birth / Дата рождения: 08.05.1990
   GitHub: https://github.com/wild8highlander
   Email:  aslan08_05@mail.ru
-
-For permissions, please contact the copyright holder at the email above.
-Для получения разрешений свяжитесь с правообладателем по указанному email.

@@ -1,0 +1,62 @@
+site_name: Research Papers Verification
+site_description: Multi-language computational verification of NSE regularity, AB-Cloud, KdV, and Riemann Hypothesis
+site_url: https://wild8highlander.github.io/research-papers
+repo_url: https://github.com/wild8highlander/research-papers
+repo_name: wild8highlander/research-papers
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Research:
+    - NSE Regularity: nse.md
+    - AB-Cloud: ab-cloud.md
+    - KdV: kdv.md
+    - Klein Attractor: klein.md
+    - Riemann Zeros: riemann.md
+  - Verification:
+    - Overview: verification.md
+    - Lean 4: lean4.md
+    - Coq: coq.md
+    - Rust: rust.md
+    - C++: cpp.md
+    - Haskell: haskell.md
+  - License: license.md
