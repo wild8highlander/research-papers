@@ -19,7 +19,4 @@ Definition theta_b : R := sqrt (1 - b_correction^2).
 Lemma cos_plus_sin_sq : theta_b^2 + b_correction^2 = 1.
 Proof. unfold theta_b. assert (0 <= 1 - b_correction^2) by nra. rewrite sqrt_def by lra. lra. Qed.
 
-Lemma R_b_det_one : True. Proof. admit. Admitted.
-Lemma R_b_preserves_norm : True. Proof. admit. Admitted.
-
 Compute b_correction.

@@ -2,7 +2,7 @@
 module Section1_CorrectionB.CorrectionB where
 
 open import Data.Rational
-open import Data.Nat using (ℕ; zero; suc)
+open import Data.Nat using (ℕ)
 
 postulate π : ℚ
 postulate sqrt3 : ℚ

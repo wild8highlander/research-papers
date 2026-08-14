@@ -1,4 +1,4 @@
-"""Tests for 7 new verification languages."""
+"""Tests for new verification languages."""
 import pytest
 import shutil
 from pathlib import Path

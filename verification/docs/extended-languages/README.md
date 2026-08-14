@@ -1,22 +1,20 @@
-# Extended Languages
+# Расширенные языки
 
-7 new verification languages added to the framework:
+7 новых языков верификации, добавленных в фреймворк.
 
-## Formal Proof Languages
-- **Lean 4** - Mathlib4 hybrid, formal proofs
-- **Coq** - Reals + Lra, formal proofs
-- **Isabelle/HOL** - Complex_Main, formal proofs
-- **Agda** - dependent types, formal proofs
+## Формальные языки (доказательства)
+- **Lean 4** — формальные доказательства с Mathlib4
+- **Coq** — формальные доказательства
+- **Isabelle/HOL** — формальные доказательства
+- **Agda** — зависимо-типизированные доказательства
 
-## Numerical Languages
-- **Rust** - ndarray, numerical verification
-- **C++** - STL only, numerical verification
-- **Haskell** - base only, numerical verification
+## Численные языки
+- **Rust** — численная верификация
+- **C++** — численная верификация
+- **Haskell** — численная и символьная верификация
 
-## Build Commands
+## Сборка
 
-```bash
-make verify-extended  # all 7 languages
-make verify-formal    # Lean 4 + Coq + Isabelle + Agda
-make verify-numerical # Rust + C++ + Haskell
+```
+make verify-extended
 ```
