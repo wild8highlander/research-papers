@@ -31,8 +31,9 @@
     "non-Hermitian-spectrum"
   ],
   "license": {
-    "id": "CC-BY-4.0"
+    "id": "NOASSERTION"
   },
+  "access_right": "restricted",
   "language": "eng",
   "communities": [
     {
@@ -43,15 +44,11 @@
     },
     {
       "identifier": "formal-methods"
-    },
-    {
-      "identifier": "open-science"
     }
   ],
   "version": "1.3.0",
   "publication_date": "2026-08-06",
   "upload_type": "software",
-  "access_right": "open",
   "related_identifiers": [
     {
       "identifier": "https://github.com/wild8highlander/research-papers",

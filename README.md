@@ -47,7 +47,7 @@ verified across 11 programming languages**
 <!-- LICENSE & COMPLIANCE BADGES -->
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
-[![License](https://img.shields.io/badge/License-CC--BY--4.0-green?style=for-the-badge&logo=creativecommons&logoColor=white)](./LICENSE)
+[![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge&logo=lock&logoColor=white)](./LICENSE)
 [![FAIR](https://img.shields.io/badge/FAIR-Compliant-2EA043?style=for-the-badge&logo=dataverse&logoColor=white)](https://fair-software.eu)
 [![REUSE](https://img.shields.io/badge/REUSE-Compliant-2EA043?style=for-the-badge&logo=fsfe&logoColor=white)](https://reuse.software)
 [![CFF](https://img.shields.io/badge/Citation-CITATION.cff-2EA043?style=for-the-badge&logo=latex&logoColor=white)](./CITATION.cff)
@@ -242,7 +242,7 @@ research-papers/
 ├── CONTRIBUTING.md             # Contribution guidelines
 ├── SECURITY.md                 # Security policy
 ├── AUTHORS.md                  # Author information
-├── LICENSE                     # CC-BY-4.0
+├── LICENSE                     # Proprietary — All Rights Reserved
 ├── Makefile                    # Build automation
 ├── pyproject.toml              # Python packaging & tool config
 ├── environment.yml             # Conda environment
@@ -416,11 +416,13 @@ All notable changes are documented in **[CHANGELOG.md](./CHANGELOG.md)** followi
 
 ## ⚖️ License
 
-This project is licensed under the **Creative Commons Attribution 4.0 International** license — see [`LICENSE`](./LICENSE) for details.
+**ALL RIGHTS RESERVED.** This project is proprietary software and intellectual property of **Isaev Iskhak Khamzatovich**. No copying, distribution, modification, or use of any kind is permitted without the express written consent of the author.
 
-[![CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
+[![Proprietary](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge&logo=lock&logoColor=white)](./LICENSE)
 
-This is the most permissive Creative Commons license, maximizing compatibility with Zenodo/DOI deposition, open science requirements, and reproducibility standards.
+See [`LICENSE`](./LICENSE) for the full Exclusive Proprietary License Agreement.
+
+**To request permission:** contact aslan08_05@mail.ru
 
 ---
 
