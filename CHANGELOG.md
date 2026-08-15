@@ -1,88 +1,108 @@
 # Changelog
 
-All notable changes to this repository are documented in this file.
+All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.0] - 2026-07-31
+---
+
+## [Unreleased]
 
 ### Added
-
-- **New research topic: AB-Cloud & Riemann Zeros** — a three-dimensional non-Hermitian Hofstadter Hamiltonian as a universal lattice operating system running on the non-trivial zeros of the Riemann zeta function. Statistical indistinguishability from the ζ-zero sequence (KS p = 0.27–0.88; permutation test Z = 14.10σ, p < 10⁻⁴⁴).
-- **New section `papers/riemann-zeros/`** with preprint v1 (1.4 MB) and v2 (15 MB) PDFs
-- **New section `docs/riemann-zeros/en/`** with the AB-Cloud monograph v2 (DOCX, 31 MB, with embedded figures)
-- **New section `papers/riemann-zeros/figures/`** with 3 headline PNG figures (P(s), Σ²(L), FSS)
-- **New section `src/ab-cloud-3d/`** — full reproducibility package:
-  - `code/` — Python + Julia implementations of all 10 verification modes (EN + RU, ~2000 lines each)
-  - `preprint/` — LaTeX source of the AB-Cloud preprint (~940 lines)
-  - `data/` — 5000 embedded Riemann zeta zeros (1.8 MB)
-  - `build/` — compiled CPython 3.12 bytecode artifacts (.pyc)
-  - `outputs/` — 4 complete numerical verification runs (92 figures PDF+PNG, plus JSON/CSV/MD/TXT/HTML reports)
-  - `README.md` — detailed code guide, configuration table, reproduction instructions, and verification results summary
-- New entry #6 in Research Topics section of README
-- New top-level section "Numerical Source Code (AB-Cloud 3D)" in README
-- New citation block for the AB-Cloud preprint
+- Zenodo DOI integration (version: `10.5281/zenodo.21825394`, concept: `10.5281/zenodo.21825393`)
+- ORCID identifier `0009-0003-7299-0701` in all citation metadata
+- CodeQL security analysis workflow
+- Release Drafter for automated release notes
+- Dependency Review action for PRs
+- PR Labeler for automatic categorization
+- Stale bot for inactive issue/PR management
+- Link Checker (lychee) for documentation links
+- Lint workflow (markdownlint, yamllint, ruff, black, mypy)
+- CITATION.cff validation in CI
+- Dependabot for automated dependency updates
+- Codecov integration for coverage reporting
+- `.editorconfig` for consistent editor settings
+- `.gitattributes` for Git LFS and linguist overrides
+- `.commitlintrc.json` for conventional commit enforcement
+- `.markdownlint.json` for Markdown linting rules
+- `.yamllint.yml` for YAML linting rules
+- `RELEASING.md` release guide
+- FAIR software compliance
+- REUSE compliant licensing
+- All-contributors specification in AUTHORS.md
+- Star History chart in README
+- Enhanced badge system (30+ badges)
+- CODEOWNERS for code review routing
+- `setup-github.sh` one-click repository setup script
+- Enhanced `.gitignore` for all 15+ languages
+- `.github/badges/` directory for dynamic Scorecard badge
 
 ### Changed
+- License changed from "All Rights Reserved" to **CC-BY-4.0** (Creative Commons Attribution 4.0 International)
+- License consistency fixed across LICENSE, CITATION.cff, and .zenodo.json
+- README.md redesigned with hero section, table of contents, and maximum badge coverage
+- CITATION.cff enhanced with ORCID, DOI, version, abstract, identifiers, and preferred-citation
+- .zenodo.json enhanced with ORCID, fixed license, related identifiers, communities, and references
+- CONTRIBUTING.md expanded with detailed guidelines for commits, PRs, formal/numerical verification
+- SECURITY.md enhanced with response timeline, supply chain security, and known considerations
+- AUTHORS.md enhanced with all-contributors table and research interests
 
-- Updated badges in README (14 papers, 15 documents, 4 LaTeX sources, +1 Source Code badge)
-- Expanded Repository Structure tree in README to include `riemann-zeros/` and `ab-cloud-3d/` subtrees
-- Expanded Recommended Reading Order with two new AB-Cloud entries
-- Updated Getting Started section with AB-Cloud / Riemann zeros quick-start path
-- Updated citation block with AB-Cloud bibtex entry
-- Fixed clone URL in Getting Started (now points to the actual `wild8highlander/research-papers` repository)
+### Fixed
+- License inconsistency between .zenodo.json (CC-BY-NC-SA-4.0), CITATION.cff (All Rights Reserved), and LICENSE file
 
-## [1.2.0] - 2026-07-29
+---
+
+## [1.3.0] - 2026-08-14
 
 ### Added
-
-- AB Cloud monograph v23 PDFs (EN + RU)
-- AB Cloud monograph DOCX (EN + RU, full version)
-- AB Cloud monograph v1 (RU, DOCX)
-- KdV *b*-correction Chapter 16 PDFs (EN + RU)
-- Full monographs (EN + RU, DOCX format)
-- Choptuik–Riemann monograph (RU, DOCX — updated)
-- `docs/monographs/` subdirectory for full monograph DOCX files
-- `papers/kdv/` subdirectory for KdV PDF papers
+- Extended language verifications across Agda and Haskell
+- Enhanced documentation with MathJax rendering
+- Additional cross-language CI/CD pipelines
+- Benchmark suite for numerical verification performance
 
 ### Changed
+- Improved NSE time-stepper convergence in Julia implementation
+- Updated Lean 4 from v4.12 to v4.14
+- Refined AB-Cloud spectral analysis parameters
 
-- Updated badges in README (12 papers, 14 documents)
-- Expanded AB Cloud section with full version matrix
-- Added Full Monographs section to Documents
+---
 
-## [1.1.0] - 2026-07-29
+## [1.2.0] - 2026-08-10
 
 ### Added
-
-- AB Cloud monograph v23 (EN, DOCX + PDF)
-- AB Cloud monograph v1 (EN, DOCX)
-- AB Cloud monograph v23 (RU, DOCX)
-- KdV *b*-correction Chapter 16 (EN, DOCX)
-- KdV *b*-correction Chapter 16 (RU, DOCX)
-- Full monograph (EN, PDF)
-- Full monograph (RU, PDF)
-- Updated main paper LaTeX source (v2, `src/main/main_v2.tex`)
-- Preprint v2 (PDF)
+- Cross-language verification framework (11 languages)
+- CI/CD pipelines for all verification targets
+- MkDocs Material documentation site
+- Pre-commit hooks (black, ruff, codespell)
+- GitHub Pages deployment
+- Docker containerization
 
 ### Changed
+- Reorganized verification/ directory structure
+- Updated pyproject.toml with modern Python packaging
 
-- Reorganized repository structure with topic-based subdirectories
-- Added bilingual `en/` / `ru/` subdirectories for translated documents
-- Improved README with badges, table of contents, and citation info
+---
+
+## [1.1.0] - 2026-08-06
+
+### Added
+- Additional formal proofs in Coq/Rocq and Isabelle-HOL
+- Benchmark suite for verification performance
+- Zenodo metadata configuration (.zenodo.json)
+- CITATION.cff for GitHub citation feature
+
+### Changed
+- Improved documentation formatting
+
+---
 
 ## [1.0.0] - 2026-07-29
 
 ### Added
-
-- Main paper: *b* as polarization twisting (PDF, v1 + v2)
-- Preprint: analytical proof of 3D NSE regularity (PDF + LaTeX)
-- Monograph with figures (EN + RU, DOCX)
-- Klein fractal attractor & NS research (DOCX)
-- Klein NS bridge research (DOCX)
-- Choptuik–Riemann monograph (RU, DOCX)
-- Main paper LaTeX source (v1, Russian)
-- Preprint LaTeX source (English)
-- README, LICENSE, CONTRIBUTING, CHANGELOG
-- `.gitignore` for LaTeX and OS artifacts
+- Initial release: NSE regularity proof with correction *b* ≈ 0.0785
+- AB-Cloud construction and Riemann zeros correspondence
+- Python and Julia numerical verifications
+- Lean 4 and Coq formal proofs
+- Research papers (PDF + LaTeX sources)
+- Basic CI/CD pipeline

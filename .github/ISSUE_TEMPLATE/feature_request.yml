@@ -1,21 +1,71 @@
 name: Feature Request
-description: Suggest a new feature or enhancement
+description: Suggest a new feature, verification, or improvement
 labels: [enhancement]
 body:
-  - type: textarea
-    id: motivation
+  - type: markdown
     attributes:
-      label: Motivation
-      description: Why is this feature needed?
+      value: |
+        Thank you for your suggestion! Please describe the feature you'd like.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: What type of feature is this?
+      options:
+        - New formal proof
+        - New numerical verification
+        - New verification language
+        - Mathematical result / theorem
+        - Documentation improvement
+        - CI/CD improvement
+        - Performance improvement
+        - Other
     validations:
       required: true
+
   - type: textarea
-    id: proposal
+    id: problem
+    attributes:
+      label: Problem / Motivation
+      description: What problem does this feature solve?
+      placeholder: "Currently, there is no verification of theorem X in proof assistant Y..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
     attributes:
       label: Proposed Solution
+      description: How would you like this to be implemented?
     validations:
       required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Target Language (if applicable)
+      options:
+        - Lean 4
+        - Coq/Rocq
+        - Isabelle-HOL
+        - Agda
+        - Python
+        - Julia
+        - Rust
+        - C++
+        - Haskell
+        - N/A
+
   - type: textarea
     id: alternatives
     attributes:
       label: Alternatives Considered
+      description: What other approaches did you consider?
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Papers, theorems, or other references relevant to this feature
+      placeholder: "See Theorem 3.2 in papers/nse_regularity.pdf"

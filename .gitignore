@@ -1,96 +1,189 @@
-# ============================================================================
-# Python
-# ============================================================================
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# .gitignore — Comprehensive ignore rules for research-papers
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# ─── Python ───
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 *.egg
 *.egg-info/
-*.eggs/
 dist/
+build/
+*.whl
+.eggs/
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+.Python
 develop-eggs/
 .installed.cfg
-*.whl
-pip-wheel-metadata/
-.eggs/
+*.pth
+.python-version
+pyrightconfig.json
 
 # Virtual environments
 venv/
 .venv/
 env/
-.env/
 ENV/
+.conda/
 
-# Python testing / coverage
+# Testing and coverage
 .pytest_cache/
 .coverage
 .coverage.*
-htmlcov/
-.tox/
-.nox/
 coverage.xml
+htmlcov/
 *.cover
 .hypothesis/
-
-# mypy / type checkers
 .mypy_cache/
-.dmypy.json
-dmypy.json
-.pytype/
 .ruff_cache/
+.pytype/
 
 # Jupyter
 .ipynb_checkpoints/
+*.ipynb_metadata.json
 
-# ============================================================================
-# LaTeX build artifacts
-# ============================================================================
-*.aux
-*.log
+# ─── Julia ───
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+LocalPreferences.toml
+Manifest.toml
+
+# ─── Rust ───
+target/
+**/*.rs.bk
+Cargo.lock
+
+# ─── C/C++ ───
+*.o
+*.obj
+*.exe
 *.out
-*.synctex.gz
-*.fls
-*.fdb_latexmk
+*.app
+*.so.*
+*.dylib
+*.dll
+*.lib
+*.a
+*.la
+*.lo
+*.slo
+*.d
+*.ko
+*.mod
+*.mod.c
+*.cmd
+*.gcno
+*.gcda
+*.gcov
+verification/cpp/build/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile.bak
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# ─── Haskell ───
+*.hi
+*.hie
+*.o
+*.p_o
+*.dyn_o
+*.dyn_hi
+.hie/
+dist-newstyle/
+cabal.project.local
+.ghc.environment.*
+
+# ─── Lean 4 ───
+.lake/
+lake-manifest.json
+lean-toolchain
+**/lean_packages/
+
+# ─── Coq/Rocq ───
+*.vo
+*.vio
+*.vok
+*.vos
+*.glob
+*.aux
+*.d
+.coq-native/
+_Makefile
+_Makefile.md
+
+# ─── Isabelle ───
+output/
+.browser_info/
+.heaps/
+
+# ─── Agda ───
+*.agdai
+MAlonzo/
+
+# ─── LaTeX ───
+*.aux
 *.bbl
 *.blg
-*.toc
-*.lof
-*.lot
-*.nav
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
 *.snm
-*.vrb
+*.synctex.gz
+*.toc
+*.nav
+*.run.xml
+*.bcf
+*.cut
 *.idx
 *.ilg
 *.ind
-*.xref
-*.bcf
-*.run.xml
-*.xdv
-*.dvi
-*.ps
-*.latexmk
-*.sil
-*.fdb_latexmk
-*.sav
-*.glo
 *.ist
-*.acn
-*.acr
-*.alg
-*.glg
-*.gls
-*.loa
+*.lof
 *.lot
 *.maf
-*.mlf
-*.mlt
 *.mtc
-*.ptc
+*.mtc1
+*.mw
+*.xdy
+_minted-*/
+src/_build/
 
-# ============================================================================
-# OS generated files
-# ============================================================================
+# ─── Docker ───
+.docker/
+
+# ─── Documentation ───
+site/
+docs/_build/
+
+# ─── IDE and Editors ───
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+.clangd/
+.cache/
+
+# ─── OS ───
 .DS_Store
 .DS_Store?
 ._*
@@ -98,106 +191,34 @@ dmypy.json
 .Trashes
 ehthumbs.db
 Thumbs.db
-desktop.ini
-*.lnk
+Desktop.ini
+$RECYCLE.BIN/
 
-# ============================================================================
-# Editor / IDE files
-# ============================================================================
-# Vim
-*.swp
-*.swo
-*~
-.*.sw[a-p]
-
-# Emacs
-\#*\#
-.#*
-auto-save-list
-tramp
-
-# VS Code
-.vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-
-# JetBrains / IntelliJ
-.idea/
-*.iml
-*.iws
-*.ipr
-
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
-*.stTheme.cache
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.caBundle
-
-# ============================================================================
-# Temporary / backup files
-# ============================================================================
-~$*
-*.tmp
-*.bak
-*.backup
-*.old
-*.orig
-
-# ============================================================================
-# Build artifacts (preserve intentionally committed .pyc)
-# ============================================================================
-# Python bytecode caches are auto-regenerated on import.
-# NOTE: a small number of .pyc files under src/ab-cloud-3d/build/ are
-# committed intentionally to preserve the exact runtime state of the
-# verification runs. Do not delete them.
-!src/ab-cloud-3d/build/*.pyc
-
-# ============================================================================
-# Julia
-# ============================================================================
-*.jl.cov
-*.jl.mem
-Manifest.toml
-
-# ============================================================================
-# Node / JavaScript (for tooling)
-# ============================================================================
-node_modules/
-package-lock.json
-.npm/
-
-# ============================================================================
-# Docker
-# ============================================================================
-.dockerignore
-
-# ============================================================================
-# Environment / secrets
-# ============================================================================
+# ─── Security ───
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 *.pem
 *.key
-*.secret
+*.cert
+*.p12
+*.pfx
+id_rsa*
+.ssh/
 
-# ============================================================================
-# Logs
-# ============================================================================
-*.log
-logs/
+# ─── Build artifacts (keep sources, ignore compiled) ───
+*.pyc
+*.pyo
+*.bytecode
 
-# ============================================================================
-# Data outputs (regenerated by verification runs)
-# ============================================================================
-# Uncomment to ignore output directories:
-# src/ab-cloud-3d/outputs/
+# ─── Archives (prefer Git LFS or releases for large files) ───
+# *.tar.gz
+# *.zip
 
-# LaTeX compiled PDFs (source is tracked, PDFs are in papers/)
-# Uncomment if you don't want to track compiled PDFs:
-# src/**/*.pdf
+# ─── Temporary ───
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+*.rej

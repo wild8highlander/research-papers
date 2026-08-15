@@ -1,10 +1,11 @@
 {
   "title": "research-papers — Correction b, 3D Navier-Stokes regularity & AB-Cloud / Riemann zeta zeros",
-  "description": "<p>A research-papers repository by <strong>Iskhak Hamzatovich Isaev</strong> containing two independent research programs that converge on the universal polarization correction <code>b &asymp; 0.0785</code> from Kirchhoff point-vortex equations.</p><p><strong>Thread 1 (3D Navier&ndash;Stokes regularity).</strong> The correction <code>b</code> acts as a rotation angle (&theta;<sub>b</sub> &asymp; 7.07&deg;) that stabilises the 3D Navier&ndash;Stokes equations <em>without adding any dissipation</em> &mdash; the velocity field is rotated around the vortex axis by R<sub>b</sub> with R<sub>b</sub><sup>T</sup>R<sub>b</sub> = I, preserving energy while reducing the BKM blow-up criterion integral by a factor of 3.5&times;. This delivers an analytical proof of global-in-time smoothness for 3D NSE.</p><p><strong>Thread 2 (AB-Cloud &amp; Riemann zeta zeros).</strong> The AB-Cloud &mdash; a 36<sup>3</sup> non-Hermitian Hofstadter Hamiltonian whose phase pattern is dictated by the Riemann &zeta;-zeros &mdash; reproduces the GUE spacing statistics of &zeta;-zeros to KS p-values of 0.27&ndash;0.88, and the form factor K(&tau;) to L&sup2; distance 0.0127 (34&times; closer than either to the GUE Wigner surmise). A permutation test excludes randomness at <strong>Z = 14.10&sigma;</strong> (p &lt; 10<sup>-44</sup>).</p><p>The repository ships 14 PDF papers (EN/RU), 16 editable DOCX sources, 60+ Python files, 2 Julia files, 3 LaTeX preprint sources, and pre-generated verification figures. All artefacts are authored by Iskhak Hamzatovich Isaev.</p>",
+  "description": "<p>A research repository by <strong>Isaev Iskhak Khamzatovich</strong>. This repository presents two independent research programs in mathematical physics: (1) An analytical proof of global-in-time smoothness for the 3D Navier-Stokes equations without artificial dissipation, using a universal polarization correction <em>b</em> ≈ 0.0785 from Kirchhoff point-vortex equations. The correction acts as a rotation (θ<sub>b</sub> ≈ 7.07°) that stabilizes NSE, reducing the BKM blow-up criterion integral by 3.5×. (2) The <strong>AB-Cloud</strong> — a 36³ non-Hermitian Hofstadter Hamiltonian whose spectrum is statistically indistinguishable from the Riemann ζ-zeros (KS p = 0.27–0.88, permutation test Z = 14.10σ, p &lt; 10⁻⁴⁴), realising the Hilbert–Pólya conjecture, Montgomery–Dyson GUE correspondence, and a concrete bridge to the Langlands programme. Both results are supported by a multi-language formal verification framework spanning 11 programming languages (Lean 4, Coq/Rocq, Isabelle-HOL, Agda, Haskell, Rust, C++, Python, Julia, and CMake).</p>",
   "creators": [
     {
-      "name": "Isaev, Iskhak Hamzatovich",
-      "affiliation": "Independent researcher, Russia"
+      "name": "Isaev, Iskhak Khamzatovich",
+      "affiliation": "Independent researcher, Russia",
+      "orcid": "0009-0003-7299-0701"
     }
   ],
   "keywords": [
@@ -22,25 +23,68 @@
     "KdV-equation",
     "mathematical-physics",
     "reproducible-research",
-    "open-science"
+    "open-science",
+    "formal-verification",
+    "Lean4",
+    "Langlands-programme",
+    "spectral-theory",
+    "non-Hermitian-spectrum"
   ],
-  "license": "CC-BY-NC-SA-4.0",
-  "access_right": "open",
-  "upload_type": "publication",
-  "publication_type": "article",
+  "license": {
+    "id": "CC-BY-4.0"
+  },
   "language": "eng",
   "communities": [
-    {"identifier": "zenodo"}
+    {
+      "identifier": "zenodo"
+    },
+    {
+      "identifier": "mathematical-physics"
+    },
+    {
+      "identifier": "formal-methods"
+    },
+    {
+      "identifier": "open-science"
+    }
   ],
-  "version": "1.0.0",
+  "version": "1.3.0",
   "publication_date": "2026-08-06",
-  "code_repository": "https://github.com/wild8highlander/research-papers",
+  "upload_type": "software",
+  "access_right": "open",
   "related_identifiers": [
     {
       "identifier": "https://github.com/wild8highlander/research-papers",
       "relation": "isSupplementTo",
-      "resource_type": "software",
       "scheme": "url"
+    },
+    {
+      "identifier": "https://wild8highlander.github.io/research-papers",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.21825393",
+      "relation": "isVersionOf",
+      "scheme": "doi"
     }
-  ]
+  ],
+  "contributors": [
+    {
+      "name": "Isaev, Iskhak Khamzatovich",
+      "affiliation": "Independent researcher, Russia",
+      "orcid": "0009-0003-7299-0701",
+      "type": "ContactPerson"
+    }
+  ],
+  "grants": [],
+  "references": [
+    {
+      "raw_reference": "Isaev, I.K. (2026). Correction b and 3D Navier-Stokes Regularity. Independent Research. DOI: 10.5281/zenodo.21825394"
+    },
+    {
+      "raw_reference": "Isaev, I.K. (2026). AB-Cloud: A 36³ Non-Hermitian Hofstadter Hamiltonian and Riemann Zeros. Independent Research. DOI: 10.5281/zenodo.21825394"
+    }
+  ],
+  "notes": "ORCID: https://orcid.org/0009-0003-7299-0701. Concept DOI (all versions): 10.5281/zenodo.21825393. Version DOI (v1.3.0): 10.5281/zenodo.21825394."
 }

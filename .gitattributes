@@ -1,0 +1,42 @@
+# Git Attributes — Linguist overrides and LFS configuration
+# https://git-scm.com/docs/gitattributes
+
+# ─── Large binary files → Git LFS ───
+*.pdf   filter=lfs diff=lfs merge=lfs -text
+*.docx  filter=lfs diff=lfs merge=lfs -text
+*.pptx  filter=lfs diff=lfs merge=lfs -text
+*.xlsx  filter=lfs diff=lfs merge=lfs -text
+*.zip   filter=lfs diff=lfs merge=lfs -text
+*.tar   filter=lfs diff=lfs merge=lfs -text
+*.gz    filter=lfs diff=lfs merge=lfs -text
+
+# ─── Documentation site ───
+docs/** linguist-documentation
+
+# ─── Papers → Not primary code ───
+papers/** linguist-documentation
+
+# ─── LaTeX sources → TeX language ───
+*.tex linguist-language=TeX
+*.sty linguist-language=TeX
+*.cls linguist-language=TeX
+*.bib linguist-language=TeX
+
+# ─── Generated content → Exclude from stats ───
+src/_build/** linguist-generated
+verification/**/build/** linguist-generated
+**/__pycache__/** linguist-generated
+**/*.pyc linguist-generated
+**/*.pyo linguist-generated
+**/.docusaurus/** linguist-generated
+**/node_modules/** linguist-generated
+
+# ─── Proof assistant files ───
+*.lean linguist-language=Lean
+*.v linguist-language=Coq
+*.thy linguist-language=Isabelle
+*.agda linguist-language=Agda
+
+# ─── Line ending normalization ───
+* text=auto eol=lf
+*.bat text eol=crlf
