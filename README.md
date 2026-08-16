@@ -47,7 +47,7 @@ verified across 11 programming languages**
 <!-- LICENSE & COMPLIANCE BADGES -->
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
-[![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge&logo=lock&logoColor=white)](./LICENSE)
+[![License](https://img.shields.io/badge/License-CC--BY--4.0-green?style=for-the-badge&logo=creativecommons&logoColor=white)](./LICENSE)
 [![FAIR](https://img.shields.io/badge/FAIR-Compliant-2EA043?style=for-the-badge&logo=dataverse&logoColor=white)](https://fair-software.eu)
 [![REUSE](https://img.shields.io/badge/REUSE-Compliant-2EA043?style=for-the-badge&logo=fsfe&logoColor=white)](https://reuse.software)
 [![CFF](https://img.shields.io/badge/Citation-CITATION.cff-2EA043?style=for-the-badge&logo=latex&logoColor=white)](./CITATION.cff)
@@ -242,7 +242,7 @@ research-papers/
 ├── CONTRIBUTING.md             # Contribution guidelines
 ├── SECURITY.md                 # Security policy
 ├── AUTHORS.md                  # Author information
-├── LICENSE                     # Proprietary — All Rights Reserved
+├── LICENSE                     # CC-BY-4.0
 ├── Makefile                    # Build automation
 ├── pyproject.toml              # Python packaging & tool config
 ├── environment.yml             # Conda environment
@@ -411,18 +411,47 @@ All notable changes are documented in **[CHANGELOG.md](./CHANGELOG.md)** followi
 ---
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- AB-CLOUD VERIFICATION SUITE -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+## ☁️ AB-Cloud Verification Suite
+
+Multi-language verification suite addressing 3 reviewer objections about the AB-Cloud methodology.
+
+**10 languages:** Python, C++, Fortran, Julia, Rust, R, MATLAB, JavaScript, Go, Haskell
+
+**3 Objections addressed:**
+1. GUE Universality (Bohigas-Giannoni-Schmit)
+2. Circularity of Embedding
+3. Selective Interpretation
+
+**Quick start:**
+```bash
+# Python (recommended)
+python3 ab-cloud-verification/python/ab_cloud_verify.py --interactive
+
+# All languages
+bash ab-cloud-verification/run_all.sh
+
+# Russian
+python3 ab-cloud-verification/python/ab_cloud_verify.py --lang ru --all
+```
+
+See [ab-cloud-verification/README.md](ab-cloud-verification/README.md) for full documentation.
+
+---
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <!-- LICENSE -->
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 ## ⚖️ License
 
-**ALL RIGHTS RESERVED.** This project is proprietary software and intellectual property of **Isaev Iskhak Khamzatovich**. No copying, distribution, modification, or use of any kind is permitted without the express written consent of the author.
+This project is licensed under the **Creative Commons Attribution 4.0 International** license — see [`LICENSE`](./LICENSE) for details.
 
-[![Proprietary](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge&logo=lock&logoColor=white)](./LICENSE)
+[![CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
 
-See [`LICENSE`](./LICENSE) for the full Exclusive Proprietary License Agreement.
-
-**To request permission:** contact aslan08_05@mail.ru
+This is the most permissive Creative Commons license, maximizing compatibility with Zenodo/DOI deposition, open science requirements, and reproducibility standards.
 
 ---
 

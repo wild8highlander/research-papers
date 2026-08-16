@@ -7,23 +7,11 @@ path = [
   "papers/**",
   "docs/**",
   "verification/**/README.md",
-  "**/*.pdf",
-  "**/*.tex",
-  "**/*.py",
-  "**/*.jl",
-  "**/*.rs",
-  "**/*.cpp",
-  "**/*.hpp",
-  "**/*.lean",
-  "**/*.v",
-  "**/*.thy",
-  "**/*.agda",
-  "**/*.hs",
-  "**/*.cabal"
+  "**/*.pdf"
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Isaev Iskhak Khamzatovich"
-SPDX-License-Identifier = "NOASSERTION"
+SPDX-License-Identifier = "CC-BY-4.0"
 
 [[annotations]]
 path = [
@@ -45,4 +33,4 @@ path = [
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Isaev Iskhak Khamzatovich"
-SPDX-License-Identifier = "NOASSERTION"
+SPDX-License-Identifier = "CC-BY-4.0"
