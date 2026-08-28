@@ -9,3 +9,5 @@
 - дираковская динамика: E_min ∝ 1/L (R² = 0.9997), провал DOS 20×, скин-эффект.
 
 Документы: [RU](docs/ab-cloud-v22/ru/text) · [EN](docs/ab-cloud-v22/en/text) · [ZH](docs/ab-cloud-v22/zh/text) — docx + pdf + интерактивный html + презентация pptx + LaTeX-препринт (tex/pdf); 19 графиков 600 dpi на язык ([RU](docs/ab-cloud-v22/ru/figures) · [EN](docs/ab-cloud-v22/en/figures) · [ZH](docs/ab-cloud-v22/zh/figures)). Код: [ab_cloud_v19.jl](code/ab_cloud_v19.jl) · эталонный прогон: [37-тестовый лог](results/verification_run_v18_37tests_2026-08-28.txt).
+
+Оригинальная авторская монография v21 (с верификацией) и её английская версия: [RU](docs/ab-cloud-v22/original-v21/ru/text) · [EN](docs/ab-cloud-v22/original-v21/en/text) — docx + pdf + интерактивный html + презентации (16 слайдов).

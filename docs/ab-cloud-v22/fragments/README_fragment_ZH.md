@@ -9,3 +9,5 @@
 - Dirac 动力学：E_min ∝ 1/L（R² = 0.9997）、20× DOS 凹陷、趋肤效应。
 
 文档：[RU](docs/ab-cloud-v22/ru/text) · [EN](docs/ab-cloud-v22/en/text) · [ZH](docs/ab-cloud-v22/zh/text) —— docx + pdf + 交互式 html + pptx 演示文稿 + LaTeX 预印本（tex/pdf）；每种语言 19 幅 600 dpi 图形（[RU](docs/ab-cloud-v22/ru/figures) · [EN](docs/ab-cloud-v22/en/figures) · [ZH](docs/ab-cloud-v22/zh/figures)）。代码：[ab_cloud_v19.jl](code/ab_cloud_v19.jl) · 参考运行：[37 项测试日志](results/verification_run_v18_37tests_2026-08-28.txt)。
+
+原始作者专题论文 v21（含验证）及其英文版：[RU](docs/ab-cloud-v22/original-v21/ru/text) · [EN](docs/ab-cloud-v22/original-v21/en/text) —— docx + pdf + 交互式 html + 演示文稿（16 页）。

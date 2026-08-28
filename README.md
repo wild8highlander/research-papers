@@ -173,6 +173,8 @@ The **AB-cloud** is a Hofstadter Hamiltonian decorated with topological vortices
 
 Documents: [RU](docs/ab-cloud-v22/ru/text) · [EN](docs/ab-cloud-v22/en/text) · [ZH](docs/ab-cloud-v22/zh/text) — docx + pdf + interactive html + pptx presentation + LaTeX preprint (tex/pdf); 19 figures at 600 dpi per language ([RU](docs/ab-cloud-v22/ru/figures) · [EN](docs/ab-cloud-v22/en/figures) · [ZH](docs/ab-cloud-v22/zh/figures)). Code: [ab_cloud_v19.jl](code/ab_cloud_v19.jl) · reference run: [37-test log](results/verification_run_v18_37tests_2026-08-28.txt).
 
+Original author monograph v21 (with verification) and its English edition: [RU](docs/ab-cloud-v22/original-v21/ru/text) · [EN](docs/ab-cloud-v22/original-v21/en/text) — docx + pdf + interactive html + presentations (16 slides).
+
 ### KdV Equation & Klein Attractor
 
 Additional research programs include analysis of the **Korteweg–de Vries (KdV) equation** with novel soliton interaction results, and the study of the **Klein attractor** dynamics with connections to ergodic theory and dynamical systems.

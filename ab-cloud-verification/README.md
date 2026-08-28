@@ -168,3 +168,13 @@ chmod +x run_verify.sh
 ## Лицензия / License
 
 Распространяется вместе с основным репозиторием research-papers.
+
+<!-- ab-cloud:v22-update (2026-08-28) -->
+
+## Обновление v22 / Update v22 (2026-08-28)
+
+- Latest verified run: [results/verification_run_v18_37tests_2026-08-28.txt](../results/verification_run_v18_37tests_2026-08-28.txt)
+- Monograph (RU/EN/ZH; docx + pdf + html + pptx + tex): [docs/ab-cloud-v22/](../docs/ab-cloud-v22/)
+- Suite: `julia code/ab_cloud_v19.jl --test all` (two-pass; report engine fixed, FIX-R1...R5b)
+- Quick check: `julia code/ab_cloud_v19.jl --quick` (16x16 -> 32x32, zeta <= 5000, both passes)
+- Legacy DOCX results of this folder removed (superseded by the v22 monograph package).

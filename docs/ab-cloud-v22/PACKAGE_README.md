@@ -1,10 +1,11 @@
-# AB-Cloud Monograph Package v22 (RU / EN / ZH)
+# AB-Cloud Monograph Package v22.1 (RU / EN / ZH + original v21)
 
 Replacement package for the AB-cloud section of the
 [research-papers](https://github.com/wild8highlander/research-papers) repository,
 written from scratch on the basis of the 37-test verification suite (v18/v19,
 August 2026). Every number in every document traces to a named test with a full
-computation log.
+computation log. Package v22.1 additionally ships the **original author monograph
+v21** (with verification) and its full **English edition**.
 
 ```
 ab-cloud-monograph-v22/
@@ -14,13 +15,19 @@ ab-cloud-monograph-v22/
 │   └── ab_cloud_v19.jl              ← FIXED verification suite (see FIX-R1…R5 below)
 ├── results/
 │   └── verification_run_v18_37tests_2026-08-28.txt   ← the full 37-test run this monograph is based on
-└── monographs/
-    ├── ru/  ┐
-    ├── en/  ├─ text/    AB_Cloud_Monograph_v22_<LANG>.{md,html,docx,pdf}
-    │       │            AB_Cloud_Monograph_v22_<LANG>_presentation.pptx  (14 slides)
-    │       │            preprint/preprint_v22_<LANG>.{tex,pdf}
-    │       └─ figures/  19 PNG figures, 600 dpi, captions in the language of the edition
-    └── zh/  ┘
+├── monographs/
+│   ├── ru/  ┐
+│   ├── en/  ├─ text/    AB_Cloud_Monograph_v22_<LANG>.{md,html,docx,pdf}
+│   │       │            AB_Cloud_Monograph_v22_<LANG>_presentation.pptx  (14 slides)
+│   │       │            preprint/preprint_v22_<LANG>.{tex,pdf}
+│   │       └─ figures/  19 PNG figures, 600 dpi, captions in the language of the edition
+│   └── zh/  ┘
+└── monograph_v21_original/          ← ORIGINAL author monograph v21 + English edition
+    ├── ru/text/    AB_Cloud_Monograph_v21_RU_with_Verification.{docx,pdf} + .html + .md
+    ├── en/text/    AB_Cloud_Monograph_v21_EN_with_Verification.{docx,pdf} + .html + .md
+    ├── {ru,en}/presentation/  AB_Cloud_Monograph_v21_{RU,EN}_presentation.pptx (16 slides)
+    ├── media/      monograph figures (shared by the html/md files)
+    └── README.md   contents and citation notes (RU/EN)
 ```
 
 ## Contents per language
@@ -34,6 +41,17 @@ ab-cloud-monograph-v22/
 | Presentation | `text/*_<LANG>_presentation.pptx` | 14-slide deck, dark scientific theme |
 | Preprint | `text/preprint/preprint_v22_<LANG>.tex` + `.pdf` | arXiv-style preprint with bibliography |
 | Figures | `figures/fig01…fig20_*.png` | 600 dpi, per-language labels |
+
+## The original v21 monograph (monograph_v21_original/)
+
+The author's original text with its own analytical interpretations is preserved
+unmodified (RU docx) and accompanied by a complete English edition produced for
+this package. Every format is provided per language: DOCX (source), PDF, an
+interactive HTML (sticky TOC, lightbox), and a Markdown source; plus a 16-slide
+deck per language. The v21 editions and the rewritten v22 editions are independent
+works that share the same underlying verified numerics — cite v22 for the
+37-test suite numbers, v21 for the V01–V115 narrative (Appendix F) and the
+author's analytical interpretations.
 
 ## What changed in the code (v18 → v19)
 
