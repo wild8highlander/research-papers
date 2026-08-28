@@ -161,17 +161,17 @@ The cornerstone result is an **analytical proof of global-in-time smoothness** f
 - The **BKM blow-up criterion integral** is reduced by a factor of **3.5×** through this stabilization
 - The polarization correction emerges naturally from the Kirchhoff point-vortex system and is **universal** — independent of the specific flow configuration
 
+<!-- ab-cloud:v22 edition:2026-08-28 (managed block — replaces the legacy AB-Cloud section; heading/anchor preserved for the README TOC) -->
 ### AB-Cloud & Riemann Zeros
 
-The **AB-Cloud** is a **36³ non-Hermitian Hofstadter Hamiltonian** whose spectrum exhibits a remarkable statistical indistinguishability from the non-trivial zeros of the Riemann zeta function. This construction provides a concrete realization of several deep conjectures in number theory and mathematical physics.
+The **AB-cloud** is a Hofstadter Hamiltonian decorated with topological vortices (Aharonov–Bohm phases). Edition v22 (2026-08-28): the monograph was rewritten from scratch on top of the 37-test verified suite (v19); the legacy docx/pdf of this section were removed, see [REPLACE_GUIDE](docs/ab-cloud-v22/REPLACE_GUIDE.md).
 
-**Key quantitative results:**
+- ⟨r⟩ = 0.5848 ± 0.0260 against GUE 0.5992 (deviation −2.4%); size convergence 0.548 → 0.595 for L: 10 → 50;
+- machine-precision topology: fluxes 10⁻¹⁴, Byers–Yang 3.5·10⁻¹⁵, Connes self-duality (4 zero modes), C₁ = 2;
+- the Montgomery correlation hole is reproduced: the cloud's R₂ is closer to GUE than to Poisson (d_GUE = 0.140 < d_Pois = 0.227); Berry's finite-sample corrections quantitatively explain the deviations at reachable heights;
+- Dirac dynamics: E_min ∝ 1/L (R² = 0.9997), a 20× DOS dip, the skin effect.
 
-- **Kolmogorov–Smirnov test**: p = 0.27–0.88 (cannot distinguish from Riemann zeros)
-- **Permutation test**: Z = 14.10σ with p < 10⁻⁴⁴ (extremely significant)
-- Realizes the **Hilbert–Pólya conjecture** — a self-adjoint operator whose eigenvalues correspond to Riemann zeros
-- Confirms the **Montgomery–Dyson GUE correspondence** — spectral statistics match Gaussian Unitary Ensemble predictions
-- Provides a **concrete bridge to the Langlands programme**
+Documents: [RU](docs/ab-cloud-v22/ru/text) · [EN](docs/ab-cloud-v22/en/text) · [ZH](docs/ab-cloud-v22/zh/text) — docx + pdf + interactive html + pptx presentation + LaTeX preprint (tex/pdf); 19 figures at 600 dpi per language ([RU](docs/ab-cloud-v22/ru/figures) · [EN](docs/ab-cloud-v22/en/figures) · [ZH](docs/ab-cloud-v22/zh/figures)). Code: [ab_cloud_v19.jl](code/ab_cloud_v19.jl) · reference run: [37-test log](results/verification_run_v18_37tests_2026-08-28.txt).
 
 ### KdV Equation & Klein Attractor
 
@@ -342,7 +342,7 @@ If you use this software or reference these results in your work, please cite:
   author    = {Isaev, Iskhak Khamzatovich},
   title     = {Research Papers: {NSE} Regularity, {AB-Cloud}, and {Riemann} Zeros},
   year      = {2026},
-  version   = {1.3.0},
+  version   = {1.4.0},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.21825394},
   url       = {https://github.com/wild8highlander/research-papers},
@@ -352,7 +352,7 @@ If you use this software or reference these results in your work, please cite:
 
 ### APA
 
-> Isaev, I. K. (2026). *Research Papers: NSE Regularity, AB-Cloud, and Riemann Zeros* (Version 1.3.0). Zenodo. https://doi.org/10.5281/zenodo.21825394
+> Isaev, I. K. (2026). *Research Papers: NSE Regularity, AB-Cloud, and Riemann Zeros* (Version 1.4.0). Zenodo. https://doi.org/10.5281/zenodo.21825394
 
 The citation metadata is also available in [`CITATION.cff`](./CITATION.cff) (CFF 1.2.0 format) — compatible with GitHub's "Cite this repository" feature.
 
@@ -403,6 +403,7 @@ All notable changes are documented in **[CHANGELOG.md](./CHANGELOG.md)** followi
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [1.4.0](https://github.com/wild8highlander/research-papers/releases/tag/v1.4.0) | 2026-08-28 | AB-cloud monograph v22 (RU/EN/ZH), unified Julia suite v19, legacy AB-cloud docx/pdf retired |
 | [1.3.0](https://github.com/wild8highlander/research-papers/releases/tag/v1.3.0) | 2026-08-14 | Extended language verifications, enhanced documentation |
 | [1.2.0](https://github.com/wild8highlander/research-papers/releases/tag/v1.2.0) | 2026-08-10 | Cross-language verification framework, CI/CD pipelines |
 | [1.1.0](https://github.com/wild8highlander/research-papers/releases/tag/v1.1.0) | 2026-08-06 | Additional formal proofs, benchmark suite |

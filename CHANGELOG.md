@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.4.0] - 2026-08-28
+
+### Removed
+- Legacy AB-cloud monographs (docx): `docs/ab-cloud/`, `docs/riemann-zeros/en/AB_Cloud_Monograph_EN_v2.docx`, `ab-cloud-verification/AB_Cloud_Verification_Results*.docx`
+- Legacy AB-cloud PDFs: `papers/ab-cloud/`, `papers/riemann-zeros/AB_Cloud_Preprint_v{1,2}.pdf`, superseded riemann-zeros figures
+
+### Added
+- Trilingual (RU/EN/ZH) AB-cloud monograph v22: `docs/ab-cloud-v22/{ru,en,zh}/` - markdown, interactive HTML, DOCX, vector PDF, 14-slide PPTX, LaTeX preprint (tex+pdf)
+- 19 figures per language at 600 dpi: `docs/ab-cloud-v22/<lang>/figures/`
+- Unified Julia verification suite `code/ab_cloud_v19.jl` (37 tests, two-pass, report engine FIX-R1...R5b; `--quick` runs 16x16 -> 32x32 with zeta <= 5000)
+- Reference 37-test verification log: `results/verification_run_v18_37tests_2026-08-28.txt`
+
+### Changed
+- Root README: 'AB-Cloud & Riemann Zeros' section rewritten for v22 (anchor preserved)
+- ab-cloud-verification/README.md: v22 pointers (suite + monograph + latest verified run)
+- Citation metadata bumped to 1.4.0 (CITATION.cff, .zenodo.json, README)
+
+
 ## [Unreleased]
 
 ### Added
