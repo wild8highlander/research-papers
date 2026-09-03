@@ -161,19 +161,16 @@ The cornerstone result is an **analytical proof of global-in-time smoothness** f
 - The **BKM blow-up criterion integral** is reduced by a factor of **3.5×** through this stabilization
 - The polarization correction emerges naturally from the Kirchhoff point-vortex system and is **universal** — independent of the specific flow configuration
 
-<!-- ab-cloud:v22 edition:2026-08-28 (managed block — replaces the legacy AB-Cloud section; heading/anchor preserved for the README TOC) -->
+<!-- ab-cloud:v1.2.0 consolidated 2026-09-03 (managed block — replaces the legacy AB-Cloud section; heading/anchor preserved for the README TOC) -->
 ### AB-Cloud & Riemann Zeros
 
-The **AB-cloud** is a Hofstadter Hamiltonian decorated with topological vortices (Aharonov–Bohm phases). Edition v22 (2026-08-28): the monograph was rewritten from scratch on top of the 37-test verified suite (v19); the legacy docx/pdf of this section were removed, see [REPLACE_GUIDE](docs/ab-cloud-v22/REPLACE_GUIDE.md).
+The **AB-cloud** is a Hofstadter Hamiltonian decorated with topological vortices (Aharonov–Bohm phases). Since 2026-09-03 the entire AB-Cloud complex lives in the consolidated folder [`ab-cloud/`](ab-cloud/) — a full snapshot of the standalone repository `wild8highlander/ab-cloud-research` at release v1.2.0 (commit 32aa8e8): 32+ deep-dive READMEs (EN, each with a short RU summary), monographs v22 (RU/EN/ZH) + original v21, 10-language verification suite, verification runs, web apps. The seven previously scattered locations (`ab-cloud-verification/`, `code/`, `results/`, `papers/monographs/`, `docs/ab-cloud-v22/`, `docs/monographs/`, `src/ab-cloud-3d/`) are retired into it — see the full mapping in [ab-cloud/SNAPSHOT_INFO.md](ab-cloud/SNAPSHOT_INFO.md).
 
-- ⟨r⟩ = 0.5848 ± 0.0260 against GUE 0.5992 (deviation −2.4%); size convergence 0.548 → 0.595 for L: 10 → 50;
-- machine-precision topology: fluxes 10⁻¹⁴, Byers–Yang 3.5·10⁻¹⁵, Connes self-duality (4 zero modes), C₁ = 2;
-- the Montgomery correlation hole is reproduced: the cloud's R₂ is closer to GUE than to Poisson (d_GUE = 0.140 < d_Pois = 0.227); Berry's finite-sample corrections quantitatively explain the deviations at reachable heights;
-- Dirac dynamics: E_min ∝ 1/L (R² = 0.9997), a 20× DOS dip, the skin effect.
+- PSL(2,7) classification: 64 spinor structures in orbits 28/21/7/7/1 — **64/64 GUE-consistent** (Monte-Carlo min p = 0.36); exact isospectrality max|Δλ| = 8.9·10⁻¹⁵; gauge invariance 7.1·10⁻¹⁵; zero-mode counts 2/3/3/3/7;
+- E2 sector: Hofstadter torus L = 44 (α = 1/2, Nv = 54), ⟨r⟩ = 0.5984 ± 0.0035 against GUE 0.5992 (deviation −0.13%);
+- Test 38: the 64th structure independently re-verified on 10 languages; the legacy v21 claim «idx = 38 is unique» is **refuted** (Arf(ε(38)) = 0 — structure 38 belongs to a known orbit class).
 
-Documents: [RU](docs/ab-cloud-v22/ru/text) · [EN](docs/ab-cloud-v22/en/text) · [ZH](docs/ab-cloud-v22/zh/text) — docx + pdf + interactive html + pptx presentation + LaTeX preprint (tex/pdf); 19 figures at 600 dpi per language ([RU](docs/ab-cloud-v22/ru/figures) · [EN](docs/ab-cloud-v22/en/figures) · [ZH](docs/ab-cloud-v22/zh/figures)). Code: [ab_cloud_v19.jl](code/ab_cloud_v19.jl) · reference run: [37-test log](results/verification_run_v18_37tests_2026-08-28.txt).
-
-Original author monograph v21 (with verification) and its English edition: [RU](docs/ab-cloud-v22/original-v21/ru/text) · [EN](docs/ab-cloud-v22/original-v21/en/text) — docx + pdf + interactive html + presentations (16 slides).
+Documents and code inside the snapshot: monographs [RU](ab-cloud/monographs/ru) · [EN](ab-cloud/monographs/en) · [ZH](ab-cloud/monographs/zh) · [original v21](ab-cloud/monographs/original-v21); 10-language suite [ab-cloud/verification](ab-cloud/verification/); reference run [ab-cloud/results](ab-cloud/results/); Julia suite [ab-cloud/code/julia](ab-cloud/code/julia/); documentation map in [ab-cloud/README.md](ab-cloud/README.md).
 
 ### KdV Equation & Klein Attractor
 
@@ -224,9 +221,15 @@ research-papers/
 │   ├── ISSUE_TEMPLATE/         # Structured bug report & feature request
 │   ├── dependabot.yml          # Automated dependency updates
 │   └── PULL_REQUEST_TEMPLATE.md
-├── papers/                     # 14 research papers (PDF)
+├── ab-cloud/                   # Complete AB-Cloud complex v1.2.0 (consolidated snapshot)
+│   ├── monographs/             #   v22 trilingual (RU/EN/ZH) + original v21 monographs
+│   ├── verification/           #   10-language verification suite
+│   ├── results/                #   verification runs (453 files)
+│   ├── apps/                   #   dashboard + lab3d web apps (React / Three.js)
+│   └── lab-3d/                 #   interactive 3D laboratory
+├── papers/                     # Research papers (PDF)
 ├── docs/                       # Documentation sources (MkDocs)
-├── src/                        # LaTeX sources + AB-Cloud core code
+├── src/                        # LaTeX sources
 ├── verification/               # Multi-language verification framework
 │   ├── lean4/                  # Lean 4 formal proofs
 │   ├── coq/                    # Coq/Rocq formal proofs
@@ -406,6 +409,7 @@ All notable changes are documented in **[CHANGELOG.md](./CHANGELOG.md)** followi
 | Version | Date | Highlights |
 |---------|------|------------|
 | [1.4.0](https://github.com/wild8highlander/research-papers/releases/tag/v1.4.0) | 2026-08-28 | AB-cloud monograph v22 (RU/EN/ZH), unified Julia suite v19, legacy AB-cloud docx/pdf retired |
+| [1.5.0](https://github.com/wild8highlander/research-papers/releases/tag/v1.5.0) | 2026-09-03 | AB-Cloud complex consolidated into `ab-cloud/` (v1.2.0 snapshot, 32+ deep-dive READMEs); scattered copies retired |
 | [1.3.0](https://github.com/wild8highlander/research-papers/releases/tag/v1.3.0) | 2026-08-14 | Extended language verifications, enhanced documentation |
 | [1.2.0](https://github.com/wild8highlander/research-papers/releases/tag/v1.2.0) | 2026-08-10 | Cross-language verification framework, CI/CD pipelines |
 | [1.1.0](https://github.com/wild8highlander/research-papers/releases/tag/v1.1.0) | 2026-08-06 | Additional formal proofs, benchmark suite |
@@ -431,16 +435,16 @@ Multi-language verification suite addressing 3 reviewer objections about the AB-
 **Quick start:**
 ```bash
 # Python (recommended)
-python3 ab-cloud-verification/python/ab_cloud_verify.py --interactive
+python3 ab-cloud/verification/python/ab_cloud_verify.py --interactive
 
-# All languages
-bash ab-cloud-verification/run_all.sh
+# Per-language runners (each folder has run_verify.sh / run_verify.py)
+bash ab-cloud/verification/cpp/run_verify.sh
 
 # Russian
-python3 ab-cloud-verification/python/ab_cloud_verify.py --lang ru --all
+python3 ab-cloud/verification/python/ab_cloud_verify.py --lang ru --all
 ```
 
-See [ab-cloud-verification/README.md](ab-cloud-verification/README.md) for full documentation.
+See [ab-cloud/verification/README.md](ab-cloud/verification/README.md) for full documentation.
 
 ---
 

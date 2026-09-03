@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.0] - 2026-09-03
+
+### Added
+- Consolidated AB-Cloud complex snapshot `ab-cloud/` — full copy of
+  `wild8highlander/ab-cloud-research` @ v1.2.0 (commit 32aa8e8): monographs v22
+  (RU/EN/ZH) + original v21, 10-language verification suite, results
+  (453 files), dashboard + 3D-lab apps, 32+ deep-dive READMEs (EN + RU
+  summaries), `SNAPSHOT_INFO.md` provenance map
+
+### Removed
+- Scattered AB-Cloud materials superseded by `ab-cloud/`:
+  `ab-cloud-verification/`, `code/`, `results/`, `papers/monographs/`,
+  `docs/ab-cloud-v22/`, `docs/monographs/`, `src/ab-cloud-3d/`
+
+
 ## [1.4.0] - 2026-08-28
 
 ### Removed
