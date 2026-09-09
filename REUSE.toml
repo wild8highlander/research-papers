@@ -11,7 +11,7 @@ path = [
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Isaev Iskhak Khamzatovich"
-SPDX-License-Identifier = "CC-BY-4.0"
+SPDX-License-Identifier = "LicenseRef-Proprietary-Wild8Highlander-1.0"
 
 [[annotations]]
 path = [
@@ -33,4 +33,4 @@ path = [
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Isaev Iskhak Khamzatovich"
-SPDX-License-Identifier = "CC-BY-4.0"
+SPDX-License-Identifier = "LicenseRef-Proprietary-Wild8Highlander-1.0"

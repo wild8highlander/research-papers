@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "research-papers"
 description = "Multi-language computational verification of NSE regularity, AB-Cloud spectral theory, KdV integrability, and Riemann Hypothesis"
 readme = "README.md"
-license = {file = "LICENSE"}
+license = {file = "LICENSE.md"}
 authors = [
     {name = "Isaev Iskhak Khamzatovich", email = "aslan08_05@mail.ru"}
 ]

@@ -47,7 +47,7 @@ verified across 11 programming languages**
 <!-- LICENSE & COMPLIANCE BADGES -->
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
-[![License](https://img.shields.io/badge/License-CC--BY--4.0-green?style=for-the-badge&logo=creativecommons&logoColor=white)](./LICENSE)
+[![License](https://img.shields.io/badge/License-%C2%A9_2026_All_Rights_Reserved-red?style=for-the-badge&logo=github)](./LICENSE.md)
 [![FAIR](https://img.shields.io/badge/FAIR-Compliant-2EA043?style=for-the-badge&logo=dataverse&logoColor=white)](https://fair-software.eu)
 [![REUSE](https://img.shields.io/badge/REUSE-Compliant-2EA043?style=for-the-badge&logo=fsfe&logoColor=white)](https://reuse.software)
 [![CFF](https://img.shields.io/badge/Citation-CITATION.cff-2EA043?style=for-the-badge&logo=latex&logoColor=white)](./CITATION.cff)
@@ -247,7 +247,7 @@ research-papers/
 ├── CONTRIBUTING.md             # Contribution guidelines
 ├── SECURITY.md                 # Security policy
 ├── AUTHORS.md                  # Author information
-├── LICENSE                     # CC-BY-4.0
+├── LICENSE.md                  # IPL-RP-1.0 (All Rights Reserved)
 ├── Makefile                    # Build automation
 ├── pyproject.toml              # Python packaging & tool config
 ├── environment.yml             # Conda environment
@@ -454,17 +454,15 @@ See [ab-cloud/verification/README.md](ab-cloud/verification/README.md) for full 
 
 ## ⚖️ License
 
-This project is licensed under the **Creative Commons Attribution 4.0 International** license — see [`LICENSE`](./LICENSE) for details.
+**© 2026 Isaev Iskhak Khamzatovich (wild8highlander). All Rights Reserved.**
 
-[![CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
+**EN.** This repository is licensed under the **Individual Proprietary License (IPL-RP-1.0)** — all rights are reserved by the author. Permitted: viewing the public repository, one personal unmodified backup copy, academic quotation with full attribution, hyperlinks. Prohibited without separate written consent: copying and redistribution, derivative works, commercial use, mirrors, AI/ML training, scraping, removal of copyright notices. Full text: [`LICENSE.md`](./LICENSE.md) (EN, authoritative) · [`LICENSE.ru.md`](./LICENSE.ru.md) (RU) · [`LICENSE.zh.md`](./LICENSE.zh.md) (ZH) · [`NOTICE.md`](./NOTICE.md).
 
-This is the most permissive Creative Commons license, maximizing compatibility with Zenodo/DOI deposition, open science requirements, and reproducibility standards.
+**RU.** Репозиторий распространяется на условиях Индивидуальной проприетарной лицензии (IPL-RP-1.0) — все права защищены автором. Разрешено: просмотр, одна личная резервная копия, научное цитирование с атрибуцией, гиперссылки. Запрещено без отдельного письменного согласия: копирование/распространение, переработки, коммерческое использование, зеркала, обучение ИИ, парсинг, удаление знаков охраны. Полный текст: [`LICENSE.ru.md`](./LICENSE.ru.md) (RU) · [`LICENSE.md`](./LICENSE.md) (EN) · [`LICENSE.zh.md`](./LICENSE.zh.md) (ZH) · [`NOTICE.md`](./NOTICE.md).
+
+**ZH.** 本仓库依**个人专有许可（IPL-RP-1.0）**分发——作者保留所有权利。允许：查看公开仓库、一份个人备份、完整署名引用、超链接。未经另行书面同意禁止：复制/传播、演绎、商业使用、镜像、AI/ML 训练、抓取、移除声明。全文见：[`LICENSE.zh.md`](./LICENSE.zh.md)（ZH）· [`LICENSE.md`](./LICENSE.md)（EN）· [`LICENSE.ru.md`](./LICENSE.ru.md)（RU）· [`NOTICE.md`](./NOTICE.md)。
 
 ---
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<!-- ACKNOWLEDGEMENTS -->
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 
 ## 🙏 Acknowledgements
 
