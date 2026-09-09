@@ -58,7 +58,7 @@ julia spinor38.jl
 
 For the **full 37-test two-pass protocol** (not just the three objections)
 use the canonical suite: `julia code/ab_cloud_v19.jl --test all` from the
-repository root — see [`../code/README.md`](../code/README.md). This folder
+repository root — see [`../../code/README.md`](../../code/README.md). This folder
 exists so that the objection-level numbers can be verified *independently*
 of the big suite.
 

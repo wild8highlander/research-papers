@@ -284,7 +284,7 @@ opens the repo in the browser. The token lives in memory only.
 ## 📊 Results & reproducibility
 
 - **Full two-pass run artifacts** (NEW):
-  [`results/run_20260902_134759/`](results/run_20260902_134759/) — the
+  [`results/`](results/) — the
   complete v19 run of 2026-09-02 (37 tests, two-pass 72×72 → 96×96 with the
   HARDCORE audit, Julia 1.12.0): per-test reports (md/pdf/docx/html),
   computation logs, FINAL_REPORT and index.html — 32 PASS / 5 WARN on the

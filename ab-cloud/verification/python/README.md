@@ -66,7 +66,7 @@ cd verification/python/spinor38 && python3 spinor38.py
 
 Frozen-data contract, column formats and the physics context:
 [`../spinor64/README.md`](../spinor64/README.md) and
-[`../spinor38/README.md`](spinor38/README.md) (present in every language
+[`../README.md`](../README.md) (Test-38 ports live in every language
 folder of this suite).
 
 ## Notes
