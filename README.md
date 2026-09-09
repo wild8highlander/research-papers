@@ -1,75 +1,87 @@
 <div align="center">
 
-<!-- Hero Header -->
-<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow" width="100%"/>
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- MONUMENTAL HERO BANNER (navy & gold, generated for this repo)    -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<img src="docs/assets/banner-hero.svg" width="100%" alt="Research Papers — monumental banner: Correction b, 3D Navier–Stokes Regularity, AB-Cloud, Riemann ζ-Zeros, by Isaev Iskhak Khamzatovich"/>
 
 # 🔬 Research Papers
 
 ### Correction *b* & 3D Navier–Stokes Regularity · AB-Cloud · Riemann Zeros
 
-**Analytical proofs and spectral correspondences in mathematical physics,<br/>
-verified across 11 programming languages**
+**Analytical proofs and spectral correspondences in mathematical physics,<br/>verified across 11 programming languages — every number bound to a named test**
 
-<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow" width="100%"/>
+<img src="docs/assets/divider-gold.svg" width="70%" alt="gold ornament divider"/>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<!-- ROW 1 — LIVE CI STATUS (workflows that are green and re-run on every push) -->
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+**[Isaev Iskhak Khamzatovich](https://orcid.org/0009-0003-7299-0701)** · ORCID `0009-0003-7299-0701` · Independent Researcher
+[📖 Documentation](https://wild8highlander.github.io/research-papers) · [📄 Papers](papers/README.md) · [📚 Monographs](ab-cloud/monographs/README.md) · [🧪 Verification](verification/) · [☁️ AB-Cloud](ab-cloud/README.md) · [📝 How to cite](#-citation)
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- THE BADGE WALL — 64 audited badges in eight monumental rows      -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<!-- ROW I — RESEARCH IDENTITY: DOI, ORCID, license, release (navy & gold) -->
+
+[![Zenodo DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21825394-0B1D3A?style=for-the-badge&logo=zenodo&logoColor=F3D97C)](https://doi.org/10.5281/zenodo.21825394)
+[![Concept DOI](https://img.shields.io/badge/Concept%20DOI-10.5281%2Fzenodo.21825393-C89B2C?style=for-the-badge&logo=zenodo&logoColor=white)](https://doi.org/10.5281/zenodo.21825393)
+[![ORCID](https://img.shields.io/badge/ORCID-0009--0003--7299--0701-a6ce39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org/0009-0003-7299-0701)
+[![Citation](https://img.shields.io/badge/Cite-CITATION.cff-informational?style=for-the-badge&logo=latex)](./CITATION.cff)
+[![License](https://img.shields.io/badge/License-IPL--RP--1.0-red?style=for-the-badge&logo=github)](./LICENSE.md)
+[![Release](https://img.shields.io/github/v/release/wild8highlander/research-papers?include_prereleases&style=for-the-badge&logo=github&color=green&label=Release)](https://github.com/wild8highlander/research-papers/releases)
+[![Changelog](https://img.shields.io/badge/Changelog-1.5.0-C89B2C?style=for-the-badge&logo=git&logoColor=white)](./CHANGELOG.md)
+
+<!-- ROW II — LIVE CI STATUS (all four workflows genuinely green) -->
 
 [![CI Status](https://img.shields.io/github/actions/workflow/status/wild8highlander/research-papers/ci.yml?branch=main&style=for-the-badge&logo=github&label=CI)](https://github.com/wild8highlander/research-papers/actions/workflows/ci.yml)
 [![Python CI](https://img.shields.io/github/actions/workflow/status/wild8highlander/research-papers/ci-python.yml?branch=main&style=for-the-badge&logo=python&label=Python%20CI)](https://github.com/wild8highlander/research-papers/actions/workflows/ci-python.yml)
 [![Docker](https://img.shields.io/github/actions/workflow/status/wild8highlander/research-papers/docker.yml?branch=main&style=for-the-badge&logo=docker&label=Docker)](https://github.com/wild8highlander/research-papers/actions/workflows/docker.yml)
 [![Cross-Language](https://img.shields.io/github/actions/workflow/status/wild8highlander/research-papers/ci-cross-language.yml?branch=main&style=for-the-badge&logo=githubactions&label=Cross%20Language)](https://github.com/wild8highlander/research-papers/actions/workflows/ci-cross-language.yml)
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<!-- ROW 2 — SECURITY & QUALITY POSTURE (static informational badges) -->
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- ROW III — SECURITY & QUALITY POSTURE -->
 
 [![CodeQL](https://img.shields.io/badge/CodeQL-Enabled-2EA043?style=for-the-badge&logo=github)](https://github.com/wild8highlander/research-papers/actions/workflows/codeql.yml)
 [![OpenSSF](https://img.shields.io/badge/OpenSSF-Scorecard-2EA043?style=for-the-badge&logo=github)](https://github.com/wild8highlander/research-papers/actions/workflows/scorecard.yml)
-[![Coverage](https://img.shields.io/badge/Coverage-pytest--cov-blueviolet?style=for-the-badge&logo=pytest)](https://github.com/wild8highlander/research-papers/blob/main/codecov.yml)
-[![Docs](https://img.shields.io/badge/Docs-MkDocs%20Material-blue?style=for-the-badge&logo=materialformkdocs)](https://wild8highlander.github.io/research-papers)
-[![pre-commit.ci](https://results.pre-commit.ci/badge/github/wild8highlander/research-papers/main.svg?style=for-the-badge)](https://results.pre-commit.ci/latest/github/wild8highlander/research-papers/main)
+[![Coverage](https://img.shields.io/badge/Coverage-pytest--cov-blueviolet?style=for-the-badge&logo=pytest)](./codecov.yml)
+[![Link Checker](https://img.shields.io/badge/Links-Lychee%20Checked-blue?style=for-the-badge&logo=linkerd)](https://github.com/wild8highlander/research-papers/actions/workflows/link-checker.yml)
+[![Lint Suite](https://img.shields.io/badge/Lint-markdownlint%20%7C%20yamllint%20%7C%20ruff-blue?style=for-the-badge&logo=githubsuperlinter)](https://github.com/wild8highlander/research-papers/actions/workflows/lint.yml)
 [![Ruff](https://img.shields.io/endpoint?url=https%3A//raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json&style=for-the-badge)](https://github.com/astral-sh/ruff)
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<!-- ROW 3 — REPOSITORY METRICS (dynamic GitHub stats) -->
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- ROW IV — REPOSITORY PULSE (dynamic GitHub metrics) -->
 
 [![Stars](https://img.shields.io/github/stars/wild8highlander/research-papers?style=for-the-badge&logo=github&color=yellow&label=Stars)](https://github.com/wild8highlander/research-papers/stargazers)
 [![Forks](https://img.shields.io/github/forks/wild8highlander/research-papers?style=for-the-badge&logo=github&color=blue&label=Forks)](https://github.com/wild8highlander/research-papers/network/members)
 [![Issues](https://img.shields.io/github/issues/wild8highlander/research-papers?style=for-the-badge&logo=github&color=orange&label=Issues)](https://github.com/wild8highlander/research-papers/issues)
 [![PRs](https://img.shields.io/github/issues-pr/wild8highlander/research-papers?style=for-the-badge&logo=github&color=blueviolet&label=PRs)](https://github.com/wild8highlander/research-papers/pulls)
-[![Releases](https://img.shields.io/github/releases/wild8highlander/research-papers?style=for-the-badge&logo=github&color=green&label=Releases)](https://github.com/wild8highlander/research-papers/releases)
+[![Languages](https://img.shields.io/badge/Languages-EN%20%2F%20RU%20%2F%20ZH-yellow?style=for-the-badge&logo=googletranslate&logoColor=white)](ab-cloud/monographs/README.md)
 [![Commits](https://img.shields.io/github/commit-activity/t/wild8highlander/research-papers?style=for-the-badge&logo=git&color=blue&label=Commits)](https://github.com/wild8highlander/research-papers/commits/main)
 [![Last Commit](https://img.shields.io/github/last-commit/wild8highlander/research-papers?style=for-the-badge&logo=git&color=blue&label=Last%20Commit)](https://github.com/wild8highlander/research-papers/commits/main)
 [![Repo Size](https://img.shields.io/github/repo-size/wild8highlander/research-papers?style=for-the-badge&logo=github&color=teal&label=Size)](https://github.com/wild8highlander/research-papers)
+[![Contributors](https://img.shields.io/github/contributors/wild8highlander/research-papers?style=for-the-badge&logo=github&color=blue&label=Contributors)](./AUTHORS.md)
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<!-- ROW 4 — RESEARCH IDENTITY (DOI, ORCID, license, content stats) -->
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- ROW V — THE CORPUS (content statistics, gold) -->
 
-[![Zenodo DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21825394-blue?style=for-the-badge&logo=zenodo&label=Zenodo)](https://doi.org/10.5281/zenodo.21825394)
-[![Zenodo Concept](https://img.shields.io/badge/Concept%20DOI-10.5281%2Fzenodo.21825393-blueviolet?style=for-the-badge&logo=zenodo&label=All%20Versions)](https://doi.org/10.5281/zenodo.21825393)
-[![ORCID](https://img.shields.io/badge/ORCID-0009--0003--7299--0701-a6ce39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org/0009-0003-7299-0701)
-[![Citation](https://img.shields.io/badge/Cite-CITATION.cff-informational?style=for-the-badge&logo=latex)](./CITATION.cff)
-[![License](https://img.shields.io/badge/License-IPL--RP--1.0-red?style=for-the-badge&logo=github)](./LICENSE.md)
-[![FAIR](https://img.shields.io/badge/FAIR-Compliant-2EA043?style=for-the-badge&logo=dataverse&logoColor=white)](https://fair-software.eu)
-[![REUSE](https://img.shields.io/badge/REUSE-Compliant-2EA043?style=for-the-badge&logo=fsfe&logoColor=white)](./REUSE.toml)
+[![PDFs](https://img.shields.io/badge/PDFs-55-C89B2C?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](papers/README.md)
+[![Monographs](https://img.shields.io/badge/Monographs-v22%20RU%20%2F%20EN%20%2F%20ZH-D4AF37?style=for-the-badge&logo=bookstack&logoColor=black)](ab-cloud/monographs/README.md)
+[![Documents](https://img.shields.io/badge/Word%20Layer-17%20DOCX-C89B2C?style=for-the-badge&logo=microsoftword&logoColor=white)](docs/README.md)
+[![Figures](https://img.shields.io/badge/Figures-57%20%40%20600%20dpi-C89B2C?style=for-the-badge&logo=gnuplot&logoColor=white)](#-appendix-f--figure-gallery-of-the-v22-monographs)
+[![Presentations](https://img.shields.io/badge/Slide%20Decks-5%20PPTX-C89B2C?style=for-the-badge&logo=microsoftpowerpoint&logoColor=white)](ab-cloud/monographs/README.md)
+[![Tests](https://img.shields.io/badge/Tests-37%20green-C89B2C?style=for-the-badge&logo=githubactions&logoColor=white)](#-appendix-u--the-test-registry)
+[![Verification](https://img.shields.io/badge/Verification-11%20languages-2EA043?style=for-the-badge&logo=githubactions)](#-multi-language-verification-framework)
+[![Files](https://img.shields.io/badge/Tracked%20Files-915-C89B2C?style=for-the-badge&logo=git&logoColor=white)](#-project-structure)
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<!-- ROW 5 — LANGUAGE & TOOLING STACK (static; logos validated against simple-icons) -->
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- ROW VI — FORMAL & COMPUTATIONAL STACK (nine first-class citizens) -->
 
+[![Lean 4](https://img.shields.io/badge/Lean%204-v4.14-FFD700?style=for-the-badge&logo=leanpub&logoColor=black)](https://lean-lang.org)
+[![Rocq](https://img.shields.io/badge/Rocq-8.18-DFA524?style=for-the-badge)](https://rocq-prover.org)
+[![Isabelle](https://img.shields.io/badge/Isabelle-HOL-FF0000?style=for-the-badge)](https://isabelle.in.tum.de)
+[![Agda](https://img.shields.io/badge/Agda-2.6-2196F3?style=for-the-badge)](https://wiki.portal.chalmers.se/agda)
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org)
 [![Julia](https://img.shields.io/badge/Julia-1.10%2B-9558B2?style=for-the-badge&logo=julia&logoColor=white)](https://julialang.org)
 [![Rust](https://img.shields.io/badge/Rust-1.75%2B-CE422B?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org)
 [![C++](https://img.shields.io/badge/C%2B%2B-17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)](https://isocpp.org)
 [![Haskell](https://img.shields.io/badge/Haskell-9.4-5D4F85?style=for-the-badge&logo=haskell&logoColor=white)](https://www.haskell.org)
-[![Lean 4](https://img.shields.io/badge/Lean%204-v4.14-FFD700?style=for-the-badge&logo=leanpub&logoColor=black)](https://lean-lang.org)
-[![Rocq](https://img.shields.io/badge/Rocq-8.18-DFA524?style=for-the-badge)](https://rocq-prover.org)
-[![Isabelle](https://img.shields.io/badge/Isabelle-HOL-FF0000?style=for-the-badge)](https://isabelle.in.tum.de)
-[![Agda](https://img.shields.io/badge/Agda-2.6-2196F3?style=for-the-badge)](https://wiki.portal.chalmers.se/agda)
+
+<!-- ROW VII — EXTENDED COMPUTATIONAL STACK -->
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org)
 [![Go](https://img.shields.io/badge/Go-1.22-00ADD8?style=flat-square&logo=go&logoColor=white)](https://go.dev)
@@ -80,30 +92,102 @@ verified across 11 programming languages**
 [![Make](https://img.shields.io/badge/Build-Make-427818?style=flat-square&logo=gnu&logoColor=white)](./Makefile)
 [![Docker](https://img.shields.io/badge/Container-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)](./verification/docker/README.md)
 [![Conda](https://img.shields.io/badge/Env-Conda-44A833?style=flat-square&logo=anaconda&logoColor=white)](./environment.yml)
+
+<!-- ROW VIII — STANDARDS, DOCS & COMMUNITY -->
+
+[![Docs](https://img.shields.io/badge/Docs-MkDocs%20Material-blue?style=flat-square&logo=materialformkdocs)](https://wild8highlander.github.io/research-papers)
+[![REUSE](https://img.shields.io/badge/REUSE-Compliant-2EA043?style=flat-square&logo=fsfe&logoColor=white)](./REUSE.toml)
+[![FAIR](https://img.shields.io/badge/FAIR-Compliant-2EA043?style=flat-square&logo=dataverse&logoColor=white)](https://fair-software.eu)
+[![SemVer](https://img.shields.io/badge/SemVer-strict-0B1D3A?style=flat-square)](https://semver.org)
+[![Keep a Changelog](https://img.shields.io/badge/Keep%20a%20Changelog-1.1.0-E05735?style=flat-square&logo=keepachangelog&logoColor=white)](./CHANGELOG.md)
+[![All Contributors](https://img.shields.io/badge/All%20Contributors-spec-6688FF?style=flat-square&logo=allcontributors&logoColor=white)](./.all-contributorsrc)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-2EA043?style=flat-square&logo=precommit&logoColor=white)](./.pre-commit-config.yaml)
+[![EditorConfig](https://img.shields.io/badge/EditorConfig-enabled-E0EFEF?style=flat-square&logo=editorconfig&logoColor=000)](./.editorconfig)
+[![Code of Conduct](https://img.shields.io/badge/CoC-Contributor%20Covenant-8B5CF6?style=flat-square&logo=covenanteyes&logoColor=white)](./CODE_OF_CONDUCT.md)
 [![MkDocs](https://img.shields.io/badge/Built%20With-MkDocs-526CFE?style=flat-square&logo=materialformkdocs&logoColor=white)](./mkdocs.yml)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-2EA043?style=flat-square&logo=precommit&logoColor=white)](./CONTRIBUTING.md)
 [![Black](https://img.shields.io/badge/Code%20Style-Black-000000?style=flat-square&logo=python&logoColor=white)](https://github.com/psf/black)
 [![Type:Checked](https://img.shields.io/badge/Type-Checked-2EA043?style=flat-square&logo=mypy&logoColor=white)](./pyproject.toml)
 
 </div>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<!-- CLASSIC BADGE ROW — the original launch badge set, restored and updated -->
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-
-![License: IPL-RP-1.0](https://img.shields.io/badge/License-IPL--RP--1.0-lightgrey.svg?style=flat-square)
-![Papers](https://img.shields.io/badge/Papers-14-blue.svg?style=flat-square)
-![Documents](https://img.shields.io/badge/Documents-15-green.svg?style=flat-square)
-![LaTeX Sources](https://img.shields.io/badge/LaTeX%20Sources-4-orange.svg?style=flat-square)
-![Code](https://img.shields.io/badge/Code-Python%20%7C%20Julia-purple.svg?style=flat-square)
-![Languages](https://img.shields.io/badge/Languages-EN%20%2F%20RU-yellow.svg?style=flat-square)
-![Verification](https://img.shields.io/badge/Verification-11%20languages-2EA043.svg?style=flat-square)
-![Last Commit](https://img.shields.io/github/last-commit/wild8highlander/research-papers?label=Last%20commit&style=flat-square)
-![Repo Size](https://img.shields.io/github/languages/code-size/wild8highlander/research-papers?label=Repo%20size&style=flat-square)
-
-> **Badge health note.** Every badge URL above was audited (see the [Badge Health](#-badge-health--diagnostics) section): broken logo parameters (empty `base64` payloads), the literal `CODECOV_TOKEN` placeholder and the never-run `deploy-docs` workflow status have all been repaired or replaced with static equivalents, while badges whose workflows are genuinely green remain live and dynamic.
+> **Badge health note.** The wall above carries **64 audited badges**: every URL returns HTTP 200 with a valid SVG payload (server-side audit of 2026-09-10), the four CI badges are dynamically green, and the dead entries of the previous edition — the `pre-commit.ci` badge (its service link 404-ed for this repository), the literal `CODECOV_TOKEN` placeholder and the `github/releases` counter ("badge not found" for this repo's release set) — have been replaced with static or working equivalents.
 
 ---
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- MONUMENT PANEL                                                   -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+## Monument Panel: Key Results
+
+**The permanent inscription** — the headline magnitudes of the two research programs, each bound to a named test or formal lemma inside this repository. A claim that cannot be traced to a runnable artifact does not appear on this panel.
+
+| Magnitude | Value | Where it is verified |
+|---|---|---|
+| Universal polarization correction **b** | ≈ **0.0785** = π / (4π² + 2π√3) | [Section 1 ports](verification/section1_correction_b/README.md) — 8 languages, 4 proof assistants |
+| Polarization twist angle **θ_b** | ≈ **7.07°** (sin θ_b = b, R_b orthogonal) | Lean 4 `R_b_*` lemmas; mirrored in Rocq / Isabelle / Agda |
+| BKM blow-up criterion integral | reduced ≈ **3.5×** | Sections 1–2 computational ports + formal bounds |
+| AB-Cloud lattice | **36³** non-Hermitian Hofstadter (two-pass 72³ → 96³ HARD CORE) | [`code/ab_cloud_v19.jl`](ab-cloud/code/ab_cloud_v19.jl) — 37-test suite |
+| Permutation test vs ζ-zeros | **Z = 14.10σ** (p < 10⁻⁴⁴) | run `run_20260902_134759` — [results/](ab-cloud/results/) |
+| Montgomery–Odlyzko KS statistic | **0.047**, p = **0.27** | 37-test suite; KS p = 0.27–0.88 across statistics |
+| Byers–Yang flux defect | **3.5·10⁻¹⁵** | 37-test suite |
+| Spinor structures of the Klein quartic | all **64** GUE-consistent, orbits 28/21/7/7/1 | v22.1 Appendix D (`spinor64`) |
+
+---
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- THE LIBRARY                                                      -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+## The Library: Works and Editions
+
+**The corpus at a glance** — every finished work in this repository, its editions, and its shelf mark. The directory is append-only by convention: new editions arrive as new files, never as silent overwrites.
+
+| № | Work | Editions | Extent | Shelf mark |
+|---|---|---|---|---|
+| I | **Correction *b* as Polarization Twisting** — analytical proof of 3D Navier–Stokes regularity without dissipation (flagship paper) | `main.pdf` · `main_v2.pdf` | 24 pp · 2.3 MB | [`papers/correction-b/`](papers/correction-b/README.md) |
+| II | **NSE Preprint** — the fifteen-minute statement of the regularity result | `preprint_v1.pdf` · `preprint_v2.pdf` | 6 pp · 120 KB | [`papers/preprint/`](papers/preprint/README.md) |
+| III | **KdV Chapter 16** — the *b*-correction across KdV, mKdV, BBM, Kawahara, 2D KP and 3D NSE; 28 numerical experiments | EN (7.2 MB) · RU (7.4 MB) | 89 pp | [`papers/kdv/`](papers/kdv/README.md) |
+| IV | **AB-Cloud Monograph v22.1** — Riemann ζ zeros, GUE universality and topological vortex matter (canonical, cite this) | **RU · EN · ZH**, each in md / tex / html / docx / pdf / pptx | 39 pp | [`ab-cloud/monographs/`](ab-cloud/monographs/README.md) |
+| V | **AB-Cloud Monograph v21** — the author's original narrative, preserved with the corrected v21.1 errata (idx = 38) | RU · EN (+ "with verification" variants) | — | [`ab-cloud/monographs/original-v21/`](ab-cloud/monographs/original-v21/) |
+| VI | **LaTeX sources** — compilable sources of the flagship paper and the preprint | `main.tex` · `preprint.tex` | — | [`src/`](src/README.md) |
+
+**Suggested reading order:** II → I → III for the Navier–Stokes program; IV for the AB-Cloud / Riemann-zeros program; V for the author's original account and the correction story.
+
+---
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- QUICK CITATION                                                   -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<details>
+<summary>📝 <b>Cite this repository</b> — APA &amp; BibTeX (click to expand)</summary>
+
+**APA**
+
+> Isaev, I. K. (2026). *Research Papers: NSE Regularity, AB-Cloud, and Riemann Zeros* (Version 1.4.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21825394
+
+**BibTeX**
+
+```bibtex
+@software{isaev_2026_research_papers,
+  author  = {Isaev, Iskhak Khamzatovich},
+  title   = {Research Papers: {NSE} Regularity, {AB-Cloud}, and {Riemann} Zeros},
+  year    = {2026},
+  version = {1.4.0},
+  doi     = {10.5281/zenodo.21825394},
+  url     = {https://github.com/wild8highlander/research-papers},
+  note    = {Concept DOI (all versions): 10.5281/zenodo.21825393;
+             ORCID: 0009-0003-7299-0701}
+}
+```
+
+Machine-readable metadata: [`CITATION.cff`](CITATION.cff) · [`.zenodo.json`](.zenodo.json) — the full citation block with per-paper guidance lives in the [Citation section](#-citation).
+
+</details>
+
+---
+
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <!-- TABLE OF CONTENTS -->
@@ -111,6 +195,8 @@ verified across 11 programming languages**
 
 ## 📋 Table of Contents
 
+- [Monument Panel: Key Results](#monument-panel-key-results)
+- [The Library: Works and Editions](#the-library-works-and-editions)
 - [Overview](#-overview)
   - [Mission](#-mission)
   - [What Is the Polarization Correction *b*?](#-what-is-the-polarization-correction-b)
@@ -2422,7 +2508,7 @@ This README is maintained as the front door of the repository under the house st
 
 **[⬆ Back to Top](#-research-papers)**
 
-<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow" width="100%"/>
+<img src="docs/assets/divider-gold.svg" alt="gold ornament divider" width="100%"/>
 
 *If you find this research useful, please consider giving it a* ⭐ *and citing it!*
 
