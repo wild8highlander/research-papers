@@ -213,3 +213,106 @@ License: **CC BY-NC-SA 4.0** (see `../LICENSE`).
   `outputs/` (отчёты json/md/html/csv + все рисунки PDF/PNG).
 - Запуск: `python3 code/ab_cloud_3d_en.py` (меню), `quick_start.py` для
   демо; препринт — `preprint/ab_cloud_preprint.tex` (xelatex ×2).
+
+---
+---
+
+## 🧊 The Laboratory in Depth
+
+### The Run Model
+
+The laboratory is organised around **versioned output bundles**: every run produces a self-contained directory under `outputs/` named `<experiment>_<timestamp>/`, containing figures (PNG + PDF pairs), machine-readable summaries (JSON + CSV), and a report (md/html/txt). The bundle is the unit of citation, diffing and archiving — figures never separate from their numbers.
+
+### The Committed Bundles, Annotated
+
+| Bundle | Experiment | What it shows |
+|---|---|---|
+| `full_verification_2026-07-31_15-33-39/` | the full verification sweep | 11-figure set: P(s), Δ₃, σ², FSS, Dirac cone, 3D complex spectrum, ARF invariant, decay time, skin effect + full JSON/CSV summaries |
+| `3d_bridge_2026-07-31_15-36-37/` | the 3D bridge | wavefunction density, Dirac-cone family, Riemann overlay, topological phase diagram, form-factor surfaces, spectral staircase, S–T overlay |
+| `deep_zeros_2026-07-31_15-36-34/` | deep-zero scan | pair correlation, spacing PDF, form factor K, S–T fluctuation, decay-time-from-zeros |
+| `3d_advanced_2026-07-31_15-51-47/` | advanced topological diagnostics | winding number, exceptional points, edge-state localisation, Chern markers, Hofstadter butterfly, spectral flow, probability current |
+
+Each bundle's own README states the exact command that produced it — reproduce the run, then diff.
+
+### Data and Provenance
+
+`data/zeros1.txt` — the 5 000 embedded ζ-zeros the lab reads. Like everything in the snapshot, the dataset is committed and frozen; the laboratory never downloads anything. The JSON summaries in each bundle carry the run's parameters, so a fresh run with matching parameters is byte-comparable at the summary level.
+
+### Extending the Laboratory
+
+The package (`pyproject.toml`, Makefile targets, `code/` with its own README) is structured for extension: an experiment is a Python entry point that emits a bundle. To add one: write the entry point, emit figures into a timestamped directory, write the JSON/CSV summaries and the report — and the bundle discipline does the rest. The existing bundles double as templates.
+
+## 🇷🇺 Краткое резюме (Russian Summary)
+
+**ab-cloud/lab-3d/** — интерактивная 3D-лаборатория решётки AB-Cloud: Python/NumPy-пакет с Makefile, 5 000 встроенных нулей ζ в `data/`, и четыре зафиксированных выходных пакета в `outputs/` (полная верификация, 3D-мост, глубокие нули, продвинутая топологическая диагностика) — каждый с рисунками PNG+PDF, JSON/CSV-сводками и отчётом md/html/txt. Пакет — единица воспроизведения: команда в README пакета + замороженные данные = тот же результат.
+
+---
+## 🧯 The Figure Vocabulary
+
+The lab's figures follow a stable visual grammar; knowing it makes any bundle readable at a glance:
+
+| Figure family | Encodes | Typical files |
+|---|---|---|
+| P(s) / spacing PDFs | the nearest-neighbour statistics | `01_P_s_zeta`, `nn_spacing_pdf` |
+| Δ₃(L) / σ²(L) | long-range spectral order | `02_delta3_L`, `03_sigma2_L` |
+| FSS curves | finite-size scaling | `04_fss_zeta`, `05_fss_ab_cloud` |
+| Dirac cones / dips | the topological band structure | `08_dirac_cone`, `13_dirac_dip` |
+| 3D surfaces | complex spectra, P(s), form factors | `09_3d_complex_spectrum`, `10_3d_P_s`, `3d_form_factor_surface_*` |
+| Overlays | AB-Cloud vs ζ superpositions | `ab_cloud_riemann_overlay`, `3d_S_T_overlay` |
+| Topological diagnostics | Chern markers, winding, edge states | `local_chern_marker_*`, `3d_winding_number`, `edge_state_localization` |
+| Skin effect / non-Hermitian drift | Hatano–Nelson phenomenology | `11_3d_skin_effect` |
+
+Every figure exists as PNG (quick look) + PDF (vector, for the monographs), and every family has its JSON/CSV twin in the same bundle.
+
+## 🔁 Reproducing a Bundle End-to-End
+
+1. Read the bundle's own `README.md` — it names the experiment entry point and its parameters.
+2. Run the same entry point (the Makefile targets wrap the common cases).
+3. Compare the fresh bundle's JSON/CSV summaries against the committed ones — byte-level equality of the summaries is the reproduction bar; figures may differ by rendering metadata.
+4. Record the commit hash of the repository alongside your fresh run (the citation discipline of the snapshot).
+
+## 🧩 Relationship to the Suites
+
+The lab is the *spatial* programme: where the suites answer the three objections statistically, the lab renders the structures those statistics summarise — 3D spectra, textures, phase diagrams. The two layers share the frozen ζ-zero data (5 000 embedded here; 50 000 in the suite table) and the parameter families (σ, α, W), so a figure in a bundle and a statistic in a suite report are two views of one object.
+
+---
+## 🧪 The Four Bundles as a Course
+
+Read the committed bundles in this order and the laboratory teaches itself:
+
+1. **`full_verification_…`** — the grammar lesson: every figure family in one bundle, with the JSON/CSV twins showing how numbers become pictures. Start with `full_verification.md` inside the bundle, then match each figure to its summary row.
+2. **`deep_zeros_…`** — the statistics lesson: pair correlations, spacing PDFs, form factors computed from the embedded zeros; the direct visual companion to the suite's Objection-2 tests.
+3. **`3d_bridge_…`** — the physics lesson: wavefunction densities, Dirac-cone families, the Riemann overlay and the S–T overlays — the spatial pictures behind the spectral claims.
+4. **`3d_advanced_…`** — the topology lesson: Chern markers, winding numbers, edge states, spectral flow, the Hofstadter butterfly — the diagnostics that characterise the phases.
+
+After the four bundles, a fresh run's output is readable without a guide — the vocabulary is stable across experiments.
+
+---
+## ⚙️ Makefile Targets (lab)
+
+| Target | Effect |
+|---|---|
+| `make help` | list targets |
+| `make install` | Python environment for the lab |
+| `make verify` | the full-verification experiment (bundle 1) |
+| `make bridge` | the 3D bridge experiment (bundle 2) |
+| `make deep-zeros` | the deep-zero scan (bundle 3) |
+| `make advanced` | the advanced topological diagnostics (bundle 4) |
+| `make all` | everything, sequentially (hours; budget accordingly) |
+
+Outputs land in `outputs/<experiment>_<timestamp>/` — the bundle discipline applies to your runs exactly as to the committed ones.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

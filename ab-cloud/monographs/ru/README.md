@@ -55,3 +55,18 @@
 *English note:* this folder holds the **Russian edition** of the rewritten
 monograph (v22 + the updated v22.1 build with LaTeX sources). See the
 repository-root README for the trilingual overview.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../../papers/README.md) · 📚 [Монографии](../../../../docs/README.md) · 🧾 [LaTeX](../../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

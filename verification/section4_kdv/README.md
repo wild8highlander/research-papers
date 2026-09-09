@@ -51,3 +51,43 @@ python3 python/verify.py
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🔬 Deep Dive — Section 4
+
+**What is verified here.** KdV soliton interactions under the b-correction: the pseudospectral machinery, conservation of mass/momentum/energy across interactions, and the closed-form two-soliton agreement. The C++ port is the computational workhorse; the formal tier treats the integrability identities.
+
+**Reference command.**
+
+```bash
+`python3 verification/section4_kdv/python/verify.py`
+```
+
+**Formal counterparts.** The structural statements live in the four proof assistants: `../../lean4/ResearchPapersVerification/Section4_KdV/` · `../../coq/section4_kdv/` · `../../isabelle/Section4_KdV/` · `../../agda/Section4_KdV/` — with lemma names mirroring the computational assertions (see the root README's [formal deep dive](../../README.md#-appendix-w--formal-verification-deep-dive) for the Lean anatomy).
+
+**Where it appears in the papers.** Each section maps onto a specific document layer: the preprint for the chain-type claims, the flagship paper for the constant's consequences, the KdV chapter for the integrable-systems results, the Klein-attractor reports for the dynamical-systems content, and the AB-Cloud monographs for the spectral programme. The mapping table is in the root README's [Section-by-Section Guide](../../README.md#-section-by-section-verification-guide).
+
+**Contract reminder.** The port prints a banner, per-assertion `[PASS]/[FAIL]` lines, and the JSON verdict; exit code 0 only on full success. The cross-language validator consumes that JSON mechanically — any disagreement across languages fails CI.
+
+---
+Conservation is the contract here: mass, momentum, energy across the interaction, plus the closed-form two-soliton agreement. The C++ port's FFT machinery is the performance-critical piece; the Python port is the definitional check. A drift in conserved quantities is always a discretisation or a correction-parameter bug — both fail here first.
+
+---
+## 🔗 Cross-Links
+
+Workhorse: [cpp Section4](../cpp/README.md) · Formal: [lean4](../lean4/README.md) · [coq](../coq/README.md) · Papers: [kdv chapter](../../papers/kdv/README.md) · Word edition: [docs/kdv](../../docs/kdv/README.md).
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

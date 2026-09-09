@@ -79,3 +79,55 @@ Build step: `coq_makefile or per-file coqc`.
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🧱 Development Anatomy
+
+Six independent developments, one per section, classical-logic style:
+
+| File | Section | Notable lemmas | Automation |
+|---|---|---|---|
+| `section1_correction_b/CorrectionB.v` | 1 | `bCorrection_pos`, `bCorrection_lt_one` | `lra` over `Reals` |
+| `section2_preprint/ProofChain.v` | 2 | chain ordering lemmas | `lra` |
+| `section3_ab_cloud/Hofstadter.v` | 3 | flux quantisation, Hermiticity | `lia` + field_simps |
+| `section4_kdv/KdV.v` | 4 | conservation identities | `lra` |
+| `section5_klein_attractor/Klein.v` | 5 | contraction statements | `lra` |
+| `section6_riemann_zeros/RiemannZeros.v` | 6 | embedding compatibility | `lra` |
+
+The build order is exactly the order in [`_CoqProject`](_CoqProject); each file is self-contained modulo the standard library — no cross-file imports — which keeps per-file compilation independent and CI parallelisable.
+
+## 🐳 Running Coq Without Installing It
+
+```bash
+docker build -t rp-coq verification/docker/coq
+docker run --rm -v "$PWD":/work rp-coq coqc verification/coq/section1_correction_b/CorrectionB.v
+```
+
+Or read the CI job: `ci-extended-languages.yml` compiles all six files on every push, so a regression in any of them surfaces in the cheapest possible gate.
+
+---
+## 🎯 What Coq Covers Uniquely
+
+The Coq development is the classical-logic witness: where Agda constructs and Isabelle structures, Coq compresses — the `lra`-automated `Reals` proofs show the statements' content is *routine classical mathematics*, which is itself a useful signal (the hard part is the modelling, not the arithmetic). When diffing against Lean, expect the same lemma names modulo naming conventions and the same proof obligations modulo automation.
+
+---
+## 🔗 See Also
+
+- [`lean4/`](../lean4/README.md) — the primary formal development this mirrors;
+- the `_CoqProject` build order — the canonical compile sequence;
+- Section × Language [matrix](../../README.md#-section--language-verification-matrix) — where each `v` file sits.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

@@ -47,3 +47,18 @@ Note: this Java port was authored in an environment without a JDK, so it was
 verified by a line-by-line review against the C++ reference (and a floating
 point cross-check of the identical algorithm), not by compilation in place.
 It prints the same report with "(Java port)" in the header line.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../../../papers/README.md) · 📚 [Монографии](../../../../../docs/README.md) · 🧾 [LaTeX](../../../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

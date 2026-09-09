@@ -79,3 +79,57 @@ Build step: `agda --safe <Module>.agda`.
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🧱 Development Anatomy
+
+Six modules, dependently typed:
+
+| Module | Section | Notes |
+|---|---|---|
+| `Section1_CorrectionB/CorrectionB.agda` | 1 | π and √3 postulated explicitly |
+| `Section2_PreprintNSE/ProofChain.agda` | 2 | chain as indexed structure |
+| `Section3_ABCloud/Hofstadter.agda` | 3 | flux structure as inductive data |
+| `Section4_KdV/KdV.agda` | 4 | conservation as type-level identity |
+| `Section5_KleinAttractor/Klein.agda` | 5 | contraction statements |
+| `Section6_RiemannZeros/RiemannZeros.agda` | 6 | embedding compatibility |
+
+## 🔬 The Minimal Trust Base
+
+The Agda development's defining choice is the **explicit postulation policy**: π and √3 enter as postulates at the top of each development, with their essential properties (positivity, the needed bounds) stated — and everything else is constructed. This keeps the trust base *visible and enumerable*: a reviewer can read the postulate block and know exactly what is being taken on faith. The repository's philosophy is that an honest, two-line trust base beats an implicit one; the same policy is why the gap ledger of the Lean development is public (see the root README's [deep dive](../README.md#-appendix-w--formal-verification-deep-dive)).
+
+## 🐳 Running Agda Without Installing It
+
+```bash
+docker build -t rp-agda verification/docker/agda
+docker run --rm -v "$PWD":/work rp-agda agda verification/agda/Section1_CorrectionB/CorrectionB.agda
+```
+
+Run from the repository root or set the include path per `agda.agda-lib`.
+
+---
+## 🎯 What Agda Proves About the Trust Base
+
+Because π and √3 are the only postulates, everything else in the Agda development is *constructed* — including the order relations and the algebraic identities other systems get from their standard libraries. Reading the Agda files is therefore the fastest way to see exactly which properties of π and √3 the whole framework's formal layer actually needs: read the postulate block, and you have enumerated the formal trust base.
+
+---
+## 🔗 See Also
+
+- the postulate blocks in each module — the enumerated trust base;
+- [`agda.agda-lib`](agda.agda-lib) — include-path configuration;
+- the formal deep dive in the root README for the cross-system comparison table.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

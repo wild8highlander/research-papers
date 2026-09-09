@@ -31,3 +31,36 @@ LaTeX source of the **compact NSE regularity preprint** — the typeset original
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+
+---
+
+## 📄 The Preprint Source
+
+`preprint.tex` — the single-file LaTeX source of the compact NSE regularity preprint. Its compiled form is the ~120 KB PDF in [`papers/preprint/`](../../papers/preprint/README.md) (identical as v1 and v2).
+
+**Compiling:**
+
+```bash
+pdflatex preprint.tex
+pdflatex preprint.tex
+```
+
+**Why a separate preprint exists.** The full paper is ~2.3 MB with the complete derivation apparatus; the preprint compresses the argument to four moves (constant → twist → BKM reduction → regularity) for readers who need the claim and its structure in one sitting. The source mirrors that compression: same notation as the paper, minimal preamble, no figure dependencies.
+
+**The title page claim** — *"Correction b as Polarization Twisting: Analytical Proof of 3D Navier–Stokes Regularity without Dissipation"* — is the shortest formal statement of Program 1, and Section 2 of the verification framework mirrors it: run `python3 verification/section2_preprint/python/verify.py` to see the chain asserted numerically.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

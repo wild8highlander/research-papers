@@ -47,3 +47,72 @@ Or from the repository root: `make docs` / `make docs-serve`.
 - Локально: `pip install mkdocs mkdocs-material && mkdocs serve`.
 - Страницы: quickstart, julia-suite, verification, monographs (+v21),
   results, lab3d, citation, faq, license; навигация — в `mkdocs.yml`.
+
+---
+---
+
+## 🧱 The Snapshot's Documentation Site
+
+This directory is the MkDocs source tree of the snapshot's own documentation site (configured by the sibling [`mkdocs.yml`](../mkdocs.yml)):
+
+| Page | Content |
+|---|---|
+| `index.md` | the snapshot's front page |
+| `quickstart.md` | the fast path: run the suite in one command |
+| `verification.md` | the three objections and the 10-language answer |
+| `monographs.md` / `monograph-v21.md` | the edition guide (v22 trilingual; v21 historical) |
+| `julia-suite.md` | the Julia provenance archive and runners |
+| `lab3d.md` | the 3D laboratory and its bundles |
+| `results.md` | the archive and how to diff against it |
+| `citation.md` | how to cite the snapshot and its versions |
+| `faq.md` | the snapshot-level FAQ |
+| `license.md` | the licence notice (authoritative texts at the snapshot/root level) |
+
+MathJax rendering is enabled via `javascripts/mathjax.js`. Build locally: `cd ab-cloud && mkdocs serve`.
+
+The page sources complement — not duplicate — the folder READMEs: the READMEs document *directories*, these pages document *topics*. Keep both in mind when extending the snapshot's documentation.
+
+## 🇷🇺 Краткое резюме (Russian Summary)
+
+**ab-cloud/docs/** — исходники собственного MkDocs-сайта снапшота: quickstart, верификация, монографии, Julia-набор, лаборатория, результаты, цитирование, FAQ. Математика — MathJax; локально: `cd ab-cloud && mkdocs serve`.
+
+---
+## ✍️ Extending the Snapshot Site
+
+Adding a page to the snapshot's MkDocs site is a three-file change:
+
+1. the page source (`docs/<page>.md`, house style applies);
+2. the nav entry in [`../mkdocs.yml`](../mkdocs.yml);
+3. cross-links from the folder READMEs the page documents.
+
+The site's job is *topics*; the folder READMEs' job is *directories*; the root README's job is *the repository as a whole*. A change is fully documented when all three layers agree.
+
+---
+## 🔗 Page-to-README Cross-Map
+
+| Site page | Companion README |
+|---|---|
+| `index.md` | [`../README.md`](../README.md) |
+| `quickstart.md` | [`../README.md` quick start](../README.md) |
+| `verification.md` | [`../verification/README.md`](../verification/README.md) |
+| `monographs.md` | [`../monographs/README.md`](../monographs/README.md) |
+| `julia-suite.md` | [`../code/julia/README.md`](../code/julia/README.md) |
+| `lab3d.md` | [`../lab-3d/README.md`](../lab-3d/README.md) |
+| `results.md` | [`../results/README.md`](../results/README.md) |
+| `citation.md` | root README Citation |
+| `faq.md` | root README FAQ |
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

@@ -51,3 +51,58 @@ python3 python/verify.py
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🧪 The Port Family
+
+| Port | Path | Command | Time |
+|---|---|---|---|
+| Python (reference) | `python/verify.py` | `python3 verification/section1_correction_b/python/verify.py` | < 1 s |
+| Rust | `../../rust/section1_correction_b/` | `cargo run --release -p section1_correction_b` | < 1 s |
+| C++ | `../../cpp/section1_correction_b/` | via the CMake project (see its README) | < 1 s |
+| Haskell | `../../haskell/Section1_CorrectionB/` | `cabal run section1-correction-b` | < 1 s |
+| Lean 4 | `../../lean4/ResearchPapersVerification/Section1_CorrectionB/` | `lake build && lake exe check` | min (cached s) |
+| Coq | `../../coq/section1_correction_b/` | `coqc CorrectionB.v` | s |
+| Isabelle | `../../isabelle/Section1_CorrectionB/` | `isabelle build -D .` | min (first) |
+| Agda | `../../agda/Section1_CorrectionB/` | `agda CorrectionB.agda` | s |
+
+## 📋 What Is Asserted
+
+1. **b well-defined and positive** — the closed form evaluates and satisfies 0 < b;
+2. **b < 1** — the twist stays within the physical range;
+3. **sin θ_b = b** with θ_b = arcsin b — the trigonometric bridge;
+4. **rotation sanity** — the associated Rodrigues rotation is orthogonal with det 1 (numeric echo of the formal `R_b_orthogonal`/`R_b_det_one`).
+
+## 🔍 Sample Output
+
+```text
+$ python3 verification/section1_correction_b/python/verify.py
+=== Section 1 ===
+b = 0.062381194121028
+PASS
+```
+
+Exit code 0 = all assertions passed. The formal counterparts of exactly these four facts are the lemmas catalogued in the root README's [formal deep dive](../../README.md#-appendix-w--formal-verification-deep-dive).
+
+---
+Section 1 is the framework's keystone: every other section references the constant it fixes. Its four assertions are the minimal complete characterisation of *b* for the framework's purposes — anything more belongs to the papers, anything less breaks the chain. When porting to a new language, Section 1 is the correct first target: fastest to write, easiest to diff, and it immediately joins the new language into the validator's matrix.
+
+---
+## 🔗 Cross-Links
+
+Formal: [lean4 Section1](../lean4/README.md) · [coq](../coq/README.md) · [isabelle](../isabelle/README.md) · [agda](../agda/README.md) · Computational: [cpp](../cpp/README.md) · [rust](../rust/README.md) · [haskell](../haskell/README.md) · Papers: [correction-b](../../papers/correction-b/README.md) · [preprint](../../papers/preprint/README.md).
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

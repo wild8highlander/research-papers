@@ -32,3 +32,43 @@ LaTeX source of the **full correction-b paper** — the document typeset into th
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+
+---
+
+## 📄 The Main Article Source
+
+Two files, one content:
+
+| File | Size | Role |
+|---|---|---|
+| `main.tex` | ~55 KB | the primary source document |
+| `main_v2.tex` | ~55 KB | the revision-stamped copy matching `papers/correction-b/main_v2.pdf` |
+
+**Structure of the document.** The preamble sets up the accent-coloured sectioning (`titleformat` with a custom `accent` colour), running headers (`fancyhdr`), and the mathematical apparatus. The body follows the paper's arc: the Kirchhoff derivation of *b*, the polarization twist construction (Rodrigues rotation about a unit axis), the BKM criterion reduction, the regularity proof, and the numerical stress-test section.
+
+**Compiling:**
+
+```bash
+pdflatex main.tex
+pdflatex main.tex        # second pass resolves cross-references
+```
+
+The document is self-contained — figures referenced by the Word edition live with the manuscripts in [`docs/correction-b/`](../../docs/correction-b/README.md); the PDF needs only standard packages.
+
+**Tracing claims to verification.** While reading the source, the [Section × Language matrix](../../README.md#-section--language-verification-matrix) is the companion: every quantitative statement in the text maps onto a section port or a formal lemma, and the root README's deep dive ([Appendix W](../../README.md#-appendix-w--formal-verification-deep-dive)) shows the Lean foundation that corresponds to §3–4 of this paper.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

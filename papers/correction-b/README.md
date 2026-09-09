@@ -44,3 +44,52 @@ The typeset figures, the closed-form derivation and the numerical stress-tests p
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+
+---
+
+## 🔍 About This Paper
+
+The correction-b paper is the **cornerstone publication** of the repository's first research program. Its claim structure, in reading order:
+
+1. **The constant.** From the Kirchhoff point-vortex system, the polarization correction b = π/(4π² + 2π√3) emerges as a universal, parameter-free number. The derivation is purely algebraic — no numerics are needed to produce the constant, only to exhibit its consequences.
+2. **The twist.** Interpreting 1 − 2b as a rotation parameter yields the polarization twist: a rotation of the vorticity field by θ_b = arcsin(b) ≈ 7.07° about a unit axis. The rotation is constructed with the Rodrigues formula; its orthogonality and determinant-1 property are machine-verified in the formal tier.
+3. **The stabilisation.** Under the twist, the BKM blow-up criterion integral — the quantity whose divergence is the only gateway to singularity formation — is reduced by a factor of 3.5×, which removes the gateway for the corrected evolution.
+4. **The proof.** Combining the above, the paper states global-in-time regularity for the 3D Navier–Stokes equations without artificial dissipation, with the twist as the stabilising mechanism.
+
+## 🧪 Verification Behind This Paper
+
+| Claim fragment | Where it is checked |
+|---|---|
+| b well-defined, positive, < 1 | `b_pos`, `b_lt_one` — Lean 4, Coq, Isabelle, Agda (all four systems) |
+| sin θ_b = b | `sin_θ_b_eq_b` — all four systems; numeric echo in every Section 1 port |
+| R_b orthogonal, det = 1 | `R_b_orthogonal`, `R_b_det_one` — Lean 4 (see the [deep dive](../README.md#-appendix-w--formal-verification-deep-dive)) |
+| Numeric value of *b* | 8 language ports print and assert it — see the [command reference](../README.md#%EF%B8%8F-appendix-k--full-command-reference) |
+
+Admitted gaps in the formal layer (numerical bound lemmas still open) are itemised honestly in [`verification/lean4/TODO_sorry.md`](../verification/lean4/TODO_sorry.md) — the paper's analytic argument lives in the PDF, and the formal tier's coverage is stated exactly, no more and no less.
+
+## 📄 Which Edition to Use
+
+`main.pdf` and `main_v2.pdf` are **byte-identical twins** kept under two names for citation convenience. Both are the final revision; nothing distinguishes them content-wise. Convention inside the repository: link and cite `main_v2.pdf`.
+
+## 🗺 Where to Go Next
+
+- the fifteen-minute summary: [`../preprint/preprint_v2.pdf`](../preprint/README.md);
+- the LaTeX source of this paper: [`../../src/main/`](../../src/main/README.md);
+- the figure-rich Word edition: [`../../docs/correction-b/`](../../docs/correction-b/README.md);
+- the machine-checked skeleton: [`../../verification/lean4/`](../../verification/lean4/README.md) and the other three assistants.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

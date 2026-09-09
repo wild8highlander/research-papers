@@ -78,3 +78,81 @@ pre-processing step exists.
   37-тестового набора; Приложение D описывает spinor64 (все 64 структуры
   GUE-согласованы, «уникальность idx=38» снята).
 - Цитировать v22/v22.1; v21 — только как оригинальное повествование автора.
+
+---
+---
+
+## 📚 Edition Guide
+
+### The v22 Edition (RU / EN / ZH)
+
+The current authoritative text, produced **trilingually from the start** — not translated after the fact. Each language edition ships six formats:
+
+| Format | File pattern | Use |
+|---|---|---|
+| Markdown | `AB_Cloud_Monograph_v22_<LANG>.md` | source of truth for diffing |
+| LaTeX | `AB_Cloud_Monograph_v22_<LANG>.tex` + `preprint/preprint_v22_<LANG>.tex` | compilable |
+| DOCX | `…_v221.docx` / `….docx` | annotation layer |
+| PDF | `…_v221.pdf` / `….pdf` | citation layer |
+| HTML | `…_v221.html` / `….html` | web reading |
+| PPTX | `…_presentation.pptx` | presenting |
+
+(Where two file revisions exist, `_v221` denotes the revision-stamped copy — the same convention as the papers.)
+
+### What v22 Contains That v21 Did Not
+
+1. **The Test-38 correction.** The 64-structure classification with the honest refutation of uniqueness (Arf(ε(38)) = 0), replacing the v21 claim;
+2. **the trilingual production** — RU/EN/ZH as first-class editions;
+3. **the consolidated verification story** — the 10-language suite's results woven into the text with pointers to the archived runs.
+
+### The original-v21 Tree
+
+Preserved exactly as published — including the refuted claim — because the correction story is part of the research record. The tree carries EN + RU texts (md/docx/pdf/html), the "with verification" variants, the presentation decks, and the media assets. Read it alongside the v22 Test-38 chapter, never alone.
+
+### The Figure Sets
+
+Twenty figures per language under `<lang>/figures/` — convergence curves, spacing histograms, decay fits, bootstrap slopes, Σ², Δ₃, Dirac cones, Byers–Yang, Hatano–Nelson, Hofstadter butterfly, vortex textures. The full annotated index is in the root README's [Appendix F](../../README.md#-appendix-f--figure-gallery-of-the-v22-monographs); each figure's producer suite is named there.
+
+## 🇷🇺 Краткое резюме (Russian Summary)
+
+**ab-cloud/monographs/** — монографии AB-Cloud: действующая редакция **v22 на трёх языках** (RU/EN/ZH, каждая в шести форматах: md/tex/docx/pdf/html/pptx + презентация) и сохранённая исходная **v21** (EN+RU, с исправлениями и вариантами «with verification»). v22 включает исправленную классификацию 64 спинорных структур и честное опровержение утверждения v21 об уникальности структуры 38. Наборы из 20 рисунков на язык — в `figures/`.
+
+---
+## 📑 The v22 Chapter Guide (all languages)
+
+The v22 editions share one chapter skeleton; the chapter-by-chapter extraction guide:
+
+1. **Programme and objections** — the three objections verbatim; the answer strategy per objection;
+2. **Model definition** — the parameter block (σ, α, W, lattice, Nᵥ) as one table;
+3. **Hofstadter + AB decoration** — the construction and its structural checks;
+4. **Spectral statistics** — ⟨r⟩, Σ²(L), Δ₃(L), K(τ), KS, permutation — each number with its producing suite;
+5. **Spinor classification** — 64 structures, orbits, Arf, zero modes;
+6. **Test-38** — the refutation chapter: methodology, ten-language result, the corrected statement;
+7. **Convergence programme** — b(N), the HARDCORE two-pass audit;
+8. **Outlook** — E2 deep scans, the 3D laboratory, the verification programme's growth.
+
+Extract one sentence per chapter and you have the abstract; extract one *number* per chapter and you have the results table.
+
+---
+## 🌐 Language Edition Notes
+
+- **RU** — the authoring language of the programme; the fullest editorial tradition, first edition target;
+- **EN** — the international citation edition; produced simultaneously, not translated after;
+- **ZH** — the third first-class edition; same production pipeline, same figure set.
+
+All three share the chapter skeleton and the 20-figure set; only typography, hyphenation and caption language differ. Whichever you read, the numbers trace to the same suites and the same archived runs.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

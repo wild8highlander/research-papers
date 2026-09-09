@@ -79,3 +79,53 @@ Build step: `cmake -S . -B build && cmake --build build`.
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🏗 Build System Details
+
+One CMake project ([`CMakeLists.txt`](CMakeLists.txt)) builds all six section targets. What CMake resolves, in order:
+
+1. a C++17 compiler (GCC ≥ 9, Clang ≥ 10, MSVC 2019+);
+2. a BLAS/LAPACK provider — OpenBLAS preferred, then reference LAPACK; the chosen provider is printed during configuration;
+3. per-target executables `section1_correction_b` … `section6_riemann_zeros`.
+
+```bash
+cmake -S verification/cpp -B build          # read the provider line in the output
+cmake --build build -j                      # parallel build
+./build/section1_correction_b               # run any target directly
+```
+
+## 🧮 The Uniform check() Harness
+
+Every C++ port shares the same harness shape: a `check(name, expected, actual, tol)` helper that prints `[PASS]/[FAIL]` lines, accumulates failures, and emits the JSON verdict at the end. The harness is the C++ face of the framework's output contract — the validator in [`tests/`](../tests/README.md) consumes its output exactly like every other language's.
+
+## ⚡ Performance Notes
+
+The AB-Cloud eigenvalue work (Section 3) is the heaviest of the six; the KdV pseudospectral solver (Section 4) is FFT-dominated. Typical first-build times: 1–3 minutes (BLAS detection dominates configuration, not compilation). If configuration reports "no BLAS found", install the development packages (`libopenblas-dev`/`liblapack-dev` on Debian–Ubuntu) and clear the `build/` cache — CMake caches failed detections aggressively.
+
+---
+## 🎯 What C++ Is For Here
+
+The C++ tier is the performance witness and the KdV workhorse: BLAS/LAPACK-backed eigen-routines and the FFT pseudospectral solver live here. Its check() harness keeps it inside the same contract as the std-only languages — performance without contract drift. When diffing against Rust, the values agree to tolerance; the *runtime* is where C++ distinguishes itself.
+
+---
+## 🔗 See Also
+
+- [`CMakeLists.txt`](CMakeLists.txt) — the single build entry;
+- [`rust/`](../rust/README.md) — the std-only comparison point;
+- performance notes in the root README's [Appendix E](../../README.md#-appendix-e--performance-notes).
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

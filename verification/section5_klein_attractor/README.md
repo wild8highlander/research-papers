@@ -51,3 +51,43 @@ python3 python/verify.py
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🔬 Deep Dive — Section 5
+
+**What is verified here.** the Klein attractor's ergodic-theoretic core: invariant-measure statistics over the reference ensemble, contraction statements, and the consistency of the bridge back to the Navier–Stokes sector. The Word research reports in docs/klein-attractor/ are this section's editorial counterparts.
+
+**Reference command.**
+
+```bash
+`python3 verification/section5_klein_attractor/python/verify.py`
+```
+
+**Formal counterparts.** The structural statements live in the four proof assistants: `../../lean4/ResearchPapersVerification/Section5_KleinAttractor/` · `../../coq/section5_klein_attractor/` · `../../isabelle/Section5_KleinAttractor/` · `../../agda/Section5_KleinAttractor/` — with lemma names mirroring the computational assertions (see the root README's [formal deep dive](../../README.md#-appendix-w--formal-verification-deep-dive) for the Lean anatomy).
+
+**Where it appears in the papers.** Each section maps onto a specific document layer: the preprint for the chain-type claims, the flagship paper for the constant's consequences, the KdV chapter for the integrable-systems results, the Klein-attractor reports for the dynamical-systems content, and the AB-Cloud monographs for the spectral programme. The mapping table is in the root README's [Section-by-Section Guide](../../README.md#-section-by-section-verification-guide).
+
+**Contract reminder.** The port prints a banner, per-assertion `[PASS]/[FAIL]` lines, and the JSON verdict; exit code 0 only on full success. The cross-language validator consumes that JSON mechanically — any disagreement across languages fails CI.
+
+---
+The invariant-statistics assertions compare against frozen reference values with tight tolerances — this section is the framework's most data-sensitive port, and its tolerances are part of the contract. The bridge-consistency check ties the attractor's behaviour back to Section 2's estimates; treat the pair (2, 5) as one argument.
+
+---
+## 🔗 Cross-Links
+
+Reports: [docs/klein-attractor](../../docs/klein-attractor/README.md) · Formal: [lean4](../lean4/README.md) · Related section: [Section 2 (the chain)](../section2_preprint/README.md).
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

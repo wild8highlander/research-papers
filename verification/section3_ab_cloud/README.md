@@ -51,3 +51,43 @@ python3 python/verify.py
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🔬 Deep Dive — Section 3
+
+**What is verified here.** the AB-Cloud Hamiltonian's structural core: the Hofstadter skeleton with Aharonov–Bohm decoration at reduced scale, flux quantisation, Hermiticity of the reference operator, and the symmetry-class checks the heavy 36³ statistics presuppose. The heavy statistics live in the AB-Cloud suite; this section verifies the structure those runs stand on.
+
+**Reference command.**
+
+```bash
+`python3 verification/section3_ab_cloud/python/verify.py`
+```
+
+**Formal counterparts.** The structural statements live in the four proof assistants: `../../lean4/ResearchPapersVerification/Section3_ABCloud/` · `../../coq/section3_ab_cloud/` · `../../isabelle/Section3_ABCloud/` · `../../agda/Section3_ABCloud/` — with lemma names mirroring the computational assertions (see the root README's [formal deep dive](../../README.md#-appendix-w--formal-verification-deep-dive) for the Lean anatomy).
+
+**Where it appears in the papers.** Each section maps onto a specific document layer: the preprint for the chain-type claims, the flagship paper for the constant's consequences, the KdV chapter for the integrable-systems results, the Klein-attractor reports for the dynamical-systems content, and the AB-Cloud monographs for the spectral programme. The mapping table is in the root README's [Section-by-Section Guide](../../README.md#-section-by-section-verification-guide).
+
+**Contract reminder.** The port prints a banner, per-assertion `[PASS]/[FAIL]` lines, and the JSON verdict; exit code 0 only on full success. The cross-language validator consumes that JSON mechanically — any disagreement across languages fails CI.
+
+---
+This section is deliberately *structural only*: it verifies what the heavy AB-Cloud statistics presuppose (flux quantisation, Hermiticity, symmetry classes) and leaves the statistics to the suite that owns the frozen tables. If you change the Hamiltonian construction anywhere, this section is the first gate the change must pass.
+
+---
+## 🔗 Cross-Links
+
+Formal: [lean4](../lean4/README.md) · [coq](../coq/README.md) · [isabelle](../isabelle/README.md) · [agda](../agda/README.md) · Heavy statistics: [ab-cloud/verification](../../ab-cloud/verification/README.md) · Monograph: [v22](../../ab-cloud/monographs/README.md).
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

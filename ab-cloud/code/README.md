@@ -71,3 +71,57 @@ the anti-overfitting backbone of the monograph claims.
 - Результаты пишутся в `results/run_<метка>/` с отчётами, логами и
   графиками; образец — `results/run_20260902_134759/`.
 - `julia/` — авторские исторические версии (v19_v1, v20, v21) для прослеживания.
+
+---
+---
+
+## 💾 The Code Layer in Depth
+
+### Canonical vs Historical
+
+The folder holds **both** the current suite entry points and the historical Julia versions:
+
+- historical (provenance): `julia/ab_cloud_v19_v1.jl`, `ab_cloud_v20.jl`, `ab_cloud_v21.jl`, `ab_cloud_v21_v1.jl` — exactly as supplied, never edited;
+- current: the consolidated suite lives one level down in `verification/` (10 languages); the Julia folder's README documents the runners and the v19_v1 zero-table extraction history.
+
+Why keep both? Because every number in every monograph traces to a code state. The historical files are the executable provenance of the published results; deleting them would break the traceability chain the snapshot exists to provide.
+
+### The 50 000-Zero Extraction Story
+
+The frozen dataset `verification/data/zeta_zeros_50000_embedded.txt` was extracted **verbatim from the embedded array** of the historical `ab_cloud_v19_v1.jl` source — the story (why the array was embedded, how the extraction was verified) is told in [`julia/README.md`](julia/README.md). This is why the dataset is byte-frozen: it *is* the source's array, relocated, not a re-download or a regeneration.
+
+## 🇷🇺 Краткое резюме (Russian Summary)
+
+**ab-cloud/code/** — канонический и исторический код: архив Julia-версий (v19_v1, v20, v21, v21_v1) «как есть» для происхождения результатов и текущий набор в `verification/`. Датасет 50 000 нулей извлечён дословно из встроенного массива v19_v1 — история в `julia/README.md`.
+
+---
+## 🏛 The Version Lineage, Precisely
+
+| Version | Role in the lineage |
+|---|---|
+| v19_v1 | the source whose embedded array yielded the 50 000-zero table; the two-pass discipline's origin |
+| v20 | intermediate evolution of the suite (registry growth) |
+| v21 | the spinor-programme era; source state of the v21 monographs' numbers |
+| v21_v1 | the corrected/revised v21 state; pairs with the original-v21 monograph tree |
+
+Rule of use: read the historical sources to *understand where a number came from*; run the current suite to *reproduce the numbers today*. The two activities meet in the archive — historical runs and fresh runs diff test-by-test.
+
+---
+## 🚫 The Editing Rule
+
+The historical sources (`v19_v1`, `v20`, `v21`, `v21_v1`) are **read-only by convention**: no formatting passes, no language-version modernisation, no "small fixes". Their value is being exactly what produced the published numbers; any edit destroys that. Fixes belong in the current suite; the diff between "what was" and "what is" is the changelog's job, not a rewrite of the archive.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

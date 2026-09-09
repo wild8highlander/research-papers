@@ -99,3 +99,56 @@ Build step: `cabal build`.
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🏡 Package Anatomy
+
+Six Cabal packages under one [`cabal.project`](cabal.project):
+
+| Package | Section | Notes |
+|---|---|---|
+| `Section1_CorrectionB` | 1 | pure closed-form evaluation |
+| `Section2_PreprintNSE` | 2 | rotation chain in pure functions |
+| `Section3_ABCloud` | 3 | structural Hofstadter checks |
+| `Section4_KdV` | 4 | symbolic-then-numeric conservation |
+| `Section5_KleinAttractor` | 5 | ergodic statistics over the reference ensemble |
+| `Section6_RiemannZeros` | 6 | spacing diagnostics |
+
+GHC 9.4 is the pinned toolchain (ghcup); `cabal.project` keeps the resolver stable. The implementations are pure — no `unsafe`, no FFI — which makes the Haskell ports the easiest full-source audit of the computational tier.
+
+## 🔁 Running Patterns
+
+```bash
+cabal update                     # once; stale indexes produce resolver noise
+cabal build                      # all six packages
+cabal run section1-correction-b  # one section
+```
+
+Package names use dashes (Cabal convention) while directories use underscores — the mapping table above is the bridge.
+
+---
+## 🎯 What Haskell Contributes
+
+The Haskell ports are the pure-functional witness: the section contracts expressed as types and pure functions, auditable end-to-end by reading. Where C++ shows the contract survives performance engineering, Haskell shows it survives paradigm distance — a theorem of the framework's own portability claim.
+
+---
+## 🔗 See Also
+
+- [`cabal.project`](cabal.project) — the resolver pin;
+- the naming bridge table (dashes vs underscores);
+- the [verification contract](../README.md#-the-verification-contract) — what `cabal run` must print.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

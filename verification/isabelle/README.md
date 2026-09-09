@@ -79,3 +79,59 @@ Build step: `isabelle build -D .`.
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🧱 Session Anatomy
+
+The development is organised as **one Isabelle session** rooted at [`ROOT`](ROOT):
+
+| Theory file | Section | Basis |
+|---|---|---|
+| `Section1_CorrectionB/CorrectionB.thy` | 1 | `Complex_Main` |
+| `Section2_PreprintNSE/ProofChain.thy` | 2 | `Complex_Main` |
+| `Section3_ABCloud/Hofstadter.thy` | 3 | `Complex_Main` |
+| `Section4_KdV/KdV.thy` | 4 | `Complex_Main` |
+| `Section5_KleinAttractor/Klein.thy` | 5 | `Complex_Main` |
+| `Section6_RiemannZeros/RiemannZeros.thy` | 6 | `Complex_Main` |
+
+The Isar style is deliberate: structured proof blocks with explicit statement/proof separation, so a reviewer reads the mathematical content rather than tactic traces. Automation (`simp`, `auto`, `linarith`) is used where the step is genuinely routine and marked as such.
+
+## 🔎 Why an Independent Restatement Matters
+
+The value of the Isabelle development is precisely that it is **not** a translation of the Lean files — it is an independent restatement from the paper's statements. Where Lean and Isabelle agree, the agreement is evidence about the mathematics; where they would disagree, the disagreement is a finding. The same logic applies to the Coq and Agda mirrors, and it is why the repository keeps four formal developments of the same six sections rather than formalising "once, properly".
+
+## 🐳 Running Isabelle Without Installing It
+
+```bash
+docker build -t rp-isabelle verification/docker/isabelle
+docker run --rm -v "$PWD":/work rp-isabelle isabelle build -D verification/isabelle
+```
+
+Budget for a long first build (heap images); subsequent builds are incremental and fast.
+
+---
+## 🎯 What Isabelle Adds
+
+The Isabelle restatement is written to be *read*: Isar's structured blocks make each proof's plan explicit, which makes the development the best entry point for a reviewer who wants to check statement fidelity against the papers. Its session build also doubles as the integration check that all six sections' theories load together under `Complex_Main` — the formal analogue of the validator's cross-language pass.
+
+---
+## 🔗 See Also
+
+- the [`ROOT`](ROOT) session — the integration point of all six theories;
+- [`lean4/`](../lean4/README.md) — statement-fidelity diffing partner;
+- Docker pinning: [`docker/isabelle/`](../docker/README.md).
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

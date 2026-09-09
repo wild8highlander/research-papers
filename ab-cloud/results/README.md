@@ -90,3 +90,63 @@ suite is seeded and reads the frozen data in `verification/data/`.
   v22) и конфиг-дамп верификационного отчёта v19.
 - Читать так: index.html → computation_log.txt теста → report.md →
   FINAL_REPORT.
+
+---
+---
+
+## 🗄 The Archive in Depth
+
+### What the Two Archived Runs Are
+
+**v18, 37 tests, 2026-08-28** (`verification_run_v18_37tests_2026-08-28.txt`) — the complete console output of the 37-test registry: the three objections' tests, the extended RMT diagnostics (Anderson–Darling, two-sample KS, Σ²(L), Δ₃(L)), the Hamiltonian structural tests (Dirac string, Byers–Yang, Chern number, chiral symmetries), and the closing robustness checks. Its WARN lines are self-explaining — e.g. the full-range KS rejection is printed *with* the remedy (high-T subrange, convergence-watch) — which makes the file readable as an audit narrative.
+
+**v19, 2026-09-02** (`ab_cloud_v19_verify_report_2026-09-02_23-33-45.txt`) — the full two-pass run (72×72 → 96×96 with the HARDCORE audit, Julia 1.12.0): 32 PASS / 5 WARN, with per-test reports in the linked run directory.
+
+### How to Use the Archive
+
+1. **As reference values.** Run the suite fresh, diff test-by-test against the archive; any drift is a finding, not a nuisance.
+2. **As methodology documentation.** The console output shows the tests' *logic* (why each control exists), which the raw test code alone does not convey as directly.
+3. **As citation anchors.** Cite a result as "v19 run of 2026-09-02, test N" — the archive pins it to a date, a code state and a machine-readable summary.
+
+### Append-Only Discipline
+
+The archive grows by append: new runs arrive as new files (or new run directories), and nothing already archived is ever rewritten. This is what makes "diff against historical behaviour" possible years later — the history has no rewrite holes.
+
+## 🇷🇺 Краткое резюме (Russian Summary)
+
+**ab-cloud/results/** — архив эталонных прогонов: консольный вывод v18 (37 тестов, 2026-08-28) и полный двухпроходный отчёт v19 (72×72 → 96×96, HARDCORE-аудит, Julia 1.12.0, 32 PASS / 5 WARN, 2026-09-02). Архив пополняется только добавлением файлов; сверьте свежий прогон с архивом тест-в-тест — любое расхождение является находкой.
+
+---
+## 🔍 Navigating the v18 Archive
+
+The v18 file is long (37 tests with plots and tables in console form). Its map:
+
+- **Tests 1–2** — baseline and environment self-checks (banners, config echo);
+- **Tests 3–9** — the objections' first battery: convergence rate, KS (full/high-T), χ², decay slope/residuals/bootstrap;
+- **Test 10** — the cross-validation stability check;
+- **Tests 11–14** — the advanced RMT battery (AD, 2-sample KS, Σ²(L), Δ₃(L));
+- **Tests 15–26** — the Hamiltonian structural block (DIRAC-STRING fix, spacing → GUE, Connes self-duality, chiral symmetries, Dirac cone, Chern number, spinorial phase, AB phase, fractal factor, Dirac string flux, Byers–Yang, PBC torus);
+- **Tests 27–32** — the second structural block (binary chiral symmetry, Berry correction, f_GUE, Dirac dip, v_F, Hatano–Nelson skin);
+- **Tests 33–37** — the closing battery (⟨r⟩ bootstrap, L-scaling, direct AB-vs-ζ-5000, form factor K(t), byte-level robustness).
+
+Every WARN in the file carries its explanation inline — the archive is written to be read.
+
+---
+## 📎 Citing a Run
+
+Cite a result as: *archive file, test number, repository commit (or Zenodo version DOI)*. Example form: "v18 run of 2026-08-28 (`verification_run_v18_37tests_2026-08-28.txt`), Test 5, repo @ `<commit>`". The test numbering is stable across languages and time, so the triple (file, test, commit) pins the claim completely.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

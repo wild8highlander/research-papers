@@ -51,3 +51,43 @@ python3 python/verify.py
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🔬 Deep Dive — Section 6
+
+**What is verified here.** the Riemann-zeros correspondence: embedding of the frozen ζ-zero dataset, GUE-class gap statistics, and the long-range diagnostics (Σ²(L)) that operationalise the Hilbert–Pólya compatibility structure. The full-scale statistical case is the AB-Cloud suite's; this section checks the structural skeleton with the same frozen data.
+
+**Reference command.**
+
+```bash
+`python3 verification/section6_riemann_zeros/python/verify.py`
+```
+
+**Formal counterparts.** The structural statements live in the four proof assistants: `../../lean4/ResearchPapersVerification/Section6_RiemannZeros/` · `../../coq/section6_riemann_zeros/` · `../../isabelle/Section6_RiemannZeros/` · `../../agda/Section6_RiemannZeros/` — with lemma names mirroring the computational assertions (see the root README's [formal deep dive](../../README.md#-appendix-w--formal-verification-deep-dive) for the Lean anatomy).
+
+**Where it appears in the papers.** Each section maps onto a specific document layer: the preprint for the chain-type claims, the flagship paper for the constant's consequences, the KdV chapter for the integrable-systems results, the Klein-attractor reports for the dynamical-systems content, and the AB-Cloud monographs for the spectral programme. The mapping table is in the root README's [Section-by-Section Guide](../../README.md#-section-by-section-verification-guide).
+
+**Contract reminder.** The port prints a banner, per-assertion `[PASS]/[FAIL]` lines, and the JSON verdict; exit code 0 only on full success. The cross-language validator consumes that JSON mechanically — any disagreement across languages fails CI.
+
+---
+The frozen ζ-zero table is an input here — do not regenerate it. The section's GUE-class gap assertions and Σ²(L) diagnostics are the structural skeleton of the Hilbert–Pólya compatibility; the full-scale statistical case is the AB-Cloud suite's. Diffing this section across languages is the cheapest whole-framework sanity check, since it exercises data loading plus statistics in one port.
+
+---
+## 🔗 Cross-Links
+
+Data: [ab-cloud data](../../ab-cloud/verification/) · Full statistics: [ab-cloud/verification](../../ab-cloud/verification/README.md) · Formal: [lean4](../lean4/README.md) · Monograph: [v22](../../ab-cloud/monographs/README.md).
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

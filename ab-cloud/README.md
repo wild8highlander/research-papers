@@ -9,7 +9,7 @@
 [![CI Status](https://img.shields.io/github/actions/workflow/status/wild8highlander/ab-cloud-research/ci.yml?branch=main&style=for-the-badge&logo=github&label=CI)](https://github.com/wild8highlander/ab-cloud-research/actions/workflows/ci.yml)
 [![Julia Suite](https://img.shields.io/github/actions/workflow/status/wild8highlander/ab-cloud-research/julia.yml?branch=main&style=for-the-badge&logo=julia&label=Julia%20Tests&color=9558B2)](https://github.com/wild8highlander/ab-cloud-research/actions/workflows/julia.yml)
 [![Docs](https://img.shields.io/github/actions/workflow/status/wild8highlander/ab-cloud-research/deploy-docs.yml?branch=main&style=for-the-badge&logo=materialformkdocs&label=Docs&color=blue)](https://wild8highlander.github.io/ab-cloud-research)
-[![CodeQL](https://img.shields.io/github/actions/workflow/status/wild8highlander/ab-cloud-research/codeql.yml?branch=main&style=for-the-badge&logo=githubsecurity&label=CodeQL&color=2EA043)](https://github.com/wild8highlander/ab-cloud-research/actions/workflows/codeql.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/wild8highlander/ab-cloud-research/codeql.yml?branch=main&style=for-the-badge&label=CodeQL&color=2EA043)](https://github.com/wild8highlander/ab-cloud-research/actions/workflows/codeql.yml)
 [![Zenodo DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21825394-blue?style=for-the-badge&logo=zenodo&label=DOI)](https://doi.org/10.5281/zenodo.21825394)
 [![Zenodo Concept](https://img.shields.io/badge/Concept%20DOI-10.5281%2Fzenodo.21825393-blueviolet?style=for-the-badge&logo=zenodo&label=All%20Versions)](https://doi.org/10.5281/zenodo.21825393)
 [![Citation](https://img.shields.io/badge/Cite-CITATION.cff-informational?style=for-the-badge&logo=latex)](./CITATION.cff)
@@ -532,3 +532,263 @@ DOI [10.5281/zenodo.21825394](https://doi.org/10.5281/zenodo.21825394)
 <i>«Гипотеза Римана как условие универсальности квантового пространства»</i><br/>
 <b>The Riemann Hypothesis as a universality condition of quantum space</b>
 </div>
+
+---
+---
+
+## 🗺 Deep Navigation Guide
+
+This section is the guided tour the table of contents points at: what each part of the snapshot contains, why it exists, and the fastest path through it for three different kinds of readers.
+
+### The Snapshot at Three Altitudes
+
+**Altitude 1 — the visitor (5 minutes).** Read this README's top half (the summary tables), open one monograph PDF in your language, done. You will leave knowing what the AB-Cloud claims and where the numbers live.
+
+**Altitude 2 — the engineer (30 minutes).** Read [The Snapshot Anatomy](#-snapshot-anatomy), then [`verification/README.md`](verification/README.md) (the suite's three objections), then run the Python suite (the quick start above). You will leave able to reproduce the headline statistics on your machine.
+
+**Altitude 3 — the auditor (2 hours).** [`SNAPSHOT_INFO.md`](SNAPSHOT_INFO.md) (what was consolidated, from where) → [`verification/README.md`](verification/README.md) (how objections are answered) → [`results/`](results/README.md) (archived reference runs, console output verbatim) → [`code/julia/README.md`](code/julia/README.md) (provenance of the historical versions) → the Test-38 story in `verification/` (a claim publicly corrected). You will leave with the full evidence chain.
+
+### The Three Objections, Restated for Navigation
+
+The suite exists because three objections had to be answered, and the snapshot is organised around them:
+
+1. **GUE universality (Bohigas–Giannoni–Schmit).** Is the observed ⟨r⟩ genuinely GUE, or an artifact of window/scale choice? → Tests 4–6 (full-range KS, high-T KS, χ² histograms), Tests 11–14 (Anderson–Darling, two-sample KS, Σ²(L), Δ₃(L)), Test 29/33/36 (figure of merit, bootstrap, form factor). The archived runs document why the full-range KS *warns* (GUE is asymptotic; low-T zeros are not expected to comply) and what the high-T analysis shows.
+2. **Circularity of embedding.** Do the embedded ζ-zeros force the statistics? → the control ensembles and the direct AB-cloud-vs-ζ-5000 comparison (Test 35) plus the scrambled/surrogate controls across the suite.
+3. **Selective interpretation.** Were favourable windows cherry-picked? → exhaustive sliding windows (KS p = 0.27–0.88 reported as a *distribution*, not a single pick) and the convergence-watch tooling (`--convergence-watch "1000,5000,20000,50000"`).
+
+Each objection has a per-language folder under [`verification/`](verification/README.md) — the answer a reviewer can run in the language they trust.
+
+### The Julia Provenance Archive
+
+[`code/julia/`](code/julia/README.md) is the historical spine of the snapshot: v19_v1 (the source whose embedded array yielded the 50 000-zero table), v20, v21, v21_v1 — kept exactly as supplied. The current suite supersedes them functionally, but every number printed in the monographs can be traced to one of these code states, and the extraction of the frozen dataset from v19_v1 is documented in that folder's README. Nothing in the archive is dead weight; it is the provenance contract made executable.
+
+### The Web Applications
+
+[`apps/`](apps/README.md) carries two React applications with committed `dist/` bundles:
+
+- **ab-cloud-dashboard** — statistics over the embedded 50 000-zero table, run reports, spinor-64 browsing; a web worker does the heavy client-side computation;
+- **ab-cloud-lab3d** — Three.js rendering of vortex textures, spectral surfaces, topological phase diagrams.
+
+Both serve straight from the committed bundles (no build needed for deployment), and both have source-level READMEs.
+
+### Terminology Bridge (RU → EN for this snapshot)
+
+| Русский термин | English term |
+|---|---|
+| поправка b / поляризационная поправка | polarization correction b |
+| вихревая вставка / АБ-вихрь | AB (Aharonov–Bohm) vortex decoration |
+| жёсткий аудит (HARDCORE) | the two-pass HARDCORE audit |
+| орбиты структур | spinor-structure orbits (28/21/7/7/1) |
+| опровержение «уникальности 38» | the Test-38 refutation |
+
+Each subfolder README ends with a short RU summary in the same spirit — the snapshot documents itself bilingually at folder level.
+
+### Licence Inside the Snapshot
+
+The snapshot carries its own [`LICENSE`](LICENSE) notice (the AB-Cloud materials' licence), plus its own CODE_OF_CONDUCT, CONTRIBUTING, SECURITY, RELEASING and MkDocs sources — it was consolidated as a *complete* repository snapshot, not a file dump. The root repository's trilingual IPL-RP-1.0 texts remain authoritative for the repository as a whole; nothing in this snapshot overrides them.
+
+## 📦 Consolidation Mapping (Retired Paths)
+
+For link rot archaeology: the seven previously scattered locations are retired into this snapshot. Old references resolve as follows:
+
+| Retired location | New location |
+|---|---|
+| `ab-cloud-verification/` | [`ab-cloud/verification/`](verification/README.md) |
+| `code/` (AB-Cloud code) | [`ab-cloud/code/`](code/README.md) |
+| `results/` (AB-Cloud results) | [`ab-cloud/results/`](results/README.md) |
+| `papers/monographs/` | [`ab-cloud/monographs/`](monographs/README.md) |
+| `docs/ab-cloud-v22/` | [`ab-cloud/monographs/`](monographs/README.md) |
+| `docs/monographs/` | [`ab-cloud/monographs/original-v21/`](monographs/original-v21/README.md) |
+| `src/ab-cloud-3d/` | [`ab-cloud/lab-3d/`](lab-3d/README.md) |
+
+The authoritative statement of this mapping — with commit references — is [`SNAPSHOT_INFO.md`](SNAPSHOT_INFO.md).
+
+---
+## 📖 The Monographs, as a Reading Programme
+
+The monograph layer rewards a structured read. For each language edition, the recommended passage sequence and what to extract from each:
+
+1. **Introduction and programme statement.** What the AB-Cloud claims and against which objections. Extract: the three objections, verbatim.
+2. **The Hofstadter skeleton and the AB decoration.** The lattice model, flux α, Peierls phases, the vortex decorations parameterised by the embedded zeros. Extract: σ = 0.5, α = 2.0, W = 1.0, Nᵥ — the parameter block every run uses.
+3. **The statistics chapters.** ⟨r⟩, Σ²(L), Δ₃(L), K(τ), the KS and permutation machinery. Extract: the values with their errors — and then find each of them in the results table of the root README (rows 4–7), each linked to its producing suite.
+4. **The spinor classification.** The 64 structures, the PSL(2,7) orbits, the Arf classification. Extract: orbits 28/21/7/7/1, zero-mode counts 2/3/3/3/7 — and the refutation that closes the chapter's honesty arc.
+5. **The convergence programme.** b(N), the two-pass HARDCORE audit. Extract: the law b(N) ≈ 7.0312·N^(−0.1685) with its R², and the discipline of the archived 37-test run.
+
+After the five passages, the reader holds every headline number of the programme together with its provenance — which is the entire point of the snapshot's structure.
+
+## 🧮 The 64-Structure Classification, Explained for Navigation
+
+The spinor programme is the most self-contained story in the snapshot, and it deserves a compact retelling here:
+
+- **The object.** The Klein quartic x³y + y³z + z³x = 0 — genus 3, automorphism group PSL(2,7) of order 168. Its Spin-liftings yield **64 inequivalent spinor structures** ε(1)…ε(64).
+- **The organisation.** PSL(2,7) acts on the 64; the orbits are **28 / 21 / 7 / 7 / 1**. The Arf invariant of each structure's quadratic form is the classifier.
+- **The test.** For each structure, build the associated Hofstadter torus (E2 sector, L = 44, α = 1/2, Nᵥ = 54) and check the spectral statistics against GUE.
+- **The result.** All 64 are GUE-consistent (Monte-Carlo min p = 0.36); isospectrality within an orbit is exact to 8.9·10⁻¹⁵; gauge invariance to 7.1·10⁻¹⁵; zero-mode counts 2/3/3/3/7.
+- **The correction.** The v21 claim that structure 38 was *uniquely* GUE-consistent is a computational artifact: Arf(ε(38)) = 0 places 38 in a known orbit class. The refutation is itself verified — ten independent Test-38 ports with a library-free Jacobi solver.
+
+Where to see it in code: [`verification/spinor64/`](verification/README.md) — and in ten more languages under each language folder's `spinor38/`.
+
+## 🏃 The Run Cookbook
+
+Every runnable artifact of the snapshot, in one table, with honest time budgets:
+
+| Goal | Command | Budget |
+|---|---|---|
+| Smoke the suite | `python3 ab-cloud/verification/python/ab_cloud_verify.py --interactive` | minutes |
+| Full Python suite | `python3 ab-cloud/verification/python/ab_cloud_verify.py --all` | 5–20 min |
+| One objection, one language | `bash ab-cloud/verification/<lang>/run_verify.sh` | minutes |
+| Test-38 in a second language | run `<lang>/spinor38/` runner | minutes |
+| Watch GUE converge with T | `... --convergence-watch "1000,5000,20000,50000"` | 10–30 min |
+| Julia v19-class full run | see [`code/julia/README.md`](code/julia/README.md) | hours |
+| 3D lab verification bundle | `make -C ab-cloud/lab-3d` targets | hours |
+| Dashboard locally | `npm run dev` in `apps/ab-cloud-dashboard/` | instant |
+| Snapshot docs locally | `cd ab-cloud && mkdocs serve` | instant |
+
+## ❓ Snapshot-Level FAQ
+
+**Q: Is the snapshot a fork or a copy?**
+A full, faithful consolidation of the standalone AB-Cloud repository at v1.2.0 (commit 32aa8e8) — including its own licence notice, conduct policy and docs site. [`SNAPSHOT_INFO.md`](SNAPSHOT_INFO.md) is the authoritative record.
+
+**Q: Which numbers are "the" headline numbers?**
+Rows 4–8 and 10–14 of the root README's results table — permutation Z = 14.10σ, KS p = 0.27–0.88, ⟨r⟩ = 0.6159, the 64/64 classification, the refutation, the convergence law.
+
+**Q: Do I need Julia to reproduce the headline runs?**
+No — the three objections are answered in ten languages; Julia is needed only for the *historical* v19-class runs, whose archived outputs are already committed.
+
+**Q: What exactly is the HARDCORE audit?**
+The two-pass discipline of the v19 run: parameters escalated (72×72 → 96×96), every registry test re-executed under the escalated parameters, results compared across passes. 32 PASS / 5 WARN — with each WARN explained in the archived output.
+
+**Q: Where does the 50 000-zero table come from?**
+From the embedded array of the historical v19_v1 Julia source, extracted verbatim — the story is in [`code/julia/README.md`](code/julia/README.md). It is frozen; nothing downloads it at runtime.
+
+**Q: Is the refutation embarrassing?**
+The repository's position: the opposite. A claim was made (v21), re-verification across ten languages overturned it, and both the refutation and the corrected result are documented and machine-checkable. That is how the programme is supposed to work.
+
+---
+## 🧮 Parameter Tables
+
+The model's parameter block, exactly as the suites and the lab use it — one table to rule the reproducibility discussions:
+
+| Parameter | Value | Where used |
+|---|---|---|
+| Lattice | 36³ (statistics) / up to 96×96 (v19 pass 2, torus L = 44, 72×72 in pass 1) | suite, lab, Julia |
+| σ | 0.5 | non-Hermitian drift control (Connes self-duality at α = 1/2) |
+| α (flux per plaquette) | 2.0 (cloud) · 1/2 (E2 torus sector) | Hofstadter structure |
+| W | 1.0 | coupling window |
+| Embedded ζ-zeros | 5 000 (lab) · 50 000 (suite table) | flux profile |
+| Nᵥ (AB vortices) | 54 (E2 torus) | decoration |
+| Torus size (E2) | L = 44 | spinor64 |
+| Julia runtime (reference) | 1.12.0 | v19 run |
+| Reference ⟨r⟩ | 0.6159 (cloud) · 0.5984 ± 0.0035 (E2) | statistics |
+| T_min cutoffs | 1000 / 10000 … | high-T KS analyses |
+
+Any fresh run declares its parameters against this table; the JSON summaries in the bundles and suite outputs carry them per-run.
+
+## 🌐 The Ten Language Folders, Individually
+
+A one-paragraph orientation per suite folder — what each port emphasises:
+
+- **`python/`** — the reference port; the `--interactive`, `--lang ru`, `--all` and `--convergence-watch` flags make it the teaching version.
+- **`cpp/`** — the BLAS-backed eigensolver port; the performance witness for the eigen-phases.
+- **`fortran/`** — the legacy-scientific witness: if the statistics survive a Fortran toolchain, they are not a modern-library artifact.
+- **`julia/`** — closest to the historical v19 sources; the bridge between the archive and the suite.
+- **`rust/`** — the memory-safe witness, std-only.
+- **`r/`** — the statistics-native witness: R's RMT tooling is a second opinion on the distributional claims.
+- **`matlab/`** — the ecosystem the earliest reference runs used; kept for continuity with the archived outputs.
+- **`javascript/`** — shares its numerics with the dashboard's web worker; the browser witness.
+- **`go/`** — the systems-language witness; also the port most unlike the others in idiom, which is the point.
+- **`haskell/`** — the pure-functional witness; a full-source-auditable implementation.
+
+Plus **`spinor64/`** (the 64-structure block) and **`<lang>/spinor38/`** (Test-38, library-free Jacobi) as described above.
+
+## 📜 A Short History of the Programme
+
+The snapshot's shape is the residue of a research narrative, worth knowing to read the folder structure:
+
+1. **v18 era** — the first full registry (37 tests) addressing the three objections in two languages; the 2026-08-28 run is archived.
+2. **v19** — the unified Julia suite, the two-pass HARDCORE audit, the 50 000-zero table; the 2026-09-02 run (32 PASS / 5 WARN) is archived with full artifacts.
+3. **v20/v21** — the spinor programme: the 64-structure classification; the v21 monographs (EN/RU) publish the (later corrected) "idx = 38 unique" claim.
+4. **v22** — the trilingual monographs; the Test-38 re-verification across ten languages; the honest refutation documented.
+5. **Consolidation (v1.5.0 of this repository, 2026-09-03)** — the standalone AB-Cloud repo at v1.2.0 becomes `ab-cloud/` here; seven scattered locations retired; 32+ deep-dive READMEs land.
+
+Every stage left artifacts: the archive holds the runs, the `code/julia/` archive holds the code states, the monographs hold the texts, and the suite holds the executable answers.
+
+## 🧭 Termux / Android Notes
+
+The snapshot ships the publish-from-Android workflow ([`HOW_TO_PUSH_FROM_ANDROID.md`](HOW_TO_PUSH_FROM_ANDROID.md)) because the programme was substantially developed on mobile hardware. The rules that make it safe, in brief: the repository lives outside `/sdcard` (symlink semantics break git there), git/curl are installed in Termux, and the personal access token exists only in shell memory for the duration of a push — never in a file, never in history. The documentation-enhancer scripts that accompany this repository follow the same hygiene.
+
+## 🗂 The Snapshot's Own Governance Files
+
+Consolidated as a complete repository, the snapshot carries its own governance layer: [`LICENSE`](LICENSE) (the AB-Cloud materials' notice), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md), [`RELEASING.md`](RELEASING.md), [`CHANGELOG.md`](CHANGELOG.md), [`AUTHORS.md`](AUTHORS.md), [`CITATION.cff`](CITATION.cff), [`Makefile`](Makefile) and the [`docs/`](docs/README.md) MkDocs tree. For contributors, the snapshot's CONTRIBUTING is the operative text inside `ab-cloud/`; for the repository as a whole, the root CONTRIBUTING governs. The licence hierarchy is fixed: the root's trilingual IPL-RP-1.0 texts are authoritative; nothing here overrides them.
+
+---
+## 🧪 The E2 Sector, Explained
+
+The E2 sector is where the spinor programme's spectral tests live, and it deserves its own navigation block:
+
+- **What it is.** The sector of the construction where the Hofstadter torus at α = 1/2 carries the AB decoration with Nᵥ = 54 vortices at torus size L = 44 — the configuration the 64-structure classification runs on.
+- **Why α = 1/2 matters.** It is the Connes-self-dual point (α ↔ 1/α): the sector where the non-Hermitian construction connects most cleanly to the Hermitian-corrected framework, and where the chiral symmetry classes (AIII, binary) are sharpest.
+- **The headline result.** ⟨r⟩ = 0.5984 ± 0.0035 against GUE 0.5992 — a −0.13% deviation, the tightest number in the snapshot.
+- **Where to run it.** The spinor64 block and the Test-38 ports; the per-language runners in `verification/<lang>/`.
+- **Where to read it.** The v22 monograph's spinor chapters; the figures `fig10_r_L_scaling` / `fig11_r_bootstrap` document the finite-size and error-bar behaviour.
+
+## 📊 Reading the Numbers With Their Error Bars
+
+A quick guide to which numbers carry uncertainty and which are exact — a distinction that matters in any review discussion:
+
+| Number | Type | Uncertainty |
+|---|---|---|
+| *b* (closed form) | exact by definition | none — it is a definition |
+| sin θ_b = b | exact identity | none — compiled in four systems |
+| ⟨r⟩ = 0.6159 (36³) | statistic | finite-size + sample error; bootstrap-documented |
+| ⟨r⟩ = 0.5984 ± 0.0035 (E2) | statistic | ± 0.0035 (200-realization bootstrap) |
+| KS p = 0.27–0.88 | distribution | a *range* over windows, not one pick |
+| Z = 14.10σ | statistic | p < 10⁻⁴⁴ — effectively exact for review purposes |
+| max\|Δλ\| = 8.9·10⁻¹⁵ | machine-level | double-precision floor |
+| b(N) law exponents | fit | R² = 0.9895; SE(slope) = 0.004345; bootstrap CI in Test 9 |
+| 64/64 GUE-consistent | classification | Monte-Carlo min p = 0.36 per structure |
+
+The exact/statistic distinction is the snapshot's epistemic map: definitions and identities are exact, statistics carry documented uncertainty, and machine-level agreements sit at the double-precision floor. Nothing hides between categories.
+
+## 🧯 Troubleshooting the Snapshot
+
+Snapshot-specific issues, with the shortest reliable fix:
+
+<details>
+<summary><b>Julia suite errors on <code>DataFrame</code> columns</b></summary>
+
+The historical sources pin package-era behaviour; run the *current* suite for fresh results and the *historical* sources only for provenance reading. If you must run v19_v1, use the pinned Julia version from its header (1.12.0-era) and expect era-specific API quirks.
+</details>
+
+<details>
+<summary><b>Dashboard shows an empty statistics page</b></summary>
+
+The statistics compute in a web worker over `public/data/zeta_zeros_50000_embedded.txt`; if the app is served from a path where `public/` assets are missing (e.g. a partial copy), the page renders empty. Serve the committed `dist/` bundle as-is, or rebuild with `npm run build`.
+</details>
+
+<details>
+<summary><b>mkdocs (snapshot) fails on macros</b></summary>
+
+The snapshot's MkDocs config expects `mkdocs-material` and the macros plugin: `pip install mkdocs-material mkdocs-macros-plugin`, then `mkdocs serve` from `ab-cloud/`.
+</details>
+
+<details>
+<summary><b>Suite output differs from the archived run in formatting only</b></summary>
+
+Formatting drift (column widths, banner spacing) is expected across language versions; the test-numbered lines and PASS/WARN states are the stable diff surface. Normalise timestamps and paths before diffing (see `verification/README.md`).
+</details>
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../README.md)
+- 📖 [Как верифицируются утверждения](../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../papers/README.md) · 📚 [Монографии](../../docs/README.md) · 🧾 [LaTeX](../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+

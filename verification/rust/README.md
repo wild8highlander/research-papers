@@ -99,3 +99,56 @@ Build step: `cargo build --release`.
 *Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
 
 </div>
+
+---
+## 🦀 Workspace Anatomy
+
+One workspace ([`Cargo.toml`](Cargo.toml)), six packages, zero external crates:
+
+| Package | Section | Binary |
+|---|---|---|
+| `section1_correction_b` | 1 | prints b, asserts the four properties |
+| `section2_preprint` | 2 | twist unitarity chain |
+| `section3_ab_cloud` | 3 | Hofstadter structural checks |
+| `section4_kdv` | 4 | soliton conservation (std-only FFT-free formulation) |
+| `section5_klein_attractor` | 5 | invariant statistics |
+| `section6_riemann_zeros` | 6 | gap-ratio diagnostics |
+
+The std-only policy is the Rust face of the framework's hermeticity: no `ndarray`, no `num_cpus`, nothing — the ports are auditable by reading them, and supply-chain risk is zero by construction.
+
+## 🔁 Running Patterns
+
+```bash
+cargo run --release                              # whole chain, all six sections
+cargo run --release -p section1_correction_b     # one section
+cargo test --release                             # unit tests alongside the contract checks
+```
+
+`--release` is the supported mode everywhere in the documentation; debug builds are noticeably slower on the heavier sections and are only useful when debugging the ports themselves.
+
+---
+## 🎯 What Rust Proves
+
+The Rust ports prove the sections do not need *anything* — no BLAS, no NumPy, no standard scientific stack. Six packages, std-only, and the contract still holds. That makes Rust the supply-chain audit's favourite witness: with zero dependencies, there is nothing to trust but the code and the standard library.
+
+---
+## 🔗 See Also
+
+- the workspace [`Cargo.toml`](Cargo.toml) — package registry;
+- [`cpp/`](../cpp/README.md) — the BLAS-backed counterpart;
+- [`tests/`](../tests/README.md) — the validator that consumes these ports' JSON.
+
+<!-- doc-enhancer:block v1 (автоматический блок; файлы лицензии не затрагиваются) -->
+
+---
+
+## 🧭 Навигация и быстрые ссылки (auto)
+
+- 🏠 [Корень репозитория](../../../README.md)
+- 📖 [Как верифицируются утверждения](../../../verification/README.md)
+- ☁️ [Комплекс AB-Cloud](../../../ab-cloud/README.md)
+- 📄 [Статьи (PDF)](../../../papers/README.md) · 📚 [Монографии](../../../docs/README.md) · 🧾 [LaTeX](../../../src/README.md)
+- ⚖️ [Лицензия IPL-RP-1.0](../../../LICENSE.md) — просмотр, одна резервная копия и цитирование с атрибуцией разрешены; остальное — только с письменного согласия автора.
+
+*Блок добавлен автоматически (`doc-enhancer v1`); к лицензии отношения не имеет и её не изменяет. Повторный запуск скрипта блок не дублирует.*
+
