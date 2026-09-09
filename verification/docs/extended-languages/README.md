@@ -1,20 +1,31 @@
-# Расширенные языки
+# 📚 docs · extended-languages — the Decision Record
 
-7 новых языков верификации, добавленных в фреймворк.
+> **Navigation:** [`verification`](../../README.md) › [`docs`](../README.md) › **`extended-languages`**
 
-## Формальные языки (доказательства)
-- **Lean 4** — формальные доказательства с Mathlib4
-- **Coq** — формальные доказательства
-- **Isabelle/HOL** — формальные доказательства
-- **Agda** — зависимо-типизированные доказательства
+![License](https://img.shields.io/badge/License-IPL--RP--1.0-red?style=flat-square)
 
-## Численные языки
-- **Rust** — численная верификация
-- **C++** — численная верификация
-- **Haskell** — численная и символьная верификация
+The **extended-languages decision record**: why the framework grew beyond its original language set to Lean 4, Coq, Isabelle-HOL, Agda, Rust, C++ and Haskell, and what each addition buys (independence of foundations, memory safety, classically-checked real analysis, constructive types). Reads as the rationale behind the [Section × Language matrix](../../../README.md#-section--language-verification-matrix).
 
-## Сборка
+## 📂 Contents — What Lives Here
 
-```
-make verify-extended
-```
+_This directory currently contains no files._
+
+## 🔗 Cross-References
+
+- [Parent — docs/](../README.md)
+- [Verification root](../../README.md)
+
+## 🇷🇺 Краткое резюме (Russian Summary)
+
+Историческое решение о расширении набора языков: мотивации по каждому добавлению и enforcement контракта.
+
+---
+
+<div align="center">
+
+**[⬆ Back to top](#-docs--extended-languages--the-decision-record)** · 
+**[Repository root](../../README.md)**
+
+*Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
+
+</div>

@@ -1,20 +1,81 @@
-# Coq — Формальная верификация
+# Ⓜ️ Coq/Rocq — Formal/Numerical Verification Layer
 
-Формальные доказательства для всех 6 исследовательских разделов.
+> **Navigation:** [`verification`](../README.md) › **`coq`**
 
-## Что внутри
+![Coq/Rocq](https://img.shields.io/badge/Coq/Rocq-8.18-informational?style=flat-square&logo=ocaml&logoColor=white) ![License](https://img.shields.io/badge/License-IPL--RP--1.0-red?style=flat-square) ![Sections](https://img.shields.io/badge/Sections-6-blue?style=flat-square)
 
-- `section1_correction_b/CorrectionB.v` — поправка b, Rodrigues
-- `section2_preprint/ProofChain.v` — цепочка PSL(2,7) → α → L_min → b → γ
-- `section3_ab_cloud/Hofstadter.v` — гамильтониан Хофштадтера, GUE
-- `section4_kdv/KdV.v` — солитон, KdV
-- `section5_klein_attractor/Klein.v` — квартика Клейна
-- `section6_riemann_zeros/RiemannZeros.v` — нули Римана
+This directory carries the **Coq/Rocq (8.18) formal-verification layer**: one proof file per research section, built on the standard library's `Reals` with `lra`/`nra` automation. The development favours classical real analysis — `b_correction` is a first-class `R`, its positivity proved via `Rdiv_lt_0_compat` with `PI_pos`, and the trigonometric identity chain exercised through `sqrt_def` and `lra`.
 
-## Сборка
+Each section file is self-contained: open it, `Require` it, or `Compute` the constants directly (the files intentionally call `Compute b_correction` so the value is printed during compilation — a reviewer sees the number as the proof compiles). Admitted branches are marked with explicit `admit`/`Admitted` and are documented in the per-section READMEs and in the framework's gap ledger, keeping the checked/unchecked boundary visible.
+
+Build per file with `coqc` (see `_CoqProject` for the file list), or drop the folder into CoqIDE/Proof Everything. CI compiles every file in `ci-extended-languages.yml`.
+
+## 🗂 The Six Section Ports
+
+- [`section1_correction_b/`](section1_correction_b/README.md) — Correction b — the Universal Polarization Constant
+- [`section2_preprint/`](section2_preprint/README.md) — Preprint NSE — the Regularity Argument Chain
+- [`section3_ab_cloud/`](section3_ab_cloud/README.md) — AB-Cloud — the Non-Hermitian Hofstadter Hamiltonian
+- [`section4_kdv/`](section4_kdv/README.md) — KdV — Soliton Interactions under the b-Correction
+- [`section5_klein_attractor/`](section5_klein_attractor/README.md) — Klein Attractor — Ergodic Dynamics and the NSE Bridge
+- [`section6_riemann_zeros/`](section6_riemann_zeros/README.md) — Riemann Zeros — the Hilbert–Pólya Programme
+
+## 📂 Contents — What Lives Here
+
+| File | Size | Description |
+|---|---|---|
+| [`_CoqProject`](_CoqProject) | 221 B | Coq project file — lists the .v sources for coq_makefile |
+| [`section1_correction_b/`](section1_correction_b/) | — | Section 1 port — Correction b — the Universal Polarization Constant |
+| [`section2_preprint/`](section2_preprint/) | — | Section 2 port — Preprint NSE — the Regularity Argument Chain |
+| [`section3_ab_cloud/`](section3_ab_cloud/) | — | Section 3 port — AB-Cloud — the Non-Hermitian Hofstadter Hamiltonian |
+| [`section4_kdv/`](section4_kdv/) | — | Section 4 port — KdV — Soliton Interactions under the b-Correction |
+| [`section5_klein_attractor/`](section5_klein_attractor/) | — | Section 5 port — Klein Attractor — Ergodic Dynamics and the NSE Bridge |
+| [`section6_riemann_zeros/`](section6_riemann_zeros/) | — | Section 6 port — Riemann Zeros — the Hilbert–Pólya Programme |
+
+## 🗂 Directory Layout
 
 ```
-cd coq
-coq_makefile -f _CoqProject -o Makefile
-make
+coq/
+├── section1_correction_b/   # 2 files
+│   ├── CorrectionB.v
+│   └── README.md  (this file)
+├── section2_preprint/   # 2 files
+│   ├── ProofChain.v
+│   └── README.md  (this file)
+├── section3_ab_cloud/   # 2 files
+│   ├── Hofstadter.v
+│   └── README.md  (this file)
+├── section4_kdv/   # 2 files
+│   ├── KdV.v
+│   └── README.md  (this file)
+├── section5_klein_attractor/   # 2 files
+│   ├── Klein.v
+│   └── README.md  (this file)
+├── section6_riemann_zeros/   # 2 files
+│   ├── README.md  (this file)
+│   └── RiemannZeros.v
+├── _CoqProject
+└── README.md  (this file)
 ```
+
+## ▶️ How to Run
+
+```bash
+cd verification/coq
+coqc <file>.v (per section file)
+```
+Build step: `coq_makefile or per-file coqc`.
+
+## 🇷🇺 Краткое резюме (Russian Summary)
+
+**verification/coq/** — слой верификации на Coq/Rocq (8.18): доказательства на стандартной библиотеке Reals с автоматизацией lra/nra. Шесть портов по разделам (1: Correction b, 2: Preprint NSE, 3: AB-Cloud, 4: KdV, 5: Klein Attractor, 6: Riemann Zeros); единый контракт PASS/JSON; команды сборки — в разделе How to Run.
+
+---
+
+<div align="center">
+
+**[⬆ Back to top](#-coqrocq--formalnumerical-verification-layer)** · 
+**[Repository root](../README.md)**
+
+*Part of [wild8highlander/research-papers](https://github.com/wild8highlander/research-papers) · Licensed under [IPL-RP-1.0](https://github.com/wild8highlander/research-papers/blob/main/LICENSE.md) — All Rights Reserved*
+
+</div>
