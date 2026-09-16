@@ -1,0 +1,167 @@
+{
+ "package": "navier-stokes/open-problems",
+ "repo": "https://github.com/wild8highlander/research-papers",
+ "date": "2026-09-15",
+ "base_commit": "266da48",
+ "provenance": {
+  "L1_L4": "перепрогнаны в этой сессии: verification/python_levels/verify_all.py",
+  "L5": "зафиксированный прогон репозитория (коммит 266da48, тег v1.4.0); ~18 мин/2 ядра: l5_nse_3d_bkm.py",
+  "P1_P6": "реальные прогоны этой сессии: navier-stokes/code/p1..p6 + make_plots.py",
+  "P7": "реестр из verification/lean4/TODO_sorry.md (без численного прогона)",
+  "environment": "Python 3.12, numpy 2.1.3, mpmath 1.3.0, matplotlib 3.9.2, 2 CPU"
+ },
+ "files": {
+  "code/chamber3d.py": {
+   "sha256": "b1b726b106ec5c6e377ec73465eb50e650543bf5093b183fe593c4f7e90dd33c",
+   "bytes": 11144
+  },
+  "code/make_plots.py": {
+   "sha256": "844c250a36e869265f251b332e014845ec7148c00c3384c3ba7c2fb22baea5e5",
+   "bytes": 12814
+  },
+  "code/p1_3d_microphysics.py": {
+   "sha256": "7c611aaaa6b66bf6ee204b23fc9e5e07bb817ac5f405c70092589ee3324c0a30",
+   "bytes": 9598
+  },
+  "code/p2_grid_convergence.py": {
+   "sha256": "422add8cdb77e90f658f9d1d24c0691f2ea45a9351f31832bd7e69743174fc12",
+   "bytes": 6614
+  },
+  "code/p3_buoyancy.py": {
+   "sha256": "9b316fe20230977416ce2b4107855e77c08e1cbeeb587182693248f117cab8ca",
+   "bytes": 14639
+  },
+  "code/p4_ensemble_sigma_y.py": {
+   "sha256": "4a42c5f3d6324215b3c55c3fbe236a0acf7b7c09f6f398b708530527ec75d07e",
+   "bytes": 9068
+  },
+  "code/p5_droplet_feedback.py": {
+   "sha256": "5681658937db2fed10318fc226e3b33e473d4b2db41953455caaffd36f3713c5",
+   "bytes": 10146
+  },
+  "code/p6_b_universality.py": {
+   "sha256": "daa6a8484ba13ead44bee902772ceb74e44c1651a3603d911dd38239e3c1a6ed",
+   "bytes": 8755
+  },
+  "code/run_all.sh": {
+   "sha256": "8664d347791703dd8cc18e1dfb699cbb135d31ea86740f3f6f1f99a72e567b0a",
+   "bytes": 1488
+  },
+  "code/tg2d_core.py": {
+   "sha256": "6a1a4b683daf548bb581e01b150dd2333df3540df4620830a7cb73baee7b3b61",
+   "bytes": 5968
+  },
+  "results/baseline/l1_exact_constants.json": {
+   "sha256": "3b45456012ffda63ee7b15b38ae051269e18d2c29bd7c5262f072b7d610c1660",
+   "bytes": 2439
+  },
+  "results/baseline/l2_rotation_algebra.json": {
+   "sha256": "9ab832c5d4a3011c477395f8ded2b8b1063f74d0eb2c3d7d26e308dc2ad1bc7c",
+   "bytes": 668
+  },
+  "results/baseline/l3_kirchhoff_vortices.json": {
+   "sha256": "e8f986f7e10135cdb17680ab4b592fb4b9e452ca3d2967d9ef86260b78f488c4",
+   "bytes": 675
+  },
+  "results/baseline/l4_nse_2d.json": {
+   "sha256": "c8b028bbbac2b1e55fbbe64c3408fcebd8e3349ea5eaca7e52318f7b6625c17e",
+   "bytes": 766
+  },
+  "results/baseline/l5_nse_3d_bkm.json": {
+   "sha256": "c128f5715823f6b61d06cab0627b8ac855a3761ed645805f5becdba46bafaad8",
+   "bytes": 208617
+  },
+  "results/p1_3d_microphysics.json": {
+   "sha256": "a081014ad3acbc0d1825f44b0a0b6a846166ae3435bf86846dfd9b4c54e6767b",
+   "bytes": 17551
+  },
+  "results/p1_positions.npz": {
+   "sha256": "47755d650cfb977eaeff695b08efd8b780a73c3f14434bef6622c81f78c69230",
+   "bytes": 2750
+  },
+  "results/p2_grid_convergence.json": {
+   "sha256": "b4cad246b07266a3fc94bd4664cb88cf41f8a5c014da847cad57c071ef4bf0b1",
+   "bytes": 2357
+  },
+  "results/p3_buoyancy.json": {
+   "sha256": "748e91ca46c85867696007d5e2b08d8820d996b7d3fe2767bdbda46bd94ff415",
+   "bytes": 3773
+  },
+  "results/p3_theta_snapshot.npy": {
+   "sha256": "1fed7d42e04b498a33292da16884c61709a82d1f6cc6bf6cda30b6986b74bd36",
+   "bytes": 49280
+  },
+  "results/p4_ensemble_sigma_y.json": {
+   "sha256": "a48322d3237f6b53faee8d2fcb701149132fba272bb557c08d64ba000541e359",
+   "bytes": 42633
+  },
+  "results/p5_droplet_feedback.json": {
+   "sha256": "8459e66b5973bc69db7a3e5a965942cd2ac31cfab02ebe4b5df20bbfdda4c544",
+   "bytes": 25015
+  },
+  "results/p6_b_universality.json": {
+   "sha256": "32d862d3092cedd31356a257668a1c2f1861b4bd91eb74700ab51a388d0b2a93",
+   "bytes": 1525
+  },
+  "results/summary_numbers.json": {
+   "sha256": "6e5a0568ef6fbdcf45347d7cb2f014e1d1e788a1f77ec79ff112eca1921063ea",
+   "bytes": 10592
+  },
+  "plots/plot_P1_3d_microphysics.png": {
+   "sha256": "3d142d02fa125124ead0e2974639803db8fc4b85b287dfff917eed255f2b74a4",
+   "bytes": 443717
+  },
+  "plots/plot_P2_convergence.png": {
+   "sha256": "d5cac46dd3ded89868d72c94474a899cdb31b8078512f6cec601d86e2336fa02",
+   "bytes": 224864
+  },
+  "plots/plot_P3_buoyancy.png": {
+   "sha256": "ebde39e4388decfae79c2caf54e6af108df046096ab6d935387e563c6b83a6cb",
+   "bytes": 221198
+  },
+  "plots/plot_P4_ensemble.png": {
+   "sha256": "112a1ce625d261a4f9b3128d626aeabc94067cd5b7971bc56a908fe84238be11",
+   "bytes": 253695
+  },
+  "plots/plot_P5_feedback.png": {
+   "sha256": "c80e2c1e64b12d18b210f51ba2b3aaf3c352f8af0f74cb08d2ec09b0559bf2c0",
+   "bytes": 440821
+  },
+  "monograph/MONOGRAPH_EN.docx": {
+   "sha256": "f3d74e386c96f3e3f20dfead6543887f1fa92e63aaf901acedbeb7654f49a9cf",
+   "bytes": 1419349
+  },
+  "monograph/MONOGRAPH_EN.pdf": {
+   "sha256": "3c8b9304ce1b85a91470468aa94e60ac2d1d125592863d76bc948bee2f0e7d41",
+   "bytes": 1941731
+  },
+  "monograph/MONOGRAPH_RU.docx": {
+   "sha256": "007ee80a1ca8c49a11f802915feb3ec0b8180cf4f7ba38ae9f5a9f3c229346d2",
+   "bytes": 1422380
+  },
+  "monograph/MONOGRAPH_RU.pdf": {
+   "sha256": "f3e7c08d3c44b268dac529e951bebffc0c931247029902f40d64556caf5b3143",
+   "bytes": 1978526
+  },
+  "monograph/cover_en.html": {
+   "sha256": "bd160107c4aeea6bdb4cdddbc517035467e47a8e8da045902b53c40fbb6b3e11",
+   "bytes": 3254
+  },
+  "monograph/cover_ru.html": {
+   "sha256": "d7d46d89170d08bee45f102375977b81fdbdbacf6cb2f9ce0a1c2082f48cf330",
+   "bytes": 3402
+  },
+  "README.md": {
+   "sha256": "ca93ceab6e4b4ac6888a581e76e0656584cf1d425bdc992ad421b35381c74031",
+   "bytes": 27531
+  },
+  "OPEN_PROBLEMS_7.md": {
+   "sha256": "5a1d82e1adc96cfe363e09120706cc53ecdc64c96b45f1741e1a336ae1f2d757",
+   "bytes": 19893
+  },
+  "push_navier_stokes.sh": {
+   "sha256": "2fde01376f0a88aad39af29741c45a8f130eac0e4f547457f9fba93fe2e6273f",
+   "bytes": 2319
+  }
+ }
+}
